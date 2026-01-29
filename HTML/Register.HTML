@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="../CSS/Register.CSS">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <title>Login - Drip Lab</title>
+    <title>Register - Drip Lab</title>
 </head>
 
 <body>
+    <!-- PHẦN HEADER - Thanh điều hướng trên cùng -->
     <header class="header-login">
         <div class="IMG-LOGIN">
             <img src="../IMG/DELLBIETNOIGI.jpg" alt="#">
@@ -34,8 +35,11 @@
         </form>
     </header>
 
+    <!-- PHẦN NỘI DUNG CHÍNH - Bao bọc toàn bộ trang đăng ký -->
     <div class="login-between grid">
         <div class="login-container grid">
+            
+            <!-- PHẦN BÊN TRÁI - Slideshow hình ảnh (chỉ hiển thị trên màn hình lớn) -->
             <div class="login-swiper">
                 <div class="login-swiper-data">
                     <p class="login-swiper-subtitle"></p>
@@ -64,6 +68,7 @@
                     </div>
                 </div>
 
+                <!-- Wrapper chứa các slide hình ảnh -->
                 <div class="login-swiper-wrapper">
                     <div class="login-swiper-slide active">
                         <img src="../IMG/anh-1.jpg" alt="image" class="login-swiper-img">
@@ -85,6 +90,7 @@
                 <div class="swiper-pagination"></div>
             </div>
 
+            <!-- PHẦN BÊN PHẢI - Form đăng ký -->
             <div class="login-area grid">
                 <div class="login-data">
                     <div class="login-logo">
@@ -92,19 +98,30 @@
                     </div>
                     
                     <h1 class="login-title">
-                        Sign in with Drip Lab
+                        Join the Lab
                     </h1>
 
                     <p class="login-description">
-                        Welcome back to the pursuit of the perfect brew
+                        Enter your details to start your artisanal journey.
                     </p>
                 </div>
 
                 <form action="" class="login-form">
                     <div class="login-content grid">
+                        
                         <div class="login-box">
-                            <input type="email" name="email" placeholder="EMAIL OR PHONE NUMBER" class="login-input" required>
+                            <input type="text" name="fullname" placeholder="FULL NAME" class="login-input" required>
+                            <i class="ri-user-fill"></i>
+                        </div>
+
+                        <div class="login-box">
+                            <input type="email" name="email" placeholder="EMAIL" class="login-input" required>
                             <i class="ri-mail-fill"></i>
+                        </div>
+
+                        <div class="login-box">
+                            <input type="tel" name="phone" placeholder="PHONE NUMBER" class="login-input" required pattern="[0-9]*" inputmode="numeric">
+                            <i class="ri-phone-fill"></i>
                         </div>
 
                         <div class="login-password-wrapper">
@@ -112,11 +129,11 @@
                                 <input type="password" name="password" placeholder="PASSWORD" class="login-input" required id="LoginPassword">
                                 <i class="ri-eye-line login-eye" id="LoginEye"></i>
                             </div>
-                            <a href="#" class="login-forgot-inline">FORGOT?</a>
+                            <p class="password-hint">Must be at least 8 characters.</p>
                         </div>
                     </div>
 
-                    <button type="submit" class="login-button">Sign In</button>
+                    <button type="submit" class="login-button">Register Account</button>
 
                     <span class="login-line">OR SIGN IN WITH</span>
 
@@ -131,7 +148,7 @@
                 </form>
 
                 <p class="login-switch">
-                    New to the lab? <a href="../HTML/Login.HTML" class="login-sign">Join Drip Lab</a>
+                    Already have an account? <a href="../HTML/Login.HTML" class="login-sign">Sign In</a>
                 </p>
             </div>
         </div>

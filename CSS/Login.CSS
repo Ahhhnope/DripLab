@@ -1,30 +1,31 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap");
 
-/*=============== VARIABLES CSS ===============*/
+/*=============== BIẾN CSS - Định nghĩa các giá trị dùng chung ===============*/
 :root {
-  /*========== Colors ==========*/
-  --first-color: #b8906a;
-  --first-color-alt: #a17d59;
-  --hover-color: hsl(0, 0%, 95%);
-  --title-color: #5c4033;
-  --text-color: #999;
-  --white-color: hsl(0, 0%, 100%);
-  --border-color: #e0e0e0;
-  --body-color: #f5f5f0;
+  /*========== Màu sắc ==========*/
+  --first-color: #b8906a;           /* Màu chính - nâu cafe */
+  --first-color-alt: #a17d59;       /* Màu chính tối hơn - dùng cho hover */
+  --hover-color: hsl(0, 0%, 95%);   /* Màu hover cho background */
+  --title-color: #5c4033;           /* Màu tiêu đề - nâu đậm */
+  --text-color: #999;               /* Màu chữ thông thường - xám */
+  --white-color: hsl(0, 0%, 100%);  /* Màu trắng */
+  --border-color: #e0e0e0;          /* Màu viền - xám nhạt */
+  --body-color: #f5f5f0;            /* Màu nền trang - be nhạt */
 
-  /*========== Font and typography ==========*/
-  --body-font: "Montserrat", sans-serif;
-  --second-font: "Unbounded", sans-serif;
-  --bigger-font-size: 1.5rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .875rem;
+  /*========== Font chữ và kích thước ==========*/
+  --body-font: "Montserrat", sans-serif;    /* Font chính cho văn bản */
+  --second-font: "Unbounded", sans-serif;   /* Font phụ cho tiêu đề */
+  --bigger-font-size: 1.5rem;               /* Kích thước lớn nhất */
+  --normal-font-size: .938rem;              /* Kích thước bình thường */
+  --small-font-size: .875rem;               /* Kích thước nhỏ */
 
-  /*========== Font weight ==========*/
-  --font-regular: 400;
-  --font-semi-bold: 600;
+  /*========== Độ đậm của font ==========*/
+  --font-regular: 400;      /* Font bình thường */
+  --font-semi-bold: 600;    /* Font nửa đậm */
 }
 
+/*========== Typography responsive - Điều chỉnh kích thước font theo màn hình ==========*/
 /*========== Responsive typography ==========*/
 @media screen and (min-width: 1150px) {
   :root {
