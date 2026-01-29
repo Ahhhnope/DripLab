@@ -55,11 +55,11 @@ body{
     width: 100%;
     height: 70px;
     padding: 30px;
-    background: cornsilk;     /* Màu nền vàng nhạt */
+    background: cornsilk;    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;           /* Đặt lên trên cùng */
+    z-index: 1000;          
 } 
 
 /* Logo bên trái header */
@@ -73,14 +73,14 @@ body{
     display: inline-block;
     position: relative;
     font-size: 16px;
-    color: sienna;           /* Màu nâu đỏ */
+    color: sienna;     
     text-decoration: none;
     font-weight: bold;
     margin-right: 30px;
 }
 
 .navbar a:hover{
-    color: peru;             /* Màu cam nhạt khi hover */
+    color: peru;           
 }
 
 /* Nút user và cart */
@@ -105,7 +105,7 @@ body{
 }
 
 .user-login button:hover{
-    opacity: 0.7;           /* Hiệu ứng mờ khi hover */
+    opacity: 0.7;        
 }
 
 .user-login button i{
@@ -144,8 +144,8 @@ img {
 
 /*=============== PHẦN LOGIN/REGISTER - Vùng chứa form ===============*/
 .login-between{
-    margin-top: 70px;                    /* Đẩy xuống dưới header */
-    min-height: calc(100vh - 70px);      /* Chiều cao = toàn màn hình - header */
+    margin-top: 70px;                   
+    min-height: calc(100vh - 70px);      
     display: flex;
     align-items: center;
     justify-content: center;
@@ -261,14 +261,12 @@ img {
     color: var(--title-color);
 }
 
-/* Icon mắt để show/hide password */
 .login-eye{
     z-index: 1;
     cursor: pointer;
     color: #999;
 }
 
-/* Dòng gợi ý mật khẩu - THÊM MỚI */
 .password-hint{
     align-self: flex-start;
     font-size: 0.7rem;

@@ -304,21 +304,12 @@ class ImageSwiper {
     }
 }
 
-// Biến lưu instance của ImageSwiper
 let swiperInstance = null;
 
-/**
- * Khi trang web load xong thì khởi tạo slideshow
- */
 document.addEventListener('DOMContentLoaded', () => {
     swiperInstance = new ImageSwiper();
 });
 
-/**
- * Khi người dùng chuyển tab hoặc minimize trình duyệt
- * thì dừng auto play để tiết kiệm tài nguyên
- * Khi quay lại thì bật lại auto play
- */
 document.addEventListener('visibilitychange', () => {
     if(swiperInstance) {
         if(document.hidden) {
