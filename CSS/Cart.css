@@ -1,4 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     margin: 0;
     padding: 0;
+}
+
+.navbar-button {
+    @apply text-coffee-dark text-sm font-bold hover: text-primary;
 }
