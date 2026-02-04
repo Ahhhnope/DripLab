@@ -3,338 +3,223 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drip Lab</title>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#3b5e4a",
-                        "accent-gold": "#c79a5e",
-                        "background-light": "#f8f8f6",
-                        "background-dark": "#2c3f3f",
-                        "text-main": "#131514",
-                        "text-muted": "#6f7b75",
-                        "soft-beige": "#f2eee9",
-                        "dark-brown": "#3d2b1f"
-                    },
-                    fontFamily: {
-                        "display": ["Epilogue", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        };
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const slider = document.getElementById("slider");
-            const totalSlides = slider.children.length;
-            let currentIndex = 0;
-
-            function updateSlide() {
-                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-
-            document.getElementById("nextBtn").addEventListener("click", () => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateSlide();
-            });
-
-            document.getElementById("prevBtn").addEventListener("click", () => {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateSlide();
-            });
-        });
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
 
 
-    </script>
-
-
-
-
-
-
-    <style type="text/tailwindcss">
-        body {
-            font-family: 'Epilogue', sans-serif;
-        }
-        .bento-card:hover .card-overlay {
-            opacity: 1;
-        }
-        .bento-card:hover img {
-            transform: scale(1.05);
-        }
-        .section-gap {
-            margin-bottom: 30px;
-        }
-        .special-gap {
-            margin-bottom: 40px;
-        }
-        header {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        @supports (animation-timeline: scroll()) {
-            header {
-                animation: header-scroll linear forwards;
-                animation-timeline: scroll();
-                animation-range: 0px 50px;
-            }
-            @keyframes header-scroll {
-                from {
-                    background-color: transparent;
-                    backdrop-filter: blur(0px);
-                    border-bottom-color: transparent;
-                }
-                to {
-                    background-color: rgba(248, 246, 243, 0.85);
-                    backdrop-filter: blur(12px);
-                    border-bottom-color: rgba(61, 43, 31, 0.1);
-                }
-            }
-        }
-        @media not (animation-timeline: scroll()) {
-            header {
-                background-color: rgba(248, 246, 243, 0.85);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-            }
-        }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/Homepage.css" />
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-text-main transition-colors duration-300">
     <div class="relative flex min-h-screen flex-col overflow-x-hidden">
-        <header class="fixed top-0 left-0 right-0 z-[100] w-full border-b border-dark-brown/10 px-6 md:px-20 py-4">
+
+        <!-- HEADER -->
+        <header id="header" class="fixed top-0 left-0 right-0 z-[100] w-full
+           border-b border-dark-brown/10
+           px-6 md:px-20 py-4">
+
             <div class="mx-auto grid grid-cols-3 items-center max-w-[1400px]">
+
                 <div class="flex justify-start">
-                    <a class="flex items-center gap-2 group transition-opacity hover:opacity-90" href="/">
+                    <a class="flex items-center gap-2 group" href="/">
                         <div class="relative flex h-10 w-10 items-center justify-center">
-                            <div
-                                class="absolute inset-0 bg-primary rotate-45 rounded-xl opacity-20 group-hover:rotate-90 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-primary rotate-45 rounded-xl opacity-20"></div>
+                            <div class="relative h-8 w-8 bg-primary rounded-lg flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white">coffee_maker</span>
                             </div>
-                            <div
-                                class="relative flex items-center justify-center h-8 w-8 bg-primary rounded-lg shadow-lg">
-                                <span
-                                    class="material-symbols-outlined text-[20px] text-white font-light">coffee_maker</span>
-                            </div>
-                        </div>
-                        <div class="flex flex-col -space-y-1">
-
-
-
-                            <!-- logo -->
-
-
-
                         </div>
                     </a>
                 </div>
+
                 <nav class="hidden md:flex items-center justify-center gap-10">
-                    <!-- header color hover -->
-                    <a class="text-sm font-bold tracking-wider text-dark-brown hover:text-primary transition-colors"
-                        href="#">MENU</a>
-                    <a class="text-sm font-bold tracking-wider text-dark-brown hover:text-primary transition-colors"
-                        href="#">ABOUT US</a>
-                    <a class="text-sm font-bold tracking-wider text-dark-brown hover:text-primary transition-colors"
-                        href="News.html">NEWS</a>
-                    <a class="text-sm font-bold tracking-wider text-dark-brown hover:text-primary transition-colors"
-                        href="#">STORES</a>
+                    <a class="nav-link" href="#">MENU</a>
+                    <a class="nav-link" href="#">ABOUT US</a>
+                    <a class="nav-link" href="#">NEWS</a>
+                    <a class="nav-link" href="#">STORES</a>
                 </nav>
+
                 <div class="flex items-center justify-end gap-6">
-                    <!-- Icon on the left side -->
-                    <a class="text-dark-brown hover:text-primary transition-colors flex items-center" href="#">
-                        <span class="material-symbols-outlined text-[24px]">person</span>
-                    </a>
-                    <a class="text-dark-brown hover:text-primary transition-colors flex items-center relative" href="#">
-                        <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
-                    </a>
-                    <button class="md:hidden text-dark-brown">
-                        <span class="material-symbols-outlined">menu</span>
-                    </button>
+                    <a class="material-symbols-outlined nav-link" href="#">person</a>
+                    <a class="material-symbols-outlined nav-link" href="#">shopping_bag</a>
                 </div>
             </div>
         </header>
+
+        <!-- MAIN -->
         <main class="flex-1 pt-[72px]">
+
+            <!-- SLIDER -->
             <section class="w-full section-gap">
                 <div class="relative overflow-hidden bg-background-dark">
 
-                    <!-- SLIDER -->
                     <div id="slider" class="flex transition-transform duration-700 ease-in-out">
 
-                        <!-- SLIDE 1 -->
-                        <div class="relative min-w-full min-h-[600px]">
-                            <div class="absolute inset-0 pointer-events-none">
-                                <div class="h-full w-full bg-cover bg-center opacity-60"
-                                    style="background-image: url('../IMG/BackgroundCoffee.jpg');"></div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-background-dark/95 via-background-dark/60 to-transparent">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- SLIDE 2 -->
-                        <div class="relative min-w-full min-h-[600px]">
-                            <div class="absolute inset-0 pointer-events-none">
-                                <div class="h-full w-full bg-cover bg-center opacity-60"
-                                    style="background-image: url('../IMG/CoffeeBanner1.jpg');"></div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-background-dark/95 via-background-dark/60 to-transparent">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- SLIDE 3 -->
-                        <div class="relative min-w-full min-h-[600px]">
-                            <div class="absolute inset-0 pointer-events-none">
-                                <div class="h-full w-full bg-cover bg-center opacity-60"
-                                    style="background-image: url('../IMG/DELLBIETNOIGI.jpg');"></div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-background-dark/95 via-background-dark/60 to-transparent">
-                                </div>
-                            </div>
-                        </div>
+                        <div class="slide" style="background-image:url('/IMG/BackgroundCoffee.jpg')"></div>
+                        <div class="slide" style="background-image:url('/IMG/CoffeeBanner1.jpg')"></div>
+                        <div class="slide" style="background-image:url('/IMG/DELLBIETNOIGI.jpg')"></div>
 
                     </div>
 
-                    <!-- LEFT BUTTON -->
-                    <button id="prevBtn" class="absolute left-6 top-1/2 -translate-y-1/2 z-50
-                   h-12 w-12 rounded-full bg-white/10 backdrop-blur-md
-                   text-white flex items-center justify-center
-                   hover:bg-primary transition-all">
+                    <button id="prevBtn" class="slider-btn left-6">
                         <span class="material-symbols-outlined text-3xl">chevron_left</span>
                     </button>
 
-                    <!-- RIGHT BUTTON -->
-                    <button id="nextBtn" class="absolute right-6 top-1/2 -translate-y-1/2 z-50
-                   h-12 w-12 rounded-full bg-white/10 backdrop-blur-md
-                   text-white flex items-center justify-center
-                   hover:bg-primary transition-all">
+                    <button id="nextBtn" class="slider-btn right-6">
                         <span class="material-symbols-outlined text-3xl">chevron_right</span>
                     </button>
 
                 </div>
             </section>
 
+            <!-- ENJOY -->
             <section class="mx-auto max-w-[1200px] px-6 py-10 text-center section-gap">
-                <div class="flex flex-col items-center justify-center gap-6">
-                    <div class="max-w-2xl">
-                        <h2 class="text-5xl font-black tracking-tight text-text-main dark:text-white">Enjoy with Drip
-                            Lab</h2>
-                        <div class="mt-4 flex justify-center">
-                            <div class="h-1 w-20 bg-accent-gold/40 rounded-full"></div>
-                        </div>
-                        <p class="mt-6 text-xl font-light text-text-muted dark:text-gray-400">
-                            Discover our curated selection and bespoke brewing experiences designed for the modern
-                            connoisseur.
-                        </p>
-                    </div>
-                    
-                </div>
+                <h2 class="text-5xl font-black">Enjoy with Drip Lab</h2>
+                <p class="mt-6 text-xl text-text-muted">
+                    Discover our curated selection and bespoke brewing experiences designed for the modern connoisseur.
+                </p>
             </section>
-            <section class="mx-auto max-w-[1200px] px-6 special-gap">
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-                    <a class="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl"
-                        href="#">
-                        <div class="absolute inset-0 z-0 h-full w-full overflow-hidden">
-                            <img alt="Artisan pour over coffee ceremony"
-                                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                src="../IMG/coffee.png" />
+
+            <!-- BENTO -->
+            <section class="mx-auto max-w-[1200px] px-6 special-gap grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Coffee -->
+                <a class="bento-card group" href="#">
+                    <img src="/IMG/coffee.png" alt="">
+                    <div class="bento-overlay">
+                        <h3 class="bento-title">Coffee & Tea</h3>
+
+                        <div class="bento-overlay-2">
+                            <h1 class="bento-sub">
+                                Taste the coffee through your veins
+                            </h1>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-10 w-full">
-                            <p class="mb-2 text-sm font-bold uppercase tracking-widest text-accent-gold">Curated Brews
-                            </p>
-                            <h3 class="text-4xl font-black text-white">Coffee &amp; Tea</h3>
-                            <div
-                                class="mt-6 flex opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                                <span
-                                    class="rounded-lg bg-white px-8 py-3 text-xs font-bold uppercase tracking-widest text-primary shadow-lg">View
-                                    Menu</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl cursor-pointer"
-                        href="#">
-                        <div class="absolute inset-0 z-0 h-full w-full overflow-hidden">
-                            <img alt="Coffee beans and laboratory equipment"
-                                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                src="../IMG/CustomCoffee.png" />
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-10 w-full">
-                            <p class="mb-2 text-sm font-bold uppercase tracking-widest text-accent-gold">The Lab</p>
-                            <h3 class="text-4xl font-black text-white">Custom Your Own Coffee</h3>
-                            <div
-                                class="mt-6 flex opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                                <span
-                                    class="rounded-lg bg-primary px-8 py-3 text-xs font-bold uppercase tracking-widest text-white shadow-lg border border-primary">Start
-                                    Crafting</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </section>
-            <section class="w-full bg-soft-beige section-gap">
-                <div class="mx-auto flex flex-col md:flex-row items-stretch min-h-[500px]">
-                    <div class="w-full md:w-1/2 min-h-[400px]">
-                        <img alt="Cozy Drip Lab interior with artisanal decor" class="h-full w-full object-cover"
-                            src="../IMG/coffeeShop.jpg" />
                     </div>
-                    <div
-                        class="w-full md:w-1/2 flex flex-col justify-center items-center text-center px-8 md:px-24 py-16 md:py-0">
-                        <h2 class="text-4xl md:text-5xl font-black text-dark-brown leading-tight mb-8">
-                            Discover nearby <br>
-                             Drip Lab
-                        </h2>
-                        <div>
-                            <button
-                                class="h-14 rounded-lg bg-primary px-10 text-sm font-bold uppercase tracking-widest text-white hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">
+                </a>
+
+                <!-- Custom -->
+                <a class="bento-card group" href="#">
+                    <img src="/IMG/CustomCoffee.png" alt="">
+                    <div class="bento-overlay">
+                        <h3 class="bento-title">Custom Your Own Coffee</h3>
+
+                        <div class="bento-overlay-2">
+                            <h1 class="bento-sub">
+                                Coffee comes with your tatse
+                            </h1>
+                        </div>
+                    </div>
+                </a>
+            </section>
+
+            <!-- STORE -->
+            <section class="w-full bg-[#f2eee9] section-gap">
+                <div class="flex flex-col md:flex-row min-h-[500px]">
+                    <img class="md:w-1/2 object-cover" src="/IMG/coffeeShop.jpg">
+                    <div class="md:w-1/2 flex flex-col justify-center items-center text-center">
+                        <h3 class="text-5xl font-black">Discover nearby<br>Drip Lab</h3>
+                        <a href="#">
+                            <button class="section-btn">
                                 Explore Now
                             </button>
-                        </div>
+                        </a>
                     </div>
                 </div>
-            </section>
-            <section class="w-full bg-soft-beige section-gap">
-                <div class="mx-auto flex flex-col md:flex-row-reverse items-stretch min-h-[500px]">
-                    <div class="w-full md:w-1/2 min-h-[400px]">
-                        <img alt="Drip Lab news and events photography" class="h-full w-full object-cover"
-                            src="../IMG/DELLBIETNOIGI.jpg" />
-                    </div>
-                    <div
-                        class="w-full md:w-1/2 flex flex-col justify-center items-center text-center px-8 md:px-24 py-16 md:py-0">
-                        <h2 class="text-4xl md:text-5xl font-black text-dark-brown leading-tight mb-8">
-                            News in Drip Lab
-                        </h2>
-                        <div>
-                            <button
-                                class="h-14 rounded-lg bg-primary px-10 text-sm font-bold uppercase tracking-widest text-white hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">
-                                Explore Now
+            </section> 
+
+            <!-- NEWS -->
+            <section class="w-full bg-[#f2eee9] section-gap">
+                <div class="flex flex-col md:flex-row-reverse min-h-[500px]">
+                    <img class="md:w-1/2 object-cover" src="/IMG/DELLBIETNOIGI.jpg">
+                    <div class="md:w-1/2 flex flex-col justify-center items-center text-center">
+                        <h2 class="text-5xl font-black">News in Drip Lab</h2>
+                        <a href="#">
+                            <button class="section-btn">
+                                Check Now
                             </button>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </section>
+
         </main>
-        <footer class="bg-background-dark px-6 py-16 text-white md:px-20 mt-8">
-            
+
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Cột 1 -->
+                <div class="footer-col">
+                    <h3>
+                        <img src="/IMG/DELLBIETNOIGI.jpg" class="footer-logo">
+                    </h3>
+                    <p>
+                        Drip Lab - Coffee for your <br> fresh start every day.
+                    </p>
+                </div>
+                
+
+                <!-- Cột 2 -->
+                <div class="footer-col">
+                    <h4>Liên kết</h4>
+                    <ul>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Stores</a></li>
+                    </ul>
+                </div>
+
+                <!-- Cột 3 -->
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>Email: contact@driplab.com</p>
+                    <p>Hotline: 036 363 6767</p>
+                    <p>Place at: Việt Nam</p>
+                </div>
+
+                <!-- Cột 4 -->
+                <div class="footer-col">
+                    <h4>Follow Us On</h4>
+                    <ul class="social-list">
+                        <li>
+                            <a href="https://www.instagram.com/drip_lab_space/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.facebook.com/profile.php?id=100053801825707&rdid=6SYyyixALwxgYlWY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1MmohJtkoE%2F#" target="_blank" rel="noopener noreferrer"
+                                aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer"
+                                aria-label="TikTok">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 Drip Lab. Space for coffee heads.
+            </div>
         </footer>
     </div>
-
+    <script src="/JS/HomePage.js"></script>
 </body>
 
 </html>
