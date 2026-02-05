@@ -8,52 +8,9 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#318160",
-                        "primary-dark": "#256248",
-                        "background-light": "#FBF9F2",
-                        "background-dark": "#27282a",
-                        "coffee-dark": "#4A3C32",
-                        "coffee-med": "#8C7B70",
-                        "coffee-light": "#E6E2D8",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                        "full": "9999px"
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(74, 60, 50, 0.05)',
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.05)',
-                    }
-                },
-            },
-        }
-    </script>
-    <style>
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+    <link href="../CSS/Cart.css" rel="stylesheet">
 </head>
 
 <body
@@ -92,7 +49,7 @@
                     class="relative flex items-center justify-center text-coffee-dark dark:text-white hover:text-primary transition-colors group">
                     <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
                     <span
-                        class="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white shadow-sm ring-1 ring-white dark:ring-black">3</span>
+                        class="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white shadow-sm ring-1 ring-white dark:ring-black">1</span>
                 </button>
             </div>
         </div>
@@ -253,7 +210,7 @@
                         <div class="space-y-4 mb-6">
                             <div class="flex justify-between text-coffee-med dark:text-gray-300 text-sm">
                                 <span>Subtotal</span>
-                                <span class="font-medium text-coffee-dark dark:text-white">$0</span>
+                                <span class="font-medium text-coffee-dark dark:text-white">$6.50</span>
                             </div>
                             <div class="flex justify-between text-coffee-med dark:text-gray-300 text-sm">
                                 <span>Taxes</span>
@@ -264,7 +221,7 @@
                             </div>
                             <div class="flex justify-between items-end">
                                 <span class="text-base font-bold text-coffee-dark dark:text-white">Total</span>
-                                <span class="text-2xl font-black text-coffee-dark dark:text-white">$0</span>
+                                <span class="text-2xl font-black text-coffee-dark dark:text-white">$6.50</span>
                             </div>
                         </div>
                         <button
@@ -327,6 +284,39 @@
         </div>
     </footer>
 
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#318160",
+                        "primary-dark": "#256248",
+                        "background-light": "#FBF9F2",
+                        "background-dark": "#27282a",
+                        "coffee-dark": "#4A3C32",
+                        "coffee-med": "#8C7B70",
+                        "coffee-light": "#E6E2D8",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(74, 60, 50, 0.05)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
 </body>
 
 </html>
