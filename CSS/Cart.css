@@ -4,10 +4,10 @@ body {
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
+    display: none;
+}
 
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
