@@ -1,0 +1,387 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap");
+
+/*=============== CSS VARIABLES ===============*/
+:root {
+  /* Color Palette */
+  --first-color: #b8906a;
+  --first-color-alt: #a17d59;
+  --hover-color: hsl(0, 0%, 95%);
+  --title-color: #5c4033;
+  --text-color: #999;
+  --white-color: hsl(0, 0%, 100%);
+  --border-color: #e0e0e0;
+  --body-color: #f5f5f0;
+  --primary: #3b5e4a;
+  --accent-gold: #c79a5e;
+  --dark-brown: #3d2b1f;
+  --background-light: #f8f8f6;
+
+  /* Typography - Sử dụng Epilogue cho toàn bộ */
+  --body-font: "Epilogue", sans-serif;
+  --second-font: "Epilogue", sans-serif;
+  --header-font: "Epilogue", sans-serif;
+  
+  /* Font Sizes */
+  --bigger-font-size: 1.5rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .875rem;
+
+  /* Font Weights */
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-black: 900;
+}
+
+/*=============== RESPONSIVE TYPOGRAPHY ===============*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --bigger-font-size: 1.75rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .938rem;
+  }
+}
+
+/*=============== BASE RESET ===============*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}   
+
+body {
+  background: floralwhite;
+  font-family: var(--body-font);
+  color: var(--text-color);
+}
+
+/*=============== REUSABLE CLASSES ===============*/
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*===============================================*/
+/*========== HEADER - CỐ ĐỊNH (KHÔNG SỬA) ==========*/
+/*===============================================*/
+
+.header-login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(248, 248, 246, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(61, 43, 31, 0.1);
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* --- Logo Section --- */
+.header-logo {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo-image-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-image-link:hover .header-logo-img {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* --- Navigation --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.navbar a {
+  font-family: var(--header-font);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-brown);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navbar a:hover {
+  color: var(--primary);
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* --- User Actions (Login/Cart Buttons) --- */
+.user-login {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.user-login button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.user-login button:hover {
+  transform: translateY(-2px);
+}
+
+.user-login button i {
+  font-size: 24px;
+  color: var(--dark-brown);
+  transition: color 0.3s ease;
+}
+
+.user-login button:hover i {
+  color: var(--primary);
+}
+
+/*===============================================*/
+/*========== MAIN CONTENT - TỰ CUSTOM ==========*/
+/*===============================================*/
+
+/* Container chính cho content */
+.main-content {
+  margin-top: 70px; /* Để tránh bị header che */
+  min-height: calc(100vh - 70px - 300px); /* Trừ đi header và footer */
+  padding: 2rem 1.5rem;
+}
+
+/* Container content mẫu - có thể sửa hoặc xóa */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.content-container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 1rem;
+}
+
+.content-container p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/*
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│   VIẾT CSS CHO CONTENT CỦA BẠN Ở ĐÂY              │
+│                                                     │
+│   Ví dụ:                                            │
+│   - .product-grid { ... }                           │
+│   - .card { ... }                                   │
+│   - .form-section { ... }                           │
+│   - ...                                             │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+*/
+
+
+
+
+
+/*===============================================*/
+/*========== FOOTER - CỐ ĐỊNH (KHÔNG SỬA) ==========*/
+/*===============================================*/
+
+.footer {
+  background-color: #3d2b1f;
+  color: #f5f5f0;
+  padding: 3rem 1.5rem 1.5rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-col h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-logo {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-col h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #c79a5e;
+}
+
+.footer-col p {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-col ul li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #c79a5e;
+}
+
+.social-list {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-list li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(199, 154, 94, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-list li a:hover {
+  background-color: #c79a5e;
+  transform: translateY(-3px);
+}
+
+.social-list li a i {
+  font-size: 1.125rem;
+  color: #f5f5f0;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(199, 154, 94, 0.3);
+  font-size: 0.875rem;
+  color: #e0e0e0;
+}
+
+/*===============================================*/
+/*========== RESPONSIVE ==========*/
+/*===============================================*/
+
+/* Mobile - Header */
+@media screen and (max-width: 768px) {
+  .header-container {
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+  }
+  
+  .navbar {
+    display: none;
+  }
+  
+  .header-logo-img {
+    height: 30px;
+  }
+  
+  .user-login {
+    gap: 1rem;
+  }
+}
+
+/* Mobile - Footer */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .social-list {
+    justify-content: center;
+  }
+}
