@@ -258,3 +258,10 @@ body {
 .social-list a:hover .fa-tiktok {
   color: #ffffff;
 }
+
+/* Header */
+.header-logo {
+  width: 120px;     /* chỉnh nhỏ to tuỳ bạn */
+  height: auto;     /* giữ đúng tỉ lệ */
+  object-fit: contain;
+}
