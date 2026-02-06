@@ -4,31 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS Links -->
     <link rel="stylesheet" href="../CSS/Login.CSS">
+    
+    <!-- Icon Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
     <title>Login - Drip Lab</title>
 </head>
 
 <body>
+    <!-- ========== HEADER ========== -->
     <header class="header-login">
         <div class="header-container">
+            <!-- Logo -->
             <div class="header-logo">
-                <a href="#" class="logo-link">
-                    <div class="logo-icon">
-                        <div class="logo-bg"></div>
-                        <div class="logo-inner">
-                            <span class="material-symbols-outlined">coffee_maker</span>
-                        </div>
-                    </div>
-                    <div class="logo-text">
-                        <h2>DRIP LAB</h2>
-                        <span>ARTISANAL BREWS</span>
-                    </div>
+                <a href="#" class="logo-image-link">
+                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
                 </a>
             </div>
 
+            <!-- Navigation Menu -->
             <nav class="navbar">
                 <a href="#">MENU</a>
                 <a href="#">ABOUT US</a>
@@ -36,6 +34,7 @@
                 <a href="#">STORES</a>
             </nav>
 
+            <!-- User Actions (Login/Cart) -->
             <div class="user-login">
                 <button type="button">
                     <i class='bx bxs-user'></i>
@@ -47,79 +46,81 @@
         </div>
     </header>
 
+    <!-- ========== MAIN LOGIN SECTION ========== -->
     <div class="login-between grid">
         <div class="login-container grid">
+            
+            <!-- ===== IMAGE SLIDER (Desktop Only) ===== -->
             <div class="login-swiper">
+                <!-- Slider Text Overlay -->
                 <div class="login-swiper-data">
-                    <p class="login-swiper-subtitle"></p>
-                    <h1 class="login-swiper-title">"Precision in every drop, soul in <br> every cup."</h1>
+                    <h1 class="login-swiper-title"></h1>
                 </div>
 
+                <!-- Social Links Overlay -->
                 <div class="login-swiper-social">
-                    <p class="login-swiper-subtitle">Hello lmao </p>
-
+                    <p class="login-swiper-subtitle">Follow Us</p>
                     <div class="login-swiper-links">
                         <a href="#" target="_blank" class="login-swiper-link">
                             <i class="ri-facebook-circle-fill"></i>
                         </a>
-
                         <a href="#" target="_blank" class="login-swiper-link">
                             <i class="ri-instagram-fill"></i>
                         </a>
-
                         <a href="#" target="_blank" class="login-swiper-link">
                             <i class="ri-twitch-fill"></i>
                         </a>
-
                         <a href="#" target="_blank" class="login-swiper-link">
                             <i class="ri-github-fill"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- Image Slides -->
                 <div class="login-swiper-wrapper">
                     <div class="login-swiper-slide active">
-                        <img src="../IMG/anh-1.jpg" alt="image" class="login-swiper-img">
+                        <img src="../IMG/anh-1.jpg" alt="Coffee Image 1" class="login-swiper-img">
                     </div>
                     <div class="login-swiper-slide">
-                        <img src="../IMG/anh-2.jpg" alt="image" class="login-swiper-img">
+                        <img src="../IMG/anh-2.jpg" alt="Coffee Image 2" class="login-swiper-img">
                     </div>
                     <div class="login-swiper-slide">
-                        <img src="../IMG/anh-3.jpg" alt="image" class="login-swiper-img">
+                        <img src="../IMG/anh-3.jpg" alt="Coffee Image 3" class="login-swiper-img">
                     </div>
                     <div class="login-swiper-slide">
-                        <img src="../IMG/anh-4.jpg" alt="image" class="login-swiper-img">
+                        <img src="../IMG/anh-4.jpg" alt="Coffee Image 4" class="login-swiper-img">
                     </div>
                 </div>
 
+                <!-- Navigation Buttons -->
                 <div class="swiper-button-prev">‹</div>
                 <div class="swiper-button-next">›</div>
 
+                <!-- Pagination Dots -->
                 <div class="swiper-pagination"></div>
             </div>
 
+            <!-- ===== LOGIN FORM AREA ===== -->
             <div class="login-area grid">
+                <!-- Header Section -->
                 <div class="login-data">
                     <div class="login-logo">
                         <img src="../IMG/DELLBIETNOIGI.jpg" alt="Drip Lab">
                     </div>
-                    
-                    <h1 class="login-title">
-                        Sign in with Drip Lab
-                    </h1>
-
-                    <p class="login-description">
-                        Welcome back to the pursuit of the perfect brew
-                    </p>
+                    <h1 class="login-title">Sign in with Drip Lab</h1>
+                    <p class="login-description">Welcome back to the pursuit of the perfect brew</p>
                 </div>
 
+                <!-- Login Form -->
                 <form action="" class="login-form">
                     <div class="login-content grid">
+                        <!-- Email Input -->
                         <div class="login-box">
                             <input type="email" name="email" placeholder="EMAIL OR PHONE NUMBER" class="login-input" required>
                             <i class="ri-mail-fill"></i>
                         </div>
 
+                        <!-- Password Input with Forgot Link -->
                         <div class="login-password-wrapper">
                             <div class="login-box">
                                 <input type="password" name="password" placeholder="PASSWORD" class="login-input" required id="LoginPassword">
@@ -129,10 +130,13 @@
                         </div>
                     </div>
 
+                    <!-- Submit Button -->
                     <button type="submit" class="login-button">Sign In</button>
 
+                    <!-- Divider -->
                     <span class="login-line">OR SIGN IN WITH</span>
 
+                    <!-- Social Login Buttons -->
                     <div class="login-social-buttons">
                         <button type="button" class="login-social-btn">
                             <i class='bx bxl-google'></i> Google
@@ -143,6 +147,7 @@
                     </div>
                 </form>
 
+                <!-- Sign Up Link -->
                 <p class="login-switch">
                     New to the lab? <a class="login-sign">Join Drip Lab</a>
                 </p>
@@ -150,6 +155,7 @@
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script src="../JS/Login.JS"></script>
 </body>
 
