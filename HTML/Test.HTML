@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi" class="light">
 
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     
     <title>Page Title - Drip Lab</title>
 </head>
@@ -29,17 +30,82 @@
 
             <!-- Navigation Menu -->
             <nav class="navbar">
-                <a href="#">MENU</a>
-                <a href="#">ABOUT US</a>
-                <a href="#">NEWS</a>
-                <a href="#">STORES</a>
+                <a href="#" data-i18n="nav.menu">MENU</a>
+                <a href="#" data-i18n="nav.about">ABOUT US</a>
+                <a href="#" data-i18n="nav.news">NEWS</a>
+                <a href="#" data-i18n="nav.stores">STORES</a>
             </nav>
 
             <!-- User Actions (Login/Cart) -->
             <div class="user-login">
-                <button type="button">
-                    <i class='bx bxs-user'></i>
-                </button>
+                <!-- ========== THÊM MỚI: User Profile Dropdown ========== -->
+                <div class="user-profile-wrapper">
+                    <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
+                        <i class='bx bxs-user'></i>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-header">
+                            <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
+                        </div>
+                        
+                        <div class="dropdown-body">
+                            <!-- User Info Section -->
+                            <div class="user-info-section">
+                                <div class="user-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Nguyen+Van+A&background=50743e&color=fff&size=120" alt="User Avatar">
+                                </div>
+                                <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
+                                <p class="user-email">abc@gmail.com</p>
+                            </div>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Settings Section -->
+                            <div class="settings-section">
+                                <!-- Theme Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                        <span data-i18n="profile.theme">Chế độ tối</span>
+                                    </div>
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch" aria-label="Toggle Theme">
+                                        <span class="toggle-slider"></span>
+                                    </button>
+                                </div>
+                                
+                                <!-- Language Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">language</span>
+                                        <span data-i18n="profile.language">Ngôn ngữ</span>
+                                    </div>
+                                    <div class="language-toggle">
+                                        <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+                                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="dropdown-actions">
+                                <button type="button" class="action-btn btn-login">
+                                    <span class="material-symbols-outlined">login</span>
+                                    <span data-i18n="profile.login">Login</span>
+                                </button>
+                                <button type="button" class="action-btn btn-signout">
+                                    <span class="material-symbols-outlined">logout</span>
+                                    <span data-i18n="profile.signout">Sign out</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========== KẾT THÚC: User Profile Dropdown ========== -->
+                
                 <button type="button">
                     <i class='bx bxs-shopping-bag'></i>
                 </button>
@@ -52,14 +118,11 @@
     <!-- ========================================== -->
     
     <main class="main-content">
-
-
         <!-- Ví dụ container -->
         <div class="content-container">
-            <h1>Tiêu đề trang của bạn</h1>
-            <p>Nội dung ở đây...</p>
+            <h1 data-i18n="content.title">Tiêu đề trang của bạn</h1>
+            <p data-i18n="content.description">Nội dung ở đây...</p>
         </div>
-
     </main>
 
     <!-- ========================================== -->
@@ -74,33 +137,33 @@
                 <h3>
                     <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
                 </h3>
-                <p>
+                <p data-i18n="footer.description">
                     Drip Lab - Coffee for your <br> fresh start every day.
                 </p>
             </div>
 
             <!-- Column 2 - Navigation -->
             <div class="footer-col">
-                <h4>Tsaheylu</h4>
+                <h4 data-i18n="footer.connect">Tsaheylu</h4>
                 <ul>
-                    <li><a href="#">Menu</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Stores</a></li>
+                    <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#" data-i18n="nav.news">News</a></li>
+                    <li><a href="#" data-i18n="nav.stores">Stores</a></li>
                 </ul>
             </div>
 
             <!-- Column 3 - Contact -->
             <div class="footer-col">
-                <h4>Contact Us</h4>
+                <h4 data-i18n="footer.contact">Contact Us</h4>
                 <p>Email: contact@driplab.com</p>
                 <p>Hotline: 036 363 6767</p>
-                <p>Place at: Việt Nam</p>
+                <p data-i18n="footer.location">Place at: Việt Nam</p>
             </div>
 
             <!-- Column 4 - Social Media -->
             <div class="footer-col">
-                <h4>Follow Us On</h4>
+                <h4 data-i18n="footer.follow">Follow Us On</h4>
                 <ul class="social-list">
                     <li>
                         <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -122,13 +185,13 @@
         </div>
         
         <!-- Footer Bottom -->
-        <div class="footer-bottom">
+        <div class="footer-bottom" data-i18n="footer.copyright">
             © 2025 Drip Lab. Space for coffee heads.
         </div>
     </footer>
 
-    <!-- JavaScript (nếu cần) -->
-    <script src="../JS/Template.JS"></script>
+    <!-- JavaScript -->
+    <script src="../JS/Test.JS"></script>
 </body>
 
 </html>
