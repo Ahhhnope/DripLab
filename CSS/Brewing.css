@@ -1,0 +1,107 @@
+/* styles.css */
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-display {
+  font-family: 'Noto Serif', serif;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #d4d0cc;
+  border-radius: 10px;
+}
+
+/* Coffee cup */
+.coffee-cup-container {
+  perspective: 1000px;
+}
+
+.glass-cup {
+  position: relative;
+  width: 220px;
+  height: 280px;
+  background: rgba(255,255,255,0.08);
+  border: 5px solid rgba(255,255,255,0.35);
+  border-top: none;
+  border-radius: 0 0 100px 100px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.liquid-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1.2);
+}
+
+/* Base (lớp đáy) */
+body:has(#base-espresso:checked) .layer-base,
+body:has(#base-coldbrew:checked) .layer-base,
+body:has(#base-pourover:checked) .layer-base {
+  height: 35%;
+}
+
+/* Milk */
+body:has(#milk-whole:checked) .layer-milk,
+body:has(#milk-oat:checked) .layer-milk,
+body:has(#milk-almond:checked) .layer-milk,
+body:has(#milk-soy:checked) .layer-milk {
+  height: 60%;
+}
+
+/* Flavor */
+body:has(#flavor-vanilla:checked) .layer-flavor,
+body:has(#flavor-caramel:checked) .layer-flavor {
+  height: 80%;
+}
+
+/* Toppings (nếu có ít nhất 1 topping được chọn) */
+body:has(#topping-whipped:checked) .layer-toppings,
+body:has(#topping-cinnamon:checked) .layer-toppings {
+  height: 95%;
+}
+
+/* Màu các lớp */
+.layer-base    { background: #3c2a21; z-index: 10; }      /* Đen đậm - espresso */
+.layer-milk    { background: #f3e9dc; z-index: 9; }       /* Sữa nhạt */
+.layer-flavor  { background: #c6a562; z-index: 8; }       /* Vàng caramel */
+.layer-toppings { background: #ffffff; z-index: 7; }      /* Kem trắng */
+
+.steam-container {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body:has(input[name="base"]:checked) .steam-container {
+  opacity: 0.75;
+}
+
+.steam-waft {
+  width: 5px;
+  height: 40px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 5px;
+  filter: blur(5px);
+  animation: steam 3.5s infinite ease-in-out;
+}
+
+@keyframes steam {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.9; }
+  50% { transform: translateY(-40px) scaleY(1.5); opacity: 0.3; }
+}
