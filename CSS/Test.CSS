@@ -216,7 +216,6 @@ img {
   transition: color 0.3s ease;
 }
 
-
 .user-login button:hover i {
   color: var(--primary);
 }
@@ -588,23 +587,7 @@ img {
   color: var(--text-color);
 }
 
-/*
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│   VIẾT CSS CHO CONTENT CỦA BẠN Ở ĐÂY              │
-│                                                     │
-│   Ví dụ:                                            │
-│   - .product-grid { ... }                           │
-│   - .card { ... }                                   │
-│   - .form-section { ... }                           │
-│   - ...                                             │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-*/
-
-/*===============================================*/
 /*========== FOOTER - CỐ ĐỊNH (KHÔNG SỬA) ==========*/
-/*===============================================*/
 
 .footer {
   background-color: #3d2b1f;
