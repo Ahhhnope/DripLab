@@ -10,6 +10,10 @@ const translations = {
     "nav.news": "TIN TỨC",
     "nav.stores": "CỬA HÀNG",
     
+    // Menu Dropdown
+    "menu.buyNow": "Mua ngay",
+    "menu.customize": "Tự pha chế",
+    
     // Profile Dropdown
     "profile.title": "Thông Tin Tài Khoản",
     "profile.userName": "Nguyễn Văn A",
@@ -36,6 +40,10 @@ const translations = {
     "nav.about": "ABOUT US",
     "nav.news": "NEWS",
     "nav.stores": "STORES",
+    
+    // Menu Dropdown
+    "menu.buyNow": "Buy Now",
+    "menu.customize": "Customize",
     
     // Profile Dropdown
     "profile.title": "Account Information",
@@ -70,47 +78,73 @@ document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('theme-toggle-dropdown');
   const langButtons = document.querySelectorAll('.lang-btn');
   
+  // Menu dropdown elements
+  const menuDropdownWrapper = document.querySelector('.menu-dropdown-wrapper');
+  const menuDropdown = document.getElementById('menu-dropdown');
+  const menuOptions = document.querySelectorAll('.menu-option');
+  
   // Create overlay element
   const overlay = document.createElement('div');
   overlay.className = 'dropdown-overlay';
   document.body.appendChild(overlay);
   
-  /*========== Toggle Dropdown ==========*/
+  /*========== Toggle User Profile Dropdown ==========*/
   userProfileBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     const isActive = userDropdown.classList.contains('active');
     
     if (isActive) {
-      closeDropdown();
+      closeUserDropdown();
     } else {
-      openDropdown();
+      openUserDropdown();
     }
   });
   
-  function openDropdown() {
+  function openUserDropdown() {
     userDropdown.classList.add('active');
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
   
-  function closeDropdown() {
+  function closeUserDropdown() {
     userDropdown.classList.remove('active');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
   }
   
   /*========== Close dropdown when clicking outside ==========*/
-  overlay.addEventListener('click', closeDropdown);
+  overlay.addEventListener('click', closeUserDropdown);
   
   document.addEventListener('click', function(e) {
     if (!userDropdown.contains(e.target) && !userProfileBtn.contains(e.target)) {
-      closeDropdown();
+      closeUserDropdown();
     }
   });
   
   // Prevent dropdown from closing when clicking inside
   userDropdown.addEventListener('click', function(e) {
     e.stopPropagation();
+  });
+  
+  /*========== Menu Dropdown Hover - AUTO SHOW/HIDE ==========*/
+  // Menu dropdown tự động hiện khi hover, không cần click
+  // CSS đã xử lý phần hover, JS chỉ cần handle click events
+  
+  /*========== Menu Options Click Handlers ==========*/
+  menuOptions.forEach(option => {
+    option.addEventListener('click', function(e) {
+      e.preventDefault();
+      const optionText = this.querySelector('span').textContent;
+      console.log('Menu option clicked:', optionText);
+      
+      if (this.classList.contains('option-buy')) {
+        alert(`Chuyển đến trang: ${optionText}`);
+        // window.location.href = '/buy-now'; // Uncomment để chuyển trang thật
+      } else if (this.classList.contains('option-custom')) {
+        alert(`Chuyển đến trang: ${optionText}`);
+        // window.location.href = '/customize'; // Uncomment để chuyển trang thật
+      }
+    });
   });
   
   /*========== Theme Toggle Functionality ==========*/
@@ -186,7 +220,15 @@ document.addEventListener('DOMContentLoaded', function() {
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
       if (translations[lang] && translations[lang][key]) {
-        element.textContent = translations[lang][key];
+        // Kiểm tra nếu element có chứa icon (menu options)
+        const span = element.querySelector('span');
+        if (span) {
+          // Chỉ thay đổi text trong span, giữ nguyên icon
+          span.textContent = translations[lang][key];
+        } else {
+          // Các element thông thường không có icon
+          element.textContent = translations[lang][key];
+        }
       }
     });
   }
@@ -199,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loginBtn.addEventListener('click', function() {
       console.log('Login clicked');
       alert('Chức năng đăng nhập / Login function');
-      closeDropdown();
+      closeUserDropdown();
     });
   }
   
@@ -211,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const confirmSignout = confirm('Bạn có chắc muốn đăng xuất? / Are you sure you want to sign out?');
       if (confirmSignout) {
         alert('Đã đăng xuất / Signed out');
-        closeDropdown();
+        closeUserDropdown();
       }
     });
   }
@@ -219,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
   /*========== Escape key to close dropdown ==========*/
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && userDropdown.classList.contains('active')) {
-      closeDropdown();
+      closeUserDropdown();
     }
   });
 });

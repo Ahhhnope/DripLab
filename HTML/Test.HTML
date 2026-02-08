@@ -30,7 +30,21 @@
 
             <!-- Navigation Menu -->
             <nav class="navbar">
-                <a href="#" data-i18n="nav.menu">MENU</a>
+                <!-- Menu Dropdown -->
+                <div class="menu-dropdown-wrapper">
+                    <a href="#" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <div class="menu-dropdown" id="menu-dropdown">
+                        <a href="#" class="menu-option option-buy" data-i18n="menu.buyNow">
+                            <i class='bx bxs-cart'></i>
+                            <span>Mua ngay</span>
+                        </a>
+                        <a href="#" class="menu-option option-custom" data-i18n="menu.customize">
+                            <i class='bx bxs-coffee-togo'></i>
+                            <span>Tự pha chế</span>
+                        </a>
+                    </div>
+                </div>
+                
                 <a href="#" data-i18n="nav.about">ABOUT US</a>
                 <a href="#" data-i18n="nav.news">NEWS</a>
                 <a href="#" data-i18n="nav.stores">STORES</a>
@@ -112,7 +126,7 @@
         </div>
     </header>
 
-    <!-- ========== MAIN CONTENT ========== -->
+    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
     <main class="main-content">
         <div class="content-container">
             <h1 data-i18n="content.title">Tiêu đề trang của bạn</h1>
