@@ -1,6 +1,3 @@
-/*===============================================*/
-/*========== I18N TRANSLATIONS ==========*/
-/*===============================================*/
 
 const translations = {
   vi: {
@@ -66,10 +63,6 @@ const translations = {
     "footer.copyright": "© 2025 Drip Lab. Space for coffee heads."
   }
 };
-
-/*===============================================*/
-/*========== DROPDOWN FUNCTIONALITY ==========*/
-/*===============================================*/
 
 document.addEventListener('DOMContentLoaded', function() {
   // Get elements
@@ -266,6 +259,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-/*===============================================*/
-/*========== KẾT THÚC: DROPDOWN FUNCTIONALITY ==========*/
-/*===============================================*/
