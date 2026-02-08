@@ -3,7 +3,7 @@
 
 /*=============== CSS VARIABLES ===============*/
 :root {
-  /* Color Palette */
+  /* Color Palette - LIGHT MODE */
   --first-color: #b8906a;
   --first-color-alt: #a17d59;
   --hover-color: hsl(0, 0%, 95%);
@@ -12,12 +12,16 @@
   --white-color: hsl(0, 0%, 100%);
   --border-color: #e0e0e0;
   --body-color: #f5f5f0;
+  --header-bg: rgba(248, 248, 246, 0.85);
+  --header-text: #3d2b1f;
+  --footer-bg: #3d2b1f;
+  --footer-text: #f5f5f0;
   --primary: #3b5e4a;
   --accent-gold: #c79a5e;
   --dark-brown: #3d2b1f;
   --background-light: #f8f8f6;
 
-  /* Typography - Sử dụng Epilogue cho toàn bộ */
+  /* Typography */
   --body-font: "Epilogue", sans-serif;
   --second-font: "Epilogue", sans-serif;
   --header-font: "Epilogue", sans-serif;
@@ -31,6 +35,21 @@
   --font-regular: 400;
   --font-semi-bold: 600;
   --font-black: 900;
+}
+
+/*=============== DARK MODE VARIABLES ===============*/
+html.dark {
+  /* Body, Header, Footer đổi màu theo theme */
+  --body-color: #1a1714;
+  --background-light: #1a1714;
+  --title-color: #f5f5f0;
+  --text-color: #c0c0c0;
+  --border-color: #3d2b1f;
+  --white-color: #2a2520;
+  --header-bg: rgba(26, 23, 20, 0.85);
+  --header-text: #f5f5f0;
+  --footer-bg: #1a1714;
+  --footer-text: #e0e0e0;
 }
 
 /*=============== RESPONSIVE TYPOGRAPHY ===============*/
@@ -50,9 +69,10 @@
 }   
 
 body {
-  background: floralwhite;
+  background: var(--body-color);
   font-family: var(--body-font);
   color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /*=============== REUSABLE CLASSES ===============*/
@@ -79,7 +99,10 @@ img {
   height: auto;
 }
 
-/*=============== HEADER ===============*/
+/*===============================================*/
+/*========== HEADER - ĐỔI MÀU THEO THEME ==========*/
+/*===============================================*/
+
 .header-login {
   position: fixed;
   top: 0;
@@ -87,10 +110,10 @@ img {
   right: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(248, 248, 246, 0.85);
+  background-color: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(61, 43, 31, 0.1);
+  border-bottom: 1px solid var(--border-color);
   padding: 1rem 1.5rem;
   transition: all 0.3s ease;
 }
@@ -142,7 +165,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--dark-brown);
+  color: var(--header-text);
   text-decoration: none;
   transition: color 0.3s ease;
   position: relative;
@@ -165,6 +188,111 @@ img {
 
 .navbar a:hover::after {
   width: 100%;
+}
+
+/*===============================================*/
+/*========== MENU DROPDOWN - MỚI THÊM ==========*/
+/*===============================================*/
+
+.menu-dropdown-wrapper {
+  position: relative;
+}
+
+.menu-trigger {
+  cursor: pointer;
+}
+
+/* Menu Dropdown Container */
+.menu-dropdown {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 280px;
+  background: rgba(42, 37, 32, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  padding: 12px;
+}
+
+.menu-dropdown-wrapper:hover .menu-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Dropdown Arrow */
+.menu-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 16px;
+  height: 16px;
+  background: rgba(42, 37, 32, 0.98);
+  border-top: 1px solid rgba(199, 154, 94, 0.2);
+  border-left: 1px solid rgba(199, 154, 94, 0.2);
+}
+
+/* Menu Options - GIỐNG LOGIN/SIGNOUT */
+.menu-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #f5f5f0 !important;
+  border: 2px solid transparent;
+}
+
+.menu-option:last-child {
+  margin-bottom: 0;
+}
+
+.menu-option i {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effect - MÀU XANH LÁ */
+.menu-option:hover {
+  background: var(--primary);
+  color: white !important;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 94, 74, 0.4);
+}
+
+.menu-option:hover i {
+  transform: scale(1.1);
+}
+
+/* Specific Styling for Each Option */
+.option-buy {
+  background: rgba(26, 23, 20, 0.6);
+  border: 2px solid rgba(199, 154, 94, 0.3);
+}
+
+.option-custom {
+  background: rgba(26, 23, 20, 0.6);
+  border: 2px solid rgba(199, 154, 94, 0.3);
 }
 
 /* --- User Actions (Login/Cart Buttons) --- */
@@ -192,12 +320,308 @@ img {
 
 .user-login button i {
   font-size: 24px;
-  color: var(--dark-brown);
+  color: var(--header-text);
   transition: color 0.3s ease;
 }
 
 .user-login button:hover i {
   color: var(--primary);
+}
+
+/*===============================================*/
+/*========== USER PROFILE DROPDOWN ==========*/
+/*========== DROPDOWN CỐ ĐỊNH MÀU TỐI ==========*/
+/*===============================================*/
+
+.user-profile-wrapper {
+  position: relative;
+}
+
+.user-profile-trigger {
+  position: relative;
+  z-index: 1001;
+}
+
+/* Dropdown Container - CỐ ĐỊNH MÀU TỐI */
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 15px);
+  right: 0;
+  width: 340px;
+  background: rgba(42, 37, 32, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.user-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Arrow - CĂN CHỈNH THEO USER ICON */
+.user-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  background: rgba(42, 37, 32, 0.98);
+  transform: rotate(45deg);
+  border-top: 1px solid rgba(199, 154, 94, 0.2);
+  border-left: 1px solid rgba(199, 154, 94, 0.2);
+}
+
+/* Dropdown Header */
+.dropdown-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid rgba(199, 154, 94, 0.2);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent-gold) 100%);
+}
+
+.dropdown-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* Dropdown Body */
+.dropdown-body {
+  padding: 24px;
+  background: #2a2520;
+}
+
+/* User Info Section */
+.user-info-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  box-shadow: 0 4px 12px rgba(59, 94, 74, 0.2);
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #f5f5f0;
+  margin: 0 0 6px;
+}
+
+.user-email {
+  font-size: 0.875rem;
+  color: #c0c0c0;
+  margin: 0;
+}
+
+/* Divider */
+.dropdown-divider {
+  height: 1px;
+  background: rgba(199, 154, 94, 0.2);
+  margin: 20px 0;
+}
+
+/* Settings Section */
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(26, 23, 20, 0.6);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(199, 154, 94, 0.1);
+}
+
+.setting-item:hover {
+  background: rgba(61, 43, 31, 0.8);
+  transform: translateX(4px);
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f5f5f0;
+}
+
+.setting-label .material-symbols-outlined {
+  font-size: 20px;
+  color: var(--accent-gold);
+}
+
+/* Toggle Switch for Theme */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background: #ddd;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.toggle-switch.active {
+  background: var(--primary);
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.active .toggle-slider {
+  transform: translateX(24px);
+}
+
+/* Language Toggle Buttons */
+.language-toggle {
+  display: flex;
+  gap: 6px;
+  background: rgba(26, 23, 20, 0.8);
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid rgba(199, 154, 94, 0.15);
+}
+
+.lang-btn {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #c0c0c0;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.08em;
+  min-width: 50px;
+}
+
+.lang-btn:hover {
+  color: white;
+  background: rgba(59, 94, 74, 0.3);
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(59, 94, 74, 0.3);
+}
+
+/* Action Buttons */
+.dropdown-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-login {
+  background: var(--primary);
+  color: white !important;
+  border: 2px solid var(--primary);
+}
+
+.btn-login:hover {
+  background: var(--primary);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 94, 74, 0.4);
+  opacity: 0.9;
+}
+
+.btn-signout {
+  background: transparent;
+  color: #f5f5f0 !important;
+  border: 2px solid rgba(199, 154, 94, 0.4);
+  width: 100%;
+  font-weight: 800 !important;
+}
+
+.btn-signout:hover {
+  background: #f44336;
+  color: white !important;
+  border-color: #f44336;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.action-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+/* Click outside to close - Overlay */
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 998;
+}
+
+.dropdown-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /*=============== LOGIN SECTION ===============*/
@@ -598,33 +1022,16 @@ img {
   }
 }
 
-/*=============== RESPONSIVE - MOBILE (768px and below) ===============*/
-@media screen and (max-width: 768px) {
-  /* Header adjustments */
-  .header-container {
-    grid-template-columns: auto 1fr auto;
-    gap: 1rem;
-  }
-  
-  .navbar {
-    display: none;
-  }
-  
-  .header-logo-img {
-    height: 30px;
-  }
-  
-  .user-login {
-    gap: 1rem;
-  }
-}
+/*===============================================*/
+/*========== FOOTER - ĐỔI MÀU THEO THEME ==========*/
+/*===============================================*/
 
-/*=============== FOOTER ===============*/
 .footer {
-  background-color: #3d2b1f;
-  color: #f5f5f0;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   padding: 3rem 1.5rem 1.5rem;
   margin-top: 4rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer-container {
@@ -656,7 +1063,8 @@ img {
 .footer-col p {
   font-size: 0.875rem;
   line-height: 1.8;
-  color: #e0e0e0;
+  color: var(--footer-text);
+  transition: color 0.3s ease;
 }
 
 .footer-col ul {
@@ -670,7 +1078,7 @@ img {
 }
 
 .footer-col ul li a {
-  color: #e0e0e0;
+  color: var(--footer-text);
   text-decoration: none;
   font-size: 0.875rem;
   transition: color 0.3s ease;
@@ -711,11 +1119,49 @@ img {
   padding-top: 2rem;
   border-top: 1px solid rgba(199, 154, 94, 0.3);
   font-size: 0.875rem;
-  color: #e0e0e0;
+  color: var(--footer-text);
+  transition: color 0.3s ease;
 }
 
-/* Footer Responsive */
+/*===============================================*/
+/*========== RESPONSIVE ==========*/
+/*===============================================*/
+
+/* Mobile - Header */
 @media screen and (max-width: 768px) {
+  .header-container {
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+  }
+  
+  .navbar {
+    display: none;
+  }
+  
+  .header-logo-img {
+    height: 30px;
+  }
+  
+  .user-login {
+    gap: 1rem;
+  }
+  
+  /* Mobile - User Dropdown */
+  .user-dropdown {
+    width: 300px;
+    right: -10px;
+  }
+  
+  .user-dropdown::before {
+    right: 25px;
+  }
+  
+  /* Mobile - Menu Dropdown */
+  .menu-dropdown {
+    min-width: 240px;
+  }
+  
+  /* Mobile - Footer */
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -723,5 +1169,25 @@ img {
   
   .social-list {
     justify-content: center;
+  }
+}
+
+/* Very small screens */
+@media screen and (max-width: 400px) {
+  .user-dropdown {
+    width: calc(100vw - 40px);
+    right: -80px;
+  }
+  
+  .dropdown-body {
+    padding: 20px 16px; 
+  }
+  
+  .dropdown-actions {
+    flex-direction: column;
+  }
+  
+  .menu-dropdown {
+    min-width: 200px;
   }
 }
