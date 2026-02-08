@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Your Own Coffee - Drip Lab</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#c6a562",
+            "bg-light": "#f9f6f1",
+            "bg-dark": "#2c2621",
+            espresso: "#4A3F35",
+            "coffee-dark": "#3c2a21",
+            "coffee-milk": "#d9c5b2",
+            "coffee-flavor": "#8e5a32",
+            "coffee-foam": "#fdfbf7",
+          },
+          fontFamily: {
+            display: ["Noto Serif", "serif"],
+            sans: ["Manrope", "sans-serif"],
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="stylesheet" href="Brewing.css" />
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-espresso dark:text-gray-200 font-sans min-h-screen">
+
+  <!-- Header (giữ nguyên) -->
+  <header class="sticky top-0 z-50 bg-bg-light/80 dark:bg-bg-dark/80 backdrop-blur-md border-b border-espresso/10 dark:border-gray-700/30">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <span class="text-2xl font-display font-bold tracking-tight text-espresso dark:text-gray-100">Drip Lab</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-10 text-sm font-medium tracking-wider uppercase">
+        <a href="#" class="hover:text-primary transition-colors">Menu</a>
+        <a href="#" class="hover:text-primary transition-colors">About Us</a>
+        <a href="#" class="hover:text-primary transition-colors">News</a>
+        <a href="#" class="hover:text-primary transition-colors">Stores</a>
+      </nav>
+      <div class="flex items-center gap-6">
+        <button class="text-espresso dark:text-gray-200 hover:text-primary transition">
+          <span class="material-symbols-outlined text-2xl">person</span>
+        </button>
+        <button class="text-espresso dark:text-gray-200 hover:text-primary transition">
+          <span class="material-symbols-outlined text-2xl">shopping_bag</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex flex-col lg:flex-row min-h-[calc(100vh-80px)]">
+
+    <!-- Left - Ly cà phê -->
+    <section class="lg:w-1/2 bg-[#fdfaf6] dark:bg-gray-900 relative flex items-center justify-center p-8 lg:p-12 overflow-hidden">
+      <div class="relative coffee-cup-container">
+        <!-- Hơi nước -->
+        <div class="steam-container">
+          <div class="steam-waft"></div>
+          <div class="steam-waft"></div>
+          <div class="steam-waft"></div>
+        </div>
+
+        <!-- Cốc -->
+        <div class="glass-cup mx-auto">
+          <div class="liquid-layer layer-toppings"></div>
+          <div class="liquid-layer layer-flavor"></div>
+          <div class="liquid-layer layer-milk"></div>
+          <div class="liquid-layer layer-base"></div>
+          <div class="absolute inset-y-0 left-5 w-1.5 bg-white/25 rounded-full blur-[1px]"></div>
+        </div>
+
+        <div class="w-64 h-6 bg-espresso/20 dark:bg-black/30 rounded-full blur-xl mt-6 mx-auto"></div>
+      </div>
+
+      <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center max-w-md px-6">
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-espresso dark:text-gray-100 leading-tight mb-4">
+          Artisan<br>Workshop
+        </h1>
+        <p class="text-base opacity-70 max-w-sm mx-auto">
+          Watch your creation take shape as you select each premium ingredient from our curated lab.
+        </p>
+      </div>
+    </section>
+
+    <!-- Right - Form tùy chỉnh -->
+    <section class="lg:w-1/2 bg-bg-light dark:bg-bg-dark overflow-y-auto custom-scrollbar px-6 lg:px-12 py-10 lg:py-16">
+      <div class="max-w-2xl mx-auto">
+
+        <div class="flex items-center gap-3 mb-10 text-primary uppercase tracking-[0.25em] text-xs font-semibold">
+          <span class="inline-block w-10 h-px bg-primary"></span>
+          Design Your Brew
+        </div>
+
+        <!-- 01. Base -->
+        <div class="mb-14">
+          <h2 class="font-display text-3xl font-bold mb-6 text-espresso dark:text-gray-100">
+            01. <span class="text-primary">Choose Your Base</span>
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <label class="group cursor-pointer">
+              <input type="radio" name="base" id="base-espresso" class="peer sr-only" />
+              <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl border-2 border-transparent peer-checked:border-primary peer-checked:shadow-lg peer-checked:shadow-primary/20 transition-all text-center hover:border-primary/50">
+                <span class="material-symbols-outlined text-5xl mb-4 text-espresso dark:text-gray-300 group-hover:scale-110 transition">coffee</span>
+                <p class="font-medium text-lg">Espresso</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Rich & Bold</p>
+              </div>
+            </label>
+
+            <label class="group cursor-pointer">
+              <input type="radio" name="base" id="base-coldbrew" class="peer sr-only" />
+              <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl border-2 border-transparent peer-checked:border-primary peer-checked:shadow-lg peer-checked:shadow-primary/20 transition-all text-center hover:border-primary/50">
+                <span class="material-symbols-outlined text-5xl mb-4 text-espresso dark:text-gray-300 group-hover:scale-110 transition">ac_unit</span>
+                <p class="font-medium text-lg">Cold Brew</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Smooth & Crisp</p>
+              </div>
+            </label>
+
+            <label class="group cursor-pointer">
+              <input type="radio" name="base" id="base-pourover" class="peer sr-only" />
+              <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl border-2 border-transparent peer-checked:border-primary peer-checked:shadow-lg peer-checked:shadow-primary/20 transition-all text-center hover:border-primary/50">
+                <span class="material-symbols-outlined text-5xl mb-4 text-espresso dark:text-gray-300 group-hover:scale-110 transition">water_drop</span>
+                <p class="font-medium text-lg">Pour Over</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Light & Floral</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 02. Milk -->
+        <div class="mb-14">
+          <h2 class="font-display text-3xl font-bold mb-6 text-espresso dark:text-gray-100">
+            02. <span class="text-primary">Select Milk</span>
+          </h2>
+          <div class="flex flex-wrap gap-3">
+            <label class="cursor-pointer">
+              <input type="radio" name="milk" id="milk-whole" class="peer sr-only" />
+              <span class="inline-block px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 text-sm font-medium bg-white dark:bg-gray-800 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                Whole Milk
+              </span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="milk" id="milk-oat" class="peer sr-only" />
+              <span class="inline-block px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 text-sm font-medium bg-white dark:bg-gray-800 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                Oat Milk
+              </span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="milk" id="milk-almond" class="peer sr-only" />
+              <span class="inline-block px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 text-sm font-medium bg-white dark:bg-gray-800 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                Almond Milk
+              </span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="milk" id="milk-soy" class="peer sr-only" />
+              <span class="inline-block px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 text-sm font-medium bg-white dark:bg-gray-800 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                Soy Milk
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 03. Flavor -->
+        <div class="mb-14">
+          <h2 class="font-display text-3xl font-bold mb-6 text-espresso dark:text-gray-100">
+            03. <span class="text-primary">Pick a Flavor</span>
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <label class="group cursor-pointer">
+              <input type="radio" name="flavor" id="flavor-vanilla" class="peer sr-only" />
+              <div class="flex items-center gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl border-2 border-transparent peer-checked:border-primary peer-checked:shadow-lg peer-checked:shadow-primary/20 transition-all hover:border-primary/50">
+                <div class="size-14 rounded-xl bg-bg-light dark:bg-gray-700 flex items-center justify-center text-primary text-3xl">
+                  <span class="material-symbols-outlined">icecream</span>
+                </div>
+                <div>
+                  <p class="font-medium text-lg">Vanilla</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Madagascar Bourbon</p>
+                </div>
+              </div>
+            </label>
+
+            <label class="group cursor-pointer">
+              <input type="radio" name="flavor" id="flavor-caramel" class="peer sr-only" />
+              <div class="flex items-center gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl border-2 border-transparent peer-checked:border-primary peer-checked:shadow-lg peer-checked:shadow-primary/20 transition-all hover:border-primary/50">
+                <div class="size-14 rounded-xl bg-bg-light dark:bg-gray-700 flex items-center justify-center text-primary text-3xl">
+                  <span class="material-symbols-outlined">cookie</span>
+                </div>
+                <div>
+                  <p class="font-medium text-lg">Caramel</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Salted Toffee</p>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 04. Toppings -->
+        <div class="mb-20">
+          <h2 class="font-display text-3xl font-bold mb-6 text-espresso dark:text-gray-100">
+            04. <span class="text-primary">Toppings</span>
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="flex items-center gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary/50 transition">
+              <input type="checkbox" id="topping-whipped" class="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary" />
+              <div>
+                <p class="font-medium">Whipped Cream</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">+$0.50</p>
+              </div>
+            </label>
+
+            <label class="flex items-center gap-4 p-5 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-primary/50 transition">
+              <input type="checkbox" id="topping-cinnamon" class="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary" />
+              <div>
+                <p class="font-medium">Cinnamon Spice</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">+$0.20</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="fixed bottom-0 left-0 right-0 lg:left-1/2 lg:w-1/2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800 px-6 lg:px-12 py-5 z-50">
+        <div class="max-w-2xl mx-auto flex items-center justify-between gap-6">
+          <div>
+            <p class="text-xs uppercase tracking-widest font-semibold opacity-70 mb-1">Your Selection</p>
+            <p class="text-3xl font-display font-bold text-primary">$6.50 <span class="text-base opacity-60 line-through">$8.00</span></p>
+          </div>
+          <button class="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold tracking-wide hover:bg-primary/90 transition shadow-lg shadow-primary/20">
+            <span class="material-symbols-outlined text-xl">shopping_cart</span>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
