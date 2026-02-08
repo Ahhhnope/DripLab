@@ -3,7 +3,7 @@
 
 /*=============== CSS VARIABLES ===============*/
 :root {
-  /* Color Palette */
+  /* Color Palette - LIGHT MODE */
   --first-color: #b8906a;
   --first-color-alt: #a17d59;
   --hover-color: hsl(0, 0%, 95%);
@@ -12,12 +12,16 @@
   --white-color: hsl(0, 0%, 100%);
   --border-color: #e0e0e0;
   --body-color: #f5f5f0;
+  --header-bg: rgba(248, 248, 246, 0.85);
+  --header-text: #3d2b1f;
+  --footer-bg: #3d2b1f;
+  --footer-text: #f5f5f0;
   --primary: #3b5e4a;
   --accent-gold: #c79a5e;
   --dark-brown: #3d2b1f;
   --background-light: #f8f8f6;
 
-  /* Typography - Sử dụng Epilogue cho toàn bộ */
+  /* Typography */
   --body-font: "Epilogue", sans-serif;
   --second-font: "Epilogue", sans-serif;
   --header-font: "Epilogue", sans-serif;
@@ -34,15 +38,18 @@
 }
 
 /*=============== DARK MODE VARIABLES ===============*/
-/* ========== Body và content sẽ đổi màu theo theme ========== */
-/* ========== Chỉ dropdown giữ màu tối cố định ========== */
 html.dark {
+  /* Body, Header, Footer đổi màu theo theme */
   --body-color: #1a1714;
   --background-light: #1a1714;
   --title-color: #f5f5f0;
   --text-color: #c0c0c0;
   --border-color: #3d2b1f;
   --white-color: #2a2520;
+  --header-bg: rgba(26, 23, 20, 0.85);
+  --header-text: #f5f5f0;
+  --footer-bg: #1a1714;
+  --footer-text: #e0e0e0;
 }
 
 /*=============== RESPONSIVE TYPOGRAPHY ===============*/
@@ -93,7 +100,7 @@ img {
 }
 
 /*===============================================*/
-/*========== HEADER - CỐ ĐỊNH (KHÔNG SỬA) ==========*/
+/*========== HEADER - ĐỔI MÀU THEO THEME ==========*/
 /*===============================================*/
 
 .header-login {
@@ -103,15 +110,13 @@ img {
   right: 0;
   width: 100%;
   z-index: 1000;
-  /* ========== FIX: Header luôn sáng dù dark mode ========== */
-  background-color: rgba(248, 248, 246, 0.85);
+  background-color: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(61, 43, 31, 0.1);
+  border-bottom: 1px solid var(--border-color);
   padding: 1rem 1.5rem;
   transition: all 0.3s ease;
 }
-
 
 .header-container {
   max-width: 1400px;
@@ -160,8 +165,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  /* ========== FIX: Navbar luôn màu tối ========== */
-  color: var(--dark-brown);
+  color: var(--header-text);
   text-decoration: none;
   transition: color 0.3s ease;
   position: relative;
@@ -211,8 +215,7 @@ img {
 
 .user-login button i {
   font-size: 24px;
-  /* ========== FIX: Icons luôn màu tối ========== */
-  color: var(--dark-brown);
+  color: var(--header-text);
   transition: color 0.3s ease;
 }
 
@@ -220,6 +223,10 @@ img {
   color: var(--primary);
 }
 
+/*===============================================*/
+/*========== USER PROFILE DROPDOWN ==========*/
+/*========== DROPDOWN CỐ ĐỊNH MÀU TỐI ==========*/
+/*===============================================*/
 
 .user-profile-wrapper {
   position: relative;
@@ -230,13 +237,12 @@ img {
   z-index: 1001;
 }
 
-/* Dropdown Container */
+/* Dropdown Container - CỐ ĐỊNH MÀU TỐI */
 .user-dropdown {
   position: absolute;
   top: calc(100% + 15px);
   right: 0;
   width: 340px;
-  /* ========== FIX: Nền tối cố định ========== */
   background: rgba(42, 37, 32, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -248,11 +254,8 @@ img {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 999;
   overflow: hidden;
-  /* ========== FIX: Border trắng cố định ========== */
   border: 2px solid rgba(255, 255, 255, 0.15);
 }
-
-/* ========== REMOVED: Xóa dark mode variant - dropdown luôn tối ========== */
 
 .user-dropdown.active {
   opacity: 1;
@@ -260,27 +263,24 @@ img {
   transform: translateY(0);
 }
 
-/* Dropdown Arrow */
+/* Dropdown Arrow - CĂN CHỈNH THEO USER ICON */
 .user-dropdown::before {
   content: '';
   position: absolute;
   top: -8px;
-  right: 20px;
+  right: 12px; /* Căn chỉnh theo vị trí icon user */
   width: 16px;
   height: 16px;
-  /* ========== FIX: Arrow luôn màu tối ========== */
   background: rgba(42, 37, 32, 0.98);
   transform: rotate(45deg);
   border-top: 1px solid rgba(199, 154, 94, 0.2);
   border-left: 1px solid rgba(199, 154, 94, 0.2);
 }
 
-/* ========== REMOVED: Không cần dark mode variant ========== */
-
 /* Dropdown Header */
 .dropdown-header {
   padding: 20px 24px 16px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(199, 154, 94, 0.2);
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent-gold) 100%);
 }
 
@@ -295,7 +295,6 @@ img {
 /* Dropdown Body */
 .dropdown-body {
   padding: 24px;
-  /* ========== FIX: Nền tối cố định, không trắng ========== */
   background: #2a2520;
 }
 
@@ -324,31 +323,22 @@ img {
 .user-name {
   font-size: 1.125rem;
   font-weight: 700;
-  /* ========== FIX: Luôn màu trắng ========== */
   color: #f5f5f0;
   margin: 0 0 6px;
 }
 
-/* ========== REMOVED: Không cần dark mode variant ========== */
-
 .user-email {
   font-size: 0.875rem;
-  /* ========== FIX: Luôn màu xám sáng ========== */
   color: #c0c0c0;
   margin: 0;
 }
 
-/* ========== REMOVED: Không cần dark mode variant ========== */
-
 /* Divider */
 .dropdown-divider {
   height: 1px;
-  /* ========== FIX: Luôn màu vàng gold ========== */
   background: rgba(199, 154, 94, 0.2);
   margin: 20px 0;
 }
-
-/* ========== REMOVED: Không cần dark mode variant ========== */
 
 /* Settings Section */
 .settings-section {
@@ -362,7 +352,6 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  /* ========== FIX: Luôn nền đen/xám tối ========== */
   background: rgba(26, 23, 20, 0.6);
   border-radius: 12px;
   transition: all 0.3s ease;
@@ -374,27 +363,19 @@ img {
   transform: translateX(4px);
 }
 
-/* ========== REMOVED: Không cần dark mode variant ========== */
-
 .setting-label {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 0.9rem;
   font-weight: 600;
-  /* ========== FIX: Luôn màu trắng ========== */
   color: #f5f5f0;
 }
 
-/* ========== REMOVED: Không cần dark mode variant ========== */
-
 .setting-label .material-symbols-outlined {
   font-size: 20px;
-  /* ========== FIX: Luôn màu vàng gold ========== */
   color: var(--accent-gold);
 }
-
-/* ========== REMOVED: Không cần dark mode variant ========== */
 
 /* Toggle Switch for Theme */
 .toggle-switch {
@@ -431,21 +412,16 @@ img {
 .language-toggle {
   display: flex;
   gap: 6px;
-  /* ========== FIX: Luôn nền tối ========== */
   background: rgba(26, 23, 20, 0.8);
   padding: 5px;
   border-radius: 10px;
   border: 1px solid rgba(199, 154, 94, 0.15);
 }
 
-/* ========== REMOVED: Không cần dark mode variant ========== */
-
 .lang-btn {
-  /* ========== FIX: Làm to hơn cho dễ nhìn ========== */
   padding: 8px 20px;
   font-size: 0.9rem;
   font-weight: 700;
-  /* ========== FIX: Luôn màu xám sáng ========== */
   color: #c0c0c0;
   background: transparent;
   border: none;
@@ -492,7 +468,6 @@ img {
 
 .btn-login {
   background: var(--primary);
-  /* ========== FIX: Luôn chữ trắng ========== */
   color: white !important;
   border: 2px solid var(--primary);
 }
@@ -505,10 +480,7 @@ img {
   opacity: 0.9;
 }
 
-/* ========== REMOVED: Không cần dark mode variant ========== */
-
 .btn-signout {
-  /* ========== FIX: Nền trong suốt với border nâu ========== */
   background: transparent;
   color: #f5f5f0 !important;
   border: 2px solid rgba(199, 154, 94, 0.4);
@@ -523,8 +495,6 @@ img {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
 }
-
-/* ========== REMOVED: Không cần dark mode variant ========== */
 
 .action-btn .material-symbols-outlined {
   font-size: 18px;
@@ -550,22 +520,15 @@ img {
 }
 
 /*===============================================*/
-/*========== KẾT THÚC: USER PROFILE DROPDOWN ==========*/
+/*========== MAIN CONTENT - ĐỔI MÀU THEO THEME ==========*/
 /*===============================================*/
 
-/*===============================================*/
-/*========== MAIN CONTENT - TỰ CUSTOM ==========*/
-/*========== PHẦN NÀY ĐỔI MÀU THEO LIGHT/DARK MODE ==========*/
-/*===============================================*/
-
-/* Container chính cho content */
 .main-content {
-  margin-top: 70px; /* Để tránh bị header che */
-  min-height: calc(100vh - 70px - 300px); /* Trừ đi header và footer */
+  margin-top: 70px;
+  min-height: calc(100vh - 70px - 300px);
   padding: 2rem 1.5rem;
 }
 
-/* Container content mẫu - có thể sửa hoặc xóa */
 .content-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -575,25 +538,28 @@ img {
 .content-container h1 {
   font-size: 2rem;
   font-weight: 700;
-  /* ========== Màu title đổi theo theme ========== */
   color: var(--title-color);
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
 }
 
 .content-container p {
   font-size: 1rem;
   line-height: 1.6;
-  /* ========== Màu text đổi theo theme ========== */
   color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
-/*========== FOOTER - CỐ ĐỊNH (KHÔNG SỬA) ==========*/
+/*===============================================*/
+/*========== FOOTER - ĐỔI MÀU THEO THEME ==========*/
+/*===============================================*/
 
 .footer {
-  background-color: #3d2b1f;
-  color: #f5f5f0;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   padding: 3rem 1.5rem 1.5rem;
   margin-top: 4rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer-container {
@@ -625,7 +591,8 @@ img {
 .footer-col p {
   font-size: 0.875rem;
   line-height: 1.8;
-  color: #e0e0e0;
+  color: var(--footer-text);
+  transition: color 0.3s ease;
 }
 
 .footer-col ul {
@@ -639,7 +606,7 @@ img {
 }
 
 .footer-col ul li a {
-  color: #e0e0e0;
+  color: var(--footer-text);
   text-decoration: none;
   font-size: 0.875rem;
   transition: color 0.3s ease;
@@ -680,7 +647,8 @@ img {
   padding-top: 2rem;
   border-top: 1px solid rgba(199, 154, 94, 0.3);
   font-size: 0.875rem;
-  color: #e0e0e0;
+  color: var(--footer-text);
+  transition: color 0.3s ease;
 }
 
 /*===============================================*/

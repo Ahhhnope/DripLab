@@ -1,16 +1,5 @@
 /*===============================================*/
-/*========== CẤU HÌNH AVATAR - ĐỔI URL Ở ĐÂY ==========*/
-/*===============================================*/
-
-// ========== ĐỔI AVATAR: Thay URL bên dưới ==========
-const USER_AVATAR_URL = "https://ui-avatars.com/api/?name=Nguyen+Van+A&background=50743e&color=fff&size=120";
-// Ví dụ các URL khác bạn có thể dùng:
-// const USER_AVATAR_URL = "https://i.imgur.com/abc123.jpg";
-// const USER_AVATAR_URL = "https://example.com/my-photo.png";
-// const USER_AVATAR_URL = "https://avatars.githubusercontent.com/u/123456";
-
-/*===============================================*/
-/*========== THÊM MỚI: I18N TRANSLATIONS ==========*/
+/*========== I18N TRANSLATIONS ==========*/
 /*===============================================*/
 
 const translations = {
@@ -26,6 +15,7 @@ const translations = {
     "profile.userName": "Nguyễn Văn A",
     "profile.theme": "Chế độ tối",
     "profile.language": "Ngôn ngữ",
+    "profile.login": "Đăng nhập",
     "profile.signout": "Đăng xuất",
     
     // Content
@@ -52,6 +42,7 @@ const translations = {
     "profile.userName": "Nguyen Van A",
     "profile.theme": "Dark mode",
     "profile.language": "Language",
+    "profile.login": "Login",
     "profile.signout": "Sign out",
     
     // Content
@@ -69,16 +60,10 @@ const translations = {
 };
 
 /*===============================================*/
-/*========== THÊM MỚI: DROPDOWN FUNCTIONALITY ==========*/
+/*========== DROPDOWN FUNCTIONALITY ==========*/
 /*===============================================*/
 
 document.addEventListener('DOMContentLoaded', function() {
-  // ========== Set avatar từ config ==========
-  const avatarImg = document.getElementById('user-avatar-img');
-  if (avatarImg && USER_AVATAR_URL) {
-    avatarImg.src = USER_AVATAR_URL;
-  }
-  
   // Get elements
   const userProfileBtn = document.getElementById('user-profile-btn');
   const userDropdown = document.getElementById('user-dropdown');
@@ -105,19 +90,18 @@ document.addEventListener('DOMContentLoaded', function() {
   function openDropdown() {
     userDropdown.classList.add('active');
     overlay.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when dropdown is open
+    document.body.style.overflow = 'hidden';
   }
   
   function closeDropdown() {
     userDropdown.classList.remove('active');
     overlay.classList.remove('active');
-    document.body.style.overflow = ''; // Re-enable scrolling
+    document.body.style.overflow = '';
   }
   
   /*========== Close dropdown when clicking outside ==========*/
   overlay.addEventListener('click', closeDropdown);
   
-  // Close dropdown when clicking anywhere else
   document.addEventListener('click', function(e) {
     if (!userDropdown.contains(e.target) && !userProfileBtn.contains(e.target)) {
       closeDropdown();
@@ -209,7 +193,15 @@ document.addEventListener('DOMContentLoaded', function() {
   
   /*========== Action Buttons ==========*/
   
-  /* ========== REMOVED: Login button không còn tồn tại ========== */
+  // Login button
+  const loginBtn = document.querySelector('.btn-login');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', function() {
+      console.log('Login clicked');
+      alert('Chức năng đăng nhập / Login function');
+      closeDropdown();
+    });
+  }
   
   // Sign out button
   const signoutBtn = document.querySelector('.btn-signout');
