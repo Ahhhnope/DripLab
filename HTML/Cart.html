@@ -103,7 +103,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
             <div class="lg:col-span-8 flex flex-col gap-6">
                 <div
-                    class="group relative flex flex-col sm:flex-row gap-6 bg-white dark:bg-white/5 p-5 rounded-2xl border border-coffee-light/30 dark:border-white/5 hover:border-primary/30 transition-all shadow-sm hover:shadow-soft">
+                    class="group relative flex flex-col sm:flex-row gap-6 bg-white dark:bg-white/5 p-5 rounded-2xl border border-coffee-light/30 dark:border-white/5 hover:border-primary/30 transition-all shadow-sm hover:shadow-soft" id="cart-item-0">
                     <div class="shrink-0">
                         <div class="w-full sm:w-24 h-24 rounded-xl bg-cover bg-center" data-alt="Iced Oat Latte"
                             style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBAcHLM7S5Rj20j3Pi1ZzG9mLc4K6pcnhVGoCF7CZJk7_9p3qFsPyLjr2gMsU8CkCioQSMgBt5shX4o2L1mw8ng_zTm8KevOtTRGCaDlc1LkD6JqurGUDZvqfLoIjPBOWjcIBhLZj1nONQyIntwAZOSs8stmf7HcTmP6PQMGayY6Zlszi9vi4fhN_Xia3UiAlMmrsSrQhgIcsOR9iCA2sh9XlNaQRNHj7SfeQ3e-7Jrk_CqtgbMmLDiLufgTCnpRHFGh6yI3uImGG7C");'>
@@ -129,15 +129,15 @@
                                 class="text-sm font-semibold text-red-400 hover:text-red-500 transition-colors">Remove</button>
                             <div
                                 class="flex items-center bg-background-light dark:bg-white/5 rounded-lg p-1 border border-coffee-light/50 dark:border-white/10">
-                                <button id="cart-deincrement"
-                                    class="size-7 flex items-center justify-center rounded bg-white dark:bg-white/10 shadow-sm text-coffee-dark dark:text-white hover:text-primary transition-colors">
+                                <button
+                                    class="size-7 flex items-center justify-center rounded bg-white dark:bg-white/10 shadow-sm text-coffee-dark dark:text-white hover:text-primary transition-colors" id="cart-deincrement">
                                     <span class="material-symbols-outlined text-[16px]">remove</span>
                                 </button>
                                 <input
                                     class="w-8 text-center bg-transparent border-none text-sm font-bold text-coffee-dark dark:text-white p-0 focus:ring-0"
                                     type="text" value="1" min="1" max="99" maxlength="2" id="cart-number" readonly/>
-                                <button id="cart-increment"
-                                    class="size-7 flex items-center justify-center rounded bg-white dark:bg-white/10 shadow-sm text-coffee-dark dark:text-white hover:text-primary transition-colors">
+                                <button
+                                    class="size-7 flex items-center justify-center rounded bg-white dark:bg-white/10 shadow-sm text-coffee-dark dark:text-white hover:text-primary transition-colors" id="cart-increment">
                                     <span class="material-symbols-outlined text-[16px]">add</span>
                                 </button>
                             </div>
@@ -221,12 +221,16 @@
                                 <span class="text-2xl font-black text-coffee-dark dark:text-white">$6.50</span>
                             </div>
                         </div>
-                        <button
+                        
+                        <a href="CartOV.html">
+                            <button
                             class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all duration-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
                             <span>Proceed to Checkout</span>
                             <span
                                 class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </button>
+                        </a>
+
                         <div class="mt-4 text-center">
                             <p class="text-xs text-coffee-med dark:text-gray-500">Pick-up available in <span
                                     class="font-bold text-primary">15 mins</span> at Downtown Branch</p>
