@@ -1,4 +1,55 @@
-// News.js – scripts tách từ News.html
+// Hàm render bài viết từ LocalStorage
+function renderLocalPosts() {
+    const postsGrid = document.getElementById('posts-grid');
+    if (!postsGrid) return;
+
+    // 1. Lấy dữ liệu từ localStorage
+    const storedPosts = JSON.parse(localStorage.getItem('dripLabPosts')) || [];
+
+    // 2. Duyệt qua từng bài và tạo HTML
+    storedPosts.forEach(post => {
+        // Tạo thẻ article
+        const article = document.createElement('article');
+        article.className = 'flex flex-col group cursor-pointer';
+        article.setAttribute('data-page', post.dataPage || '1'); // Để phân trang hiểu được
+
+        // Nội dung HTML giống hệt cấu trúc trong News.html
+        article.innerHTML = `
+            <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
+                <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
+                    style="background-image: url('${post.image}');" aria-hidden="true"></div>
+                <div class="absolute top-4 left-4">
+                    <span class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                        ${post.badge}
+                    </span>
+                </div>
+            </div>
+            <div class="flex flex-col flex-grow">
+                <span class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-2">${post.date}</span>
+                <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">
+                    ${post.title}
+                </h3>
+                <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">
+                    ${post.desc}
+                </p>
+                <a href="#" class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all">
+                    Đọc toàn bộ bài viết 
+                    <span class="material-symbols-outlined text-xs" aria-hidden="true">north_east</span>
+                </a>
+            </div>
+        `;
+
+        // 3. Chèn vào đầu danh sách lưới (prepend)
+        postsGrid.prepend(article);
+    });
+}
+
+// Gọi hàm này NGAY KHI DOM load xong, TRƯỚC KHI initPagination chạy
+document.addEventListener('DOMContentLoaded', () => {
+    renderLocalPosts();
+    // Các hàm init khác của bạn sẽ chạy sau do chúng cũng lắng nghe DOMContentLoaded
+    // nhưng để chắc chắn, bạn nên kiểm tra thứ tự trong file News.js
+});
 
 // Simple i18n engine
 const I18N = (function () {
