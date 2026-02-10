@@ -200,54 +200,57 @@ function clearImage() {
 }
 
 
-// === PUBLISH LOGIC ===
+// === PUBLISH LOGIC (Đã sửa) ===
 if (publishBtn) {
     publishBtn.addEventListener('click', (e) => {
         e.preventDefault(); 
         
-        // 1. Lấy dữ liệu từ form
-        const title = postTitleInput ? postTitleInput.value.trim() : '';
-        const imageSrc = imagePreview ? imagePreview.src : '';
-        // Lấy ngày hiện tại
-        const date = new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
-
+        // 1. Lấy giá trị từ các ô Input
+        const titleInput = document.getElementById('post-title');
+        const contentInput = document.querySelector('textarea'); // Lấy textarea nội dung
+        const imgPreview = document.getElementById('image-preview'); // Lấy ảnh đã upload
+        
+        const title = titleInput ? titleInput.value.trim() : '';
+        const desc = contentInput ? contentInput.value.trim() : '';
+        
         // 2. Validate (Kiểm tra dữ liệu)
         if (!title) {
             showToast('Lỗi', 'Vui lòng nhập tiêu đề bài viết', 'error');
             return;
         }
-        // Kiểm tra xem đã upload ảnh chưa (src rỗng hoặc là ảnh gốc của trang web thì báo lỗi)
-        if (!imageSrc || imageSrc === window.location.href) {
-             showToast('Lỗi', 'Vui lòng chọn ảnh đại diện', 'error');
-             return;
-        }
 
         // 3. Tạo đối tượng bài viết mới
         const newPost = {
-            id: Date.now().toString(), // Tạo ID ngẫu nhiên dựa trên thời gian
+            id: Date.now().toString(), // Tạo ID duy nhất dựa trên thời gian
             title: title,
-            image: imageSrc,
-            date: date,
-            desc: "Bài viết mới được đăng từ trang Admin...", // Bạn có thể thêm input description nếu muốn
-            badge: "Tin mới",
-            author: "Admin",
-            dataPage: "1" // Mặc định bài mới sẽ hiện ở trang 1
+            // Nếu có ảnh upload thì lấy, nếu không thì dùng ảnh mặc định
+            image: (imgPreview && !imgPreview.classList.contains('hidden')) 
+                   ? imgPreview.src 
+                   : 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80',
+            date: new Date().toLocaleDateString('vi-VN', { day: '2-digit', month: 'long', year: 'numeric' }),
+            author: "Admin User", // Hoặc lấy từ input nếu có
+            badge: "Tin mới", // Mặc định
+            desc: desc || "Chưa có mô tả tóm tắt...",
+            dataPage: "1" // Mặc định hiện ở trang 1
         };
 
-        // 4. Lấy danh sách bài cũ từ localStorage (nếu có)
-        let existingPosts = JSON.parse(localStorage.getItem('dripLabPosts')) || [];
-
-        // 5. Thêm bài mới vào ĐẦU danh sách
+        // 4. LƯU VÀO LOCAL STORAGE (Bước quan trọng bị thiếu)
+        // Lấy danh sách cũ ra, nếu chưa có thì tạo mảng rỗng
+        const existingPosts = JSON.parse(localStorage.getItem('dripLabPosts')) || [];
+        
+        // Thêm bài mới vào đầu danh sách (unshift)
         existingPosts.unshift(newPost);
-
-        // 6. Lưu ngược lại vào localStorage
+        
+        // Lưu ngược lại vào LocalStorage
         localStorage.setItem('dripLabPosts', JSON.stringify(existingPosts));
         
-        showToast('Thành công!', 'Đang chuyển hướng sang trang tin tức...');
+        // 5. Thông báo thành công
+        showToast('Thành công', 'Bài viết đã được xuất bản!');
         
-        // 7. Chuyển trang
+        // 6. Chuyển hướng về trang News để xem kết quả
         setTimeout(() => {
-            window.location.href = 'News.html'; // Đảm bảo đường dẫn này đúng với cấu trúc thư mục của bạn
+            // Đảm bảo đường dẫn này đúng với cấu trúc thư mục của bạn
+            window.location.href = 'News.html'; 
         }, 1000);
     });
 }
