@@ -8,31 +8,47 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #d4d0cc;
+  background: #e3e1de;
   border-radius: 10px;
 }
 
-/* Coffee cup */
+/* Glass header (không dùng @apply nữa) */
+.glass-header {
+  background-color: rgba(249, 246, 241, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(74, 63, 53, 0.1);
+}
+
+.dark .glass-header {
+  background-color: rgba(44, 38, 33, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === Cốc cà phê === */
 .coffee-cup-container {
   perspective: 1000px;
 }
 
 .glass-cup {
   position: relative;
-  width: 220px;
-  height: 280px;
-  background: rgba(255,255,255,0.08);
-  border: 5px solid rgba(255,255,255,0.35);
+  width: 180px;
+  height: 240px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0.4);
   border-top: none;
-  border-radius: 0 0 100px 100px;
+  border-radius: 0 0 80px 80px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 0 auto; /* đảm bảo canh giữa */
 }
 
 .liquid-layer {
@@ -40,68 +56,56 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 0%;
-  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1.2);
+  height: 0;
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Base (lớp đáy) */
+/* Các layer mặc định có chiều cao ban đầu = 0 */
+/* Chỉ dùng :has() cho body (đơn giản và ổn định hơn) */
 body:has(#base-espresso:checked) .layer-base,
 body:has(#base-coldbrew:checked) .layer-base,
 body:has(#base-pourover:checked) .layer-base {
-  height: 35%;
+  height: 25%;
 }
 
-/* Milk */
-body:has(#milk-whole:checked) .layer-milk,
-body:has(#milk-oat:checked) .layer-milk,
-body:has(#milk-almond:checked) .layer-milk,
-body:has(#milk-soy:checked) .layer-milk {
-  height: 60%;
+body:has(input[name="milk"]:checked) .layer-milk {
+  height: 50%;
 }
 
-/* Flavor */
-body:has(#flavor-vanilla:checked) .layer-flavor,
-body:has(#flavor-caramel:checked) .layer-flavor {
-  height: 80%;
+body:has(input[name="flavor"]:checked) .layer-flavor {
+  height: 70%;
 }
 
-/* Toppings (nếu có ít nhất 1 topping được chọn) */
-body:has(#topping-whipped:checked) .layer-toppings,
-body:has(#topping-cinnamon:checked) .layer-toppings {
-  height: 95%;
+body:has(input[type="checkbox"]:checked) .layer-toppings {
+  height: 90%;
 }
 
-/* Màu các lớp */
-.layer-base    { background: #3c2a21; z-index: 10; }      /* Đen đậm - espresso */
-.layer-milk    { background: #f3e9dc; z-index: 9; }       /* Sữa nhạt */
-.layer-flavor  { background: #c6a562; z-index: 8; }       /* Vàng caramel */
-.layer-toppings { background: #ffffff; z-index: 7; }      /* Kem trắng */
+/* Màu layer */
+.layer-base    { z-index: 10; background: #3c2a21; }
+.layer-milk    { z-index: 9;  background: #f3e9dc; }
+.layer-flavor  { z-index: 8;  background: #c6a562; }
+.layer-toppings { z-index: 7; background: #ffffff; }
 
+/* Hơi nước */
 .steam-container {
   position: absolute;
-  top: -70px;
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 14px;
+  gap: 12px;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.5s;
 }
 
 body:has(input[name="base"]:checked) .steam-container {
-  opacity: 0.75;
+  opacity: 0.6;
 }
 
 .steam-waft {
-  width: 5px;
-  height: 40px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 5px;
-  filter: blur(5px);
-  animation: steam 3.5s infinite ease-in-out;
-}
-
-@keyframes steam {
-  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.9; }
-  50% { transform: translateY(-40px) scaleY(1.5); opacity: 0.3; }
+  width: 4px;
+  height: 30px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 4px;
+  filter: blur(4px);
 }
