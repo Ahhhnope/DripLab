@@ -1,19 +1,16 @@
-// Hàm render bài viết từ LocalStorage
+// Hàm này phải có trong News.js
 function renderLocalPosts() {
     const postsGrid = document.getElementById('posts-grid');
     if (!postsGrid) return;
 
-    // 1. Lấy dữ liệu từ localStorage
+    // Đọc dữ liệu từ key 'dripLabPosts' mà ta vừa lưu bên Admin
     const storedPosts = JSON.parse(localStorage.getItem('dripLabPosts')) || [];
 
-    // 2. Duyệt qua từng bài và tạo HTML
     storedPosts.forEach(post => {
-        // Tạo thẻ article
         const article = document.createElement('article');
         article.className = 'flex flex-col group cursor-pointer';
-        article.setAttribute('data-page', post.dataPage || '1'); // Để phân trang hiểu được
+        article.setAttribute('data-page', post.dataPage || '1');
 
-        // Nội dung HTML giống hệt cấu trúc trong News.html
         article.innerHTML = `
             <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
                 <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
@@ -38,17 +35,15 @@ function renderLocalPosts() {
                 </a>
             </div>
         `;
-
-        // 3. Chèn vào đầu danh sách lưới (prepend)
+        
+        // Dùng prepend để bài mới nhất lên đầu, hoặc append để xuống cuối
         postsGrid.prepend(article);
     });
 }
 
-// Gọi hàm này NGAY KHI DOM load xong, TRƯỚC KHI initPagination chạy
+// Chạy hàm khi tải trang
 document.addEventListener('DOMContentLoaded', () => {
     renderLocalPosts();
-    // Các hàm init khác của bạn sẽ chạy sau do chúng cũng lắng nghe DOMContentLoaded
-    // nhưng để chắc chắn, bạn nên kiểm tra thứ tự trong file News.js
 });
 
 // Simple i18n engine
