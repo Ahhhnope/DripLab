@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../CSS/Test.CSS">
+    
+    <!-- Icon Libraries -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    
+    <title>Page Title - Drip Lab</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&family=Noto+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#e0c076",
+              "background-light": "#f8f7f6",
+              "background-dark": "#1f1c13",
+              "cream-modal": "#fcfaf7",
+            },
+            fontFamily: {
+              display: ["Noto Serif", "serif"],
+              sans: ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              "3xl": "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+</head>
+
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header-login">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo">
+                <a href="#" class="logo-image-link">
+                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="navbar">
+                <!-- Menu Dropdown -->
+                <div class="menu-dropdown-wrapper">
+                    <a href="#" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <div class="menu-dropdown" id="menu-dropdown">
+                        <a href="#" class="menu-option option-buy" data-i18n="menu.buyNow">
+                            <i class='bx bxs-cart'></i>
+                            <span>Mua ngay</span>
+                        </a>
+                        <a href="#" class="menu-option option-custom" data-i18n="menu.customize">
+                            <i class='bx bxs-coffee-togo'></i>
+                            <span>Tự pha chế</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="#" data-i18n="nav.about">ABOUT US</a>
+                <a href="#" data-i18n="nav.news">NEWS</a>
+                <a href="#" data-i18n="nav.stores">STORES</a>
+            </nav>
+
+            <!-- User Actions (Login/Cart) -->
+            <div class="user-login">
+                <!-- User Profile Dropdown -->
+                <div class="user-profile-wrapper">
+                    <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
+                        <i class='bx bxs-user'></i>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-header">
+                            <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
+                        </div>
+                        
+                        <div class="dropdown-body">
+                            <!-- User Info Section -->
+                            <div class="user-info-section">
+                                <div class="user-avatar">
+                                    <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
+                                </div>
+                                <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
+                                <p class="user-email">abc@gmail.com</p>
+                            </div>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Settings Section -->
+                            <div class="settings-section">
+                                <!-- Theme Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                        <span data-i18n="profile.theme">Chế độ tối</span>
+                                    </div>
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch" aria-label="Toggle Theme">
+                                        <span class="toggle-slider"></span>
+                                    </button>
+                                </div>
+                                
+                                <!-- Language Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">language</span>
+                                        <span data-i18n="profile.language">Ngôn ngữ</span>
+                                    </div>
+                                    <div class="language-toggle">
+                                        <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+                                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="dropdown-actions">
+                                <button type="button" class="action-btn btn-login">
+                                    <span class="material-symbols-outlined">login</span>
+                                    <span data-i18n="profile.login">Login</span>
+                                </button>
+                                <button type="button" class="action-btn btn-signout">
+                                    <span class="material-symbols-outlined">logout</span>
+                                    <span data-i18n="profile.signout">Sign out</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button">
+                    <i class='bx bxs-shopping-bag'></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
+    <main class="main-content">
+        <div class="content-container">
+            <h1 data-i18n="content.title">Menu</h1>
+            <p data-i18n="content.description"><div class="mb-12">
+        <h2
+          class="text-5xl md:text-6xl font-black leading-tight tracking-[-0.03em] mb-4"
+        >
+          Coffee &amp; Tea Menu
+        </h2>
+        <p class="text-[#857b66] dark:text-gray-400 text-lg max-w-xl italic">
+          Artisanally crafted beverages with seasonal origins and meticulous
+          preparation.
+        </p>
+      </div>
+      <div
+        class="flex items-center gap-3 mb-16 overflow-x-auto pb-4 no-scrollbar"
+      >
+        <button
+          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-[#171512] px-6 text-sm font-bold border border-primary"
+        >
+          All Items
+        </button>
+        <button
+          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
+        >
+          Hot
+        </button>
+        <button
+          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
+        >
+          Iced
+        </button>
+        <button
+          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
+        >
+          Tea
+        </button>
+        <button
+          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all ml-auto"
+        >
+          <span class="material-symbols-outlined text-lg">tune</span>
+          Filter
+        </button>
+      </div>
+      <section class="mb-[30px]">
+        <div class="flex items-center gap-4 mb-8">
+          <h3
+            class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
+          >
+            01. Espresso Based
+          </h3>
+          <div class="h-[1px] flex-1 bg-primary/20"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <label class="group cursor-pointer" for="modal-toggle-classic-latte">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="
+                  background-image: url('../IMG/classic-latte.png');
+                "
+              ></div>
+              <div
+                class="absolute top-4 right-4 must-try-badge text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter"
+              >
+                Must Try
+              </div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-lg font-bold group-hover:text-primary transition-colors"
+              >
+                Classic Latte
+              </h4>
+              <span class="font-bold text-base">$5.50</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+            >
+              Velvety micro-foam with a double shot of our House Signature
+              blend.
+            </p>
+          </label>
+          <label class="group cursor-pointer" for="modal-toggle-cortado">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="background-image: url('../IMG/cortado.png')"
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-lg font-bold group-hover:text-primary transition-colors"
+              >
+                The Cortado
+              </h4>
+              <span class="font-bold text-base">$4.50</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+            >
+              Equal parts espresso and steamed milk.
+            </p>
+          </label>
+          <label class="group cursor-pointer" for="modal-toggle-flat-white">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="
+                  background-image: url('../IMG/flat-white.jpg');
+                "
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-lg font-bold group-hover:text-primary transition-colors"
+              >
+                Flat White
+              </h4>
+              <span class="font-bold text-base">$5.25</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+            >
+              Thin layer of velvety micro-foam over a double ristretto.
+            </p>
+          </label>
+          <label class="group cursor-pointer" for="modal-toggle-dark-velvet">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="
+                  background-image: url('../IMG/dark-velvet.png');
+                "
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-lg font-bold group-hover:text-primary transition-colors"
+              >
+                Dark Velvet
+              </h4>
+              <span class="font-bold text-base">$6.25</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+            >
+              70% dark single-origin chocolate melted into double espresso.
+            </p>
+          </label>
+        </div>
+      </section>
+      <section class="mb-[30px]">
+        <div class="flex items-center gap-4 mb-8">
+          <h3
+            class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
+          >
+            02. Slow Bar &amp; Pour Over
+          </h3>
+          <div class="h-[1px] flex-1 bg-primary/20"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <label class="group cursor-pointer" for="modal-toggle-ethiopia">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="
+                  background-image: url('../IMG/ethiopia.png');
+                "
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-xl font-bold group-hover:text-primary transition-colors"
+              >
+                Ethiopia Yirgacheffe
+              </h4>
+              <span class="font-bold text-lg">$7.00</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
+            >
+              Notes: Stone fruit, Jasmine, Honey.
+            </p>
+          </label>
+          <label class="group cursor-pointer" for="modal-toggle-v60">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="background-image: url('../IMG/v602.jpg')"
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-xl font-bold group-hover:text-primary transition-colors"
+              >
+                V60 Seasonal
+              </h4>
+              <span class="font-bold text-lg">$6.50</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
+            >
+              A rotating selection of the harvest's finest beans.
+            </p>
+          </label>
+          <label class="group cursor-pointer" for="modal-toggle-geisha">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="background-image: url('../IMG/geisha.png')"
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-xl font-bold group-hover:text-primary transition-colors"
+              >
+                Colombia Geisha
+              </h4>
+              <span class="font-bold text-lg">$9.50</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
+            >
+              Limited release. Notes: Bergamot, Lemongrass, Mango.
+            </p>
+          </label>
+        </div>
+      </section>
+      <section class="mb-[30px]">
+        <div class="flex items-center gap-4 mb-8">
+          <h3
+            class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
+          >
+            03. Artisan Tea Selection
+          </h3>
+          <div class="h-[1px] flex-1 bg-primary/20"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <label class="group cursor-pointer" for="modal-toggle-matcha">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="
+                  background-image: url('../IMG/Matcha-latte.png');
+                "
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-lg font-bold group-hover:text-primary transition-colors"
+              >
+                Matcha Latte
+              </h4>
+              <span class="font-bold text-base">$6.00</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+            >
+              Ceremonial grade Uji Matcha whisked with your choice of milk.
+            </p>
+          </label>
+          <label class="group cursor-pointer" for="modal-toggle-earl-grey">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="
+                  background-image: url('../IMG/Earl-grey.png');
+                "
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-lg font-bold group-hover:text-primary transition-colors"
+              >
+                Earl Grey Reserve
+              </h4>
+              <span class="font-bold text-base">$4.75</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+            >
+              Fragrant bergamot-infused black tea with citrus notes.
+            </p>
+          </label>
+          <label class="group cursor-pointer" for="modal-toggle-hojicha">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="
+                  background-image: url('../IMG/Hojicha-roasted.png');
+                "
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-lg font-bold group-hover:text-primary transition-colors"
+              >
+                Hojicha Roasted
+              </h4>
+              <span class="font-bold text-base">$5.50</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+            >
+              Toasty, nutty roasted green tea with a comforting finish.
+            </p>
+          </label>
+          <label class="group cursor-pointer" for="modal-toggle-oolong">
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div
+                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                style="background-image: url('../IMG/oolong.png')"
+              ></div>
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-lg font-bold group-hover:text-primary transition-colors"
+              >
+                Oolong High Mountain
+              </h4>
+              <span class="font-bold text-base">$6.50</span>
+            </div>
+            <p
+              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+            >
+              Lightly floral, complex semi-oxidized tea from Taiwan.
+            </p>
+          </label>
+        </div>
+      </section></p>
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Column 1 - Logo & Description -->
+            <div class="footer-col">
+                <h3>
+                    <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
+                </h3>
+                <p data-i18n="footer.description">
+                    Drip Lab - Coffee for your <br> fresh start every day.
+                </p>
+            </div>
+
+            <!-- Column 2 - Navigation -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.connect">Tsaheylu</h4>
+                <ul>
+                    <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#" data-i18n="nav.news">News</a></li>
+                    <li><a href="#" data-i18n="nav.stores">Stores</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3 - Contact -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.contact">Contact Us</h4>
+                <p>Email: contact@driplab.com</p>
+                <p>Hotline: 036 363 6767</p>
+                <p data-i18n="footer.location">Place at: Việt Nam</p>
+            </div>
+
+            <!-- Column 4 - Social Media -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.follow">Follow Us On</h4>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom" data-i18n="footer.copyright">
+            © 2025 Drip Lab. Space for coffee heads.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/Test.JS"></script>
+</body>
+
+</html>
