@@ -1,0 +1,21 @@
+/* styles.css */
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-display {
+  font-family: 'Noto Serif', serif;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e0c076;
+  border-radius: 10px;
+}

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Your Own Coffee - Drip Lab</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- CSS Links -->
+    <link rel="stylesheet" href="../CSS/Test.CSS">
+    
+    <!-- Icon Libraries -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#c6a562",
+            "background-light": "#f9f6f1",
+            "background-dark": "#2c2621",
+            "espresso": "#4A3F35",
+            "coffee-dark": "#3c2a21",
+            "coffee-milk": "#d9c5b2",
+            "coffee-flavor": "#8e5a32",
+            "coffee-foam": "#fdfbf7"
+          },
+          fontFamily: {
+            "display": ["Noto Serif", "serif"],
+            "body": ["Manrope", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="/CSS/Brewing.css" />
+</head>
+<body class="bg-background-light dark:bg-background-dark text-espresso dark:text-stone-200">
+<!-- ========== HEADER ========== -->
+    <header class="header-login">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo">
+                <a href="#" class="logo-image-link">
+                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="navbar">
+                <!-- Menu Dropdown -->
+                <div class="menu-dropdown-wrapper">
+                    <a href="#" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <div class="menu-dropdown" id="menu-dropdown">
+                        <a href="#" class="menu-option option-buy" data-i18n="menu.buyNow">
+                            <i class='bx bxs-cart'></i>
+                            <span>Mua ngay</span>
+                        </a>
+                        <a href="#" class="menu-option option-custom" data-i18n="menu.customize">
+                            <i class='bx bxs-coffee-togo'></i>
+                            <span>Tự pha chế</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="#" data-i18n="nav.about">ABOUT US</a>
+                <a href="#" data-i18n="nav.news">NEWS</a>
+                <a href="#" data-i18n="nav.stores">STORES</a>
+            </nav>
+
+            <!-- User Actions (Login/Cart) -->
+            <div class="user-login">
+                <!-- User Profile Dropdown -->
+                <div class="user-profile-wrapper">
+                    <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
+                        <i class='bx bxs-user'></i>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-header">
+                            <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
+                        </div>
+                        
+                        <div class="dropdown-body">
+                            <!-- User Info Section -->
+                            <div class="user-info-section">
+                                <div class="user-avatar">
+                                    <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
+                                </div>
+                                <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
+                                <p class="user-email">abc@gmail.com</p>
+                            </div>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Settings Section -->
+                            <div class="settings-section">
+                                <!-- Theme Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                        <span data-i18n="profile.theme">Chế độ tối</span>
+                                    </div>
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch" aria-label="Toggle Theme">
+                                        <span class="toggle-slider"></span>
+                                    </button>
+                                </div>
+                                
+                                <!-- Language Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">language</span>
+                                        <span data-i18n="profile.language">Ngôn ngữ</span>
+                                    </div>
+                                    <div class="language-toggle">
+                                        <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+                                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="dropdown-actions">
+                                <button type="button" class="action-btn btn-login">
+                                    <span class="material-symbols-outlined">login</span>
+                                    <span data-i18n="profile.login">Login</span>
+                                </button>
+                                <button type="button" class="action-btn btn-signout">
+                                    <span class="material-symbols-outlined">logout</span>
+                                    <span data-i18n="profile.signout">Sign out</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button">
+                    <i class='bx bxs-shopping-bag'></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
+    <main class="flex flex-1 flex-col md:flex-row overflow-hidden">
+    <section class="relative w-full md:w-1/2 h-[50vh] md:h-[calc(100vh-73px)] bg-[#fdfaf6] dark:bg-stone-900 flex flex-col items-center justify-center p-8 overflow-hidden">
+      <div class="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none" style="background-image: radial-gradient(#c6a562 1px, transparent 1px); background-size: 32px 32px;"></div>
+      
+      <div class="relative coffee-cup-container mb-12">
+        <div class="steam-container">
+          <div class="steam-waft"></div>
+          <div class="steam-waft"></div>
+          <div class="steam-waft"></div>
+        </div>
+        <div class="glass-cup">
+          <div class="liquid-layer layer-toppings"></div>
+          <div class="liquid-layer layer-flavor"></div>
+          <div class="liquid-layer layer-milk"></div>
+          <div class="liquid-layer layer-base"></div>
+          <div class="absolute inset-y-0 left-4 w-1 bg-white/20 rounded-full blur-[1px]"></div>
+        </div>
+        <div class="w-48 h-4 bg-espresso/10 dark:bg-black/40 rounded-full blur-md mt-4 mx-auto"></div>
+      </div>
+
+      <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center w-full max-w-xs px-6">
+        <h1 class="font-display text-4xl font-bold leading-tight mb-3 text-espresso dark:text-stone-100">Artisan Workshop</h1>
+        <p class="text-sm opacity-70">Watch your creation take shape as you select each premium ingredient from our curated lab.</p>
+      </div>
+    </section>
+
+    <section class="w-full md:w-1/2 h-[calc(100vh-73px)] overflow-y-auto custom-scrollbar bg-background-light dark:bg-background-dark flex flex-col">
+      <div class="p-8 md:p-12 pb-32">
+        <div class="flex items-center gap-2 mb-10 text-primary uppercase tracking-[0.2em] text-[10px] font-bold">
+          <span class="w-8 h-[1px] bg-primary"></span>
+          Design Your Brew
+        </div>
+
+        <!-- 01. Base -->
+        <div class="mb-12">
+          <h2 class="font-display text-2xl font-bold mb-6 flex items-baseline gap-3">
+            <span class="text-primary text-lg">01.</span> Choose Your Base
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <label class="group relative cursor-pointer">
+              <input class="peer sr-only" id="base-espresso" name="base" type="radio" />
+              <div class="flex flex-col items-center justify-center p-6 rounded-xl border-2 border-transparent bg-white shadow-sm dark:bg-stone-800 peer-checked:border-primary peer-checked:shadow-primary/10 transition-all hover:bg-stone-50 dark:hover:bg-stone-700">
+                <span class="material-symbols-outlined text-3xl mb-3 group-hover:scale-110 transition-transform">coffee</span>
+                <span class="text-sm font-bold">Espresso</span>
+                <span class="text-[10px] opacity-60 mt-1">Rich & Bold</span>
+              </div>
+            </label>
+
+            <label class="group relative cursor-pointer">
+              <input class="peer sr-only" id="base-coldbrew" name="base" type="radio" />
+              <div class="flex flex-col items-center justify-center p-6 rounded-xl border-2 border-transparent bg-white shadow-sm dark:bg-stone-800 peer-checked:border-primary peer-checked:shadow-primary/10 transition-all hover:bg-stone-50 dark:hover:bg-stone-700">
+                <span class="material-symbols-outlined text-3xl mb-3 group-hover:scale-110 transition-transform">ac_unit</span>
+                <span class="text-sm font-bold">Cold Brew</span>
+                <span class="text-[10px] opacity-60 mt-1">Smooth & Crisp</span>
+              </div>
+            </label>
+
+            <label class="group relative cursor-pointer">
+              <input class="peer sr-only" id="base-pourover" name="base" type="radio" />
+              <div class="flex flex-col items-center justify-center p-6 rounded-xl border-2 border-transparent bg-white shadow-sm dark:bg-stone-800 peer-checked:border-primary peer-checked:shadow-primary/10 transition-all hover:bg-stone-50 dark:hover:bg-stone-700">
+                <span class="material-symbols-outlined text-3xl mb-3 group-hover:scale-110 transition-transform">water_drop</span>
+                <span class="text-sm font-bold">Pour Over</span>
+                <span class="text-[10px] opacity-60 mt-1">Light & Floral</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 02. Milk -->
+        <div class="mb-12">
+          <h2 class="font-display text-2xl font-bold mb-6 flex items-baseline gap-3">
+            <span class="text-primary text-lg">02.</span> Select Milk
+          </h2>
+          <div class="flex flex-wrap gap-3">
+            <label class="cursor-pointer group">
+              <input class="peer sr-only" name="milk" type="radio" />
+              <div class="px-6 py-3 rounded-full border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-sm font-medium peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all">
+                Whole Milk
+              </div>
+            </label>
+            <label class="cursor-pointer group">
+              <input class="peer sr-only" name="milk" type="radio" />
+              <div class="px-6 py-3 rounded-full border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-sm font-medium peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all">
+                Oat Milk
+              </div>
+            </label>
+            <label class="cursor-pointer group">
+              <input class="peer sr-only" name="milk" type="radio" />
+              <div class="px-6 py-3 rounded-full border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-sm font-medium peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all">
+                Almond Milk
+              </div>
+            </label>
+            <label class="cursor-pointer group">
+              <input class="peer sr-only" name="milk" type="radio" />
+              <div class="px-6 py-3 rounded-full border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-sm font-medium peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all">
+                Soy Milk
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 03. Flavor -->
+        <div class="mb-12">
+          <h2 class="font-display text-2xl font-bold mb-6 flex items-baseline gap-3">
+            <span class="text-primary text-lg">03.</span> Pick a Flavor
+          </h2>
+          <div class="grid grid-cols-2 gap-4">
+            <label class="cursor-pointer">
+              <input class="peer sr-only" name="flavor" type="radio" />
+              <div class="flex items-center gap-4 p-4 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 peer-checked:border-primary peer-checked:bg-primary/5 transition-all">
+                <div class="size-10 rounded-lg bg-background-light dark:bg-stone-700 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">icecream</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm font-bold">Vanilla</span>
+                  <span class="text-[11px] opacity-60">Madagascar Bourbon</span>
+                </div>
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input class="peer sr-only" name="flavor" type="radio" />
+              <div class="flex items-center gap-4 p-4 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 peer-checked:border-primary peer-checked:bg-primary/5 transition-all">
+                <div class="size-10 rounded-lg bg-background-light dark:bg-stone-700 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">cookie</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm font-bold">Caramel</span>
+                  <span class="text-[11px] opacity-60">Salted Toffee</span>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 04. Toppings -->
+        <div class="mb-12">
+          <h2 class="font-display text-2xl font-bold mb-6 flex items-baseline gap-3">
+            <span class="text-primary text-lg">04.</span> Toppings
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-stone-800 border border-stone-100 dark:border-stone-700 cursor-pointer">
+              <input class="w-5 h-5 rounded border-stone-300 text-primary focus:ring-primary" type="checkbox" />
+              <span class="text-sm font-medium">Whipped Cream</span>
+              <span class="ml-auto text-xs opacity-50">+$0.50</span>
+            </label>
+            <label class="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-stone-800 border border-stone-100 dark:border-stone-700 cursor-pointer">
+              <input class="w-5 h-5 rounded border-stone-300 text-primary focus:ring-primary" type="checkbox" />
+              <span class="text-sm font-medium">Cinnamon Spice</span>
+              <span class="ml-auto text-xs opacity-50">+$0.20</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fixed bottom bar -->
+      <div class="fixed bottom-0 right-0 w-full md:w-1/2 p-6 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl border-t border-stone-200 dark:border-stone-800 z-50">
+        <div class="max-w-2xl mx-auto flex items-center justify-between gap-8">
+          <div class="flex flex-col">
+            <span class="text-[10px] uppercase tracking-widest font-bold opacity-60 mb-1">Your Selection</span>
+            <div class="flex items-baseline gap-1">
+              <span class="text-2xl font-bold text-primary font-display">$6.50</span>
+              <span class="text-xs opacity-50 line-through">$8.00</span>
+            </div>
+          </div>
+          <div class="flex flex-1 gap-3">
+            <button class="flex-1 flex items-center justify-center gap-3 bg-primary text-white h-14 rounded-xl font-bold text-sm tracking-wide hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+              <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Column 1 - Logo & Description -->
+            <div class="footer-col">
+                <h3>
+                    <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
+                </h3>
+                <p data-i18n="footer.description">
+                    Drip Lab - Coffee for your <br> fresh start every day.
+                </p>
+            </div>
+
+            <!-- Column 2 - Navigation -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.connect">Tsaheylu</h4>
+                <ul>
+                    <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#" data-i18n="nav.news">News</a></li>
+                    <li><a href="#" data-i18n="nav.stores">Stores</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3 - Contact -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.contact">Contact Us</h4>
+                <p>Email: contact@driplab.com</p>
+                <p>Hotline: 036 363 6767</p>
+                <p data-i18n="footer.location">Place at: Việt Nam</p>
+            </div>
+
+            <!-- Column 4 - Social Media -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.follow">Follow Us On</h4>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom" data-i18n="footer.copyright">
+            © 2025 Drip Lab. Space for coffee heads.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/Test.JS"></script>
+</body>
+</html>

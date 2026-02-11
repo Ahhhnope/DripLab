@@ -1,0 +1,450 @@
+<!doctype html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Drip Lab - Your Cart</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#e0c076",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#1f1c13",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2c281e",
+                        "text-main": "#2E333A",
+                        "text-secondary": "#4F433B",
+                        "coffee-dark": "#3c322b",
+                        success: "#22c55e",
+                    },
+                    fontFamily: {
+                        display: ["Noto Serif", "serif"],
+                        sans: ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #e0c076;
+        border-radius: 4px;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        display: inline-flex;
+        vertical-align: middle;
+      }
+      #modal-toggle:checked ~ #order-review-modal {
+        display: flex;
+      }
+      #modal-toggle:checked ~ body {
+        overflow: hidden;
+      }
+      #success-trigger:checked ~ #order-content {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+      }
+      #success-trigger:checked ~ #success-state {
+        opacity: 1;
+        display: flex;
+      }
+      #order-content {
+        transition:
+          opacity 0.3s ease-out,
+          visibility 0.3s;
+      }
+      #success-state {
+        transition: opacity 0.5s ease-in-out;
+        display: none;
+      }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-main dark:text-[#e8e6e3] font-sans antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
+    <input class="hidden" id="modal-toggle" type="checkbox" />
+    <header
+        class="sticky top-0 z-40 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-[#e5e0d8] dark:border-[#3a3528]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-20">
+                <a class="flex items-center gap-3 group text-coffee-dark dark:text-white" href="#">
+                    <div
+                        class="size-8 text-coffee-dark dark:text-white group-hover:text-primary transition-colors duration-300">
+                        <svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd"
+                                d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                                fill="currentColor" fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-display font-bold tracking-tight">
+                        Drip Lab
+                    </h2>
+                </a>
+                <nav
+                    class="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <a class="text-coffee-dark dark:text-gray-200 hover:text-primary transition-colors text-xs font-bold uppercase tracking-[0.15em]"
+                        href="#">Menu</a>
+                    <a class="text-coffee-dark dark:text-gray-200 hover:text-primary transition-colors text-xs font-bold uppercase tracking-[0.15em]"
+                        href="#">About Us</a>
+                    <a class="text-coffee-dark dark:text-gray-200 hover:text-primary transition-colors text-xs font-bold uppercase tracking-[0.15em]"
+                        href="#">News</a>
+                    <a class="text-coffee-dark dark:text-gray-200 hover:text-primary transition-colors text-xs font-bold uppercase tracking-[0.15em]"
+                        href="#">Stores</a>
+                </nav>
+                <div class="flex items-center gap-3">
+                    <button aria-label="Account"
+                        class="flex items-center justify-center size-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-coffee-dark dark:text-white transition-colors">
+                        <span class="material-symbols-outlined">account_circle</span>
+                    </button>
+                    <button aria-label="Cart"
+                        class="relative flex items-center justify-center size-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-coffee-dark dark:text-white transition-colors">
+                        <span class="material-symbols-outlined">shopping_bag</span>
+                        <span
+                            class="absolute top-2.5 right-2 size-2 bg-primary rounded-full border border-white dark:border-background-dark"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-8 py-10 lg:py-16">
+        <div class="flex justify-center mb-16">
+            <div class="flex items-center gap-4 text-sm font-medium tracking-wide">
+                <div class="flex items-center gap-2 text-primary">
+                    <span
+                        class="flex items-center justify-center size-6 rounded-full bg-primary text-white text-xs font-bold">1</span>
+                    <span class="font-display">Cart</span>
+                </div>
+                <span class="w-12 h-px bg-gray-200 dark:bg-gray-700"></span>
+                <div class="flex items-center gap-2 text-gray-400 dark:text-gray-600">
+                    <span
+                        class="flex items-center justify-center size-6 rounded-full border border-gray-300 dark:border-gray-600 text-xs">2</span>
+                    <span class="font-display">Checkout</span>
+                </div>
+                <span class="w-12 h-px bg-gray-200 dark:bg-gray-700"></span>
+                <div class="flex items-center gap-2 text-gray-400 dark:text-gray-600">
+                    <span
+                        class="flex items-center justify-center size-6 rounded-full border border-gray-300 dark:border-gray-600 text-xs">3</span>
+                    <span class="font-display">Confirmation</span>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            <div class="lg:col-span-7 flex flex-col gap-8">
+                <div class="flex items-end justify-between border-b border-gray-100 dark:border-gray-800 pb-4">
+                    <h1
+                        class="font-display text-4xl lg:text-5xl text-text-main dark:text-white font-black tracking-tight">
+                        Your Selection
+                    </h1>
+                    <span class="text-text-secondary dark:text-gray-400 font-medium">2 Items</span>
+                </div>
+                <div
+                    class="group relative flex flex-col sm:flex-row gap-6 p-6 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm hover:shadow-md transition-shadow duration-300 border border-transparent hover:border-primary/20">
+                    <div class="shrink-0 relative overflow-hidden rounded-lg aspect-square size-32 bg-gray-100">
+                        <img alt="A bag of Ethiopian Yirgacheffe coffee beans"
+                            class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMc3A2qzyc7UsbLkJKKETtgBcbmUXrrRPs9cdOVzRGjdAyCyE1D3TvCfQ59R2vW2fTHN-ityDZQy3EmrJe-Wu-NT3fYflSxx7tPyD9usD_Uplmejz8B4pzxNuBcQzxK0lSDEpOEDESOwm9jIa7EXl3hTGjnyga_ZVPzb3zm39us8d7iqZGTOwzRiBBMuLbsoCH7i5CQIjZgiCksFmQgtvlPz5NmYStXxUhmZ0YzP1YeSj_d49ZgbOcH_8O9eao2Ny54SUv7TB6laV5" />
+                    </div>
+                    <div class="flex flex-col flex-1 justify-between py-1">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-display text-xl text-text-main dark:text-white font-bold">
+                                    Ethiopian Yirgacheffe
+                                </h3>
+                                <p class="font-display text-lg font-bold text-text-main dark:text-white">
+                                    $18.00
+                                </p>
+                            </div>
+                            <p class="text-text-secondary dark:text-gray-400 text-sm mt-1">
+                                Light Roast, Whole Bean
+                            </p>
+                            <p class="text-gray-400 dark:text-gray-500 text-xs mt-1">
+                                Notes: Floral, Citrus, Bright
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button
+                                class="text-sm font-medium text-red-400 hover:text-red-600 dark:hover:text-red-300 transition-colors flex items-center gap-1 group/remove">
+                                <span class="material-symbols-outlined text-[18px]">delete</span>
+                                <span
+                                    class="border-b border-transparent group-hover/remove:border-red-400 dark:group-hover/remove:border-red-300">Remove</span>
+                            </button>
+                            <div class="flex items-center bg-background-light dark:bg-black/20 rounded-lg p-1">
+                                <button aria-label="Decrease quantity"
+                                    class="size-8 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-white/10 text-text-main dark:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-[16px]">remove</span>
+                                </button>
+                                <input
+                                    class="w-10 bg-transparent text-center border-none text-text-main dark:text-white font-medium focus:ring-0 p-0 text-sm"
+                                    readonly="" type="text" value="1" />
+                                <button aria-label="Increase quantity"
+                                    class="size-8 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-white/10 text-text-main dark:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-[16px]">add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative flex flex-col sm:flex-row gap-6 p-6 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm hover:shadow-md transition-shadow duration-300 border border-transparent hover:border-primary/20">
+                    <div class="shrink-0 relative overflow-hidden rounded-lg aspect-square size-32 bg-gray-100">
+                        <img alt="Espresso shot"
+                            class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQOx_IWL_fkyKacApvFq-vgQjeBgehylZAMWGZxYWXNPuft0QAeFhaNDzAyFTQKLWzCDPH-UDbUAsjvvqNT5zIAGOyn9ZE3kTPsGFdLFR-_M_BHARCjm7vg85rDk8yLQsYCINWgPZVP-cMQfYqUREC_dTBHmKWzIs23JNe-fhtoALRuBpGGRcCMjaZ8wkTPMq8jRUBsThr-062C83ByiSmqZIfcJnAPtNdVzcscu_3Gc1Z2Hhc1kIc5grCPc1ofJSysFYZL5R17ibS" />
+                    </div>
+                    <div class="flex flex-col flex-1 justify-between py-1">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-display text-xl text-text-main dark:text-white font-bold">
+                                    House Espresso Blend
+                                </h3>
+                                <p class="font-display text-lg font-bold text-text-main dark:text-white">
+                                    $32.00
+                                </p>
+                            </div>
+                            <p class="text-text-secondary dark:text-gray-400 text-sm mt-1">
+                                Medium Roast, Ground
+                            </p>
+                            <p class="text-gray-400 dark:text-gray-500 text-xs mt-1">
+                                Notes: Chocolate, Caramel, Nutty
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button
+                                class="text-sm font-medium text-red-400 hover:text-red-600 dark:hover:text-red-300 transition-colors flex items-center gap-1 group/remove">
+                                <span class="material-symbols-outlined text-[18px]">delete</span>
+                                <span
+                                    class="border-b border-transparent group-hover/remove:border-red-400 dark:group-hover/remove:border-red-300">Remove</span>
+                            </button>
+                            <div class="flex items-center bg-background-light dark:bg-black/20 rounded-lg p-1">
+                                <button aria-label="Decrease quantity"
+                                    class="size-8 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-white/10 text-text-main dark:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-[16px]">remove</span>
+                                </button>
+                                <input
+                                    class="w-10 bg-transparent text-center border-none text-text-main dark:text-white font-medium focus:ring-0 p-0 text-sm"
+                                    readonly="" type="text" value="2" />
+                                <button aria-label="Increase quantity"
+                                    class="size-8 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-white/10 text-text-main dark:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-[16px]">add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a class="inline-flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+                <div
+                    class="sticky top-28 bg-surface-light dark:bg-surface-dark rounded-xl p-8 shadow-sm border border-gray-100 dark:border-gray-800">
+                    <h2 class="font-display text-2xl font-bold text-text-main dark:text-white mb-6">
+                        Order Summary
+                    </h2>
+                    <div class="space-y-6 mb-8">
+                        <div class="flex justify-between text-text-secondary dark:text-gray-300">
+                            <span>Subtotal</span>
+                            <span class="font-medium font-display">$50.00</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-text-secondary dark:text-gray-300">
+                                <span class="flex items-center gap-1">
+                                    Shipping
+                                    <span class="material-symbols-outlined text-gray-400 text-[16px] cursor-help"
+                                        title="Calculated based on location">help</span>
+                                </span>
+                                <span class="text-xs italic text-gray-400">Calculated based on location</span>
+                            </div>
+                            <div class="relative">
+                                <input
+                                    class="peer block w-full border-0 border-b border-gray-200 dark:border-gray-700 bg-transparent py-2 px-0 text-sm text-text-main dark:text-white focus:border-primary focus:ring-0 appearance-none"
+                                    id="delivery-location" placeholder=" " type="text" />
+                                <label
+                                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:text-primary"
+                                    for="delivery-location">
+                                    Delivery Location
+                                </label>
+                                <div class="absolute right-0 top-2 text-gray-400 pointer-events-none">
+                                    <span class="material-symbols-outlined text-[18px]">location_on</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-100 dark:border-gray-700 py-6 mb-2">
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg font-medium text-text-main dark:text-white">Estimated Total</span>
+                            <span class="text-3xl font-display font-black text-text-main dark:text-white">$50.00</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2">
+                            Taxes and shipping calculated at checkout
+                        </p>
+                    </div>
+                    <div class="mb-8 relative">
+                        <input
+                            class="peer block w-full border-0 border-b-2 border-gray-200 dark:border-gray-700 bg-transparent py-2.5 px-0 text-sm text-gray-900 dark:text-white focus:border-primary focus:ring-0 appearance-none"
+                            id="promo" placeholder=" " type="text" />
+                        <label
+                            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 peer-focus:text-primary"
+                            for="promo">
+                            Gift card or discount code
+                        </label>
+                        <button
+                            class="absolute right-0 bottom-2.5 text-xs font-bold text-primary uppercase tracking-wider hover:text-text-main dark:hover:text-white transition-colors">
+                            Apply
+                        </button>
+                    </div>
+                    <label
+                        class="cursor-pointer w-full bg-primary hover:bg-[#d6b05b] text-text-main font-bold text-base py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group"
+                        for="modal-toggle">
+                        Proceed to Checkout
+                        <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </label>
+                    <div class="mt-6 flex items-center justify-center gap-2 text-xs text-gray-400">
+                        <span class="material-symbols-outlined text-[16px]">lock</span>
+                        Secure Checkout
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="hidden fixed inset-0 z-[100] items-center justify-center px-4" id="order-review-modal">
+        <label class="absolute inset-0 bg-background-dark/80 backdrop-blur-sm cursor-default"
+            for="modal-toggle"></label>
+        <div
+            class="relative bg-background-light dark:bg-surface-dark w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 min-h-[500px] flex flex-col justify-center">
+            <input class="hidden" id="success-trigger" type="checkbox" />
+            <div class="flex flex-col h-full w-full" id="order-content">
+                <div
+                    class="p-8 border-b border-[#e5e0d8] dark:border-[#3a3528] flex justify-between items-center bg-white dark:bg-black/10">
+                    <h2 class="font-display text-3xl font-black text-coffee-dark dark:text-white tracking-tight">
+                        Order Review
+                    </h2>
+                    <label
+                        class="cursor-pointer size-10 rounded-full flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                        for="modal-toggle">
+                        <span class="material-symbols-outlined text-gray-400">close</span>
+                    </label>
+                </div>
+                <div class="p-8 space-y-6 max-h-[60vh] overflow-y-auto">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-col">
+                                <span class="font-display font-bold text-coffee-dark dark:text-white">Ethiopian
+                                    Yirgacheffe</span>
+                                <span class="text-xs text-text-secondary dark:text-gray-400">Qty: 1</span>
+                            </div>
+                            <span class="font-display font-medium text-coffee-dark dark:text-white">$18.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-col">
+                                <span class="font-display font-bold text-coffee-dark dark:text-white">House Espresso
+                                    Blend</span>
+                                <span class="text-xs text-text-secondary dark:text-gray-400">Qty: 2</span>
+                            </div>
+                            <span class="font-display font-medium text-coffee-dark dark:text-white">$32.00</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-[#e5e0d8] dark:border-[#3a3528] pt-6 flex flex-col gap-1">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-text-secondary dark:text-gray-400">Subtotal</span>
+                            <span
+                                class="text-sm font-display font-medium text-coffee-dark dark:text-white">$50.00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-text-secondary dark:text-gray-400">Shipping</span>
+                            <span class="text-sm font-display font-medium text-coffee-dark dark:text-white">Free</span>
+                        </div>
+                        <div class="flex justify-between items-end mt-4">
+                            <span class="text-xl font-bold text-coffee-dark dark:text-white">Estimated Total</span>
+                            <span class="text-3xl font-display font-black text-primary">$50.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-8 bg-white dark:bg-black/10 border-t border-[#e5e0d8] dark:border-[#3a3528]">
+                    <label
+                        class="cursor-pointer block text-center w-full bg-coffee-dark hover:bg-black text-white dark:bg-primary dark:text-coffee-dark font-black text-lg py-5 px-6 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-widest"
+                        for="success-trigger">
+                        Accept Order
+                    </label>
+                </div>
+            </div>
+            <div class="absolute inset-0 flex-col items-center justify-center text-center p-8 opacity-0"
+                id="success-state">
+                <div
+                    class="size-24 bg-success/10 text-success rounded-full flex items-center justify-center mb-6 animate-bounce">
+                    <span class="material-symbols-outlined !text-6xl font-bold">check</span>
+                </div>
+                <h3 class="font-display text-4xl font-black text-coffee-dark dark:text-white mb-2">
+                    Finished
+                </h3>
+                <p class="text-text-secondary dark:text-gray-400 mb-8">
+                    Your order has been successfully placed.
+                </p>
+                <label
+                    class="cursor-pointer px-8 py-3 bg-coffee-dark dark:bg-white dark:text-coffee-dark text-white rounded-lg font-bold hover:opacity-90 transition-opacity"
+                    for="modal-toggle">
+                    Return to Store
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="mt-auto border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-background-dark py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="size-6 text-primary opacity-80">
+                    <svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <span class="font-display font-bold text-lg text-text-main dark:text-white">Drip Lab</span>
+            </div>
+            <div class="flex gap-8 text-sm text-text-secondary dark:text-gray-400">
+                <a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a>
+                <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="hover:text-primary transition-colors" href="#">Terms</a>
+            </div>
+            <p class="text-xs text-gray-400">© 2024 Drip Lab Coffee Co.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

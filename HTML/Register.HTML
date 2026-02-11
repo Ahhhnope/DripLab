@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../CSS/Register.CSS">
+    
+    <!-- Icon Libraries -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <title>Register - Drip Lab</title>
+</head>
+
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header-login">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo">
+                <a href="#" class="logo-image-link">
+                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="navbar">
+                <a href="#">MENU</a>
+                <a href="#">ABOUT US</a>
+                <a href="../HTML/News.html">NEWS</a>
+                <a href="#">STORES</a>
+            </nav>
+
+            <!-- User Actions (Login/Cart) -->
+            <div class="user-login">
+                <button type="button">
+                    <i class='bx bxs-user'></i>
+                </button>
+                <button type="button">
+                    <i class='bx bxs-shopping-bag'></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== MAIN REGISTER SECTION ========== -->
+    <div class="login-between grid">
+        <div class="login-container grid">
+            
+            <!-- ===== IMAGE SLIDER (Desktop Only) ===== -->
+            <div class="login-swiper">
+                <!-- Slider Text Overlay -->
+                <div class="login-swiper-data">
+                    <h1 class="login-swiper-title">"Precision in every drop, soul in <br> every cup."</h1>
+                </div>
+
+                <!-- Social Links Overlay -->
+                <div class="login-swiper-social">
+                    <p class="login-swiper-subtitle">Follow Us</p>
+                    <div class="login-swiper-links">
+                        <a href="#" target="_blank" class="login-swiper-link">
+                            <i class="ri-facebook-circle-fill"></i>
+                        </a>
+                        <a href="#" target="_blank" class="login-swiper-link">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="#" target="_blank" class="login-swiper-link">
+                            <i class="ri-twitch-fill"></i>
+                        </a>
+                        <a href="#" target="_blank" class="login-swiper-link">
+                            <i class="ri-github-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image Slides -->
+                <div class="login-swiper-wrapper">
+                    <div class="login-swiper-slide active">
+                        <img src="../IMG/anh-1.jpg" alt="Coffee Image 1" class="login-swiper-img">
+                    </div>
+                    <div class="login-swiper-slide">
+                        <img src="../IMG/anh-2.jpg" alt="Coffee Image 2" class="login-swiper-img">
+                    </div>
+                    <div class="login-swiper-slide">
+                        <img src="../IMG/anh-3.jpg" alt="Coffee Image 3" class="login-swiper-img">
+                    </div>
+                    <div class="login-swiper-slide">
+                        <img src="../IMG/anh-4.jpg" alt="Coffee Image 4" class="login-swiper-img">
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-prev">‹</div>
+                <div class="swiper-button-next">›</div>
+
+                <!-- Pagination Dots -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <!-- ===== REGISTER FORM AREA ===== -->
+            <div class="login-area grid">
+                <!-- Header Section -->
+                <div class="login-data">
+                    <div class="login-logo">
+                        <img src="../IMG/DELLBIETNOIGI.jpg" alt="Drip Lab">
+                    </div>
+                    <h1 class="login-title">Join the Lab</h1>
+                    <p class="login-description">Enter your details to start your artisanal journey</p>
+                </div>
+
+                <!-- Register Form -->
+                <form action="" class="login-form">
+                    <div class="login-content grid">
+                        <!-- Full Name Input -->
+                        <div class="login-box">
+                            <input type="text" name="fullname" placeholder="FULL NAME" class="login-input" required>
+                            <i class="ri-user-fill"></i>
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="login-box">
+                            <input type="email" name="email" placeholder="EMAIL" class="login-input" required>
+                            <i class="ri-mail-fill"></i>
+                        </div>
+
+                        <!-- Phone Number Input -->
+                        <div class="login-box">
+                            <input type="tel" name="phone" placeholder="PHONE NUMBER" class="login-input" required pattern="[0-9]*" inputmode="numeric">
+                            <i class="ri-phone-fill"></i>
+                        </div>
+
+                        <!-- Password Input with Hint -->
+                        <div class="login-password-wrapper">
+                            <div class="login-box">
+                                <input type="password" name="password" placeholder="PASSWORD" class="login-input" required id="LoginPassword">
+                                <i class="ri-eye-line login-eye" id="LoginEye"></i>
+                            </div>
+                            <p class="password-hint">Must be at least 8 characters</p>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="login-button">Register Account</button>
+
+                    <!-- Divider -->
+                    <span class="login-line">OR SIGN UP WITH</span>
+
+                    <!-- Social Login Buttons -->
+                    <div class="login-social-buttons">
+                        <button type="button" class="login-social-btn">
+                            <i class='bx bxl-google'></i> Google
+                        </button>
+                        <button type="button" class="login-social-btn">
+                            <i class="ri-apple-fill"></i> Apple
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Sign In Link -->
+                <p class="login-switch">
+                    Already have an account? <a href="../HTML/Login.HTML" class="login-sign">Sign In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Column 1 - Logo & Description -->
+            <div class="footer-col">
+                <h3>
+                    <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
+                </h3>
+                <p>
+                    Drip Lab - Coffee for your <br> fresh start every day.
+                </p>
+            </div>
+
+            <!-- Column 2 - Navigation -->
+            <div class="footer-col">
+                <h4>Tsaheylu</h4>
+                <ul>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Stores</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3 - Contact -->
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>Email: contact@driplab.com</p>
+                <p>Hotline: 036 363 6767</p>
+                <p>Place at: Việt Nam</p>
+            </div>
+
+            <!-- Column 4 - Social Media -->
+            <div class="footer-col">
+                <h4>Follow Us On</h4>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            © 2025 Drip Lab. Space for coffee heads.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/Register.JS"></script>
+</body>
+
+</html>
