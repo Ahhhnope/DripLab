@@ -25,7 +25,7 @@
   --body-font: "Epilogue", sans-serif;
   --second-font: "Epilogue", sans-serif;
   --header-font: "Epilogue", sans-serif;
-  
+
   /* Font Sizes */
   --bigger-font-size: 1.5rem;
   --normal-font-size: .938rem;
@@ -66,7 +66,7 @@ html.dark {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}   
+}
 
 body {
   background: var(--body-color);
@@ -730,6 +730,11 @@ img {
   border-color: var(--first-color);
 }
 
+/* Dark mode - input placeholder */
+html.dark .login-input::placeholder {
+  color: #999;
+}
+
 /* Input Icons */
 .login-box i {
   position: absolute;
@@ -744,6 +749,11 @@ img {
   color: #999;
 }
 
+/* Dark mode - icon color */
+html.dark .login-eye {
+  color: #c0c0c0;
+}
+
 /* Forgot Password Link */
 .login-forgot-inline {
   align-self: flex-end;
@@ -752,6 +762,12 @@ img {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.login-forgot-inline:hover {
+  color: var(--first-color-alt);
+  text-decoration: underline;
 }
 
 /* --- Submit Button --- */
@@ -827,13 +843,34 @@ img {
   font-size: 0.875rem;
 }
 
+/* Universal Hover Effect - Màu xanh lá nổi bật cho cả 2 mode */
 .login-social-btn:hover {
-  background-color: var(--hover-color);
-  border-color: var(--title-color);
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 94, 74, 0.4);
 }
 
 .login-social-btn i {
   font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.login-social-btn:hover i {
+  transform: scale(1.1);
+  color: white !important;
+}
+
+/* Dark Mode - Social Buttons Background */
+html.dark .login-social-btn {
+  background: rgba(42, 37, 32, 0.8);
+  border-color: rgba(199, 154, 94, 0.3);
+  color: #f5f5f0;
+}
+
+html.dark .login-social-btn i {
+  color: #f5f5f0;
 }
 
 /* --- Sign Up Link --- */
@@ -850,14 +887,17 @@ img {
   color: var(--first-color);
   cursor: pointer;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .login-sign:hover {
   text-decoration: underline;
+  color: var(--first-color-alt);
 }
 
 /*=============== RESPONSIVE - DESKTOP (1150px+) ===============*/
 @media screen and (min-width: 1150px) {
+
   /* --- Login Container Layout --- */
   .login-container {
     grid-template-columns: 592px 400px;
@@ -868,6 +908,12 @@ img {
     box-shadow: 0 0 40px hsla(0, 0%, 0%, 0.1);
     padding: 0.75rem;
     border-radius: 3rem;
+  }
+
+  /* Dark mode - Login Container */
+  html.dark .login-container {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(199, 154, 94, 0.2);
   }
 
   /* --- Image Slider Section --- */
@@ -931,12 +977,14 @@ img {
   .login-swiper-title {
     font-size: var(--bigger-font-size);
     font-family: var(--second-font);
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   }
 
   /* --- Social Links Overlay --- */
   .login-swiper-social {
     left: 3rem;
-    bottom: 4rem;       
+    bottom: 4rem;
   }
 
   .login-swiper-links {
@@ -944,7 +992,7 @@ img {
     align-items: center;
     column-gap: 0.75rem;
   }
-  
+
   .login-swiper-link {
     color: var(--white-color);
     font-size: 1.5rem;
@@ -1045,6 +1093,7 @@ img {
 
 .footer-col h3 {
   margin-bottom: 1rem;
+  
 }
 
 .footer-logo {
@@ -1133,40 +1182,40 @@ img {
     grid-template-columns: auto 1fr auto;
     gap: 1rem;
   }
-  
+
   .navbar {
     display: none;
   }
-  
+
   .header-logo-img {
     height: 30px;
   }
-  
+
   .user-login {
     gap: 1rem;
   }
-  
+
   /* Mobile - User Dropdown */
   .user-dropdown {
     width: 300px;
     right: -10px;
   }
-  
+
   .user-dropdown::before {
     right: 25px;
   }
-  
+
   /* Mobile - Menu Dropdown */
   .menu-dropdown {
     min-width: 240px;
   }
-  
+
   /* Mobile - Footer */
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .social-list {
     justify-content: center;
   }
@@ -1178,15 +1227,15 @@ img {
     width: calc(100vw - 40px);
     right: -80px;
   }
-  
+
   .dropdown-body {
-    padding: 20px 16px; 
+    padding: 20px 16px;
   }
-  
+
   .dropdown-actions {
     flex-direction: column;
   }
-  
+
   .menu-dropdown {
     min-width: 200px;
   }

@@ -47,7 +47,8 @@
   </script>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-dark-brown dark:text-background-light transition-colors duration-300">
+<body
+  class="bg-background-light dark:bg-background-dark text-dark-brown dark:text-background-light transition-colors duration-300">
   <header class="sticky top-0 z-50 header-glass border-b border-dark-brown/5">
     <div class="max-w-[1200px] mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3 group shrink-0" aria-label="Trang chủ Drip Lab"
@@ -64,20 +65,25 @@
       </a>
       <nav class="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2" aria-label="Điều hướng chính"
         data-i18n-attr="aria-label:aria.mainnav">
-        <a href="#" class="text-xs font-bold text-dark-brown hover:text-primary transition-colors uppercase tracking-[0.2em]"
+        <a href="#"
+          class="text-xs font-bold text-dark-brown hover:text-primary transition-colors uppercase tracking-[0.2em]"
           data-i18n="nav.menu">Thực đơn</a>
-        <a href="#" class="text-xs font-bold text-dark-brown hover:text-primary transition-colors uppercase tracking-[0.2em]"
+        <a href="#"
+          class="text-xs font-bold text-dark-brown hover:text-primary transition-colors uppercase tracking-[0.2em]"
           data-i18n="nav.about">Về chúng tôi</a>
         <a href="#" class="text-xs font-bold text-dark-brown border-b-2 border-dark-brown uppercase tracking-[0.2em]"
           data-i18n="nav.news">Tin tức</a>
-        <a href="#" class="text-xs font-bold text-dark-brown hover:text-primary transition-colors uppercase tracking-[0.2em]"
+        <a href="#"
+          class="text-xs font-bold text-dark-brown hover:text-primary transition-colors uppercase tracking-[0.2em]"
           data-i18n="nav.shop">Cửa hàng</a>
       </nav>
       <div class="flex items-center gap-4 md:gap-6 text-dark-brown shrink-0">
         <a href="#" class="flex items-center hover:text-primary transition-colors" aria-label="Tài khoản"
-          data-i18n-attr="aria-label:aria.account"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">person</span></a>
+          data-i18n-attr="aria-label:aria.account"><span class="material-symbols-outlined text-[22px]"
+            aria-hidden="true">person</span></a>
         <a href="#" class="flex items-center hover:text-primary transition-colors" aria-label="Giỏ hàng"
-          data-i18n-attr="aria-label:aria.cart"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">shopping_bag</span></a>
+          data-i18n-attr="aria-label:aria.cart"><span class="material-symbols-outlined text-[22px]"
+            aria-hidden="true">shopping_bag</span></a>
         <button type="button" id="theme-toggle" class="flex items-center gap-2 hover:text-primary transition-colors"
           aria-label="Chuyển chế độ Sáng/Tối" data-i18n-attr="aria-label:aria.themeToggle">
           <span class="material-symbols-outlined text-[22px]" id="theme-toggle-icon" aria-hidden="true">dark_mode</span>
@@ -88,8 +94,8 @@
           aria-label="Chuyển ngôn ngữ" data-i18n-attr="aria-label:aria.langToggle">
           <span id="lang-toggle-label">EN</span>
         </button>
-        <button type="button" class="material-symbols-outlined cursor-pointer hover:text-primary md:hidden" aria-label="Mở menu"
-          data-i18n-attr="aria-label:aria.openMenu">menu</button>
+        <button type="button" class="material-symbols-outlined cursor-pointer hover:text-primary md:hidden"
+          aria-label="Mở menu" data-i18n-attr="aria-label:aria.openMenu">menu</button>
       </div>
     </div>
   </header>
@@ -99,8 +105,8 @@
       <div class="flex flex-col lg:flex-row min-h-[500px]">
         <div class="w-full lg:w-3/5 relative">
           <div class="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent z-10" aria-hidden="true"></div>
-          <div class="h-full w-full min-h-[300px] bg-center bg-cover" style='background-image: url("../IMG/Coffe2.jpg");'
-            aria-hidden="true"></div>
+          <div class="h-full w-full min-h-[300px] bg-center bg-cover"
+            style='background-image: url("../IMG/Coffe2.jpg");' aria-hidden="true"></div>
         </div>
         <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center bg-[#FFFDFB] dark:bg-zinc-900">
           <div class="inline-flex items-center gap-2 text-accent-gold mb-4">
@@ -109,7 +115,8 @@
           </div>
           <h2 class="text-3xl lg:text-5xl font-black leading-[1.1] mb-6 font-display" data-i18n="hero.title">Hành trình
             hướng tới nguồn cung bền vững</h2>
-          <p class="text-lg text-dark-brown/70 dark:text-background-light/70 mb-8 leading-relaxed" data-i18n="hero.desc">Khám phá cách chúng tôi hợp tác với các nông hộ địa phương trên vành đai cà phê để
+          <p class="text-lg text-dark-brown/70 dark:text-background-light/70 mb-8 leading-relaxed"
+            data-i18n="hero.desc">Khám phá cách chúng tôi hợp tác với các nông hộ địa phương trên vành đai cà phê để
             mang đến những hạt cà phê chất lượng cao nhất với nguồn cung đạo đức, đồng thời gìn giữ hệ sinh thái.</p>
           <button type="button"
             class="w-fit flex items-center justify-center gap-2 rounded-lg h-12 px-8 bg-primary text-white text-sm font-bold uppercase tracking-[0.1em] hover:bg-primary/90 transition-all active:scale-95"
@@ -158,45 +165,69 @@
       <article class="flex flex-col group cursor-pointer" data-page="1">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
-            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGXL3fX3pIZfIK_441IQu7MtM0DsbSgsknov-EiJE2pL4Qj7oAmS7onb3duX-sFmPtBEPU_XemS5P2DZ9HnLHnKo2Fg4gFFVqkxgcQdu48hiz7RwR2r9ixJu6Rb58hWCV9DaqEiVF6-NRPcvL_X7yabnOPZBJw-UgnZTkhxnfJsr4KikS8u432zrH9K_9n5BQ4GQ8h-AL-ZAdIOUtrvrviNoxUt5dTgiPJYqVQdrkV4AsHMWF0Oqd2SL0rZUPjJ0hb_CC853JxYfBQ");' aria-hidden="true"></div>
-          <div class="absolute top-4 left-4"><span class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full" data-i18n="post1.badge">Sự kiện</span></div>
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGXL3fX3pIZfIK_441IQu7MtM0DsbSgsknov-EiJE2pL4Qj7oAmS7onb3duX-sFmPtBEPU_XemS5P2DZ9HnLHnKo2Fg4gFFVqkxgcQdu48hiz7RwR2r9ixJu6Rb58hWCV9DaqEiVF6-NRPcvL_X7yabnOPZBJw-UgnZTkhxnfJsr4KikS8u432zrH9K_9n5BQ4GQ8h-AL-ZAdIOUtrvrviNoxUt5dTgiPJYqVQdrkV4AsHMWF0Oqd2SL0rZUPjJ0hb_CC853JxYfBQ");'
+            aria-hidden="true"></div>
+          <div class="absolute top-4 left-4"><span
+              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+              data-i18n="post1.badge">Sự kiện</span></div>
         </div>
         <div class="flex flex-col flex-grow">
           <span class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-2">24 Tháng 10, 2023</span>
-          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display" data-i18n="post1.title">Phiên nếm thử: Thứ Sáu này tại Brooklyn</h3>
-          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed" data-i18n="post1.desc">Tham gia sự kiện nếm thử độc quyền cùng trưởng nhóm rang, khám phá các mùa vụ đơn
+          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display"
+            data-i18n="post1.title">Phiên nếm thử: Thứ Sáu này tại Brooklyn</h3>
+          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed"
+            data-i18n="post1.desc">Tham gia sự kiện nếm thử độc quyền cùng trưởng nhóm rang, khám phá các mùa vụ đơn
             nguồn từ Ethiopia ở vùng cao.</p>
-          <a href="#" class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all" data-i18n="post.readmore">Đọc toàn bộ bài viết <span class="material-symbols-outlined text-xs" aria-hidden="true">north_east</span></a>
+          <a href="#"
+            class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all"
+            data-i18n="post.readmore">Đọc toàn bộ bài viết <span class="material-symbols-outlined text-xs"
+              aria-hidden="true">north_east</span></a>
         </div>
       </article>
 
       <article class="flex flex-col group cursor-pointer" data-page="1">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
-            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJQGOBXPhDGZ3oF-rwbrtLNMRRokEsqxYgMdG1SFa0Xo918os42TiQQk2vu2bmFX_G1aWvtVvzggcjL2Z7FCZngmYObQpOVQUMmbZjotR2cF05H20D6bBoktwH7fYmZ6gFkW1tDv4GD-SBeVYeK4o7ntejDX14PJmdXXX7qCqQqcStoXMg43Te3OHYjGadfgtnY9_Yi8D8F-d8wdRvLMwPo9cP7Vo9Aa-fDNINqaeV14CE8lgM_H4XcqwpU6ElTNLQaFkNrfNUEOxx");' aria-hidden="true"></div>
-          <div class="absolute top-4 left-4"><span class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full" data-i18n="post2.badge">Mẹo pha cà phê</span></div>
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJQGOBXPhDGZ3oF-rwbrtLNMRRokEsqxYgMdG1SFa0Xo918os42TiQQk2vu2bmFX_G1aWvtVvzggcjL2Z7FCZngmYObQpOVQUMmbZjotR2cF05H20D6bBoktwH7fYmZ6gFkW1tDv4GD-SBeVYeK4o7ntejDX14PJmdXXX7qCqQqcStoXMg43Te3OHYjGadfgtnY9_Yi8D8F-d8wdRvLMwPo9cP7Vo9Aa-fDNINqaeV14CE8lgM_H4XcqwpU6ElTNLQaFkNrfNUEOxx");'
+            aria-hidden="true"></div>
+          <div class="absolute top-4 left-4"><span
+              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+              data-i18n="post2.badge">Mẹo pha cà phê</span></div>
         </div>
         <div class="flex flex-col flex-grow">
           <span class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-2">18 Tháng 10, 2023</span>
-          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display" data-i18n="post2.title">Thuần thục V60 tại nhà</h3>
-          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed" data-i18n="post2.desc">Mẹo chuyên nghiệp cho pour-over hoàn hảo. Tìm hiểu kích thước xay và nhiệt độ nước
+          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display"
+            data-i18n="post2.title">Thuần thục V60 tại nhà</h3>
+          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed"
+            data-i18n="post2.desc">Mẹo chuyên nghiệp cho pour-over hoàn hảo. Tìm hiểu kích thước xay và nhiệt độ nước
             chuẩn để đạt chất lượng như quán.</p>
-          <a href="#" class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all" data-i18n="post.readmore">Đọc toàn bộ bài viết <span class="material-symbols-outlined text-xs" aria-hidden="true">north_east</span></a>
+          <a href="#"
+            class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all"
+            data-i18n="post.readmore">Đọc toàn bộ bài viết <span class="material-symbols-outlined text-xs"
+              aria-hidden="true">north_east</span></a>
         </div>
       </article>
 
       <article class="flex flex-col group cursor-pointer" data-page="1">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
-            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD8z2cl0WzICUYU8wYlduT_IC4pI0Muu-gBhD3PnhFi-d7O2upatBQElyCaKoYV_Rpe8-fsyXx0S5qdex1eotANlkpXMOXy7S-rVL5GlhuBvFhoY4uEsJOPxJ0SNpuquge0hzXeBy0km7rk5BAUgJXiSLfZv_TMe6N2Q4dbrc_K3L-VDPyMCeu9_uzmR66H_H65yYJCKr6zs9cUW3OlseXGgV_zazzSteb7URUrpV3cwfpJ4Vuvo2EWK7lMykoMCR8PZ-OXMbJ_sgaQ");' aria-hidden="true"></div>
-          <div class="absolute top-4 left-4"><span class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full" data-i18n="post3.badge">Đồ uống mới</span></div>
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD8z2cl0WzICUYU8wYlduT_IC4pI0Muu-gBhD3PnhFi-d7O2upatBQElyCaKoYV_Rpe8-fsyXx0S5qdex1eotANlkpXMOXy7S-rVL5GlhuBvFhoY4uEsJOPxJ0SNpuquge0hzXeBy0km7rk5BAUgJXiSLfZv_TMe6N2Q4dbrc_K3L-VDPyMCeu9_uzmR66H_H65yYJCKr6zs9cUW3OlseXGgV_zazzSteb7URUrpV3cwfpJ4Vuvo2EWK7lMykoMCR8PZ-OXMbJ_sgaQ");'
+            aria-hidden="true"></div>
+          <div class="absolute top-4 left-4"><span
+              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+              data-i18n="post3.badge">Đồ uống mới</span></div>
         </div>
         <div class="flex flex-col flex-grow">
           <span class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-2">12 Tháng 10, 2023</span>
-          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display" data-i18n="post3.title">Ra mắt: Latte mật ong sữa yến mạch</h3>
-          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed" data-i18n="post3.desc">Món ưa thích theo mùa đã trở lại trong thực đơn. Mật ong thu hoạch thủ công hòa cùng
+          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display"
+            data-i18n="post3.title">Ra mắt: Latte mật ong sữa yến mạch</h3>
+          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed"
+            data-i18n="post3.desc">Món ưa thích theo mùa đã trở lại trong thực đơn. Mật ong thu hoạch thủ công hòa cùng
             sữa yến mạch và espresso đặc trưng của chúng tôi.</p>
-          <a href="#" class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all" data-i18n="post.readmore">Đọc toàn bộ bài viết <span class="material-symbols-outlined text-xs" aria-hidden="true">north_east</span></a>
+          <a href="#"
+            class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all"
+            data-i18n="post.readmore">Đọc toàn bộ bài viết <span class="material-symbols-outlined text-xs"
+              aria-hidden="true">north_east</span></a>
         </div>
       </article>
 
@@ -208,47 +239,64 @@
             style='background-image: url("https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=70");'
             aria-hidden="true"></div>
           <div class="absolute top-4 left-4"><span
-              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Trang 2</span></div>
+              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Trang
+              2</span></div>
         </div>
         <div class="flex flex-col flex-grow">
           <span class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-2">05 Tháng 02, 2026</span>
-          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">Bài viết mẫu để kiểm tra phân trang</h3>
-          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">Đây là bài viết mẫu thuộc trang 2. Nếu bạn bấm nút “2”, bài này sẽ hiện ra; bấm “1” thì bài này sẽ ẩn.</p>
+          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">Bài
+            viết mẫu để kiểm tra phân trang</h3>
+          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">Đây là bài viết mẫu
+            thuộc trang 2. Nếu bạn bấm nút “2”, bài này sẽ hiện ra; bấm “1” thì bài này sẽ ẩn.</p>
           <a href="#"
-            class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all">Đọc toàn bộ bài viết
+            class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all">Đọc
+            toàn bộ bài viết
             <span class="material-symbols-outlined text-xs" aria-hidden="true">north_east</span></a>
         </div>
       </article>
-        <article class="flex flex-col group cursor-pointer" data-page="3">
+      <article class="flex flex-col group cursor-pointer" data-page="3">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
             style='background-image: url("https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=70");'
             aria-hidden="true"></div>
           <div class="absolute top-4 left-4"><span
-              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Trang 2</span></div>
+              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Trang
+              2</span></div>
         </div>
         <div class="flex flex-col flex-grow">
           <span class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-2">05 Tháng 02, 2026</span>
-          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">Bài viết mẫu để kiểm tra phân trang</h3>
-          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">Đây là bài viết mẫu thuộc trang 2. Nếu bạn bấm nút “2”, bài này sẽ hiện ra; bấm “1” thì bài này sẽ ẩn.</p>
+          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">Bài
+            viết mẫu để kiểm tra phân trang</h3>
+          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">Đây là bài viết mẫu
+            thuộc trang 2. Nếu bạn bấm nút “2”, bài này sẽ hiện ra; bấm “1” thì bài này sẽ ẩn.</p>
           <a href="#"
-            class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all">Đọc toàn bộ bài viết
+            class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all">Đọc
+            toàn bộ bài viết
             <span class="material-symbols-outlined text-xs" aria-hidden="true">north_east</span></a>
         </div>
       </article>
     </div>
 
-    
+
 
     <div class="flex items-center justify-center pt-8">
-      <nav id="pagination" class="flex items-center gap-2" aria-label="Phân trang" data-i18n-attr="aria-label:aria.pagination">
-        <button type="button" data-action="prev" class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
-          aria-label="Trang trước" data-i18n-attr="aria-label:aria.prevPage"><span class="material-symbols-outlined text-sm" aria-hidden="true">chevron_left</span></button>
-        <button type="button" data-page-btn="1" class="size-10 flex items-center justify-center rounded-full bg-primary text-white font-bold text-xs" aria-current="page">1</button>
-        <button type="button" data-page-btn="2" class="size-10 flex items-center justify-center rounded-full bg-transparent text-dark-brown/40 dark:text-white/40 font-bold text-xs hover:text-primary">2</button>
-        <button type="button" data-page-btn="3" class="size-10 flex items-center justify-center rounded-full bg-transparent text-dark-brown/40 dark:text-white/40 font-bold text-xs hover:text-primary">3</button>
-        <button type="button" data-action="next" class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
-          aria-label="Trang sau" data-i18n-attr="aria-label:aria.nextPage"><span class="material-symbols-outlined text-sm" aria-hidden="true">chevron_right</span></button>
+      <nav id="pagination" class="flex items-center gap-2" aria-label="Phân trang"
+        data-i18n-attr="aria-label:aria.pagination">
+        <button type="button" data-action="prev"
+          class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+          aria-label="Trang trước" data-i18n-attr="aria-label:aria.prevPage"><span
+            class="material-symbols-outlined text-sm" aria-hidden="true">chevron_left</span></button>
+        <button type="button" data-page-btn="1"
+          class="size-10 flex items-center justify-center rounded-full bg-primary text-white font-bold text-xs"
+          aria-current="page">1</button>
+        <button type="button" data-page-btn="2"
+          class="size-10 flex items-center justify-center rounded-full bg-transparent text-dark-brown/40 dark:text-white/40 font-bold text-xs hover:text-primary">2</button>
+        <button type="button" data-page-btn="3"
+          class="size-10 flex items-center justify-center rounded-full bg-transparent text-dark-brown/40 dark:text-white/40 font-bold text-xs hover:text-primary">3</button>
+        <button type="button" data-action="next"
+          class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+          aria-label="Trang sau" data-i18n-attr="aria-label:aria.nextPage"><span
+            class="material-symbols-outlined text-sm" aria-hidden="true">chevron_right</span></button>
       </nav>
     </div>
   </main>
@@ -258,8 +306,8 @@
       <div class="space-y-6">
         <div class="flex items-center gap-3">
           <div class="size-6 text-primary" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor" role="img" aria-label="Logo Drip Lab (nhỏ)"
-              data-i18n-attr="aria-label:aria.logoSmall">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor" role="img"
+              aria-label="Logo Drip Lab (nhỏ)" data-i18n-attr="aria-label:aria.logoSmall">
               <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z">
               </path>
@@ -270,10 +318,14 @@
         <p class="text-sm text-dark-brown/60 dark:text-white/60 leading-relaxed" data-i18n="footer.tagline">Elevating
           the everyday coffee experience through artisanal roasting and sustainable community partnerships.</p>
         <div class="flex gap-4">
-          <a href="#" class="size-8 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-            aria-label="Chia sẻ" data-i18n-attr="aria-label:aria.share"><span class="material-symbols-outlined text-sm" aria-hidden="true">share</span></a>
-          <a href="#" class="size-8 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-            aria-label="Email" data-i18n-attr="aria-label:aria.email"><span class="material-symbols-outlined text-sm" aria-hidden="true">mail</span></a>
+          <a href="#"
+            class="size-8 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+            aria-label="Chia sẻ" data-i18n-attr="aria-label:aria.share"><span class="material-symbols-outlined text-sm"
+              aria-hidden="true">share</span></a>
+          <a href="#"
+            class="size-8 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+            aria-label="Email" data-i18n-attr="aria-label:aria.email"><span class="material-symbols-outlined text-sm"
+              aria-hidden="true">mail</span></a>
         </div>
       </div>
 
@@ -311,22 +363,26 @@
       </div>
 
       <div class="space-y-6">
-        <h4 class="text-xs font-bold uppercase tracking-widest text-accent-gold" data-i18n="footer.newsletter">Bản tin</h4>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-accent-gold" data-i18n="footer.newsletter">Bản tin
+        </h4>
         <p class="text-sm text-dark-brown/60 dark:text-white/60" data-i18n="footer.newsDesc">Nhận mẹo pha chế và tin tức
           từ xưởng rang ngay trong hộp thư của bạn.</p>
-        <form class="flex gap-2" action="#" method="post" aria-label="Subscribe to newsletter" data-i18n-attr="aria-label:aria.subscribe">
+        <form class="flex gap-2" action="#" method="post" aria-label="Subscribe to newsletter"
+          data-i18n-attr="aria-label:aria.subscribe">
           <label for="newsletter-email" class="sr-only" data-i18n="footer.emailLabel">Địa chỉ email</label>
           <input id="newsletter-email" name="email" type="email" placeholder="Địa chỉ email" required
             class="bg-white dark:bg-zinc-800 border-primary/10 rounded-lg text-sm flex-grow focus:ring-primary focus:border-primary"
             data-i18n-attr="placeholder:footer.emailPlaceholder" />
-          <button type="submit" class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors" aria-label="Gửi" data-i18n-attr="aria-label:aria.send">
+          <button type="submit" class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors"
+            aria-label="Gửi" data-i18n-attr="aria-label:aria.send">
             <span class="material-symbols-outlined" aria-hidden="true">send</span>
           </button>
         </form>
       </div>
     </div>
 
-    <div class="max-w-[1200px] mx-auto mt-16 pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-dark-brown/30 dark:text-white/30">
+    <div
+      class="max-w-[1200px] mx-auto mt-16 pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-dark-brown/30 dark:text-white/30">
       <p data-i18n="footer.copy1">© 2023 Drip Lab Coffee Roasters. Bảo lưu mọi quyền.</p>
       <p data-i18n="footer.copy2">Được tạo nên cho người tiêu dùng quan tâm bền vững.</p>
     </div>
