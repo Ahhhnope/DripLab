@@ -1,58 +1,142 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="vi" class="light">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Drip Lab - Shopping Cart</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../CSS/Test.CSS">
+    
+    <!-- Icon Libraries -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="../CSS/Cart.css" rel="stylesheet">
+    
 </head>
 
-<body
-    class="bg-background-light dark:bg-background-dark text-coffee-dark dark:text-gray-100 font-display min-h-screen flex flex-col transition-colors duration-300">
-    <header
-        class="sticky top-0 z-50 w-full transition-all duration-300 border-b border-coffee-light/50 dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <a class="flex items-center gap-3 group" href="/">
-                <div class="size-8 text-primary transition-transform group-hover:scale-105">
-                    <img src="../IMG/DELLBIETNOIGI.jpg" alt="">
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header-login">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo">
+                <a href="#" class="logo-image-link">
+                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="navbar">
+                <!-- Menu Dropdown -->
+                <div class="menu-dropdown-wrapper">
+                    <a href="#" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <div class="menu-dropdown" id="menu-dropdown">
+                        <a href="#" class="menu-option option-buy" data-i18n="menu.buyNow">
+                            <i class='bx bxs-cart'></i>
+                            <span>Mua ngay</span>
+                        </a>
+                        <a href="#" class="menu-option option-custom" data-i18n="menu.customize">
+                            <i class='bx bxs-coffee-togo'></i>
+                            <span>Tự pha chế</span>
+                        </a>
+                    </div>
                 </div>
-                <h2
-                    class="text-coffee-dark dark:text-white text-xl font-bold tracking-tight group-hover:text-primary transition-colors">
-                    Drip Lab</h2>
-            </a>
-            <nav class="hidden md:flex items-center gap-10">
-                <a class="text-coffee-dark dark:text-gray-300 text-sm font-bold hover:text-primary transition-colors"
-                    href="#">Menu</a>
-                <a class="text-coffee-dark dark:text-gray-300 text-sm font-bold hover:text-primary transition-colors"
-                    href="#">About Us</a>
-                <a class="text-coffee-dark dark:text-gray-300 text-sm font-bold hover:text-primary transition-colors"
-                    href="#">News</a>
-                <a class="text-coffee-dark dark:text-gray-300 text-sm font-bold hover:text-primary transition-colors"
-                    href="#">Stores</a>
+                
+                <a href="#" data-i18n="nav.about">ABOUT US</a>
+                <a href="#" data-i18n="nav.news">NEWS</a>
+                <a href="#" data-i18n="nav.stores">STORES</a>
             </nav>
-            <div class="flex items-center gap-6">
-                <button
-                    class="flex items-center justify-center text-coffee-dark dark:text-white hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined text-[26px]">person</span>
-                </button>
-                <button
-                    class="relative flex items-center justify-center text-coffee-dark dark:text-white hover:text-primary transition-colors group">
-                    <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
-                    <span
-                        class="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white shadow-sm ring-1 ring-white dark:ring-black">1</span>
+
+            <!-- User Actions (Login/Cart) -->
+            <div class="user-login">
+                <!-- User Profile Dropdown -->
+                <div class="user-profile-wrapper">
+                    <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
+                        <i class='bx bxs-user'></i>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-header">
+                            <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
+                        </div>
+                        
+                        <div class="dropdown-body">
+                            <!-- User Info Section -->
+                            <div class="user-info-section">
+                                <div class="user-avatar">
+                                    <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
+                                </div>
+                                <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
+                                <p class="user-email">abc@gmail.com</p>
+                            </div>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Settings Section -->
+                            <div class="settings-section">
+                                <!-- Theme Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                        <span data-i18n="profile.theme">Chế độ tối</span>
+                                    </div>
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch" aria-label="Toggle Theme">
+                                        <span class="toggle-slider"></span>
+                                    </button>
+                                </div>
+                                
+                                <!-- Language Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">language</span>
+                                        <span data-i18n="profile.language">Ngôn ngữ</span>
+                                    </div>
+                                    <div class="language-toggle">
+                                        <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+                                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="dropdown-actions">
+                                <button type="button" class="action-btn btn-login">
+                                    <span class="material-symbols-outlined">login</span>
+                                    <span data-i18n="profile.login">Login</span>
+                                </button>
+                                <button type="button" class="action-btn btn-signout">
+                                    <span class="material-symbols-outlined">logout</span>
+                                    <span data-i18n="profile.signout">Sign out</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button">
+                    <i class='bx bxs-shopping-bag'></i>
                 </button>
             </div>
         </div>
     </header>
 
-    
-    <main class="flex-grow w-full max-w-7xl mx-auto px-6 py-8 md:py-12">
+    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
+    <main class="main-content flex-grow w-full max-w-7xl mx-auto px-6 py-8 md:py-12">
         <section class="mb-12">
             <div class="flex items-center justify-between mb-6">
                 <div>
@@ -246,46 +330,71 @@
             </div>
         </div>
     </main>
-    <footer class="mt-auto border-t border-coffee-light/50 dark:border-white/10 py-12 bg-white dark:bg-black/20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-center md:text-left">
-                    <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
-                        <div class="size-6 text-primary">
-                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd"
-                                    d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
-                                    fill="currentColor" fill-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <span class="text-lg font-bold text-coffee-dark dark:text-white">Drip Lab</span>
-                    </div>
-                    <p class="text-sm text-coffee-med dark:text-gray-500">Brewing science, serving art.</p>
-                </div>
-                <div class="flex gap-8 text-sm font-medium text-coffee-dark dark:text-gray-300">
-                    <a class="hover:text-primary transition-colors" href="#">FAQ</a>
-                    <a class="hover:text-primary transition-colors" href="#">Contact</a>
-                    <a class="hover:text-primary transition-colors" href="#">Privacy</a>
-                    <a class="hover:text-primary transition-colors" href="#">Terms</a>
-                </div>
-                <div class="flex gap-4">
-                    <a class="text-coffee-med hover:text-primary transition-colors" href="#"><span
-                            class="sr-only">Instagram</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Column 1 - Logo & Description -->
+            <div class="footer-col">
+                <h3>
+                    <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
+                </h3>
+                <p data-i18n="footer.description">
+                    Drip Lab - Coffee for your <br> fresh start every day.
+                </p>
             </div>
-            <div class="mt-8 text-center text-xs text-coffee-light dark:text-gray-700">
-                © 2024 Drip Lab Coffee Co. All rights reserved.
+
+            <!-- Column 2 - Navigation -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.connect">Tsaheylu</h4>
+                <ul>
+                    <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#" data-i18n="nav.news">News</a></li>
+                    <li><a href="#" data-i18n="nav.stores">Stores</a></li>
+                </ul>
             </div>
+
+            <!-- Column 3 - Contact -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.contact">Contact Us</h4>
+                <p>Email: contact@driplab.com</p>
+                <p>Hotline: 036 363 6767</p>
+                <p data-i18n="footer.location">Place at: Việt Nam</p>
+            </div>
+
+            <!-- Column 4 - Social Media -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.follow">Follow Us On</h4>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="footer-bottom" data-i18n="footer.copyright">
+            © 2025 Drip Lab. Space for coffee heads.
         </div>
     </footer>
 
-
+    <!-- JavaScript -->
+    <script src="../JS/Test.JS"></script>
+    <script src="../JS/Cart.js"></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -318,7 +427,6 @@
             },
         }
     </script>
-    <script src="../JS/Cart.js"></script>
 </body>
 
 </html>
