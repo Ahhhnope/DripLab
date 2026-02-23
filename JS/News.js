@@ -321,15 +321,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // menu option click
   menuOptions.forEach((option) => {
-    option.addEventListener('click', function (e) {
-      e.preventDefault();
-      const optionText = this.querySelector('span')?.textContent || '';
-      console.log('Menu option clicked:', optionText);
-
-      if (this.classList.contains('option-buy')) {
-        alert(`Chuyển đến trang: ${optionText}`);
-      } else if (this.classList.contains('option-custom')) {
-        alert(`Chuyển đến trang: ${optionText}`);
+      option.addEventListener('click', function() {
+      const href = this.getAttribute('href');
+      if (href) {
+        window.location.href = href;
       }
     });
   });
