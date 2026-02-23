@@ -1,296 +1,410 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Banner Management | Drip Lab</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="../CSS/AdminManagementNews.css">
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "oklch(0.76 0.18 80)",
-                        secondary: "oklch(0.96 0.01 85)",
-                        background: "oklch(0.975 0.005 85)",
-                        foreground: "oklch(0.15 0.02 85)",
-                        card: "oklch(1 0 0)",
-                        border: "oklch(0.90 0.02 90)",
-                        muted: "oklch(0.96 0.01 85)",
-                        "muted-foreground": "oklch(0.60 0.05 90)",
-                        destructive: "oklch(0.577 0.245 27.325)"
-                    },
-                    fontFamily: {
-                        sans: ["Work Sans", "sans-serif"]
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin News &amp; Coupons Management | Drip Lab</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind config: synced from page 1 -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#ecab13",
+            "background-light": "#f8f7f6",
+            "background-dark": "#221c10",
+          },
+          fontFamily: {
+            display: ["Work Sans", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style type="text/tailwindcss">
+    body { font-family: "Work Sans", sans-serif; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #e6e2db; border-radius: 10px; }
+  </style>
 </head>
-<body class="bg-background text-foreground font-sans antialiased">
-    <div class="flex min-h-screen">
-        <!-- Sidebar -->
-        <aside class="fixed inset-y-0 left-0 w-64 bg-card border-r border-border flex flex-col z-50">
-            <div class="p-6 border-b border-border flex items-center gap-3">
-                <div class="size-8 text-primary">
-                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
-                    </svg>
-                </div>
-                <h1 class="text-xl font-black tracking-tight uppercase">Drip Lab</h1>
-            </div>
-            
-            <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
-                    <span class="material-symbols-outlined text-[22px]">dashboard</span>
-                    Dashboard
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
-                    <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
-                    Orders
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
-                    <span class="material-symbols-outlined text-[22px]">inventory_2</span>
-                    Product Management
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-lg bg-primary/10 text-primary border border-primary/20">
-                    <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1">article</span>
-                    News Management
-                </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
-                    <span class="material-symbols-outlined text-[22px]">payments</span>
-                    Financials
-                </a>
-            </nav>
 
-            <div class="p-4 border-t border-border">
-                <div class="flex items-center gap-3 px-2">
-                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOrdn105HdzCqblMq31xGRl14pCzSW5uo6pxm2izUbtbFM1L3TvJl9vLwuaZT9FHqAq4NleXBlp71gLgu_kt-leCoxH4w4dogWrd43GaIwtxBLLFE2Huzrp_J0Jh80DwDvSBcxRPko_H3X-BhV21iNQyglQJazfHu1SaTcAbXUQhOP_EiEo-YPGW2pG0pYRwIK8tKQOfFcQT0RvVvrFGdUwLOlvBlc0FNU4jh1avRWXBWVgSmX4ujGiv3lkbSuv2ovhlZOTgXANZMF");'></div>
-                    <div class="flex flex-col">
-                        <p class="text-sm font-bold">Admin User</p>
-                        <p class="text-[10px] text-muted-foreground font-semibold uppercase">Super Admin</p>
-                    </div>
-                </div>
-            </div>
-        </aside>
+<body class="bg-background-light dark:bg-background-dark text-[#181611] dark:text-white transition-colors duration-200">
+  <div class="flex min-h-screen">
 
-        <!-- Main Content -->
-        <div class="flex-1 flex flex-col ml-64 min-w-0">
-            <!-- Header -->
-            <header class="h-16 flex items-center justify-between px-8 bg-card border-b border-border sticky top-0 z-40">
-                <div class="flex items-center gap-4">
-                    <label class="flex items-center h-10 w-64 bg-secondary rounded-lg px-4 gap-2">
-                        <span class="material-symbols-outlined text-[20px] text-muted-foreground">search</span>
-                        <input class="bg-transparent border-none focus:ring-0 text-sm placeholder:text-muted-foreground w-full outline-none" placeholder="Search news or banners..." type="text">
-                    </label>
-                </div>
-                <div class="flex items-center gap-4">
-                    <button class="p-2 text-muted-foreground hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined">notifications</span>
-                    </button>
-                    <button class="p-2 text-muted-foreground hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined">settings</span>
-                    </button>
-                </div>
-            </header>
+    <!-- Sidebar -->
+    <aside class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-[#1a150c] border-r border-[#e6e2db] dark:border-[#3a3324] flex flex-col z-50">
+      <div class="p-6 border-b border-[#e6e2db] dark:border-[#3a3324] flex items-center gap-3">
+        <!-- Logo -->
+        <div class="header-logo flex items-center">
+          <a href="#" class="logo-image-link flex items-center">
+            <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img h-8 w-auto object-contain" />
+          </a>
+        </div>
+      </div>
 
-            <main class="flex-1 p-8">
-                <div class="flex flex-col gap-8">
-                    <!-- Page Title -->
-                    <div class="flex flex-wrap justify-between items-end gap-4">
-                        <div class="flex flex-col gap-1">
-                            <p class="text-foreground text-4xl font-black leading-tight tracking-tight">News & Banner Management</p>
-                            <p class="text-muted-foreground text-base font-normal">Manage blog stories and homepage slider hero banners.</p>
-                        </div>
-                        <div class="flex gap-3">
-                            <button class="flex items-center gap-2 rounded-lg h-11 px-5 bg-card border border-border text-foreground text-sm font-bold hover:bg-secondary transition-colors shadow-sm">
-                                <span class="material-symbols-outlined text-[20px]">view_carousel</span>
-                                <span>Banner Management</span>
-                            </button>
-                            <button id="create-post-btn" class="flex items-center gap-2 rounded-lg h-11 px-5 bg-primary text-white text-sm font-bold hover:brightness-105 transition-all shadow-sm">
-                                <span class="material-symbols-outlined text-[20px]">add</span>
-                                <span>Create New Post</span>
-                            </button>
-                        </div>
-                    </div>
+      <nav class="flex-1 p-4 space-y-1 overflow-y-auto custom-scrollbar">
+        <a class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-[#897d61] hover:bg-background-light dark:hover:bg-[#2d2618] transition-colors" href="#">
+          <span class="material-symbols-outlined text-[22px]">dashboard</span>
+          Dashboard
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-[#897d61] hover:bg-background-light dark:hover:bg-[#2d2618] transition-colors" href="#">
+          <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+          Orders
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-[#897d61] hover:bg-background-light dark:hover:bg-[#2d2618] transition-colors" href="#">
+          <span class="material-symbols-outlined text-[22px]">inventory_2</span>
+          Product Management
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+          <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1">article</span>
+          News Management
+        </a>
+      </nav>
 
-                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                        <div class="xl:col-span-2 flex flex-col gap-8">
-                            <!-- Banner List -->
-                            <section class="flex flex-col gap-4">
-                                <div class="flex items-center justify-between">
-                                    <h2 class="text-xl font-bold flex items-center gap-2">
-                                        <span class="material-symbols-outlined text-primary">collections</span>
-                                        Homepage Slider
-                                    </h2>
-                                    <button class="text-sm font-bold text-primary hover:underline flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-sm">add</span>
-                                        Add New Slide
-                                    </button>
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="banner-list">
-                                    <!-- Banners will be populated by JS -->
-                                </div>
-                            </section>
+      <div class="p-4 border-t border-[#e6e2db] dark:border-[#3a3324]">
+        <div class="flex items-center gap-3 px-2">
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOrdn105HdzCqblMq31xGRl14pCzSW5uo6pxm2izUbtbFM1L3TvJl9vLwuaZT9FHqAq4NleXBlp71gLgu_kt-leCoxH4w4dogWrd43GaIwtxBLLFE2Huzrp_J0Jh80DwDvSBcxRPko_H3X-BhV21iNQyglQJazfHu1SaTcAbXUQhOP_EiEo-YPGW2pG0pYRwIK8tKQOfFcQT0RvVvrFGdUwLOlvBlc0FNU4jh1avRWXBWVgSmX4ujGiv3lkbSuv2ovhlZOTgXANZMF");'></div>
+          <div class="flex flex-col">
+            <p class="text-sm font-bold">Admin User</p>
+            <p class="text-[10px] text-[#897d61] font-semibold uppercase">Super Admin</p>
+          </div>
+        </div>
+      </div>
+    </aside>
 
-                            <!-- News List -->
-                            <section class="flex flex-col gap-4">
-                                <div class="flex items-center justify-between">
-                                    <h2 class="text-xl font-bold flex items-center gap-2">
-                                        <span class="material-symbols-outlined text-primary">article</span>
-                                        Recent News Posts
-                                    </h2>
-                                </div>
-                                <div class="bg-card rounded-xl border border-border overflow-hidden shadow-sm">
-                                    <div class="overflow-x-auto">
-                                        <table class="w-full text-left">
-                                            <thead class="bg-secondary/50 border-b border-border">
-                                                <tr>
-                                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Title</th>
-                                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Date Published</th>
-                                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Author</th>
-                                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Status</th>
-                                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-muted-foreground text-right">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="divide-y divide-border" id="news-list">
-                                                <!-- News items will be populated by JS -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="flex items-center justify-between px-6 py-4 border-t border-border bg-secondary/30">
-                                        <span class="text-sm text-muted-foreground">Showing 2 of 42 posts</span>
-                                        <div class="flex gap-2">
-                                            <button class="p-2 rounded border border-border bg-card hover:bg-secondary disabled:opacity-50 transition-colors" disabled>
-                                                <span class="material-symbols-outlined text-[18px]">chevron_left</span>
-                                            </button>
-                                            <button class="p-2 rounded border border-border bg-card hover:bg-secondary transition-colors">
-                                                <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
+    <!-- Main -->
+    <div class="flex-1 flex flex-col ml-64 min-w-0">
+      <header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-[#1a150c] border-b border-[#e6e2db] dark:border-[#3a3324] sticky top-0 z-40">
+        <div class="flex items-center gap-4">
+          <label class="flex items-center h-10 w-64 bg-[#f4f3f0] dark:bg-[#2d2618] rounded-lg px-4 gap-2">
+            <span class="material-symbols-outlined text-[20px] text-[#897d61]">search</span>
+            <input class="bg-transparent border-none focus:ring-0 text-sm placeholder:text-[#897d61] w-full outline-none" placeholder="Search news or banners..." type="text" />
+          </label>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="p-2 text-[#897d61] hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <button class="p-2 text-[#897d61] hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">settings</span>
+          </button>
+        </div>
+      </header>
 
-                        <!-- Post Editor -->
-                        <div class="xl:col-span-1">
-                            <div class="bg-card rounded-xl border border-border overflow-hidden shadow-lg sticky top-24">
-                                <div class="p-5 border-b border-border flex items-center justify-between bg-primary/5">
-                                    <h3 class="text-lg font-bold">New Post Editor</h3>
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-1">
-                                        <span class="size-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                                        Autosaved 12:45
-                                    </span>
-                                </div>
+      <main class="flex-1 p-8">
+        <div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+          <div class="flex flex-col gap-1">
+            <p class="text-[#181611] dark:text-white text-4xl font-black leading-tight tracking-tight">News &amp; Coupons Management</p>
+            <p class="text-[#897d61] dark:text-[#a1957c] text-base font-normal">Manage blog stories, hero banners, and promotional codes.</p>
+          </div>
+          <div class="flex gap-3">
+            <button class="flex items-center gap-2 rounded-lg h-11 px-5 bg-white dark:bg-[#1a150c] border border-[#e6e2db] dark:border-[#3a3324] text-[#181611] dark:text-white text-sm font-bold hover:bg-[#fcfcfb] transition-colors shadow-sm">
+              <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+              <span>Manage Coupons</span>
+            </button>
+            <button class="flex items-center gap-2 rounded-lg h-11 px-5 bg-white dark:bg-[#1a150c] border border-[#e6e2db] dark:border-[#3a3324] text-[#181611] dark:text-white text-sm font-bold hover:bg-[#fcfcfb] transition-colors shadow-sm">
+              <span class="material-symbols-outlined text-[20px]">view_carousel</span>
+              <span>Banner Management</span>
+            </button>
+            <button id="create-post-btn" class="flex items-center gap-2 rounded-lg h-11 px-5 bg-primary text-white text-sm font-bold hover:brightness-105 transition-all shadow-sm">
+              <span class="material-symbols-outlined text-[20px]">add</span>
+              <span>Create New Post</span>
+            </button>
+          </div>
+        </div>
 
-                                <div class="p-6 flex flex-col gap-6 max-h-[calc(100vh-320px)] overflow-y-auto">
-                                    <div class="flex flex-col gap-2">
-                                        <p class="text-sm font-bold text-foreground uppercase tracking-wider">Feature Image</p>
-                                        <!-- Upload Area -->
-                                        <div id="drop-zone" class="w-full aspect-video rounded-lg border-2 border-dashed border-border flex flex-col items-center justify-center gap-3 bg-secondary/30 hover:border-primary/50 transition-colors cursor-pointer group relative overflow-hidden">
-                                            <!-- Hidden File Input -->
-                                            <input type="file" id="file-upload" class="hidden" accept="image/*">
-                                            
-                                            <!-- Default Content -->
-                                            <div id="upload-placeholder" class="flex flex-col items-center justify-center gap-3">
-                                                <span class="material-symbols-outlined text-[32px] text-muted-foreground group-hover:text-primary transition-colors">cloud_upload</span>
-                                                <div class="text-center">
-                                                    <p class="text-sm font-medium">Click or drag to upload</p>
-                                                    <p class="text-xs text-muted-foreground">16:9 aspect ratio recommended</p>
-                                                </div>
-                                            </div>
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          <div class="xl:col-span-2 flex flex-col gap-8">
 
-                                            <!-- Image Preview -->
-                                            <img id="image-preview" src="" alt="Preview" class="absolute inset-0 w-full h-full object-cover hidden">
-                                            
-                                            <!-- Remove Button (visible when image exists) -->
-                                            <button id="remove-image" type="button" class="absolute top-2 right-2 p-1 bg-black/50 hover:bg-destructive text-white rounded-full hidden z-10">
-                                                <span class="material-symbols-outlined text-sm">close</span>
-                                            </button>
-                                        </div>
-                                    </div>
+            <!-- Homepage Slider (keep JS hook id=banner-list) -->
+            <section class="flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary">collections</span>
+                  Homepage Slider
+                </h2>
+                <button class="text-sm font-bold text-primary hover:underline flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm">add_photo_alternate</span>
+                  Add New Slide
+                </button>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="banner-list">
+                <!-- Banners will be populated by JS (page2 behavior) -->
 
-                                    <div class="bg-primary/5 p-4 rounded-lg border border-primary/20">
-                                        <label class="flex items-center justify-between cursor-pointer group">
-                                            <div class="flex flex-col gap-0.5">
-                                                <span class="text-sm font-bold text-foreground">Set as Homepage Banner</span>
-                                                <span class="text-[10px] text-muted-foreground font-medium uppercase">Will appear in the fluid slider</span>
-                                            </div>
-                                            <div class="relative inline-flex items-center">
-                                                <input type="checkbox" class="sr-only peer">
-                                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
-                                            </div>
-                                        </label>
-                                    </div>
+                <!-- Fallback static cards (visible if JS not running) -->
+                <noscript>
+                  <div class="bg-white dark:bg-[#1a150c] rounded-xl border border-[#e6e2db] dark:border-[#3a3324] overflow-hidden">
+                    <div class="aspect-[21/9] bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuBeledX1EaCIP-RpGsZ9cQccV2yaSj1ZJ9h7-1emZlywlpTSaqud6rXORNx5YTsgvnG57mnMI_JXAs-1My8OZGhB2RQS6N1vxWntRn_ZqmAo1CPz-xDZHg0nE_gGWdu8WEMHmkMtvG7nqBPmjh-n20VXJOxNXd3SLI7K9S39JmqnDOm1RFM3omajV_tfv6hFQyc447uOSG6FnjRWtKRVrqhbrmg91Ei6VAAZDqrd9pWE_9pIlMxKPwWa3NZItXnWw9Qjkmgcto_M-TJ');"></div>
+                    <div class="p-3 text-xs text-[#897d61]">Enable JavaScript to load banners.</div>
+                  </div>
+                </noscript>
+              </div>
+            </section>
 
-                                    <div class="flex flex-col gap-2">
-                                        <p class="text-sm font-bold text-foreground uppercase tracking-wider">Title</p>
-                                        <input id="post-title" class="w-full border border-border bg-card rounded-lg p-3 text-base focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-muted-foreground" placeholder="Enter an engaging headline..." value="">
-                                    </div>
+            <!-- Active Coupons (added from page 1) -->
+            <section class="flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary">sell</span>
+                  Active Coupons
+                </h2>
+                <button class="text-sm font-bold text-primary hover:underline flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm">add</span>
+                  Create Coupon
+                </button>
+              </div>
 
-                                    <div class="flex flex-col gap-2">
-                                        <p class="text-sm font-bold text-foreground uppercase tracking-wider">Category Tags</p>
-                                        <div class="flex flex-wrap gap-2" id="tags-container">
-                                            <span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full flex items-center gap-1">
-                                                Collection 
-                                                <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-black/50" onclick="this.parentElement.remove()">close</span>
-                                            </span>
-                                            <button class="px-3 py-1 bg-primary/20 text-foreground text-xs font-bold rounded-full hover:bg-primary/30 transition-colors">
-                                                + Add Tag
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex flex-col gap-2">
-                                        <p class="text-sm font-bold text-foreground uppercase tracking-wider">Content Body</p>
-                                        <div class="border border-border rounded-lg overflow-hidden bg-card">
-                                            <div class="flex items-center gap-1 p-2 border-b border-border bg-secondary/50">
-                                                <button class="p-1 hover:bg-card rounded text-muted-foreground hover:text-foreground"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
-                                                <button class="p-1 hover:bg-card rounded text-muted-foreground hover:text-foreground"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
-                                                <button class="p-1 hover:bg-card rounded text-muted-foreground hover:text-foreground"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
-                                                <button class="p-1 hover:bg-card rounded text-muted-foreground hover:text-foreground"><span class="material-symbols-outlined text-[18px]">link</span></button>
-                                                <div class="w-px h-4 bg-border mx-1"></div>
-                                                <button class="p-1 hover:bg-card rounded text-muted-foreground hover:text-foreground"><span class="material-symbols-outlined text-[18px]">image</span></button>
-                                            </div>
-                                            <textarea class="w-full min-h-[180px] border-none focus:ring-0 bg-transparent p-4 text-sm leading-relaxed resize-none outline-none" placeholder="Tell your story here..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="p-5 border-t border-border flex flex-col gap-3 bg-secondary/30">
-                                    <div class="flex gap-3">
-                                        <button class="flex-1 py-2.5 text-sm font-bold border border-border rounded-lg hover:bg-card transition-colors">Save Draft</button>
-                                        <button id="publish-btn" type="button" class="flex-1 py-2.5 text-sm font-bold bg-primary text-white rounded-lg hover:brightness-105 transition-all shadow-md">Publish Post</button>
-                                    </div>
-                                    <button id="discard-btn" class="w-full py-2 text-xs font-bold text-muted-foreground hover:text-foreground transition-colors">Discard Draft</button>
-                                </div>
+              <div class="bg-white dark:bg-[#1a150c] rounded-xl border border-[#e6e2db] dark:border-[#3a3324] overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left">
+                    <thead class="bg-[#faf9f8] dark:bg-[#241e12] border-b border-[#e6e2db] dark:border-[#3a3324]">
+                      <tr>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61]">Code</th>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61]">Discount</th>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61]">Usage</th>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61]">Expiry Date</th>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61] text-right">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#e6e2db] dark:divide-[#3a3324]" id="coupons-list">
+                      <!-- Optional: populate by JS later. Static sample rows for now -->
+                      <tr class="hover:bg-[#fcfcfb] dark:hover:bg-[#2d2618] transition-colors group">
+                        <td class="px-6 py-5">
+                          <span class="font-mono text-sm font-bold bg-[#f4f3f0] dark:bg-[#2d2618] px-2 py-1 rounded border border-[#e6e2db] dark:border-[#3a3324]">SUMMER20</span>
+                        </td>
+                        <td class="px-6 py-5"><span class="text-sm font-bold text-primary">20% OFF</span></td>
+                        <td class="px-6 py-5">
+                          <div class="flex flex-col gap-1">
+                            <div class="flex items-center justify-between text-[10px] font-bold uppercase">
+                              <span class="text-[#897d61]">420 / 500 Used</span>
+                              <span class="text-primary">84%</span>
                             </div>
-                        </div>
-                    </div>
+                            <div class="w-32 h-1.5 bg-[#e6e2db] dark:bg-[#3a3324] rounded-full overflow-hidden">
+                              <div class="h-full bg-primary" style="width: 84%"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="px-6 py-5 text-sm text-[#897d61]">Aug 30, 2024</td>
+                        <td class="px-6 py-5 text-right">
+                          <button class="p-2 hover:bg-primary/10 rounded-lg text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-[#fcfcfb] dark:hover:bg-[#2d2618] transition-colors group">
+                        <td class="px-6 py-5">
+                          <span class="font-mono text-sm font-bold bg-[#f4f3f0] dark:bg-[#2d2618] px-2 py-1 rounded border border-[#e6e2db] dark:border-[#3a3324]">DRIP10</span>
+                        </td>
+                        <td class="px-6 py-5"><span class="text-sm font-bold text-primary">$10.00 OFF</span></td>
+                        <td class="px-6 py-5">
+                          <div class="flex flex-col gap-1">
+                            <div class="flex items-center justify-between text-[10px] font-bold uppercase">
+                              <span class="text-[#897d61]">1,200 / ∞</span>
+                            </div>
+                            <div class="w-32 h-1.5 bg-[#e6e2db] dark:bg-[#3a3324] rounded-full overflow-hidden">
+                              <div class="h-full bg-[#897d61]" style="width: 100%"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="px-6 py-5 text-sm text-[#897d61]">No Expiry</td>
+                        <td class="px-6 py-5 text-right">
+                          <button class="p-2 hover:bg-primary/10 rounded-lg text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-            </main>
+              </div>
+            </section>
+
+            <!-- Recent News Posts (keep JS hook id=news-list) -->
+            <section class="flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary">article</span>
+                  Recent News Posts
+                </h2>
+              </div>
+
+              <div class="bg-white dark:bg-[#1a150c] rounded-xl border border-[#e6e2db] dark:border-[#3a3324] overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left">
+                    <thead class="bg-[#faf9f8] dark:bg-[#241e12] border-b border-[#e6e2db] dark:border-[#3a3324]">
+                      <tr>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61]">Title</th>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61]">Date Published</th>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61]">Author</th>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61]">Status</th>
+                        <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#897d61] text-right">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#e6e2db] dark:divide-[#3a3324]" id="news-list">
+                      <!-- News items will be populated by JS (page2 behavior) -->
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="flex items-center justify-between px-6 py-4 border-t border-[#e6e2db] dark:border-[#3a3324] bg-[#faf9f8] dark:bg-[#241e12]">
+                  <span class="text-sm text-[#897d61]">Showing 2 of 42 posts</span>
+                  <div class="flex gap-2">
+                    <button class="p-2 rounded border border-[#e6e2db] dark:border-[#3a3324] bg-white dark:bg-background-dark hover:bg-[#fcfcfb] disabled:opacity-50" disabled>
+                      <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                    </button>
+                    <button class="p-2 rounded border border-[#e6e2db] dark:border-[#3a3324] bg-white dark:bg-background-dark hover:bg-[#fcfcfb]">
+                      <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Post Editor (synced from page1 + keep page2 ids) -->
+          <div class="xl:col-span-1">
+            <div class="bg-white dark:bg-[#1a150c] rounded-xl border border-[#e6e2db] dark:border-[#3a3324] overflow-hidden shadow-lg sticky top-24">
+              <div class="p-5 border-b border-[#e6e2db] dark:border-[#3a3324] flex items-center justify-between bg-primary/5">
+                <h3 class="text-lg font-bold">New Post Editor</h3>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#897d61] flex items-center gap-1">
+                  <span class="size-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                  Autosaved 12:45
+                </span>
+              </div>
+
+              <div class="p-6 flex flex-col gap-6 custom-scrollbar max-h-[calc(100vh-320px)] overflow-y-auto">
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-bold text-[#181611] dark:text-white uppercase tracking-wider">Feature Image</p>
+
+                  <div id="drop-zone" class="w-full aspect-video rounded-lg border-2 border-dashed border-[#e6e2db] dark:border-[#3a3324] flex flex-col items-center justify-center gap-3 bg-background-light dark:bg-background-dark hover:border-primary/50 transition-colors cursor-pointer group relative overflow-hidden">
+                    <input type="file" id="file-upload" class="hidden" accept="image/*" />
+
+                    <div id="upload-placeholder" class="flex flex-col items-center justify-center gap-3">
+                      <span class="material-symbols-outlined text-[32px] text-[#897d61] group-hover:text-primary transition-colors">cloud_upload</span>
+                      <div class="text-center">
+                        <p class="text-sm font-medium">Click or drag to upload</p>
+                        <p class="text-xs text-[#897d61]">16:9 aspect ratio recommended</p>
+                      </div>
+                    </div>
+
+                    <img id="image-preview" src="" alt="Preview" class="absolute inset-0 w-full h-full object-cover hidden" />
+
+                    <button id="remove-image" type="button" class="absolute top-2 right-2 p-1 bg-black/50 hover:bg-red-500 text-white rounded-full hidden z-10">
+                      <span class="material-symbols-outlined text-sm">close</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="bg-primary/5 p-4 rounded-lg border border-primary/20 space-y-4">
+                  <label class="flex items-center justify-between cursor-pointer group">
+                    <div class="flex flex-col gap-0.5">
+                      <span class="text-sm font-bold text-[#181611] dark:text-white">Set as Homepage Banner</span>
+                      <span class="text-[10px] text-[#897d61] font-medium uppercase">Will appear in the fluid slider</span>
+                    </div>
+                    <div class="relative inline-flex items-center">
+                      <input type="checkbox" class="sr-only peer" />
+                      <div class="w-11 h-6 bg-gray-200 dark:bg-[#3a3324] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    </div>
+                  </label>
+
+                  <div class="flex flex-col gap-2 pt-2 border-t border-primary/10">
+                    <p class="text-[11px] font-bold text-primary uppercase tracking-wider">Attach Coupon</p>
+                    <div class="relative">
+                      <select class="w-full border border-[#e6e2db] dark:border-[#3a3324] bg-white dark:bg-background-dark rounded-lg p-2.5 text-xs focus:ring-1 focus:ring-primary focus:border-primary appearance-none font-medium">
+                        <option value="">No Coupon Attached</option>
+                        <option value="summer20">SUMMER20 - 20% OFF</option>
+                        <option value="drip10">DRIP10 - $10.00 OFF</option>
+                        <option value="welcome5">WELCOME5 - 5% OFF</option>
+                      </select>
+                      <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-[#897d61]">
+                        <span class="material-symbols-outlined text-sm">expand_more</span>
+                      </div>
+                    </div>
+                    <p class="text-[10px] text-[#897d61]">Promotional code will be linked to this story or banner.</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-bold text-[#181611] dark:text-white uppercase tracking-wider">Title</p>
+                  <input id="post-title" class="w-full border border-[#e6e2db] dark:border-[#3a3324] bg-white dark:bg-background-dark rounded-lg p-3 text-base focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-[#897d61]" placeholder="Enter an engaging headline..." value="" />
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-bold text-[#181611] dark:text-white uppercase tracking-wider">Category Tags</p>
+                  <div class="flex flex-wrap gap-2" id="tags-container">
+                    <span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full flex items-center gap-1">
+                      Collection
+                      <span class="material-symbols-outlined text-[14px] cursor-pointer" onclick="this.parentElement.remove()">close</span>
+                    </span>
+                    <button type="button" class="px-3 py-1 bg-primary/20 text-[#181611] dark:text-white text-xs font-bold rounded-full hover:bg-primary/30 transition-colors">
+                      + Add Tag
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-bold text-[#181611] dark:text-white uppercase tracking-wider">Content Body</p>
+                  <div class="border border-[#e6e2db] dark:border-[#3a3324] rounded-lg overflow-hidden">
+                    <div class="flex items-center gap-1 p-2 border-b border-[#e6e2db] dark:border-[#3a3324] bg-background-light dark:bg-[#2d2618]">
+                      <button class="p-1 hover:bg-white dark:hover:bg-background-dark rounded"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+                      <button class="p-1 hover:bg-white dark:hover:bg-background-dark rounded"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+                      <button class="p-1 hover:bg-white dark:hover:bg-background-dark rounded"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+                      <button class="p-1 hover:bg-white dark:hover:bg-background-dark rounded"><span class="material-symbols-outlined text-[18px]">link</span></button>
+                      <div class="w-px h-4 bg-[#e6e2db] dark:bg-[#3a3324] mx-1"></div>
+                      <button class="p-1 hover:bg-white dark:hover:bg-background-dark rounded"><span class="material-symbols-outlined text-[18px]">image</span></button>
+                    </div>
+                    <textarea class="w-full min-h-[180px] border-none focus:ring-0 dark:bg-background-dark p-4 text-sm leading-relaxed resize-none outline-none" placeholder="Tell your story here..."></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-5 border-t border-[#e6e2db] dark:border-[#3a3324] flex flex-col gap-3 bg-[#faf9f8] dark:bg-[#241e12]">
+                <div class="flex gap-3">
+                  <button class="flex-1 py-2.5 text-sm font-bold border border-[#e6e2db] dark:border-[#3a3324] rounded-lg hover:bg-white dark:hover:bg-background-dark transition-colors">Save Draft</button>
+                  <button id="publish-btn" type="button" class="flex-1 py-2.5 text-sm font-bold bg-primary text-white rounded-lg hover:brightness-105 transition-all shadow-md">Publish Post</button>
+                </div>
+                <button id="discard-btn" class="w-full py-2 text-xs font-bold text-[#897d61] hover:text-[#181611] dark:hover:text-white transition-colors">Discard Draft</button>
+              </div>
+            </div>
+          </div>
         </div>
+      </main>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-6 right-6 z-[60] transform transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
-        <div class="flex items-center gap-3 bg-card border border-primary/30 p-4 rounded-xl shadow-2xl">
-            <div class="size-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                <span class="material-symbols-outlined text-[20px]">check_circle</span>
-            </div>
-            <div class="flex flex-col pr-4">
-                <p class="text-sm font-bold" id="toast-title">Success</p>
-                <p class="text-xs text-muted-foreground" id="toast-message">Operation completed successfully.</p>
-            </div>
+    <!-- Toast Notification (synced from page1; keep ids from page2) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-[60] flex flex-col gap-3 transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+      <div class="flex items-center gap-3 bg-white dark:bg-[#1a150c] border border-primary/30 p-4 rounded-xl shadow-2xl">
+        <div class="size-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined text-[20px]">check_circle</span>
         </div>
+        <div class="flex flex-col pr-4">
+          <p class="text-sm font-bold" id="toast-title">Success</p>
+          <p class="text-xs text-[#897d61]" id="toast-message">Operation completed successfully.</p>
+        </div>
+        <button id="toast-close" class="text-[#897d61] hover:text-red-500 transition-colors" type="button" aria-label="Close toast">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
     </div>
 
-    <script src="../JS/AdminMangagementNews.js"></script>
+  </div>
+
+  <!-- Keep existing JS include from page 2 (if you still use it) -->
+  <script src="../JS/AdminMangagementNews.js"></script>
 </body>
 </html>
