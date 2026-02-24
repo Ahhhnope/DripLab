@@ -121,9 +121,9 @@ function showToast(title, message, type = 'success') {
     if (!toastEl) return;
     toastTitle.textContent = title;
     toastMessage.textContent = message;
-    
+
     toastEl.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
-    
+
     setTimeout(() => {
         toastEl.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
     }, 3000);
@@ -181,7 +181,7 @@ function handleFile(file) {
         imagePreview.classList.remove('hidden');
         uploadPlaceholder.classList.add('hidden');
         removeImageBtn.classList.remove('hidden');
-        
+
         // Stop click propagation on remove button
         removeImageBtn.onclick = (event) => {
             event.stopPropagation(); // Prevent opening file dialog
@@ -203,16 +203,16 @@ function clearImage() {
 // === PUBLISH LOGIC (Đã sửa) ===
 if (publishBtn) {
     publishBtn.addEventListener('click', (e) => {
-        e.preventDefault(); 
-        
+        e.preventDefault();
+
         // 1. Lấy giá trị từ các ô Input
         const titleInput = document.getElementById('post-title');
         const contentInput = document.querySelector('textarea'); // Lấy textarea nội dung
         const imgPreview = document.getElementById('image-preview'); // Lấy ảnh đã upload
-        
+
         const title = titleInput ? titleInput.value.trim() : '';
         const desc = contentInput ? contentInput.value.trim() : '';
-        
+
         // 2. Validate (Kiểm tra dữ liệu)
         if (!title) {
             showToast('Lỗi', 'Vui lòng nhập tiêu đề bài viết', 'error');
@@ -224,9 +224,9 @@ if (publishBtn) {
             id: Date.now().toString(), // Tạo ID duy nhất dựa trên thời gian
             title: title,
             // Nếu có ảnh upload thì lấy, nếu không thì dùng ảnh mặc định
-            image: (imgPreview && !imgPreview.classList.contains('hidden')) 
-                   ? imgPreview.src 
-                   : 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80',
+            image: (imgPreview && !imgPreview.classList.contains('hidden'))
+                ? imgPreview.src
+                : 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80',
             date: new Date().toLocaleDateString('vi-VN', { day: '2-digit', month: 'long', year: 'numeric' }),
             author: "Admin User", // Hoặc lấy từ input nếu có
             badge: "Tin mới", // Mặc định
@@ -237,20 +237,19 @@ if (publishBtn) {
         // 4. LƯU VÀO LOCAL STORAGE (Bước quan trọng bị thiếu)
         // Lấy danh sách cũ ra, nếu chưa có thì tạo mảng rỗng
         const existingPosts = JSON.parse(localStorage.getItem('dripLabPosts')) || [];
-        
+
         // Thêm bài mới vào đầu danh sách (unshift)
         existingPosts.unshift(newPost);
-        
+
         // Lưu ngược lại vào LocalStorage
         localStorage.setItem('dripLabPosts', JSON.stringify(existingPosts));
-        
+
         // 5. Thông báo thành công
         showToast('Thành công', 'Bài viết đã được xuất bản!');
-        
+
         // 6. Chuyển hướng về trang News để xem kết quả
         setTimeout(() => {
-            // Đảm bảo đường dẫn này đúng với cấu trúc thư mục của bạn
-            window.location.href = 'News.html'; 
+            window.location.href = '../HTML-INTERFACE/News.html';
         }, 1000);
     });
 }
