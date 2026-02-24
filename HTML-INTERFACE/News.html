@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="title">Tin tức &amp; Blog Drip Lab</title>
+  <title data-i18n="title">Tin tức & Blog Drip Lab</title>
   <meta name="description"
     content="Tin tức, câu chuyện, hướng dẫn pha chế và cập nhật cộng đồng từ xưởng rang cà phê Drip Lab."
     data-i18n-attr="content:meta.description" />
@@ -16,7 +16,6 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" />
 
-  <!-- CSS tách ra file riêng -->
   <link rel="stylesheet" href="../CSS/News.css" />
 
   <script id="tailwind-config">
@@ -46,7 +45,6 @@
     };
   </script>
 
-  <!-- CSS (header/footer từ Test) -->
   <link rel="stylesheet" href="../CSS/Test.CSS" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
@@ -56,51 +54,44 @@
 <body class="bg-background-light dark:bg-background-dark text-dark-brown dark:text-background-light transition-colors duration-300">
   <header class="header-login">
         <div class="header-container">
-            <!-- Logo -->
             <div class="header-logo">
                 <a href="#" class="logo-image-link">
                     <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
                 </a>
             </div>
 
-            <!-- Navigation Menu -->
             <nav class="navbar">
-                <!-- Menu Dropdown -->
                 <div class="menu-dropdown-wrapper">
-                    <a href="#" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <a href="../HTML-INTERFACE/Homepage.html" class="menu-trigger" data-i18n="nav.menu">MENU</a>
                     <div class="menu-dropdown" id="menu-dropdown">
-                        <a href="#" class="menu-option option-buy" data-i18n="menu.buyNow">
+                        <a href="../HTML-INTERFACE/Menu.html" class="menu-option option-buy" data-i18n="menu.buyNow">
                             <i class='bx bxs-cart'></i>
                             <span>Mua ngay</span>
                         </a>
-                        <a href="#" class="menu-option option-custom" data-i18n="menu.customize">
+                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom" data-i18n="menu.customize">
                             <i class='bx bxs-coffee-togo'></i>
                             <span>Tự pha chế</span>
                         </a>
                     </div>
                 </div>
                 
-                <a href="#" data-i18n="nav.about">ABOUT US</a>
-                <a href="#" data-i18n="nav.news">NEWS</a>
-                <a href="#" data-i18n="nav.stores">STORES</a>
+                <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about">ABOUT US</a>
+                <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">NEWS</a>
+                <a href="../HTML-INTERFACE/Stores.html" data-i18n="nav.stores">STORES</a>
             </nav>
 
-            <!-- User Actions (Login/Cart) -->
             <div class="user-login">
-                <!-- User Profile Dropdown -->
                 <div class="user-profile-wrapper">
                     <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
                         <i class='bx bxs-user'></i>
                     </button>
                     
-                    <!-- Dropdown Menu -->
                     <div class="user-dropdown" id="user-dropdown">
                         <div class="dropdown-header">
                             <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
                         </div>
                         
                         <div class="dropdown-body">
-                            <!-- User Info Section -->
                             <div class="user-info-section">
                                 <div class="user-avatar">
                                     <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
@@ -111,9 +102,7 @@
                             
                             <div class="dropdown-divider"></div>
                             
-                            <!-- Settings Section -->
                             <div class="settings-section">
-                                <!-- Theme Toggle -->
                                 <div class="setting-item">
                                     <div class="setting-label">
                                         <span class="material-symbols-outlined">dark_mode</span>
@@ -124,7 +113,6 @@
                                     </button>
                                 </div>
                                 
-                                <!-- Language Toggle -->
                                 <div class="setting-item">
                                     <div class="setting-label">
                                         <span class="material-symbols-outlined">language</span>
@@ -139,9 +127,8 @@
                             
                             <div class="dropdown-divider"></div>
                             
-                            <!-- Action Buttons -->
                             <div class="dropdown-actions">
-                                <button type="button" class="action-btn btn-login">
+                                <button type="button" class="action-btn btn-login" onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
                                     <span class="material-symbols-outlined">login</span>
                                     <span data-i18n="profile.login">Login</span>
                                 </button>
@@ -197,26 +184,9 @@
       </div>
     </div>
 
-    <!--
-      PHÂN TRANG (Client-side) – HƯỚNG DẪN NHANH
-      - Mỗi bài viết là 1 thẻ <article> có thuộc tính: data-page="X"
-      - data-page="1"  => thuộc Trang 1 (hiển thị khi bấm nút 1)
-      - data-page="2"  => thuộc Trang 2 (hiển thị khi bấm nút 2)
-      - data-page="3"  => thuộc Trang 3 (hiển thị khi bấm nút 3)
-
-      Cách tự thêm bài mới:
-      1) Copy 1 block <article> bất kỳ
-      2) Đổi data-page thành 1/2/3 theo trang bạn muốn
-      3) Sửa nội dung title/desc/ảnh
-
-      Lưu ý:
-      - JS sẽ tự tính maxPage theo số lớn nhất trong data-page
-      - Nếu bạn muốn có Trang 4, chỉ cần:
-        (a) thêm bài data-page="4" và (b) thêm nút data-page-btn="4" ở cụm phân trang
-    -->
     <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- ====== TRANG 1: Các bài viết có data-page="1" ====== -->
-      <article class="flex flex-col group cursor-pointer" data-page="1">
+      
+      <article class="flex flex-col group cursor-pointer">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
             style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGXL3fX3pIZfIK_441IQu7MtM0DsbSgsknov-EiJE2pL4Qj7oAmS7onb3duX-sFmPtBEPU_XemS5P2DZ9HnLHnKo2Fg4gFFVqkxgcQdu48hiz7RwR2r9ixJu6Rb58hWCV9DaqEiVF6-NRPcvL_X7yabnOPZBJw-UgnZTkhxnfJsr4KikS8u432zrH9K_9n5BQ4GQ8h-AL-ZAdIOUtrvrviNoxUt5dTgiPJYqVQdrkV4AsHMWF0Oqd2SL0rZUPjJ0hb_CC853JxYfBQ");' aria-hidden="true"></div>
@@ -230,7 +200,7 @@
 </div>
       </article>
 
-      <article class="flex flex-col group cursor-pointer" data-page="1">
+      <article class="flex flex-col group cursor-pointer">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
             style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJQGOBXPhDGZ3oF-rwbrtLNMRRokEsqxYgMdG1SFa0Xo918os42TiQQk2vu2bmFX_G1aWvtVvzggcjL2Z7FCZngmYObQpOVQUMmbZjotR2cF05H20D6bBoktwH7fYmZ6gFkW1tDv4GD-SBeVYeK4o7ntejDX14PJmdXXX7qCqQqcStoXMg43Te3OHYjGadfgtnY9_Yi8D8F-d8wdRvLMwPo9cP7Vo9Aa-fDNINqaeV14CE8lgM_H4XcqwpU6ElTNLQaFkNrfNUEOxx");' aria-hidden="true"></div>
@@ -244,7 +214,7 @@
 </div>
       </article>
 
-      <article class="flex flex-col group cursor-pointer" data-page="1">
+      <article class="flex flex-col group cursor-pointer">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
             style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD8z2cl0WzICUYU8wYlduT_IC4pI0Muu-gBhD3PnhFi-d7O2upatBQElyCaKoYV_Rpe8-fsyXx0S5qdex1eotANlkpXMOXy7S-rVL5GlhuBvFhoY4uEsJOPxJ0SNpuquge0hzXeBy0km7rk5BAUgJXiSLfZv_TMe6N2Q4dbrc_K3L-VDPyMCeu9_uzmR66H_H65yYJCKr6zs9cUW3OlseXGgV_zazzSteb7URUrpV3cwfpJ4Vuvo2EWK7lMykoMCR8PZ-OXMbJ_sgaQ");' aria-hidden="true"></div>
@@ -258,37 +228,36 @@
 </div>
       </article>
 
-      <!-- ====== TRANG 2: Các bài viết có data-page="2" ====== -->
-      <!-- Bài viết mẫu trang 2 (để test phân trang) -->
-      <article class="flex flex-col group cursor-pointer" data-page="2">
+      <article class="flex flex-col group cursor-pointer">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
             style='background-image: url("https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=70");'
             aria-hidden="true"></div>
           <div class="absolute top-4 left-4"><span
-              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Trang 2</span></div>
+              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Bài cũ</span></div>
         </div>
         <div class="flex flex-col flex-grow">
           <span class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-2">05 Tháng 02, 2026</span>
-          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">Bài viết mẫu để kiểm tra phân trang</h3>
-          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">Đây là bài viết mẫu thuộc trang 2. Nếu bạn bấm nút “2”, bài này sẽ hiện ra; bấm “1” thì bài này sẽ ẩn.</p>
+          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">Bài viết mẫu số 4</h3>
+          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">Được đẩy xuống trang sau do giới hạn hiển thị.</p>
           <a href="#"
             class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all">Đọc toàn bộ bài viết
             <span class="material-symbols-outlined text-xs" aria-hidden="true">north_east</span></a>
         </div>
       </article>
-        <article class="flex flex-col group cursor-pointer" data-page="3">
+
+        <article class="flex flex-col group cursor-pointer">
         <div class="relative overflow-hidden rounded-lg mb-4 aspect-[4/3]">
           <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
             style='background-image: url("https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=70");'
             aria-hidden="true"></div>
           <div class="absolute top-4 left-4"><span
-              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Trang 2</span></div>
+              class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Bài cũ</span></div>
         </div>
         <div class="flex flex-col flex-grow">
           <span class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-2">05 Tháng 02, 2026</span>
-          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">Bài viết mẫu để kiểm tra phân trang</h3>
-          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">Đây là bài viết mẫu thuộc trang 2. Nếu bạn bấm nút “2”, bài này sẽ hiện ra; bấm “1” thì bài này sẽ ẩn.</p>
+          <h3 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors font-display">Bài viết mẫu số 5</h3>
+          <p class="text-sm text-dark-brown/60 dark:text-white/60 mb-4 line-clamp-2 leading-relaxed">Bài này cũng sẽ tự động vào trang đúng vị trí.</p>
           <a href="#"
             class="mt-auto flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary border-b border-transparent hover:border-primary w-fit pb-1 transition-all">Đọc toàn bộ bài viết
             <span class="material-symbols-outlined text-xs" aria-hidden="true">north_east</span></a>
@@ -296,24 +265,14 @@
       </article>
     </div>
 
-    
-
     <div class="flex items-center justify-center pt-8">
       <nav id="pagination" class="flex items-center gap-2" aria-label="Phân trang" data-i18n-attr="aria-label:aria.pagination">
-        <button type="button" data-action="prev" class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
-          aria-label="Trang trước" data-i18n-attr="aria-label:aria.prevPage"><span class="material-symbols-outlined text-sm" aria-hidden="true">chevron_left</span></button>
-        <button type="button" data-page-btn="1" class="size-10 flex items-center justify-center rounded-full bg-primary text-white font-bold text-xs" aria-current="page">1</button>
-        <button type="button" data-page-btn="2" class="size-10 flex items-center justify-center rounded-full bg-transparent text-dark-brown/40 dark:text-white/40 font-bold text-xs hover:text-primary">2</button>
-        <button type="button" data-page-btn="3" class="size-10 flex items-center justify-center rounded-full bg-transparent text-dark-brown/40 dark:text-white/40 font-bold text-xs hover:text-primary">3</button>
-        <button type="button" data-action="next" class="size-10 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
-          aria-label="Trang sau" data-i18n-attr="aria-label:aria.nextPage"><span class="material-symbols-outlined text-sm" aria-hidden="true">chevron_right</span></button>
-      </nav>
+        </nav>
     </div>
   </main>
 
   <footer class="footer">
         <div class="footer-container">
-            <!-- Column 1 - Logo & Description -->
             <div class="footer-col">
                 <h3>
                     <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
@@ -323,7 +282,6 @@
                 </p>
             </div>
 
-            <!-- Column 2 - Navigation -->
             <div class="footer-col">
                 <h4 data-i18n="footer.connect">Tsaheylu</h4>
                 <ul>
@@ -334,7 +292,6 @@
                 </ul>
             </div>
 
-            <!-- Column 3 - Contact -->
             <div class="footer-col">
                 <h4 data-i18n="footer.contact">Contact Us</h4>
                 <p>Email: contact@driplab.com</p>
@@ -342,7 +299,6 @@
                 <p data-i18n="footer.location">Place at: Việt Nam</p>
             </div>
 
-            <!-- Column 4 - Social Media -->
             <div class="footer-col">
                 <h4 data-i18n="footer.follow">Follow Us On</h4>
                 <ul class="social-list">
@@ -365,13 +321,11 @@
             </div>
         </div>
         
-        <!-- Footer Bottom -->
         <div class="footer-bottom" data-i18n="footer.copyright">
             © 2025 Drip Lab. Space for coffee heads.
         </div>
     </footer>
 
-  <!-- JS (đã gộp Test.js vào News.js) -->
   <script src="../JS/News.js" defer></script>
 </body>
 

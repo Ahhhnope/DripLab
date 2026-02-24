@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drip Lab | My Receipts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/Receipts.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="brand">
+            <div class="brand__mark" aria-hidden="true">
+                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+                        fill="currentColor" />
+                </svg>
+            </div>
+            <div class="brand__name">Drip Lab</div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+            <a class="nav__link" href="#">Menu</a>
+            <a class="nav__link" href="#">About Us</a>
+            <a class="nav__link" href="#">News</a>
+            <a class="nav__link" href="#">Stores</a>
+        </nav>
+
+        <div class="actions" aria-label="Quick actions">
+            <button class="icon-btn" type="button" aria-label="Account">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor"
+                        d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4m0 2c-4.42 0-8 2-8 4.5V21h16v-2.5C20 16 16.42 14 12 14" />
+                </svg>
+            </button>
+            <button class="icon-btn" type="button" aria-label="Cart">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor"
+                        d="M7 18a2 2 0 1 0 2 2a2 2 0 0 0-2-2m10 0a2 2 0 1 0 2 2a2 2 0 0 0-2-2M7.2 14h9.9a2 2 0 0 0 1.9-1.4l2-6A1 1 0 0 0 20 5H6.2L5.9 3.6A1 1 0 0 0 5 3H2v2h2.2l2.1 10.4A2 2 0 0 0 8.2 17H19v-2H8.2a.2.2 0 0 1-.2-.2Z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="page">
+        <div class="container">
+            <div class="crumbs" aria-label="Breadcrumb">
+                <span class="crumbs__muted">ACCOUNT</span>
+                <span class="crumbs__dot">•</span>
+                <span class="crumbs__current">RECEIPTS</span>
+            </div>
+
+            <div class="page-head">
+                <h1 class="title">My Receipts</h1>
+                <div class="filter">
+                    <button id="filterBtn" class="btn btn--ghost" type="button" aria-haspopup="menu"
+                        aria-expanded="false">
+                        <span class="btn__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M3 4h18v2H3zm4 7h10v2H7zm3 7h4v2h-4z" />
+                            </svg>
+                        </span>
+                        Filter
+                    </button>
+
+                    <div id="filterMenu" class="menu" role="menu" aria-label="Filter receipts" hidden>
+                        <button class="menu__item" role="menuitem" type="button" data-filter="all">All</button>
+                        <button class="menu__item" role="menuitem" type="button" data-filter="latest">Latest
+                            first</button>
+                        <button class="menu__item" role="menuitem" type="button" data-filter="price">Highest
+                            price</button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="card" aria-label="Receipts">
+                <div id="receiptList" class="receipt-list"></div>
+
+                <div class="card-footer">
+                    <div id="countText" class="muted">Showing 0 of 0 transactions</div>
+
+                    <div class="pager" aria-label="Pagination">
+                        <button id="prevPage" class="pager__btn" type="button" aria-label="Previous page">‹</button>
+                        <div id="pageButtons" class="pager__pages" aria-live="polite"></div>
+                        <button id="nextPage" class="pager__btn" type="button" aria-label="Next page">›</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__copy">© 2024 Drip Lab Coffee Roasters. All rights reserved.</div>
+        <div class="footer__links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal__backdrop" data-close="true"></div>
+        <div class="modal__panel" role="document">
+            <div class="modal__head">
+                <div>
+                    <div class="modal__kicker">Receipt</div>
+                    <div id="modalTitle" class="modal__title">#DL-0000</div>
+                </div>
+                <button class="icon-btn" type="button" aria-label="Close" data-close="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor"
+                            d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.29 9.17 12 2.88 5.71 4.29 4.29l6.3 6.3 6.29-6.3z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal__body">
+                <div class="kv">
+                    <div class="kv__row">
+                        <div class="kv__k">Date</div>
+                        <div id="mDate" class="kv__v">—</div>
+                    </div>
+                    <div class="kv__row">
+                        <div class="kv__k">Total price</div>
+                        <div id="mPrice" class="kv__v">—</div>
+                    </div>
+                    <div class="kv__row">
+                        <div class="kv__k">Status</div>
+                        <div id="mStatus" class="kv__v"><span class="badge">Paid</span></div>
+                    </div>
+                </div>
+                <hr class="divider" />
+                <div class="muted">This is a demo modal. Hook this up to your backend later.</div>
+            </div>
+
+            <div class="modal__foot">
+                <button id="downloadBtn" class="btn btn--outline" type="button">Download</button>
+                <button class="btn btn--primary" type="button" data-close="true">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/Receipts.js"></script>
+</body>
+
+</html>

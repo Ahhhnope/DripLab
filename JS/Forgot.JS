@@ -330,15 +330,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log('Đã gửi email reset đến:', email);
         
-        // TODO: Thay đoạn setTimeout này bằng fetch() thật:
-        // fetch('/api/forgot-password', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({ email: email })
-        // })
-        // .then(res => res.json())
-        // .then(data => { ... xử lý kết quả ... })
-        // .catch(err => { ... xử lý lỗi ... });
         
       }, 1800); // Giả lập thời gian chờ 1.8 giây
     });
@@ -356,9 +347,8 @@ document.addEventListener('DOMContentLoaded', function() {
     return emailRegex.test(email);
   }
   
-  // ============================================================
+
   // PHÍM TẮT - Nhấn Escape để đóng dropdown
-  // ============================================================
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && userDropdown.classList.contains('active')) {
       closeUserDropdown();

@@ -32,24 +32,24 @@
             <nav class="navbar">
                 <!-- Dropdown Menu khi hover -->
                 <div class="menu-dropdown-wrapper">
-                    <a href="#" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <a href="../HTML-INTERFACE/Homepage.html" class="menu-trigger" data-i18n="nav.menu">MENU</a>
                     <div class="menu-dropdown" id="menu-dropdown">
                         <!-- Lựa chọn mua ngay -->
-                        <a href="#" class="menu-option option-buy" data-i18n="menu.buyNow">
+                        <a href="../HTML-INTERFACE/Menu.html" class="menu-option option-buy" data-i18n="menu.buyNow">
                             <i class='bx bxs-cart'></i>
                             <span>Mua ngay</span>
                         </a>
                         <!-- Lựa chọn tự pha chế -->
-                        <a href="#" class="menu-option option-custom" data-i18n="menu.customize">
+                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom" data-i18n="menu.customize">
                             <i class='bx bxs-coffee-togo'></i>
                             <span>Tự pha chế</span>
                         </a>
                     </div>
                 </div>
                 
-                <a href="#" data-i18n="nav.about">VỀ CHÚNG TÔI</a>
-                <a href="#" data-i18n="nav.news">TIN TỨC</a>
-                <a href="#" data-i18n="nav.stores">CỬA HÀNG</a>
+                <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about">VỀ CHÚNG TÔI</a>
+                <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">TIN TỨC</a>
+                <a href="../HTML-INTERFACE/Stores.html" data-i18n="nav.stores">CỬA HÀNG</a>
             </nav>
 
             <!-- Khu vực hành động người dùng (Profile + Giỏ hàng) -->
@@ -109,7 +109,7 @@
                             
                             <!-- Nút hành động: Đăng nhập / Đăng xuất -->
                             <div class="dropdown-actions">
-                                <button type="button" class="action-btn btn-login">
+                                <button type="button" class="action-btn btn-login" onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
                                     <span class="material-symbols-outlined">login</span>
                                     <span data-i18n="profile.login">Đăng nhập</span>
                                 </button>
@@ -130,14 +130,10 @@
         </div>
     </header>
 
-    <!-- ========== PHẦN NỘI DUNG CHÍNH - QUÊN MẬT KHẨU ========== -->
-    <!--
-        Khu vực này thay thế phần placeholder "Tiêu đề trang của bạn".
-        Sử dụng ảnh nền từ URL với hiệu ứng glassmorphism (kính mờ) cho thẻ form.
-    -->
+
     <main class="main-content">
         <div class="forgot-wrapper">
-            <!-- Thẻ form quên mật khẩu - kiểu kính mờ (glassmorphism) -->
+
             <div class="forgot-card">
 
                 <!-- Phần đầu: Icon khóa + Tiêu đề + Mô tả -->
@@ -198,7 +194,7 @@
 
                 <!-- Link quay lại trang đăng nhập -->
                 <div class="back-link">
-                    <a href="../HTML/Login.HTML" data-i18n="forgot.backToLogin">
+                    <a href="../HTML-INTERFACE/Login.HTML" data-i18n="forgot.backToLogin">
                         <i class='bx bx-arrow-back'></i>
                         Quay lại Đăng Nhập
                     </a>

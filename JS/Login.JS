@@ -132,17 +132,10 @@ document.addEventListener('DOMContentLoaded', function() {
   
   /*========== Menu Options Click Handlers ==========*/
   menuOptions.forEach(option => {
-    option.addEventListener('click', function(e) {
-      e.preventDefault();
-      const optionText = this.querySelector('span').textContent;
-      console.log('Menu option clicked:', optionText);
-      
-      if (this.classList.contains('option-buy')) {
-        alert(`Chuyển đến trang: ${optionText}`);
-        // window.location.href = '/buy-now'; // Uncomment để chuyển trang thật
-      } else if (this.classList.contains('option-custom')) {
-        alert(`Chuyển đến trang: ${optionText}`);
-        // window.location.href = '/customize'; // Uncomment để chuyển trang thật
+     option.addEventListener('click', function() {
+      const href = this.getAttribute('href');
+      if (href) {
+        window.location.href = href;
       }
     });
   });
