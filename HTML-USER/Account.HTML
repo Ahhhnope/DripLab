@@ -4,18 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- CSS Links -->
-    <link rel="stylesheet" href="../CSS/AboutUs.css">
-    
+    <link rel="stylesheet" href="../CSS/Account.CSS">
+
     <!-- Icon Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
-    <title>About Us - Drip Lab</title>
+
+    <title>Page Title - Drip Lab</title>
 </head>
 
 <body>
@@ -24,7 +23,7 @@
         <div class="header-container">
             <!-- Logo -->
             <div class="header-logo">
-                <a href="../HTML-INTERFACE/Homepage.html" class="logo-image-link">
+                <a href="#" class="logo-image-link">
                     <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
                 </a>
             </div>
@@ -33,22 +32,23 @@
             <nav class="navbar">
                 <!-- Menu Dropdown -->
                 <div class="menu-dropdown-wrapper">
-                    <a href="../HTML-INTERFACE/Menu.html" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <a href="../HTML-INTERFACE/Homepage.html" class="menu-trigger" data-i18n="nav.menu">MENU</a>
                     <div class="menu-dropdown" id="menu-dropdown">
-                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-buy" data-i18n="menu.buyNow">
+                        <a href="../HTML-INTERFACE/Menu.html" class="menu-option option-buy" data-i18n="menu.buyNow">
                             <i class='bx bxs-cart'></i>
                             <span>Mua ngay</span>
                         </a>
-                        <a href="#" class="menu-option option-custom" data-i18n="menu.customize">
+                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom"
+                            data-i18n="menu.customize">
                             <i class='bx bxs-coffee-togo'></i>
                             <span>Tự pha chế</span>
                         </a>
                     </div>
                 </div>
-                
+
                 <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about">ABOUT US</a>
                 <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">NEWS</a>
-                <a href="../HTML-INTERFACE/Stores.html" data-i18n="nav.stores">STORES</a>
+                <a href="../HTML-INTERFACE/" data-i18n="nav.stores">STORES</a>
             </nav>
 
             <!-- User Actions (Login/Cart) -->
@@ -58,13 +58,13 @@
                     <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
                         <i class='bx bxs-user'></i>
                     </button>
-                    
+
                     <!-- Dropdown Menu -->
                     <div class="user-dropdown" id="user-dropdown">
                         <div class="dropdown-header">
                             <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
                         </div>
-                        
+
                         <div class="dropdown-body">
                             <!-- User Info Section -->
                             <div class="user-info-section">
@@ -74,9 +74,9 @@
                                 <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
                                 <p class="user-email">abc@gmail.com</p>
                             </div>
-                            
+
                             <div class="dropdown-divider"></div>
-                            
+
                             <!-- Settings Section -->
                             <div class="settings-section">
                                 <!-- Theme Toggle -->
@@ -85,11 +85,12 @@
                                         <span class="material-symbols-outlined">dark_mode</span>
                                         <span data-i18n="profile.theme">Chế độ tối</span>
                                     </div>
-                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch" aria-label="Toggle Theme">
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch"
+                                        aria-label="Toggle Theme">
                                         <span class="toggle-slider"></span>
                                     </button>
                                 </div>
-                                
+
                                 <!-- Language Toggle -->
                                 <div class="setting-item">
                                     <div class="setting-label">
@@ -102,15 +103,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="dropdown-divider"></div>
-                            
-                            <!-- Action Buttons -->
+
+                            <!-- Action Buttons - CHỈ GIỮ SIGN OUT -->
                             <div class="dropdown-actions">
-                                <button type="button" class="action-btn btn-login"  onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
-                                    <span class="material-symbols-outlined">login</span>
-                                    <span data-i18n="profile.login">Login</span>
-                                </button>
                                 <button type="button" class="action-btn btn-signout">
                                     <span class="material-symbols-outlined">logout</span>
                                     <span data-i18n="profile.signout">Sign out</span>
@@ -119,7 +116,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <button type="button">
                     <i class='bx bxs-shopping-bag'></i>
                 </button>
@@ -129,139 +126,77 @@
 
     <!-- ========== Phần Tự Viết Nội Dung  ========== -->
     <main class="main-content">
-        <div class="content-container">
-            <h1 data-i18n="content.title">About Us</h1>
-            <p data-i18n="content.description">
-              <section class="px-6 py-6">
-        <div class="max-w-[1400px] mx-auto">
-          <div
-            class="relative h-[600px] w-full rounded-xl overflow-hidden bg-center bg-cover flex items-end"
-            data-alt="Sun-drenched coffee plantation with lush green leaves"
-            style="
-              background-image:
-                linear-gradient(
-                  0deg,
-                  rgba(26, 21, 14, 0.6) 0%,
-                  rgba(26, 21, 14, 0) 50%
-                ),
-                url('../IMG/green.png');
-            "
-          >
-            <div class="p-12 md:p-20 w-full">
-              <h1
-                class="text-white text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-4"
-              >
-                Our Story
-              </h1>
-              <div class="h-1 w-24 bg-primary"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Philosophy Section -->
-      <section class="py-16 px-6">
-        <div class="max-w-[800px] mx-auto text-center">
-          <h2 class="text-3xl md:text-5xl font-bold mb-8 text-primary">
-            The Drip Lab Philosophy
-          </h2>
-          <p
-            class="text-lg md:text-xl leading-relaxed text-deep-brown/80 dark:text-background-light/80 font-display italic"
-          >
-            "Our commitment to artisanal brewing and sustainable sourcing is at
-            the heart of everything we do. We believe in the beauty of the drip,
-            the science of the roast, and the ethics of the bean."
-          </p>
-          <div class="mt-10 flex justify-center">
-            <span class="material-symbols-outlined text-primary text-4xl"
-              >coffee_maker</span
-            >
-          </div>
-        </div>
-      </section>
-      <!-- Heritage Section -->
-      <section class="py-16 px-6">
-        <div
-          class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
-        >
-          <div class="order-2 md:order-1">
-            <div
-              class="aspect-[4/5] rounded-xl overflow-hidden grayscale contrast-125 sepia-[0.3]"
-              data-alt="Vintage sepia photograph of the original Drip Lab shop front"
-              style="
-                background-image: url('../IMG/shop.png');
-                background-size: cover;
-                background-position: center;
-              "
-            ></div>
-          </div>
-          <div class="order-1 md:order-2 space-y-6">
-            <h2 class="text-4xl font-bold">Our Heritage</h2>
-            <p
-              class="text-lg leading-relaxed text-deep-brown/70 dark:text-background-light/70"
-            >
-              Founded in 1994 in a small brick-and-mortar corner of the city,
-              Drip Lab began as a singular pursuit of the perfect pour-over.
-              What started with a vintage copper kettle and a passion for
-              Ethiopian Yirgacheffe has grown into a community of coffee
-              enthusiasts dedicated to the craft.
-            </p>
-            <p
-              class="text-lg leading-relaxed text-deep-brown/70 dark:text-background-light/70"
-            >
-              We spent years traveling to remote highlands, building direct
-              relationships with farmers who share our respect for the soil.
-              Today, every cup we serve carries the history of those journeys
-              and the legacy of our first small shop.
-            </p>
-            <div class="pt-4">
-              <a
-                class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all"
-                href="#"
-              >
-                Explore our timeline
-                <span class="material-symbols-outlined">trending_flat</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Meet the Roasters Section -->
-      <section class="py-16 px-6 mb-16">
-        <div class="max-w-[1200px] mx-auto">
-          <div class="mb-12">
-            <h2 class="text-4xl font-bold mb-4">Meet the Roasters</h2>
-            <p
-              class="text-lg text-deep-brown/60 dark:text-background-light/60 max-w-2xl"
-            >
-              The hands behind the heat. Our roasting team meticulously monitors
-              every batch to ensure the unique profile of each origin shines
-              through.
-            </p>
-          </div>
-          <div
-            class="relative h-[500px] rounded-xl overflow-hidden group"
-            data-alt="Close up of coffee roasters inspecting beans in a roasting facility"
-            style="
-              background-image: url('../IMG/shop2.png');
-              background-size: cover;
-              background-position: center;
-            "
-          >
-            <div
-              class="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors"
-            ></div>
-            <div class="absolute bottom-0 left-0 p-10">
-              <button
-                class="bg-white text-deep-brown px-8 py-4 rounded-full font-bold shadow-xl hover:bg-primary hover:text-white transition-all flex items-center gap-2"
-              >
-                Our Process
-                <span class="material-symbols-outlined">play_circle</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-            </p>
+        <div class="profile-container">
+
+            <!-- Sidebar trái -->
+            <aside class="profile-sidebar">
+                <!-- CĂN GIỮA sidebar-user -->
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar">
+                        <img src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
+                    </div>
+                    <div class="sidebar-name">Tuân Nguyễn Đình</div>
+                    <div class="sidebar-badge" data-i18n="sidebar.badge">Premium Member</div>
+                </div>
+
+                <ul class="sidebar-nav">
+                    <li><a href="#" class="active"><i class='bx bxs-user'></i> <span
+                                data-i18n="sidebar.account">Account</span></a></li>
+                    <li><a href="#"><i class='bx bxs-lock'></i> <span data-i18n="sidebar.changePassword">Change
+                                Password</span></a></li>
+                    <li><a href="#"><i class='bx bxs-map'></i> <span data-i18n="sidebar.address">Address</span></a></li>
+                    <li><a href="#"><i class='bx bxs-receipt'></i> <span data-i18n="sidebar.orders">Orders</span></a>
+                    </li>
+                    <!-- THÊM MỤC FAVORITES -->
+                    <li><a href="#"><i class='bx bxs-heart'></i> <span
+                                data-i18n="sidebar.favorites">Favorites</span></a></li>
+                    <li class="nav-logout">
+                        <a href="../HTML-INTERFACE/Homepage.html" id="sidebar-logout-btn"><i class='bx bx-log-out'></i>
+                            <span data-i18n="sidebar.logout" >Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Panel phải -->
+            <section class="profile-panel">
+                <h2 class="panel-title" data-i18n="panel.title">Profile Settings</h2>
+
+                <!-- Ảnh đại diện -->
+                <div class="profile-picture-section">
+                    <div class="profile-pic-wrapper">
+                        <div class="profile-pic-img">
+                            <img src="../IMG/DELLBIETNOIGI.jpg" alt="Profile Picture">
+                        </div>
+                        <button class="edit-pic-btn" title="Change photo">
+                            <i class='bx bxs-pencil'></i>
+                        </button>
+                    </div>
+                    <div class="profile-pic-info">
+                        <h4 data-i18n="panel.picTitle">Profile Picture</h4>
+                        <p data-i18n="panel.picDesc">PNG, JPG or GIF. Max 2MB.</p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="form.fullName">Full Name</label>
+                        <input type="text" class="form-input" value="Tuân Nguyễn Đình">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="form.email">Email Address</label>
+                        <input type="email" class="form-input" value="tuan.nguyen@driplab.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-i18n="form.phone">Phone Number</label>
+                        <input type="tel" class="form-input" value="+84 123 456 789">
+                    </div>
+                </div>
+
+                <button class="save-btn" data-i18n="form.save">Save Changes</button>
+            </section>
+
         </div>
     </main>
 
@@ -302,24 +237,27 @@
                 <h4 data-i18n="footer.follow">Follow Us On</h4>
                 <ul class="social-list">
                     <li>
-                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok">
                             <i class="fa-brands fa-tiktok"></i>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        
+
         <!-- Footer Bottom -->
         <div class="footer-bottom" data-i18n="footer.copyright">
             © 2025 Drip Lab. Space for coffee heads.
@@ -327,7 +265,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="../JS/AboutUs.js"></script>
+    <script src="../JS/Account.JS"></script>
 </body>
 
 </html>
