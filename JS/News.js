@@ -1,8 +1,3 @@
-// ====== News.js (MERGED) ======
-
-// -------------------------------
-// I18N (global)
-// -------------------------------
 window.translations = {
   vi: {
     // Navigation
@@ -21,7 +16,7 @@ window.translations = {
     "profile.theme": "Chế độ tối",
     "profile.language": "Ngôn ngữ",
     "profile.login": "Đăng nhập",
-    "profile.signout": "Đăng xuất",
+    "profile.register": "Đăng ký",
 
     // News body
     "title": "Tin tức & Blog Drip Lab",
@@ -76,7 +71,7 @@ window.translations = {
     "profile.theme": "Dark mode",
     "profile.language": "Language",
     "profile.login": "Login",
-    "profile.signout": "Sign out",
+    "profile.register": "Register",
 
     // News body
     "title": "Drip Lab News & Blog",
@@ -155,11 +150,11 @@ function renderLocalPosts() {
   if (!postsGrid) return;
 
   const storedPosts = JSON.parse(localStorage.getItem('dripLabPosts')) || [];
-  
+
   storedPosts.reverse().forEach((post) => {
     const article = document.createElement('article');
     article.className = 'flex flex-col group cursor-pointer';
-    
+
     // i18n cho bài viết động: ưu tiên field có hậu tố _vi/_en
     const lang = localStorage.getItem('language') || localStorage.getItem('lang') || 'vi';
     const badge = post[`badge_${lang}`] ?? post.badge;
@@ -206,15 +201,15 @@ function initPagination() {
 
   // Lấy toàn bộ bài viết (Cả mẫu và từ LocalStorage)
   const articles = Array.from(grid.querySelectorAll('article'));
-  
+
   // Bạn có thể tùy chỉnh số bài hiển thị trên 1 trang ở biến này (đang setup là 3)
-  const postsPerPage = 3; 
+  const postsPerPage = 3;
   const totalPages = Math.ceil(articles.length / postsPerPage) || 1;
   let currentPage = 1;
 
   function showPage(page) {
     currentPage = page;
-    
+
     const startIndex = (page - 1) * postsPerPage;
     const endIndex = startIndex + postsPerPage;
 
@@ -230,7 +225,7 @@ function initPagination() {
   }
 
   function renderPaginationButtons() {
-    pager.innerHTML = ''; 
+    pager.innerHTML = '';
 
     // Nút Prev
     const prevBtn = document.createElement('button');
@@ -322,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // menu option click
   menuOptions.forEach((option) => {
-      option.addEventListener('click', function() {
+    option.addEventListener('click', function () {
       const href = this.getAttribute('href');
       if (href) {
         window.location.href = href;

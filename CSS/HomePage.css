@@ -131,7 +131,7 @@ body {
 
 /* Khi scroll xuống */
 #header.scrolled {
-    background-color: rgba(248, 246, 246, 0.75);
+    background-color: rgba(253, 0, 0, 0.75);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);

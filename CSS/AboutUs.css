@@ -585,20 +585,19 @@ img {
   opacity: 0.9;
 }
 
-.btn-signout {
-  background: transparent;
-  color: #f5f5f0 !important;
-  border: 2px solid rgba(199, 154, 94, 0.4);
-  width: 100%;
+.btn-register {
+  background: var(--primary);
+  color: white !important;
+  border: 2px solid var(--primary);
   font-weight: 800 !important;
 }
 
-.btn-signout:hover {
-  background: #f44336;
+.btn-register:hover {
+  background: var(--primary);
   color: white !important;
-  border-color: #f44336;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 94, 74, 0.4);
+  opacity: 0.9;
 }
 
 .action-btn .material-symbols-outlined {

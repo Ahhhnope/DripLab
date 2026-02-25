@@ -17,7 +17,7 @@ const translations = {
     "profile.theme": "Chế độ tối",
     "profile.language": "Ngôn ngữ",
     "profile.login": "Đăng nhập",
-    "profile.signout": "Đăng xuất",
+    "profile.register": "Đăng ký",
     
     
     // Footer
@@ -45,7 +45,7 @@ const translations = {
     "profile.theme": "Dark mode",
     "profile.language": "Language",
     "profile.login": "Login",
-    "profile.signout": "Sign out",
+    "profile.register": "Register",
     
     // Content
     "content.title": "Your page title",
@@ -228,16 +228,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Sign out button
-  const signoutBtn = document.querySelector('.btn-signout');
-  if (signoutBtn) {
-    signoutBtn.addEventListener('click', function() {
-      console.log('Sign out clicked');
-      const confirmSignout = confirm('Bạn có chắc muốn đăng xuất? / Are you sure you want to sign out?');
-      if (confirmSignout) {
-        alert('Đã đăng xuất / Signed out');
-        closeUserDropdown();
-      }
+  const registerBtn = document.querySelector('.btn-register');
+  if (registerBtn) {
+    registerBtn.addEventListener('click', function () {
+      console.log('Register clicked');
+      alert('Chức năng đăng ký / Register function');
+      closeUserDropdown();
     });
   }
   
