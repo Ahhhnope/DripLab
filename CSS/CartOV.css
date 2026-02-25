@@ -12,11 +12,7 @@
 }
 
 .material-symbols-outlined {
-    font-variation-settings:
-        "FILL" 0,
-        "wght" 400,
-        "GRAD" 0,
-        "opsz" 24;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
     display: inline-flex;
     vertical-align: middle;
 }
@@ -27,26 +23,4 @@
 
 #modal-toggle:checked~body {
     overflow: hidden;
-}
-
-#success-trigger:checked~#order-content {
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-}
-
-#success-trigger:checked~#success-state {
-    opacity: 1;
-    display: flex;
-}
-
-#order-content {
-    transition:
-        opacity 0.3s ease-out,
-        visibility 0.3s;
-}
-
-#success-state {
-    transition: opacity 0.5s ease-in-out;
-    display: none;
 }
