@@ -16,7 +16,22 @@ const translations = {
     "profile.theme": "Chế độ tối",
     "profile.language": "Ngôn ngữ",
     "profile.login": "Đăng nhập",
-    "profile.signout": "Đăng xuất",
+    "profile.register": "Đăng ký",
+
+    // ===== LOGIN FORM CONTENT =====
+    "login.title": "Đăng nhập Drip Lab",
+    "login.description": "Chào mừng trở lại với hành trình tìm kiếm tách cà phê hoàn hảo",
+    "login.emailPlaceholder": "EMAIL HOẶC SỐ ĐIỆN THOẠI",
+    "login.passwordPlaceholder": "MẬT KHẨU",
+    "login.remember": "LƯU NHỚ TÀI KHOẢN",
+    "login.forgot": "QUÊN MẬT KHẨU?",
+    "login.submit": "Đăng Nhập",
+    "login.orWith": "HOẶC ĐĂNG NHẬP VỚI",
+    "login.newHere": "Chưa có tài khoản?",
+    "login.joinUs": "Tham gia Drip Lab",
+
+    // Swiper
+    "login.followUs": "Theo dõi chúng tôi",
     
     // Content
     "content.title": "Tiêu đề trang của bạn",
@@ -47,7 +62,22 @@ const translations = {
     "profile.theme": "Dark mode",
     "profile.language": "Language",
     "profile.login": "Login",
-    "profile.signout": "Sign out",
+    "profile.register": "Register",
+
+    // ===== LOGIN FORM CONTENT =====
+    "login.title": "Sign in with Drip Lab",
+    "login.description": "Welcome back to the pursuit of the perfect brew",
+    "login.emailPlaceholder": "EMAIL OR PHONE NUMBER",
+    "login.passwordPlaceholder": "PASSWORD",
+    "login.remember": "REMEMBER ME",
+    "login.forgot": "FORGOT?",
+    "login.submit": "Sign In",
+    "login.orWith": "OR SIGN IN WITH",
+    "login.newHere": "New to the lab?",
+    "login.joinUs": "Join Drip Lab",
+
+    // Swiper
+    "login.followUs": "Follow Us",
     
     // Content
     "content.title": "Your page title",
@@ -210,8 +240,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function applyTranslations(lang) {
+    // Dịch các element có data-i18n
     const elements = document.querySelectorAll('[data-i18n]');
-    
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
       if (translations[lang] && translations[lang][key]) {
@@ -224,6 +254,15 @@ document.addEventListener('DOMContentLoaded', function() {
           // Các element thông thường không có icon
           element.textContent = translations[lang][key];
         }
+      }
+    });
+
+    // Dịch placeholder của các input có data-i18n-placeholder
+    const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+    placeholderElements.forEach(element => {
+      const key = element.getAttribute('data-i18n-placeholder');
+      if (translations[lang] && translations[lang][key]) {
+        element.setAttribute('placeholder', translations[lang][key]);
       }
     });
   }
@@ -240,17 +279,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Sign out button
-  const signoutBtn = document.querySelector('.btn-signout');
-  if (signoutBtn) {
-    signoutBtn.addEventListener('click', function() {
-      console.log('Sign out clicked');
-      const confirmSignout = confirm('Bạn có chắc muốn đăng xuất? / Are you sure you want to sign out?');
-      if (confirmSignout) {
-        alert('Đã đăng xuất / Signed out');
-        closeUserDropdown();
-      }
+  // Register button - ĐÃ SỬA: đổi từ btn-signout → btn-register
+  const registerBtn = document.querySelector('.btn-register');
+  if (registerBtn) {
+    registerBtn.addEventListener('click', function() {
+      console.log('Register clicked');
+      window.location.href = '../HTML-INTERFACE/Register.HTML';
+      closeUserDropdown();
     });
+  }
+
+  /*========== Remember Me - Load saved state ==========*/
+  const rememberCheckbox = document.getElementById('RememberMe');
+  const emailInput = document.querySelector('input[name="email"]');
+  
+  if (rememberCheckbox && emailInput) {
+    // Load saved remember state
+    const savedRemember = localStorage.getItem('rememberMe');
+    const savedEmail = localStorage.getItem('savedEmail');
+    
+    if (savedRemember === 'true' && savedEmail) {
+      rememberCheckbox.checked = true;
+      emailInput.value = savedEmail;
+    }
+    
+    // Save on form submit
+    const loginForm = document.querySelector('.login-form');
+    if (loginForm) {
+      loginForm.addEventListener('submit', function() {
+        if (rememberCheckbox.checked) {
+          localStorage.setItem('rememberMe', 'true');
+          localStorage.setItem('savedEmail', emailInput.value);
+        } else {
+          localStorage.removeItem('rememberMe');
+          localStorage.removeItem('savedEmail');
+        }
+      });
+    }
   }
   
   /*========== Escape key to close dropdown ==========*/

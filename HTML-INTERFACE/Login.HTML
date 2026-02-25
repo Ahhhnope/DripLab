@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <!-- ========== HEADER (Copy từ Test.HTML) ========== -->
+    <!-- ========== HEADER  ========== -->
     <header class="header-login">
         <div class="header-container">
             <!-- Logo -->
@@ -111,9 +111,10 @@
                                     <span class="material-symbols-outlined">login</span>
                                     <span data-i18n="profile.login">Login</span>
                                 </button>
-                                <button type="button" class="action-btn btn-signout">
-                                    <span class="material-symbols-outlined">logout</span>
-                                    <span data-i18n="profile.signout">Sign out</span>
+                              
+                                <button type="button" class="action-btn btn-register">
+                                    <span class="material-symbols-outlined">person_add</span>
+                                    <span data-i18n="profile.register">Đăng ký</span>
                                 </button>
                             </div>
                         </div>
@@ -188,8 +189,8 @@
                     <div class="login-logo">
                         <img src="../IMG/DripLab_Logo.png" alt="Drip Lab">
                     </div>
-                    <h1 class="login-title">Sign in with Drip Lab</h1>
-                    <p class="login-description">Welcome back to the pursuit of the perfect brew</p>
+                    <h1 class="login-title" data-i18n="login.title">Đăng nhập Drip Lab</h1>
+                    <p class="login-description" data-i18n="login.description">Chào mừng trở lại với hành trình tìm kiếm tách cà phê hoàn hảo</p>
                 </div>
 
                 <!-- Login Form -->
@@ -197,25 +198,32 @@
                     <div class="login-content grid">
                         <!-- Email Input -->
                         <div class="login-box">
-                            <input type="email" name="email" placeholder="EMAIL OR PHONE NUMBER" class="login-input" required>
+                            <input type="email" name="email" data-i18n-placeholder="login.emailPlaceholder" placeholder="EMAIL HOẶC SỐ ĐIỆN THOẠI" class="login-input" required>
                             <i class="ri-mail-fill"></i>
                         </div>
 
                         <!-- Password Input with Forgot Link -->
                         <div class="login-password-wrapper">
                             <div class="login-box">
-                                <input type="password" name="password" placeholder="PASSWORD" class="login-input" required id="LoginPassword">
+                                <input type="password" name="password" data-i18n-placeholder="login.passwordPlaceholder" placeholder="MẬT KHẨU" class="login-input" required id="LoginPassword">
                                 <i class="ri-eye-line login-eye" id="LoginEye"></i>
                             </div>
-                            <a href="../HTML-INTERFACE/Forgot.HTML" class="login-forgot-inline">FORGOT?</a>
+                            <!-- Remember me checkbox bên trái + Forgot bên phải -->
+                            <div class="login-remember-row">
+                                <label class="login-remember-label">
+                                    <input type="checkbox" name="remember" id="RememberMe" class="login-remember-checkbox">
+                                    <span class="login-remember-text" data-i18n="login.remember">LƯU NHỚ TÀI KHOẢN</span>
+                                </label>
+                                <a href="../HTML-INTERFACE/Forgot.HTML" class="login-forgot-inline" data-i18n="login.forgot">QUÊN MẬT KHẨU?</a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="login-button">Sign In</button>
+                    <button type="submit" class="login-button" data-i18n="login.submit">Đăng Nhập</button>
 
                     <!-- Divider -->
-                    <span class="login-line">OR SIGN IN WITH</span>
+                    <span class="login-line" data-i18n="login.orWith">HOẶC ĐĂNG NHẬP VỚI</span>
 
                     <!-- Social Login Buttons -->
                     <div class="login-social-buttons">
@@ -230,7 +238,7 @@
 
                 <!-- Sign Up Link -->
                 <p class="login-switch">
-                    New to the lab? <a href="../HTML-INTERFACE/Register.HTML" class="login-sign">Join Drip Lab</a>
+                    <span data-i18n="login.newHere">Chưa có tài khoản?</span> <a href="../HTML-INTERFACE/Register.HTML" class="login-sign" data-i18n="login.joinUs">Tham gia Drip Lab</a>
                 </p>
             </div>
         </div>
