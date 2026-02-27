@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Drip Lab Admin Dashboard Overview</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../CSS/DashBoardAdmin.css">
+
+    <!-- Tailwind Config -->
+    <script src="../JS/DashBoardAdmin.js"></script>
+
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#181411] dark:text-white min-h-screen">
+
+    <input class="hidden" id="modal-toggle" type="checkbox" />
+
+    <div class="flex min-h-screen">
+        <!-- ====== ASIDE ====== -->
+        <aside
+            class="w-64 flex-shrink-0 border-r border-[#e5e0dc] dark:border-[#3d2e1f] bg-white dark:bg-[#1a140d] hidden lg:flex flex-col sticky top-0 h-screen">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+                    <img src="../IMG/dripLab_Logo_Footer.png" alt="Drip Lab Logo" class="w-6 h-6">
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-[#887563] text-xs font-medium">Admin Console</p>
+                </div>
+            </div>
+
+            <!-- ====== Navigator ====== -->
+            <nav class="flex-1 px-4 space-y-1 mt-4">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="text-sm font-semibold">Dashboard</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181411] dark:text-[#d7ccc0] hover:bg-[#f4f2f0] dark:hover:bg-[#2d2319] transition-colors"
+                    href="../HTML-ADMIN/AdminOrderManagement.html">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="text-sm font-medium">Orders</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181411] dark:text-[#d7ccc0] hover:bg-[#f4f2f0] dark:hover:bg-[#2d2319] transition-colors"
+                    href="../HTML-ADMIN/ProductAdmin.html">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="text-sm font-medium">Product Management</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181411] dark:text-[#d7ccc0] hover:bg-[#f4f2f0] dark:hover:bg-[#2d2319] transition-colors"
+                    href="../HTML-ADMIN/AdminManagementNews.html">
+                    <span class="material-symbols-outlined">newspaper</span>
+                    <span class="text-sm font-medium">News Management</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-[#e5e0dc] dark:border-[#3d2e1f]">
+                <button
+                    class="w-full flex items-center justify-center gap-2 py-2.5 bg-primary text-white rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">
+                    <span class="material-symbols-outlined !text-[18px]">logout</span>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- ====== MAIN CONTENT ====== -->
+        <main class="flex-1 flex flex-col min-w-0">
+            <div class="p-8">
+
+                <!-- 3 STAT CARDS -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Money Card -->
+                    <div
+                        class="bg-white dark:bg-[#1a140d] p-6 rounded-xl border border-[#e5e0dc] dark:border-[#3d2e1f] shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <p class="text-[#887563] text-sm font-semibold uppercase tracking-wider">Today's Revenue</p>
+                            <span class="p-2 bg-primary/10 text-primary rounded-lg">
+                                <span class="material-symbols-outlined">payments</span>
+                            </span>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <h3 class="text-3xl font-bold">Tổng tiền ở đây</h3>
+                        </div>
+                    </div>
+
+                    <!-- Pending orders card -->
+                    <div
+                        class="bg-white dark:bg-[#1a140d] p-6 rounded-xl border border-[#e5e0dc] dark:border-[#3d2e1f] shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <p class="text-[#887563] text-sm font-semibold uppercase tracking-wider">Pending Orders</p>
+                            <span class="p-2 bg-[#f4f2f0] dark:bg-[#2d2319] text-[#181411] dark:text-white rounded-lg">
+                                <span class="material-symbols-outlined">pending_actions</span>
+                            </span>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <h3 class="text-3xl font-bold">Tổng đơn hàng đang chờ ở đây</h3>
+                        </div>
+                    </div>
+
+                    <!-- Total customer card -->
+                    <div
+                        class="bg-white dark:bg-[#1a140d] p-6 rounded-xl border border-[#e5e0dc] dark:border-[#3d2e1f] shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <p class="text-[#887563] text-sm font-semibold uppercase tracking-wider">Total Customers</p>
+                            <span class="p-2 bg-[#f4f2f0] dark:bg-[#2d2319] text-[#181411] dark:text-white rounded-lg">
+                                <span class="material-symbols-outlined">groups</span>
+                            </span>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <h3 class="text-3xl font-bold">Tổng số khách hàng ở đây</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== ORDERS TABLES ===== -->
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+
+                    <!-- Incoming Orders -->
+                    <div
+                        class="bg-white dark:bg-[#1a140d] rounded-xl border border-[#e5e0dc] dark:border-[#3d2e1f] shadow-sm flex flex-col h-full">
+                        <div
+                            class="p-6 border-b border-[#e5e0dc] dark:border-[#3d2e1f] flex justify-between items-center">
+                            <h2 class="text-lg font-bold">Incoming Orders</h2>
+                            <label class="text-primary text-sm font-bold hover:underline cursor-pointer"
+                                for="modal-toggle">View All</label>
+                        </div>
+
+                        <div class="overflow-x-auto min-h-[320px]">
+                            <table class="w-full text-left">
+                                <thead class="bg-[#f8f7f6] dark:bg-[#241c13]">
+                                    <tr>
+                                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                                            Order ID</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                                            Customer</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                                            Status</th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider text-right">
+                                            Amount</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="divide-y divide-[#e5e0dc] dark:divide-[#3d2e1f] min-h-[320px]">
+                                <tbody id="order-body" class="divide-y divide-[#e5e0dc] dark:divide-[#3d2e1f]">
+                                    <tr id="empty-row" class="h-[64px]">
+                                        <td colspan="4" class="text-center text-gray-400">
+                                            No orders yet ☕
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <!-- ===== Thêm entity vào bảng ===== -->
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Past Orders -->
+                    <div
+                        class="bg-white dark:bg-[#1a140d] rounded-xl border border-[#e5e0dc] dark:border-[#3d2e1f] shadow-sm flex flex-col h-full">
+                        <div
+                            class="p-6 border-b border-[#e5e0dc] dark:border-[#3d2e1f] flex justify-between items-center">
+                            <h2 class="text-lg font-bold">Past Orders</h2>
+                            <button class="text-[#887563] text-sm font-bold hover:text-primary">Filter</button>
+                        </div>
+
+                        <div class="overflow-x-auto min-h-[320px]">
+                            <table class="w-full text-left">
+                                <thead class="bg-[#f8f7f6] dark:bg-[#241c13]">
+                                    <tr>
+                                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                                            Order ID</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                                            Date</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                                            Status</th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider text-right">
+                                            Amount</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="divide-y divide-[#e5e0dc] dark:divide-[#3d2e1f]">
+                                    <!-- ===== Thêm entity vào bảng ===== -->
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ===== Revenue Flow ===== -->
+                <div
+                    class="mt-8 bg-white dark:bg-[#1a140d] rounded-xl border border-[#e5e0dc] dark:border-[#3d2e1f] shadow-sm flex flex-col p-6">
+                    <div class="flex justify-between items-center mb-10">
+                        <h2 class="text-lg font-bold">Revenue Flow</h2>
+                        <select
+                            class="bg-transparent border-none text-xs font-bold text-primary focus:ring-0 cursor-pointer">
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                        </select>
+                    </div>
+
+                    <div class="flex h-[350px] w-full gap-4 pb-12">
+
+                        <div
+                            class="flex flex-col justify-between text-[11px] font-bold text-[#887563] text-right w-12 pb-2">
+                            <span>$2k</span>
+                            <span>$1.5k</span>
+                            <span>$1k</span>
+                            <span>$500</span>
+                            <span>0</span>
+                        </div>
+
+                        <div class="flex-1 relative flex items-end justify-start gap-4 px-4 border-l border-b border-[#e5e0dc] dark:border-[#3d2e1f]">
+
+                            <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+                                <div class="w-full border-t border-dashed border-[#e5e0dc] dark:border-[#3d2e1f]/30">
+                                </div>
+                                <div class="w-full border-t border-dashed border-[#e5e0dc] dark:border-[#3d2e1f]/30">
+                                </div>
+                                <div class="w-full border-t border-dashed border-[#e5e0dc] dark:border-[#3d2e1f]/30">
+                                </div>
+                                <div class="w-full border-t border-dashed border-[#e5e0dc] dark:border-[#3d2e1f]/30">
+                                </div>
+                                <div class="w-full"></div>
+                            </div>
+
+                            <!--  Thêm BARS bên dưới -->
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== MODAL ===== -->
+    <div class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+        id="order-modal">
+        <div class="bg-white dark:bg-[#1a140d] w-full max-w-2xl rounded-2xl shadow-2xl flex flex-col max-h-[90vh]">
+
+            <div class="p-6 border-b border-[#e5e0dc] dark:border-[#3d2e1f] flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold">Orders pending:</h3>
+                </div>
+                <label
+                    class="p-2 hover:bg-[#f4f2f0] dark:hover:bg-[#2d2319] rounded-full cursor-pointer transition-colors"
+                    for="modal-toggle">
+                    <span class="material-symbols-outlined">close</span>
+                </label>
+            </div>
+
+
+            <table class="w-full text-left">
+                <thead class="bg-[#f8f7f6] dark:bg-[#241c13]">
+                    <tr>
+                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                            Order ID</th>
+                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                            Customer</th>
+                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider">
+                            Status</th>
+                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider text-right">
+                            Amount</th>
+                        <th class="px-6 py-4 text-xs font-bold text-[#887563] uppercase tracking-wider text-right">
+                            View order</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-[#e5e0dc] dark:divide-[#3d2e1f]">
+                    <!-- ===== Thêm entity vào bảng ===== -->
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -14,59 +14,58 @@
   <link rel="stylesheet" href="../CSS/AdminManagementNews.css">
 </head>
 
-<body class="bg-background-light dark:bg-background-dark text-[#181611] dark:text-white transition-colors duration-200">
-  <div class="flex min-h-screen">
+<body class="bg-background-light dark:bg-background-dark text-[#181411] dark:text-white min-h-screen">
 
-    <!-- Sidebar -->
-    <aside
-      class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-[#1a150c] border-r border-[#e6e2db] dark:border-[#3a3324] flex flex-col z-50">
-      <div class="p-6 border-b border-[#e6e2db] dark:border-[#3a3324] flex items-center gap-3">
-        <!-- Logo -->
-        <div class="header-logo flex items-center">
-          <a href="#" class="logo-image-link flex items-center">
-            <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img h-8 w-auto object-contain" />
-          </a>
-        </div>
-      </div>
+    <div class="flex min-h-screen">
+        <!-- ===== Aside ===== -->
+        <aside
+            class="w-64 flex-shrink-0 border-r border-[#e5e0dc] dark:border-[#3d2e1f] bg-white dark:bg-[#1a140d] hidden lg:flex flex-col sticky top-0 h-screen">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+                    <img src="../IMG/dripLab_Logo_Footer.png" alt="Drip Lab Logo" class="w-6 h-6">
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-[#887563] text-xs font-medium">Admin Console</p>
+                </div>
+            </div>
 
-      <nav class="flex-1 p-4 space-y-1 overflow-y-auto custom-scrollbar">
-        <a class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-[#897d61] hover:bg-background-light dark:hover:bg-[#2d2618] transition-colors"
-          href="#">
-          <span class="material-symbols-outlined text-[22px]">dashboard</span>
-          Dashboard
-        </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-[#897d61] hover:bg-background-light dark:hover:bg-[#2d2618] transition-colors"
-          href="#">
-          <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
-          Orders
-        </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-sm font-semibold rounded-lg text-[#897d61] hover:bg-background-light dark:hover:bg-[#2d2618] transition-colors"
-          href="#">
-          <span class="material-symbols-outlined text-[22px]">inventory_2</span>
-          Product Management
-        </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-lg bg-primary/10 text-primary border border-primary/20"
-          href="#">
-          <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1">article</span>
-          News Management
-        </a>
-      </nav>
+            <!-- ====== Navigator ====== -->
+            <nav class="flex-1 px-4 space-y-1 mt-4">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181411] dark:text-[#d7ccc0] hover:bg-[#f4f2f0] dark:hover:bg-[#2d2319] transition-colors"
+                 href="../HTML-ADMIN/DashBoardAdmin.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="text-sm font-semibold">Dashboard</span>
+                </a>
 
-      <div class="p-4 border-t border-[#e6e2db] dark:border-[#3a3324]">
-        <div class="flex items-center gap-3 px-2">
-          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20"
-            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOrdn105HdzCqblMq31xGRl14pCzSW5uo6pxm2izUbtbFM1L3TvJl9vLwuaZT9FHqAq4NleXBlp71gLgu_kt-leCoxH4w4dogWrd43GaIwtxBLLFE2Huzrp_J0Jh80DwDvSBcxRPko_H3X-BhV21iNQyglQJazfHu1SaTcAbXUQhOP_EiEo-YPGW2pG0pYRwIK8tKQOfFcQT0RvVvrFGdUwLOlvBlc0FNU4jh1avRWXBWVgSmX4ujGiv3lkbSuv2ovhlZOTgXANZMF");'>
-          </div>
-          <div class="flex flex-col">
-            <p class="text-sm font-bold">Admin User</p>
-            <p class="text-[10px] text-[#897d61] font-semibold uppercase">Super Admin</p>
-          </div>
-        </div>
-      </div>
-    </aside>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181411] dark:text-[#d7ccc0] hover:bg-[#f4f2f0] dark:hover:bg-[#2d2319] transition-colors" href="../HTML-ADMIN/AdminOrderManagement.html">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="text-sm font-medium">Orders</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181411] dark:text-[#d7ccc0] hover:bg-[#f4f2f0] dark:hover:bg-[#2d2319] transition-colors"
+                    href="../HTML-ADMIN/ProductAdmin.html">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="text-sm font-medium">Product Management</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary"
+                    href="../HTML-ADMIN/AdminManagementNews.html">
+                    <span class="material-symbols-outlined">newspaper</span>
+                    <span class="text-sm font-medium">News Management</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-[#e5e0dc] dark:border-[#3d2e1f]">
+                <button
+                    class="w-full flex items-center justify-center gap-2 py-2.5 bg-primary text-white rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">
+                    <span class="material-symbols-outlined !text-[18px]">logout</span>
+                    Logout
+                </button>
+            </div>
+        </aside>
 
     <!-- Main -->
-    <div class="flex-1 flex flex-col ml-64 min-w-0">
+    <div class="flex-1 flex flex-col min-w-0 p-6">
       <header
         class="h-16 flex items-center justify-between px-8 bg-white dark:bg-[#1a150c] border-b border-[#e6e2db] dark:border-[#3a3324] sticky top-0 z-40">
         <div class="flex items-center gap-4">
