@@ -238,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (registerBtn) {
     registerBtn.addEventListener('click', function () {
       console.log('Register clicked');
+      window.location.href = '../HTML-INTERFACE/Register.HTML';
       alert('Chức năng đăng ký / Register function');
       closeUserDropdown();
     });

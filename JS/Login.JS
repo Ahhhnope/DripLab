@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Register button - ĐÃ SỬA: đổi từ btn-signout → btn-register
+  // Register button 
   const registerBtn = document.querySelector('.btn-register');
   if (registerBtn) {
     registerBtn.addEventListener('click', function() {

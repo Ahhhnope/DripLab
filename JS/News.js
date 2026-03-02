@@ -381,17 +381,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  const signoutBtn = document.querySelector('.btn-signout');
-  if (signoutBtn) {
-    signoutBtn.addEventListener('click', function () {
-      console.log('Sign out clicked');
-      const confirmSignout = confirm('Bạn có chắc muốn đăng xuất? / Are you sure you want to sign out?');
-      if (confirmSignout) {
-        alert('Đã đăng xuất / Signed out');
-        closeUserDropdown();
-      }
+  // Sign out button
+  const registerBtn = document.querySelector('.btn-register');
+  if (registerBtn) {
+    registerBtn.addEventListener('click', function () {
+      console.log('Register clicked');
+      window.location.href = '../HTML-INTERFACE/Register.HTML';
+      alert('Chức năng đăng ký / Register function');
+      closeUserDropdown();
     });
   }
+  
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && userDropdown && userDropdown.classList.contains('active')) {

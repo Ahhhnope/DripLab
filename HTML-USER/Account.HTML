@@ -106,9 +106,8 @@
 
                             <div class="dropdown-divider"></div>
 
-                            <!-- Action Buttons - CHỈ GIỮ SIGN OUT -->
                             <div class="dropdown-actions">
-                                <button type="button" class="action-btn btn-signout">
+                                <button type="button" class="action-btn btn-signout" onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
                                     <span class="material-symbols-outlined">logout</span>
                                     <span data-i18n="profile.signout">Sign out</span>
                                 </button>
@@ -140,15 +139,15 @@
                 </div>
 
                 <ul class="sidebar-nav">
-                    <li><a href="#" class="active"><i class='bx bxs-user'></i> <span
+                    <li><a href="../HTML-USER/Account.HTML" ><i class='bx bxs-user'></i> <span
                                 data-i18n="sidebar.account">Account</span></a></li>
-                    <li><a href="#"><i class='bx bxs-lock'></i> <span data-i18n="sidebar.changePassword">Change
+                    <li><a href="../HTML-USER/ChangePassword.HTML"><i class='bx bxs-lock'></i> <span data-i18n="sidebar.changePassword">Change
                                 Password</span></a></li>
                     <li><a href="#"><i class='bx bxs-map'></i> <span data-i18n="sidebar.address">Address</span></a></li>
                     <li><a href="#"><i class='bx bxs-receipt'></i> <span data-i18n="sidebar.orders">Orders</span></a>
                     </li>
                     <li><a href="#"><i class='bx bxs-heart'></i> <span
-                                data-i18n="sidebar.favorites">Favorites</span></a></li>
+                                data-i18n="sidebar.favorites">Receipts</span></a></li>
                     <li class="nav-logout">
                         <a href="../HTML-INTERFACE/Homepage.html" id="sidebar-logout-btn"><i class='bx bx-log-out'></i>
                             <span data-i18n="sidebar.logout" >Logout</span>
