@@ -18,10 +18,6 @@ const translations = {
         "profile.login": "Đăng nhập",
         "profile.signout": "Đăng xuất",
 
-        // Content
-        "content.title": "Tiêu đề trang của bạn",
-        "content.description": "Nội dung ở đây...",
-
         // Footer
         "footer.description": "Drip Lab - Coffee for your fresh start every day.",
         "footer.connect": "Kết nối",
@@ -30,28 +26,27 @@ const translations = {
         "footer.follow": "Theo dõi chúng tôi",
         "footer.copyright": "© 2025 Drip Lab. Space for coffee heads.",
 
-        // Profile Settings Page
-        "sidebar.account": "Account",
+        // Sidebar
+        "sidebar.account": "Tài Khoản",
         "sidebar.changePassword": "Đổi Mật Khẩu",
         "sidebar.address": "Địa Chỉ",
         "sidebar.orders": "Đơn Hàng",
         "sidebar.favorites": "Yêu Thích",
         "sidebar.logout": "Đăng Xuất",
         "sidebar.badge": "Thành Viên Premium",
-        "panel.title": "Cài Đặt Hồ Sơ",
-        "panel.picTitle": "Ảnh Đại Diện",
-        "panel.picDesc": "PNG, JPG hoặc GIF. Tối đa 2MB.",
-        "form.fullName": "Họ và Tên",
-        "form.email": "Địa Chỉ Email",
-        "form.phone": "Số Điện Thoại",
-        "form.save": "Lưu Thay Đổi",
 
-        // Change Password
-        "change.title": "Đổi Mật Khẩu",
-        "change.current": "Mật Khẩu Hiện Tại",
-        "change.new": "Mật Khẩu Mới",
-        "change.confirm": "Xác Nhận Mật Khẩu",
-        "change.update": "Cập Nhật Mật Khẩu"
+        // Address Page
+        "address.title": "Quản Lý Địa Chỉ",
+        "address.street": "Địa Chỉ Đường",
+        "address.apt": "Căn Hộ, Phòng, v.v. (Tùy chọn)",
+        "address.city": "Thành Phố",
+        "address.save": "Lưu Địa Chỉ",
+        "address.success": "Địa chỉ đã được lưu thành công!",
+
+        // Placeholders
+        "placeholder.street": "123 Đường Artisanal",
+        "placeholder.apt": "Phòng 4B",
+        "placeholder.city": "Hà Nội"
     },
     en: {
         // Navigation
@@ -72,10 +67,6 @@ const translations = {
         "profile.login": "Login",
         "profile.signout": "Sign out",
 
-        // Content
-        "content.title": "Your page title",
-        "content.description": "Content goes here...",
-
         // Footer
         "footer.description": "Drip Lab - Coffee for your fresh start every day.",
         "footer.connect": "Connect",
@@ -84,7 +75,7 @@ const translations = {
         "footer.follow": "Follow Us On",
         "footer.copyright": "© 2025 Drip Lab. Space for coffee heads.",
 
-        // Profile Settings Page
+        // Sidebar
         "sidebar.account": "Account",
         "sidebar.changePassword": "Change Password",
         "sidebar.address": "Address",
@@ -92,26 +83,24 @@ const translations = {
         "sidebar.favorites": "Favorites",
         "sidebar.logout": "Logout",
         "sidebar.badge": "Premium Member",
-        "panel.title": "Profile Settings",
-        "panel.picTitle": "Profile Picture",
-        "panel.picDesc": "PNG, JPG or GIF. Max 2MB.",
-        "form.fullName": "Full Name",
-        "form.email": "Email Address",
-        "form.phone": "Phone Number",
-        "form.save": "Save Changes",
 
-        // Change Password
-        "change.title": "Change Password",
-        "change.current": "Current Password",
-        "change.new": "New Password",
-        "change.confirm": "Confirm New Password",
-        "change.update": "Update Password",
+        // Address Page
+        "address.title": "Address Management",
+        "address.street": "Street Address",
+        "address.apt": "Apartment, Suite, etc. (Optional)",
+        "address.city": "City",
+        "address.save": "Save Address",
+        "address.success": "Address saved successfully!",
+
+        // Placeholders
+        "placeholder.street": "123 Artisanal Street",
+        "placeholder.apt": "Apt 4B",
+        "placeholder.city": "Hanoi"
     }
 };
 
 /* ================================================================
    SMOOTH PAGE NAVIGATION — fade out trước khi chuyển trang
-   Intercept tất cả <a> nội bộ qua capture phase
    ================================================================ */
 function goTo(href) {
     if (!href || href === '#') return;
@@ -136,30 +125,23 @@ document.addEventListener('click', function (e) {
    MAIN DOM READY
    ================================================================ */
 document.addEventListener('DOMContentLoaded', function () {
-    // Get elements
-    const userProfileBtn = document.getElementById('user-profile-btn');
-    const userDropdown = document.getElementById('user-dropdown');
-    const themeToggle = document.getElementById('theme-toggle-dropdown');
-    const langButtons = document.querySelectorAll('.lang-btn');
 
-    // Menu dropdown elements
-    const menuDropdown = document.getElementById('menu-dropdown');
-    const menuOptions = document.querySelectorAll('.menu-option');
+    // ── Core elements ──
+    const userProfileBtn  = document.getElementById('user-profile-btn');
+    const userDropdown    = document.getElementById('user-dropdown');
+    const themeToggle     = document.getElementById('theme-toggle-dropdown');
+    const langButtons     = document.querySelectorAll('.lang-btn');
+    const menuOptions     = document.querySelectorAll('.menu-option');
 
-    // Create overlay element
+    // ── Overlay ──
     const overlay = document.createElement('div');
     overlay.className = 'dropdown-overlay';
     document.body.appendChild(overlay);
 
-    /*========== Toggle User Profile Dropdown ==========*/
+    /* ========== User Profile Dropdown ========== */
     userProfileBtn.addEventListener('click', function (e) {
         e.stopPropagation();
-        const isActive = userDropdown.classList.contains('active');
-        if (isActive) {
-            closeUserDropdown();
-        } else {
-            openUserDropdown();
-        }
+        userDropdown.classList.contains('active') ? closeUserDropdown() : openUserDropdown();
     });
 
     function openUserDropdown() {
@@ -174,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = '';
     }
 
-    /*========== Close dropdown when clicking outside ==========*/
     overlay.addEventListener('click', closeUserDropdown);
 
     document.addEventListener('click', function (e) {
@@ -187,20 +168,17 @@ document.addEventListener('DOMContentLoaded', function () {
         e.stopPropagation();
     });
 
-    /*========== Menu Options Click Handlers ==========*/
+    /* ========== Menu Options ========== */
     menuOptions.forEach(option => {
-        option.addEventListener('click', function (e) {
+        option.addEventListener('click', function () {
             const href = this.getAttribute('href');
-            if (href) {
-                window.location.href = href;
-            }
+            if (href) window.location.href = href;
         });
     });
 
-    /*========== Theme Toggle Functionality ==========*/
+    /* ========== Theme Toggle ========== */
     const html = document.documentElement;
 
-    // Sync toggle button với theme đã được set bởi anti-flash script
     if (html.classList.contains('dark')) {
         themeToggle.classList.add('active');
     }
@@ -220,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    /*========== Language Toggle Functionality ==========*/
+    /* ========== Language Toggle ========== */
     let currentLang = localStorage.getItem('language') || 'vi';
     setLanguage(currentLang);
 
@@ -233,53 +211,76 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setLanguage(lang) {
         currentLang = lang;
+
+        // Update active button
         langButtons.forEach(btn => {
-            if (btn.getAttribute('data-lang') === lang) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
+            btn.getAttribute('data-lang') === lang
+                ? btn.classList.add('active')
+                : btn.classList.remove('active');
         });
+
         document.documentElement.setAttribute('lang', lang);
         applyTranslations(lang);
+        applyPlaceholders(lang);
         localStorage.setItem('language', lang);
     }
 
     function applyTranslations(lang) {
         const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(element => {
-            const key = element.getAttribute('data-i18n');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
-                const span = element.querySelector('span');
+                // Handle panel-title with icon (has child nodes)
+                if (el.classList.contains('panel-title')) {
+                    // Keep the icon, update text node
+                    const icon = el.querySelector('.address-title-icon');
+                    el.textContent = translations[lang][key];
+                    if (icon) el.prepend(icon);
+                    return;
+                }
+                const span = el.querySelector('span');
                 if (span) {
                     span.textContent = translations[lang][key];
                 } else {
-                    element.textContent = translations[lang][key];
+                    el.textContent = translations[lang][key];
                 }
             }
         });
     }
 
-    /*========== Sign Out ==========*/
+    function applyPlaceholders(lang) {
+        const t = translations[lang];
+        if (!t) return;
+        const street = document.getElementById('addr-street');
+        const apt    = document.getElementById('addr-apt');
+        const city   = document.getElementById('addr-city');
+        if (street) street.placeholder = t['placeholder.street'] || '';
+        if (apt)    apt.placeholder    = t['placeholder.apt']    || '';
+        if (city)   city.placeholder   = t['placeholder.city']   || '';
+    }
+
+    /* ========== Sign Out (header dropdown) ========== */
     const signoutBtn = document.querySelector('.btn-signout');
     if (signoutBtn) {
         signoutBtn.addEventListener('click', function () {
-            const confirmSignout = confirm('Bạn có chắc muốn đăng xuất? / Are you sure you want to sign out?');
-            if (confirmSignout) {
+            const msg = currentLang === 'vi'
+                ? 'Bạn có chắc muốn đăng xuất?'
+                : 'Are you sure you want to sign out?';
+            if (confirm(msg)) {
                 closeUserDropdown();
                 goTo('../HTML-INTERFACE/Homepage.html');
             }
         });
     }
 
-    /*========== Escape key ==========*/
+    /* ========== Escape key ========== */
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && userDropdown.classList.contains('active')) {
             closeUserDropdown();
         }
     });
 
-    /*========== SIDEBAR NAVIGATION ==========*/
+    /* ========== Sidebar Navigation ========== */
     const sidebarLinks = document.querySelectorAll('.sidebar-nav li a');
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function () {
@@ -288,58 +289,66 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /*========== SIDEBAR LOGOUT ==========*/
+    /* ========== Sidebar Logout ========== */
     const sidebarLogoutBtn = document.getElementById('sidebar-logout-btn');
     if (sidebarLogoutBtn) {
         sidebarLogoutBtn.addEventListener('click', function (e) {
             e.preventDefault();
-            e.stopImmediatePropagation(); // ngăn capture goTo chạy
-            const confirmLogout = confirm('Bạn có chắc muốn đăng xuất? / Are you sure you want to logout?');
-            if (confirmLogout) {
-                goTo('../HTML-INTERFACE/Homepage.html');
-            }
+            e.stopImmediatePropagation();
+            const msg = currentLang === 'vi'
+                ? 'Bạn có chắc muốn đăng xuất?'
+                : 'Are you sure you want to logout?';
+            if (confirm(msg)) goTo('../HTML-INTERFACE/Homepage.html');
         });
     }
 
-    /*========== EYE TOGGLE ==========*/
-    document.querySelectorAll('.pw-eye').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            const input = document.getElementById(this.getAttribute('data-pw'));
-            const icon  = this.querySelector('i');
-            if (!input) return;
-            const show = input.type === 'password';
-            input.type = show ? 'text' : 'password';
-            icon.className = show ? 'ri-eye-off-line' : 'ri-eye-line';
-        });
-    });
+    /* ================================================================
+       SAVE ADDRESS BUTTON
+       ================================================================ */
+    const saveBtn     = document.getElementById('save-address-btn');
+    const successToast = document.getElementById('success-toast');
 
-    /*========== UPDATE PASSWORD BUTTON ==========*/
-    const updateBtn = document.querySelector('.change-password-form .save-btn');
-    if (updateBtn) {
-        updateBtn.addEventListener('click', function () {
-            const current     = document.getElementById('pw-current').value.trim();
-            const newPass     = document.getElementById('pw-new').value.trim();
-            const confirmPass = document.getElementById('pw-confirm').value.trim();
+    if (saveBtn) {
+        saveBtn.addEventListener('click', function () {
+            const street = document.getElementById('addr-street').value.trim();
+            const city   = document.getElementById('addr-city').value.trim();
 
-            if (!current || !newPass || !confirmPass) {
-                alert('Vui lòng điền đầy đủ thông tin!');
-                return;
-            }
-            if (newPass !== confirmPass) {
-                alert('Mật khẩu xác nhận không khớp!');
+            // Basic validation – street & city required
+            if (!street || !city) {
+                const msg = currentLang === 'vi'
+                    ? 'Vui lòng điền Địa Chỉ Đường và Thành Phố!'
+                    : 'Please fill in Street Address and City!';
+                alert(msg);
                 return;
             }
 
-            this.textContent = '✓ Updated!';
-            this.style.background = '#3b5e4a';
-            this.disabled = true;
+            // Simulate save — show success state
+            saveBtn.classList.add('saved');
+            saveBtn.textContent = currentLang === 'vi' ? '✓ Đã Lưu!' : '✓ Saved!';
 
-            setTimeout(() => {
-                this.textContent = translations[localStorage.getItem('language') || 'vi']['change.update'];
-                this.style.background = '';
-                this.disabled = false;
-            }, 2000);
+            // Show toast
+            successToast.classList.add('show');
+
+            // Reset after 2.5s
+            setTimeout(function () {
+                saveBtn.classList.remove('saved');
+                saveBtn.textContent = translations[currentLang]['address.save'];
+                successToast.classList.remove('show');
+            }, 2500);
         });
     }
+
+    /* ================================================================
+       ANTI-FLASH: Apply saved theme immediately
+       ================================================================ */
+    (function () {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.className = 'dark';
+            document.documentElement.style.background = '#1a1714';
+        } else {
+            document.documentElement.className = 'light';
+        }
+    })();
 
 });

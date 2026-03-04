@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS Links -->
-    <link rel="stylesheet" href="../CSS/ChangePassword.CSS">
+    <link rel="stylesheet" href="../CSS/AddressUser.CSS">
 
     <!-- Icon Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-    <title>Page Title - Drip Lab</title>
+    <title>Address Management - Drip Lab</title>
 </head>
 
 <body>
@@ -106,7 +106,7 @@
 
                             <div class="dropdown-divider"></div>
 
-                            <!-- Action Buttons - CHỈ GIỮ SIGN OUT -->
+                            <!-- Action Buttons -->
                             <div class="dropdown-actions">
                                 <button type="button" class="action-btn btn-signout">
                                     <span class="material-symbols-outlined">logout</span>
@@ -124,13 +124,12 @@
         </div>
     </header>
 
-    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
+    <!-- ========== MAIN CONTENT ========== -->
     <main class="main-content">
         <div class="profile-container">
 
             <!-- Sidebar trái -->
             <aside class="profile-sidebar">
-                <!-- CĂN GIỮA sidebar-user -->
                 <div class="sidebar-user">
                     <div class="sidebar-avatar">
                         <img src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
@@ -142,13 +141,14 @@
                 <ul class="sidebar-nav">
                     <li><a href="../HTML-USER/Account.HTML"><i class='bx bxs-user'></i> <span
                                 data-i18n="sidebar.account">Account</span></a></li>
-                    <li><a href="../HTML-USER/ChangePassword.HTML"><i class='bx bxs-lock'></i> <span data-i18n="sidebar.changePassword">Change
-                                Password</span></a></li>
-                    <li><a href="#"><i class='bx bxs-map'></i> <span data-i18n="sidebar.address">Address</span></a></li>
-                    <li><a href="#"><i class='bx bxs-receipt'></i> <span data-i18n="sidebar.orders">Orders</span></a>
-                    </li>
-                    <li><a href="#"><i class='bx bxs-heart'></i> <span data-i18n="sidebar.favorites">Receipts</span></a>
-                    </li>
+                    <li><a href="../HTML-USER/ChangePassword.HTML"><i class='bx bxs-lock'></i> <span
+                                data-i18n="sidebar.changePassword">Change Password</span></a></li>
+                    <li><a href="../HTML-USER/Address.HTML" class="active"><i class='bx bxs-map'></i> <span
+                                data-i18n="sidebar.address">Address</span></a></li>
+                    <li><a href="#"><i class='bx bxs-receipt'></i> <span
+                                data-i18n="sidebar.orders">Orders</span></a></li>
+                    <li><a href="#"><i class='bx bxs-heart'></i> <span
+                                data-i18n="sidebar.favorites">Receipts</span></a></li>
                     <li class="nav-logout">
                         <a href="../HTML-INTERFACE/Homepage.html" id="sidebar-logout-btn"><i class='bx bx-log-out'></i>
                             <span data-i18n="sidebar.logout">Logout</span>
@@ -159,47 +159,55 @@
 
             <!-- Panel phải -->
             <section class="profile-panel">
-                <h2 class="panel-title" data-i18n="change.title">Change Password</h2>
+                <h2 class="panel-title" data-i18n="address.title">
+                    <i class='bx bxs-map address-title-icon'></i>
+                    Address Management
+                </h2>
 
-                <div class="change-password-form">
+                <div class="address-form">
 
-                    <!-- Current Password -->
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="change.current">Current Password</label>
-                        <div class="pw-wrap">
-                            <input type="password" class="form-input" id="pw-current"
-                                placeholder="Enter current password">
-                            <button type="button" class="pw-eye" data-pw="pw-current" tabindex="-1">
-                                <i class="ri-eye-line"></i>
-                            </button>
+                    <!-- Street Address -->
+                    <div class="form-group form-group-full">
+                        <label class="form-label" data-i18n="address.street">Street Address</label>
+                        <div class="input-icon-wrap">
+                            <i class='bx bx-home-alt input-icon'></i>
+                            <input type="text" class="form-input" id="addr-street"
+                                placeholder="123 Artisanal Street" value="123 Artisanal Street">
                         </div>
                     </div>
 
-                    <!-- New Password -->
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="change.new">New Password</label>
-                        <div class="pw-wrap">
-                            <input type="password" class="form-input" id="pw-new"
-                                placeholder="Enter new password">
-                            <button type="button" class="pw-eye" data-pw="pw-new" tabindex="-1">
-                                <i class="ri-eye-line"></i>
-                            </button>
+                    <!-- Apartment -->
+                    <div class="form-group form-group-full">
+                        <label class="form-label" data-i18n="address.apt">Apartment, Suite, etc. (Optional)</label>
+                        <div class="input-icon-wrap">
+                            <i class='bx bx-building input-icon'></i>
+                            <input type="text" class="form-input" id="addr-apt"
+                                placeholder="Apt 4B" value="Apt 4B">
                         </div>
                     </div>
 
-                    <!-- Confirm Password -->
-                    <div class="form-group">
-                        <label class="form-label" data-i18n="change.confirm">Confirm New Password</label>
-                        <div class="pw-wrap">
-                            <input type="password" class="form-input" id="pw-confirm"
-                                placeholder="Confirm your new password">
-                            <button type="button" class="pw-eye" data-pw="pw-confirm" tabindex="-1">
-                                <i class="ri-eye-line"></i>
-                            </button>
+                    <!-- City -->
+                    <div class="form-group form-group-full">
+                        <label class="form-label" data-i18n="address.city">City</label>
+                        <div class="input-icon-wrap">
+                            <i class='bx bx-map-pin input-icon'></i>
+                            <input type="text" class="form-input" id="addr-city"
+                                placeholder="Hà Nội" value="Hà Nội">
                         </div>
                     </div>
 
-                    <button class="save-btn" data-i18n="change.update">Update Password</button>
+                    <!-- Save Button -->
+                    <div class="form-actions">
+                        <button class="save-btn" id="save-address-btn" data-i18n="address.save">
+                            Save Address
+                        </button>
+                    </div>
+
+                    <!-- Success Message (hidden by default) -->
+                    <div class="success-toast" id="success-toast">
+                        <i class='bx bx-check-circle'></i>
+                        <span data-i18n="address.success">Address saved successfully!</span>
+                    </div>
 
                 </div>
             </section>
@@ -272,7 +280,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="../JS/ChangePassword.JS"></script>
+    <script src="../JS/AddressUser.JS"></script>
 </body>
 
 </html>
