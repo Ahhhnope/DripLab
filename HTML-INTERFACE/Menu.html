@@ -1,19 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- CSS Links -->
-    <link rel="stylesheet" href="../CSS/Menu.css">
-    
+    <link rel="stylesheet" href="../CSS/Menu.css" />
+
     <!-- Icon Libraries -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
     <title>Page Title - Drip Lab</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
@@ -53,515 +64,2020 @@
         },
       };
     </script>
-</head>
+    <style type="text/tailwindcss">
+      body {
+        font-family: "Noto Sans", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .font-display {
+        font-family: "Noto Serif", serif;
+      }
+      .must-try-badge {
+        background: linear-gradient(135deg, #e0c076 0%, #c9a65d 100%);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      #modal-toggle-classic-latte:checked ~ #modal-overlay-classic-latte,
+      #modal-toggle-cortado:checked ~ #modal-overlay-cortado,
+      #modal-toggle-flat-white:checked ~ #modal-overlay-flat-white,
+      #modal-toggle-dark-velvet:checked ~ #modal-overlay-dark-velvet,
+      #modal-toggle-ethiopia:checked ~ #modal-overlay-ethiopia,
+      #modal-toggle-v60:checked ~ #modal-overlay-v60,
+      #modal-toggle-geisha:checked ~ #modal-overlay-geisha,
+      #modal-toggle-mocha:checked ~ #modal-overlay-mocha,
+      #modal-toggle-matcha:checked ~ #modal-overlay-matcha,
+      #modal-toggle-earl-grey:checked ~ #modal-overlay-earl-grey,
+      #modal-toggle-hojicha:checked ~ #modal-overlay-hojicha,
+      #modal-toggle-oolong:checked ~ #modal-overlay-oolong {
+        display: flex;
+      }
+      .option-checkbox:checked + div {
+        border-color: #e0c076;
+        background-color: rgba(224, 192, 118, 0.05);
+      }
+      .option-checkbox:checked + div .check-icon {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .filter-btn.active {
+        background: #e0c076;
+        color: #171512;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
     <!-- ========== HEADER ========== -->
     <header class="header-login">
-        <div class="header-container">
-            <!-- Logo -->
-            <div class="header-logo">
-                <a href="#" class="logo-image-link">
-                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
-                </a>
-            </div>
-
-            <!-- Navigation Menu -->
-            <nav class="navbar">
-                <!-- Menu Dropdown -->
-                <div class="menu-dropdown-wrapper">
-                    <a href="../HTML-INTERFACE/Homepage.html" class="menu-trigger" data-i18n="nav.menu">MENU</a>
-                    <div class="menu-dropdown" id="menu-dropdown">
-                        <a href="../HTML-INTERFACE/Menu.html" class="menu-option option-buy" data-i18n="menu.buyNow">
-                            <i class='bx bxs-cart'></i>
-                            <span>Mua ngay</span>
-                        </a>
-                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom" data-i18n="menu.customize">
-                            <i class='bx bxs-coffee-togo'></i>
-                            <span>Tự pha chế</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about">ABOUT US</a>
-                <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">NEWS</a>
-                <a href="../HTML-INTERFACE/Stores.html" data-i18n="nav.stores">STORES</a>
-            </nav>
-
-            <!-- User Actions (Login/Cart) -->
-            <div class="user-login">
-                <!-- User Profile Dropdown -->
-                <div class="user-profile-wrapper">
-                    <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
-                        <i class='bx bxs-user'></i>
-                    </button>
-                    
-                    <!-- Dropdown Menu -->
-                    <div class="user-dropdown" id="user-dropdown">
-                        <div class="dropdown-header">
-                            <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
-                        </div>
-                        
-                        <div class="dropdown-body">
-                            <!-- User Info Section -->
-                            <div class="user-info-section">
-                                <div class="user-avatar">
-                                    <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
-                                </div>
-                                <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
-                                <p class="user-email">abc@gmail.com</p>
-                            </div>
-                            
-                            <div class="dropdown-divider"></div>
-                            
-                            <!-- Settings Section -->
-                            <div class="settings-section">
-                                <!-- Theme Toggle -->
-                                <div class="setting-item">
-                                    <div class="setting-label">
-                                        <span class="material-symbols-outlined">dark_mode</span>
-                                        <span data-i18n="profile.theme">Chế độ tối</span>
-                                    </div>
-                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch" aria-label="Toggle Theme">
-                                        <span class="toggle-slider"></span>
-                                    </button>
-                                </div>
-                                
-                                <!-- Language Toggle -->
-                                <div class="setting-item">
-                                    <div class="setting-label">
-                                        <span class="material-symbols-outlined">language</span>
-                                        <span data-i18n="profile.language">Ngôn ngữ</span>
-                                    </div>
-                                    <div class="language-toggle">
-                                        <button type="button" class="lang-btn active" data-lang="vi">VI</button>
-                                        <button type="button" class="lang-btn" data-lang="en">EN</button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="dropdown-divider"></div>
-                            
-                            <!-- Action Buttons -->
-                            <div class="dropdown-actions">
-                                <button type="button" class="action-btn btn-login" onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
-                                    <span class="material-symbols-outlined">login</span>
-                                    <span data-i18n="profile.login">Login</span>
-                                </button>
-                                <button type="button" class="action-btn btn-register">
-                                    <span class="material-symbols-outlined">person_add</span>
-                                    <span data-i18n="profile.register">Đăng ký</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <button type="button">
-                    <i class='bx bxs-shopping-bag'></i>
-                </button>
-            </div>
+      <div class="header-container">
+        <!-- Logo -->
+        <div class="header-logo">
+          <a href="#" class="logo-image-link">
+            <img
+              src="../IMG/DripLab_Logo.png"
+              alt="Drip Lab Logo"
+              class="header-logo-img"
+            />
+          </a>
         </div>
-    </header>
 
-    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
-    <main class="main-content">
-        <div class="content-container">
-            <h1 data-i18n="content.title">Menu</h1>
-            <p data-i18n="content.description"><div class="mb-12">
-        <h2
-          class="text-5xl md:text-6xl font-black leading-tight tracking-[-0.03em] mb-4"
-        >
-          Coffee &amp; Tea Menu
-        </h2>
-        <p class="text-[#857b66] dark:text-gray-400 text-lg max-w-xl italic">
-          Artisanally crafted beverages with seasonal origins and meticulous
-          preparation.
-        </p>
-      </div>
-      <div
-        class="flex items-center gap-3 mb-16 overflow-x-auto pb-4 no-scrollbar"
-      >
-        <button
-          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-[#171512] px-6 text-sm font-bold border border-primary"
-        >
-          All Items
-        </button>
-        <button
-          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
-        >
-          Hot
-        </button>
-        <button
-          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
-        >
-          Iced
-        </button>
-        <button
-          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
-        >
-          Tea
-        </button>
-        <button
-          class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all ml-auto"
-        >
-          <span class="material-symbols-outlined text-lg">tune</span>
-          Filter
-        </button>
-      </div>
-      <section class="mb-[30px]">
-        <div class="flex items-center gap-4 mb-8">
-          <h3
-            class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
-          >
-            01. Espresso Based
-          </h3>
-          <div class="h-[1px] flex-1 bg-primary/20"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <label class="group cursor-pointer" for="modal-toggle-classic-latte">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="
-                  background-image: url('../IMG/classic-latte.png');
-                "
-              ></div>
-              <div
-                class="absolute top-4 right-4 must-try-badge text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter"
+        <!-- Navigation Menu -->
+        <nav class="navbar">
+          <!-- Menu Dropdown -->
+          <div class="menu-dropdown-wrapper">
+            <a
+              href="../HTML-INTERFACE/Homepage.html"
+              class="menu-trigger"
+              data-i18n="nav.menu"
+              >MENU</a
+            >
+            <div class="menu-dropdown" id="menu-dropdown">
+              <a
+                href="../HTML-INTERFACE/Menu.html"
+                class="menu-option option-buy"
+                data-i18n="menu.buyNow"
               >
-                Must Try
+                <i class="bx bxs-cart"></i>
+                <span>Mua ngay</span>
+              </a>
+              <a
+                href="../HTML-INTERFACE/Brewing.html"
+                class="menu-option option-custom"
+                data-i18n="menu.customize"
+              >
+                <i class="bx bxs-coffee-togo"></i>
+                <span>Tự pha chế</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about"
+            >ABOUT US</a
+          >
+          <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">NEWS</a>
+          <a href="../HTML-INTERFACE/Stores.html" data-i18n="nav.stores"
+            >STORES</a
+          >
+        </nav>
+
+        <!-- User Actions (Login/Cart) -->
+        <div class="user-login">
+          <!-- User Profile Dropdown -->
+          <div class="user-profile-wrapper">
+            <button
+              type="button"
+              id="user-profile-btn"
+              class="user-profile-trigger"
+              aria-label="User Profile"
+            >
+              <i class="bx bxs-user"></i>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="user-dropdown" id="user-dropdown">
+              <div class="dropdown-header">
+                <h3 class="dropdown-title" data-i18n="profile.title">
+                  Thông Tin Tài Khoản
+                </h3>
+              </div>
+
+              <div class="dropdown-body">
+                <!-- User Info Section -->
+                <div class="user-info-section">
+                  <div class="user-avatar">
+                    <img
+                      id="user-avatar-img"
+                      src="../IMG/DELLBIETNOIGI.jpg"
+                      alt="User Avatar"
+                    />
+                  </div>
+                  <h4 class="user-name" data-i18n="profile.userName">
+                    Nguyễn Văn A
+                  </h4>
+                  <p class="user-email">abc@gmail.com</p>
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <!-- Settings Section -->
+                <div class="settings-section">
+                  <!-- Theme Toggle -->
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <span class="material-symbols-outlined">dark_mode</span>
+                      <span data-i18n="profile.theme">Chế độ tối</span>
+                    </div>
+                    <button
+                      type="button"
+                      id="theme-toggle-dropdown"
+                      class="toggle-switch"
+                      aria-label="Toggle Theme"
+                    >
+                      <span class="toggle-slider"></span>
+                    </button>
+                  </div>
+
+                  <!-- Language Toggle -->
+                  <div class="setting-item">
+                    <div class="setting-label">
+                      <span class="material-symbols-outlined">language</span>
+                      <span data-i18n="profile.language">Ngôn ngữ</span>
+                    </div>
+                    <div class="language-toggle">
+                      <button
+                        type="button"
+                        class="lang-btn active"
+                        data-lang="vi"
+                      >
+                        VI
+                      </button>
+                      <button type="button" class="lang-btn" data-lang="en">
+                        EN
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <!-- Action Buttons -->
+                <div class="dropdown-actions">
+                  <button
+                    type="button"
+                    class="action-btn btn-login"
+                    onclick="
+                      window.location.href = '../HTML-INTERFACE/Login.HTML'
+                    "
+                  >
+                    <span class="material-symbols-outlined">login</span>
+                    <span data-i18n="profile.login">Login</span>
+                  </button>
+                  <button type="button" class="action-btn btn-register">
+                    <span class="material-symbols-outlined">person_add</span>
+                    <span data-i18n="profile.register">Đăng ký</span>
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-lg font-bold group-hover:text-primary transition-colors"
-              >
-                Classic Latte
-              </h4>
-              <span class="font-bold text-base">$5.50</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
-            >
-              Velvety micro-foam with a double shot of our House Signature
-              blend.
-            </p>
-          </label>
-          <label class="group cursor-pointer" for="modal-toggle-cortado">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="background-image: url('../IMG/cortado.png')"
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-lg font-bold group-hover:text-primary transition-colors"
-              >
-                The Cortado
-              </h4>
-              <span class="font-bold text-base">$4.50</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
-            >
-              Equal parts espresso and steamed milk.
-            </p>
-          </label>
-          <label class="group cursor-pointer" for="modal-toggle-flat-white">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="
-                  background-image: url('../IMG/flat-white.jpg');
-                "
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-lg font-bold group-hover:text-primary transition-colors"
-              >
-                Flat White
-              </h4>
-              <span class="font-bold text-base">$5.25</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
-            >
-              Thin layer of velvety micro-foam over a double ristretto.
-            </p>
-          </label>
-          <label class="group cursor-pointer" for="modal-toggle-dark-velvet">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="
-                  background-image: url('../IMG/dark-velvet.png');
-                "
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-lg font-bold group-hover:text-primary transition-colors"
-              >
-                Dark Velvet
-              </h4>
-              <span class="font-bold text-base">$6.25</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
-            >
-              70% dark single-origin chocolate melted into double espresso.
-            </p>
-          </label>
+          </div>
+
+          <button type="button">
+            <i class="bx bxs-shopping-bag"></i>
+          </button>
         </div>
-      </section>
-      <section class="mb-[30px]">
-        <div class="flex items-center gap-4 mb-8">
-          <h3
-            class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
+      </div>
+    </header>
+    <input
+      class="hidden peer"
+      id="modal-toggle-classic-latte"
+      type="checkbox"
+    />
+    <input class="hidden peer" id="modal-toggle-cortado" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-flat-white" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-dark-velvet" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-ethiopia" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-v60" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-geisha" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-mocha" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-matcha" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-earl-grey" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-hojicha" type="checkbox" />
+    <input class="hidden peer" id="modal-toggle-oolong" type="checkbox" />
+    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
+    <main class="main-content">
+      <div class="content-container">
+        <h1 data-i18n="content.title">Menu</h1>
+        <p data-i18n="content.description"></p>
+        <div class="mb-12">
+          <h2
+            class="text-5xl md:text-6xl font-black leading-tight tracking-[-0.03em] mb-4"
           >
-            02. Slow Bar &amp; Pour Over
-          </h3>
-          <div class="h-[1px] flex-1 bg-primary/20"></div>
+            Coffee &amp; Tea Menu
+          </h2>
+          <p class="text-[#857b66] dark:text-gray-400 text-lg max-w-xl italic">
+            Artisanally crafted beverages with seasonal origins and meticulous
+            preparation.
+          </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          <label class="group cursor-pointer" for="modal-toggle-ethiopia">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="
-                  background-image: url('../IMG/ethiopia.png');
-                "
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-xl font-bold group-hover:text-primary transition-colors"
-              >
-                Ethiopia Yirgacheffe
-              </h4>
-              <span class="font-bold text-lg">$7.00</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
-            >
-              Notes: Stone fruit, Jasmine, Honey.
-            </p>
-          </label>
-          <label class="group cursor-pointer" for="modal-toggle-v60">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="background-image: url('../IMG/v602.jpg')"
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-xl font-bold group-hover:text-primary transition-colors"
-              >
-                V60 Seasonal
-              </h4>
-              <span class="font-bold text-lg">$6.50</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
-            >
-              A rotating selection of the harvest's finest beans.
-            </p>
-          </label>
-          <label class="group cursor-pointer" for="modal-toggle-geisha">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="background-image: url('../IMG/geisha.png')"
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-xl font-bold group-hover:text-primary transition-colors"
-              >
-                Colombia Geisha
-              </h4>
-              <span class="font-bold text-lg">$9.50</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
-            >
-              Limited release. Notes: Bergamot, Lemongrass, Mango.
-            </p>
-          </label>
-        </div>
-      </section>
-      <section class="mb-[30px]">
-        <div class="flex items-center gap-4 mb-8">
-          <h3
-            class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
+        <div
+          class="filter-container flex items-center gap-3 mb-16 overflow-x-auto pb-4 no-scrollbar"
+        >
+          <button
+            class="filter-btn flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-[#171512] px-6 text-sm font-bold border border-primary"
+            data-filter="all"
           >
-            03. Artisan Tea Selection
-          </h3>
-          <div class="h-[1px] flex-1 bg-primary/20"></div>
+            All Items
+          </button>
+          <button
+            class="filter-btn flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
+            data-filter="hot"
+          >
+            Hot
+          </button>
+          <button
+            class="filter-btn flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
+            data-filter="iced"
+          >
+            Iced
+          </button>
+          <button
+            class="filter-btn flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-transparent hover:bg-[#f4f3f1] dark:hover:bg-white/5 border border-[#e0e0e0] dark:border-[#33312d] px-6 text-sm font-medium transition-all"
+            data-filter="tea"
+          >
+            Tea
+          </button>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <label class="group cursor-pointer" for="modal-toggle-matcha">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="
-                  background-image: url('../IMG/Matcha-latte.png');
-                "
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-lg font-bold group-hover:text-primary transition-colors"
-              >
-                Matcha Latte
-              </h4>
-              <span class="font-bold text-base">$6.00</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+
+        <section class="mb-[30px]">
+          <div class="flex items-center gap-4 mb-8">
+            <h3
+              class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
             >
-              Ceremonial grade Uji Matcha whisked with your choice of milk.
-            </p>
-          </label>
-          <label class="group cursor-pointer" for="modal-toggle-earl-grey">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="
-                  background-image: url('../IMG/Earl-grey.png');
-                "
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-lg font-bold group-hover:text-primary transition-colors"
+              01. Espresso Based
+            </h3>
+            <div class="h-[1px] flex-1 bg-primary/20"></div>
+          </div>
+          <div class="menu-container">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot"
+                for="modal-toggle-classic-latte"
               >
-                Earl Grey Reserve
-              </h4>
-              <span class="font-bold text-base">$4.75</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
-            >
-              Fragrant bergamot-infused black tea with citrus notes.
-            </p>
-          </label>
-          <label class="group cursor-pointer" for="modal-toggle-hojicha">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="
-                  background-image: url('../IMG/Hojicha-roasted.png');
-                "
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-lg font-bold group-hover:text-primary transition-colors"
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="
+                      background-image: url(&quot;../IMG/classic-latte.png&quot;);
+                    "
+                  ></div>
+                  <div
+                    class="absolute top-4 right-4 must-try-badge text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter"
+                  >
+                    Must Try
+                  </div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-lg font-bold group-hover:text-primary transition-colors"
+                  >
+                    Classic Latte
+                  </h4>
+                  <span class="font-bold text-base">$5.50</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+                >
+                  Velvety micro-foam with a double shot of our House Signature
+                  blend.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot"
+                for="modal-toggle-cortado"
               >
-                Hojicha Roasted
-              </h4>
-              <span class="font-bold text-base">$5.50</span>
-            </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
-            >
-              Toasty, nutty roasted green tea with a comforting finish.
-            </p>
-          </label>
-          <label class="group cursor-pointer" for="modal-toggle-oolong">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div
-                class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
-                style="background-image: url('../IMG/oolong.png')"
-              ></div>
-            </div>
-            <div class="flex justify-between items-start mb-2">
-              <h4
-                class="text-lg font-bold group-hover:text-primary transition-colors"
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="
+                      background-image: url(&quot;../IMG/cortado.png&quot;);
+                    "
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-lg font-bold group-hover:text-primary transition-colors"
+                  >
+                    The Cortado
+                  </h4>
+                  <span class="font-bold text-base">$4.50</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+                >
+                  Equal parts espresso and steamed milk.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot iced"
+                for="modal-toggle-flat-white"
               >
-                Oolong High Mountain
-              </h4>
-              <span class="font-bold text-base">$6.50</span>
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="
+                      background-image: url(&quot;../IMG/flat-white.jpg&quot;);
+                    "
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-lg font-bold group-hover:text-primary transition-colors"
+                  >
+                    Flat White
+                  </h4>
+                  <span class="font-bold text-base">$5.25</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+                >
+                  Thin layer of velvety micro-foam over a double ristretto.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot iced"
+                for="modal-toggle-dark-velvet"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="
+                      background-image: url(&quot;../IMG/dark-velvet.png&quot;);
+                    "
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-lg font-bold group-hover:text-primary transition-colors"
+                  >
+                    Dark Velvet
+                  </h4>
+                  <span class="font-bold text-base">$6.25</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+                >
+                  70% dark single-origin chocolate melted into double espresso.
+                </p>
+              </label>
             </div>
-            <p
-              class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+          </div>
+        </section>
+
+        <section class="mb-[30px]">
+          <div class="flex items-center gap-4 mb-8">
+            <h3
+              class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
             >
-              Lightly floral, complex semi-oxidized tea from Taiwan.
-            </p>
-          </label>
-        </div>
-      </section></p>
-        </div>
+              02. Slow Bar &amp; Pour Over
+            </h3>
+            <div class="h-[1px] flex-1 bg-primary/20"></div>
+          </div>
+          <div class="menu-container">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot iced"
+                for="modal-toggle-ethiopia"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="
+                      background-image: url(&quot;../IMG/ethiopia.png&quot;);
+                    "
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-xl font-bold group-hover:text-primary transition-colors"
+                  >
+                    Ethiopia Yirgacheffe
+                  </h4>
+                  <span class="font-bold text-lg">$7.00</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
+                >
+                  Notes: Stone fruit, Jasmine, Honey.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot iced"
+                for="modal-toggle-v60"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="background-image: url(&quot;../IMG/v602.jpg&quot;)"
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-xl font-bold group-hover:text-primary transition-colors"
+                  >
+                    V60 Seasonal
+                  </h4>
+                  <span class="font-bold text-lg">$6.50</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
+                >
+                  A rotating selection of the harvest's finest beans.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot iced"
+                for="modal-toggle-geisha"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="background-image: url(&quot;../IMG/geisha.png&quot;)"
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-xl font-bold group-hover:text-primary transition-colors"
+                  >
+                    Colombia Geisha
+                  </h4>
+                  <span class="font-bold text-lg">$9.50</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
+                >
+                  Limited release. Notes: Bergamot, Lemongrass, Mango.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot iced"
+                for="modal-toggle-mocha"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="background-image: url(&quot;../IMG/mocha.jpg&quot;)"
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-xl font-bold group-hover:text-primary transition-colors"
+                  >
+                    Mocha
+                  </h4>
+                  <span class="font-bold text-lg">$5.50</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-sm leading-relaxed"
+                >
+                  Espresso meet cocoa.
+                </p>
+              </label>
+            </div>
+          </div>
+        </section>
+        <section class="mb-[30px]">
+          <div class="flex items-center gap-4 mb-8">
+            <h3
+              class="text-2xl font-bold font-display uppercase tracking-widest text-primary"
+            >
+              03. Artisan Tea Selection
+            </h3>
+            <div class="h-[1px] flex-1 bg-primary/20"></div>
+          </div>
+          <div class="menu-container">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="tea iced"
+                for="modal-toggle-matcha"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="
+                      background-image: url(&quot;../IMG/Matcha-latte.png&quot;);
+                    "
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-lg font-bold group-hover:text-primary transition-colors"
+                  >
+                    Matcha Latte
+                  </h4>
+                  <span class="font-bold text-base">$6.00</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+                >
+                  Ceremonial grade Uji Matcha whisked with your choice of milk.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot tea"
+                for="modal-toggle-earl-grey"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="
+                      background-image: url(&quot;../IMG/Earl-grey.png&quot;);
+                    "
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-lg font-bold group-hover:text-primary transition-colors"
+                  >
+                    Earl Grey Reserve
+                  </h4>
+                  <span class="font-bold text-base">$4.75</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+                >
+                  Fragrant bergamot-infused black tea with citrus notes.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="tea iced"
+                for="modal-toggle-hojicha"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="
+                      background-image: url(&quot;../IMG/Hojicha-roasted.png&quot;);
+                    "
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-lg font-bold group-hover:text-primary transition-colors"
+                  >
+                    Hojicha Roasted
+                  </h4>
+                  <span class="font-bold text-base">$5.50</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+                >
+                  Toasty, nutty roasted green tea with a comforting finish.
+                </p>
+              </label>
+              <label
+                class="group cursor-pointer menu-item"
+                data-type="hot tea"
+                for="modal-toggle-oolong"
+              >
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                  <div
+                    class="w-full aspect-[4/5] bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
+                    style="background-image: url(&quot;../IMG/oolong.png&quot;)"
+                  ></div>
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                  <h4
+                    class="text-lg font-bold group-hover:text-primary transition-colors"
+                  >
+                    Oolong High Mountain
+                  </h4>
+                  <span class="font-bold text-base">$6.50</span>
+                </div>
+                <p
+                  class="text-[#857b66] dark:text-gray-400 text-xs leading-relaxed"
+                >
+                  Lightly floral, complex semi-oxidized tea from Taiwan.
+                </p>
+              </label>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
-        <div class="footer-container">
-            <!-- Column 1 - Logo & Description -->
-            <div class="footer-col">
-                <h3>
-                    <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
-                </h3>
-                <p data-i18n="footer.description">
-                    Drip Lab - Coffee for your <br> fresh start every day.
-                </p>
-            </div>
-
-            <!-- Column 2 - Navigation -->
-            <div class="footer-col">
-                <h4 data-i18n="footer.connect">Tsaheylu</h4>
-                <ul>
-                    <li><a href="#" data-i18n="nav.menu">Menu</a></li>
-                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
-                    <li><a href="#" data-i18n="nav.news">News</a></li>
-                    <li><a href="#" data-i18n="nav.stores">Stores</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 3 - Contact -->
-            <div class="footer-col">
-                <h4 data-i18n="footer.contact">Contact Us</h4>
-                <p>Email: contact@driplab.com</p>
-                <p>Hotline: 036 363 6767</p>
-                <p data-i18n="footer.location">Place at: Việt Nam</p>
-            </div>
-
-            <!-- Column 4 - Social Media -->
-            <div class="footer-col">
-                <h4 data-i18n="footer.follow">Follow Us On</h4>
-                <ul class="social-list">
-                    <li>
-                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+      <div class="footer-container">
+        <!-- Column 1 - Logo & Description -->
+        <div class="footer-col">
+          <h3>
+            <img
+              src="../IMG/dripLab_Logo_Footer.png"
+              class="footer-logo"
+              alt="Drip Lab Footer Logo"
+            />
+          </h3>
+          <p data-i18n="footer.description">
+            Drip Lab - Coffee for your <br />
+            fresh start every day.
+          </p>
         </div>
-        
-        <!-- Footer Bottom -->
-        <div class="footer-bottom" data-i18n="footer.copyright">
-            © 2025 Drip Lab. Space for coffee heads.
+
+        <!-- Column 2 - Navigation -->
+        <div class="footer-col">
+          <h4 data-i18n="footer.connect">Tsaheylu</h4>
+          <ul>
+            <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="#" data-i18n="nav.about">About Us</a></li>
+            <li><a href="#" data-i18n="nav.news">News</a></li>
+            <li><a href="#" data-i18n="nav.stores">Stores</a></li>
+          </ul>
         </div>
+
+        <!-- Column 3 - Contact -->
+        <div class="footer-col">
+          <h4 data-i18n="footer.contact">Contact Us</h4>
+          <p>Email: contact@driplab.com</p>
+          <p>Hotline: 036 363 6767</p>
+          <p data-i18n="footer.location">Place at: Việt Nam</p>
+        </div>
+
+        <!-- Column 4 - Social Media -->
+        <div class="footer-col">
+          <h4 data-i18n="footer.follow">Follow Us On</h4>
+          <ul class="social-list">
+            <li>
+              <a
+                href="https://www.instagram.com/drip_lab_space/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/profile.php?id=100053801825707"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/@drip_lab_space"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+              >
+                <i class="fa-brands fa-tiktok"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom" data-i18n="footer.copyright">
+        © 2025 Drip Lab. Space for coffee heads.
+      </div>
     </footer>
-
     <!-- JavaScript -->
     <script src="../JS/Menu.js"></script>
-</body>
-
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-classic-latte"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-classic-latte"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/classic-latte.png&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Classic Latte
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.8/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star_half</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(124 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $5.50
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-classic-latte"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Velvety micro-foam with a double shot of our House Signature blend.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Oat Milk</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Extra Shot</span>
+                  <span class="text-primary font-bold text-xs">+$1.00</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Honey</span>
+                  <span class="text-primary font-bold text-xs">+$0.30</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $5.50
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-cortado"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-cortado"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/cortado.png&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                The Cortado
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.9/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(86 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $4.50
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-cortado"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Equal parts espresso and steamed milk. A balanced and strong flavor
+            profile.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Oat Milk</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $4.50
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-flat-white"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-flat-white"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/flat-white.jpg&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Flat White
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.9/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(90 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $5.25
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-flat-white"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Thin layer of velvety micro-foam over a double ristretto.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Oat Milk</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $5.25
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-dark-velvet"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-dark-velvet"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/dark-velvet.png&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Dark Velvet
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.8/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star_half</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(115 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $6.25
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-dark-velvet"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            70% dark single-origin chocolate melted into double espresso.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Oat Milk</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Extra Shot</span>
+                  <span class="text-primary font-bold text-xs">+$1.00</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Honey</span>
+                  <span class="text-primary font-bold text-xs">+$0.30</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $6.25
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-ethiopia"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-ethiopia"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/ethiopia.png&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Ethiopia Yirgacheffe
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.9/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(212 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $7.00
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-ethiopia"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Notes: Stone fruit, Jasmine, Honey. A delicate, floral pour-over for
+            the connoisseur.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Iced</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $7.00
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-v60"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-v60"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/v602.jpg&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                V60 Seasonal
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.9/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(207 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $6.50
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-v60"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            A rotating selection of the harvest's finest beans.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Iced</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $6.50
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-geisha"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-geisha"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/geisha.png&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Colombia Geisha
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">5.0/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(42 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $9.50
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-geisha"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Limited release. Notes: Bergamot, Lemongrass, Mango. An exceptional
+            coffee experience.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <div
+                class="p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] bg-gray-50 dark:bg-white/5 text-center"
+              >
+                <span class="text-xs text-[#857b66] dark:text-gray-400 italic"
+                  >Best enjoyed black to appreciate full flavor profile.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $9.50
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-mocha"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-mocha"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url('../IMG/mocha.jpg')"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Mocha
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">5.0/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(100 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $5.50
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-mocha"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Espresso meet cocoa.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <div
+                class="p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] bg-gray-50 dark:bg-white/5 text-center"
+              >
+                <span class="text-xs text-[#857b66] dark:text-gray-400 italic"
+                  >Best enjoyed black to appreciate full flavor profile.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $5.50
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-matcha"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-matcha"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/Matcha-latte.png&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Matcha Latte
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.7/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined text-primary text-sm"
+                    >star_half</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(156 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $6.00
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-matcha"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Ceremonial grade Uji Matcha whisked with your choice of milk. A
+            vibrant, earthy flavor profile.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Honey</span>
+                  <span class="text-primary font-bold text-xs">+$0.30</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Oat Milk</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $6.00
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-earl-grey"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-earl-grey"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/Earl-grey.png&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Earl Grey Reserve
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.7/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined text-primary text-sm"
+                    >star_half</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(170 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $4.75
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-earl-grey"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Fragrant bergamot-infused black tea with citrus notes.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Honey</span>
+                  <span class="text-primary font-bold text-xs">+$0.30</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Oat Milk</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $6.00
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-hojicha"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-hojicha"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(../IMG/Hojicha-roasted.png)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Hojicha Roasted
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.8/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star_half</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(94 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $5.50
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-hojicha"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Toasty, nutty roasted green tea with a comforting finish. Low
+            caffeine content.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Soy Milk</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Brown Sugar</span>
+                  <span class="text-primary font-bold text-xs">+$0.30</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $5.50
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-[#171512]/90 backdrop-blur-md"
+      id="modal-overlay-oolong"
+    >
+      <label
+        class="absolute inset-0 cursor-default"
+        for="modal-toggle-oolong"
+      ></label>
+      <div
+        class="relative w-full max-w-5xl bg-cream-modal dark:bg-[#2a261d] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+      >
+        <div class="w-full md:w-1/2 relative bg-[#ece9e4] dark:bg-[#1f1c13]">
+          <div
+            class="w-full h-full min-h-[400px] md:min-h-full bg-center bg-no-repeat bg-cover"
+            style="background-image: url(&quot;../IMG/oolong.png&quot;)"
+          ></div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto max-h-[90vh]"
+        >
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3
+                class="text-3xl font-black font-display text-[#171512] dark:text-white mb-1"
+              >
+                Matcha Latte
+              </h3>
+              <div class="flex items-center gap-1.5 mb-2">
+                <span class="text-xs font-bold text-primary">4.7/5</span>
+                <div class="flex items-center">
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-primary text-sm fill-1"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined text-primary text-sm"
+                    >star_half</span
+                  >
+                </div>
+                <span
+                  class="text-xs text-[#857b66] dark:text-gray-400 font-medium"
+                  >(175 reviews)</span
+                >
+              </div>
+              <div class="text-primary font-bold text-xl tracking-tight">
+                $6.50
+              </div>
+            </div>
+            <label
+              class="cursor-pointer p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              for="modal-toggle-oolong"
+            >
+              <span class="material-symbols-outlined text-3xl">close</span>
+            </label>
+          </div>
+          <p
+            class="text-[#857b66] dark:text-gray-400 text-base leading-relaxed mb-8"
+          >
+            Lightly floral, complex semi-oxidized tea from Taiwan.
+          </p>
+          <div class="space-y-6 mb-8">
+            <h4
+              class="text-xs font-black uppercase tracking-[0.2em] text-primary"
+            >
+              Toppings
+            </h4>
+            <div class="space-y-3">
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Honey</span>
+                  <span class="text-primary font-bold text-xs">+$0.30</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input class="option-checkbox hidden" type="checkbox" />
+                <div
+                  class="flex items-center justify-between p-4 rounded-xl border border-[#e5e5e5] dark:border-[#333] hover:border-primary transition-all"
+                >
+                  <span class="font-bold text-sm">Oat Milk</span>
+                  <span class="text-primary font-bold text-xs">+$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="mt-auto pt-6 border-t border-gray-100 dark:border-white/10 flex items-center justify-between"
+          >
+            <button
+              class="bg-primary hover:bg-[#c9a65d] text-[#171512] px-8 py-3 rounded-full font-black text-sm transition-colors w-full shadow-lg shadow-primary/20"
+            >
+              Add to Cart - $6.50
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

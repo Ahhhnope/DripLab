@@ -824,49 +824,6 @@ img {
   .menu-dropdown {
     min-width: 200px;
   }
-  h1,
-h2,
-h3,
-.font-display {
-  font-family: "Noto Serif", serif;
-}
-
-.must-try-badge {
-  background: linear-gradient(135deg, #e0c076 0%, #c9a65d 100%);
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-#modal-toggle-classic-latte:checked ~ #modal-overlay-classic-latte,
-#modal-toggle-cortado:checked ~ #modal-overlay-cortado,
-#modal-toggle-flat-white:checked ~ #modal-overlay-flat-white,
-#modal-toggle-dark-velvet:checked ~ #modal-overlay-dark-velvet,
-#modal-toggle-ethiopia:checked ~ #modal-overlay-ethiopia,
-#modal-toggle-v60:checked ~ #modal-overlay-v60,
-#modal-toggle-geisha:checked ~ #modal-overlay-geisha,
-#modal-toggle-matcha:checked ~ #modal-overlay-matcha,
-#modal-toggle-earl-grey:checked ~ #modal-overlay-earl-grey,
-#modal-toggle-hojicha:checked ~ #modal-overlay-hojicha,
-#modal-toggle-oolong:checked ~ #modal-overlay-oolong {
-  display: flex;
-}
-
-.option-checkbox:checked + div {
-  border-color: #e0c076;
-  background-color: rgba(224, 192, 118, 0.05);
-}
-
-.option-checkbox:checked + div .check-icon {
-  opacity: 1;
-  transform: scale(1);
-}
 }
 
 
