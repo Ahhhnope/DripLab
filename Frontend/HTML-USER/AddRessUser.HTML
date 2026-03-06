@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../CSS/AddressUser.CSS">
+
+    <!-- Icon Libraries -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <title>Address Management - Drip Lab</title>
+</head>
+
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header-login">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo">
+                <a href="#" class="logo-image-link">
+                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="navbar">
+                <!-- Menu Dropdown -->
+                <div class="menu-dropdown-wrapper">
+                    <a href="../HTML-INTERFACE/Homepage.html" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <div class="menu-dropdown" id="menu-dropdown">
+                        <a href="../HTML-INTERFACE/Menu.html" class="menu-option option-buy" data-i18n="menu.buyNow">
+                            <i class='bx bxs-cart'></i>
+                            <span>Mua ngay</span>
+                        </a>
+                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom"
+                            data-i18n="menu.customize">
+                            <i class='bx bxs-coffee-togo'></i>
+                            <span>Tự pha chế</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about">ABOUT US</a>
+                <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">NEWS</a>
+                <a href="../HTML-INTERFACE/Stores.html" data-i18n="nav.stores">STORES</a>
+            </nav>
+
+            <!-- User Actions (Login/Cart) -->
+            <div class="user-login">
+                <!-- User Profile Dropdown -->
+                <div class="user-profile-wrapper">
+                    <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
+                        <i class='bx bxs-user'></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-header">
+                            <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
+                        </div>
+
+                        <div class="dropdown-body">
+                            <!-- User Info Section -->
+                            <div class="user-info-section">
+                                <div class="user-avatar">
+                                    <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
+                                </div>
+                                <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
+                                <p class="user-email">abc@gmail.com</p>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Settings Section -->
+                            <div class="settings-section">
+                                <!-- Theme Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                        <span data-i18n="profile.theme">Chế độ tối</span>
+                                    </div>
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch"
+                                        aria-label="Toggle Theme">
+                                        <span class="toggle-slider"></span>
+                                    </button>
+                                </div>
+
+                                <!-- Language Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">language</span>
+                                        <span data-i18n="profile.language">Ngôn ngữ</span>
+                                    </div>
+                                    <div class="language-toggle">
+                                        <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+                                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Action Buttons -->
+                            <div class="dropdown-actions">
+                                <button type="button" class="action-btn btn-signout">
+                                    <span class="material-symbols-outlined">logout</span>
+                                    <span data-i18n="profile.signout">Sign out</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button">
+                    <i class='bx bxs-shopping-bag'></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-content">
+        <div class="profile-container">
+
+            <!-- Sidebar trái -->
+            <aside class="profile-sidebar">
+                <div class="sidebar-user">
+                    <div class="sidebar-avatar">
+                        <img src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
+                    </div>
+                    <div class="sidebar-name">Tuân Nguyễn Đình</div>
+                    <div class="sidebar-badge" data-i18n="sidebar.badge">Premium Member</div>
+                </div>
+
+                <ul class="sidebar-nav">
+                    <li><a href="../HTML-USER/Account.HTML"><i class='bx bxs-user'></i> <span
+                                data-i18n="sidebar.account">Account</span></a></li>
+                    <li><a href="../HTML-USER/ChangePassword.HTML"><i class='bx bxs-lock'></i> <span
+                                data-i18n="sidebar.changePassword">Change Password</span></a></li>
+                    <li><a href="../HTML-USER/AddRessUser.HTML" class="active"><i class='bx bxs-map'></i> <span
+                                data-i18n="sidebar.address">Address</span></a></li>
+                    <li><a href="#"><i class='bx bxs-receipt'></i> <span
+                                data-i18n="sidebar.orders">Orders</span></a></li>
+                    <li><a href="#"><i class='bx bxs-heart'></i> <span
+                                data-i18n="sidebar.favorites">Receipts</span></a></li>
+                    <li class="nav-logout">
+                        <a href="../HTML-INTERFACE/Homepage.html" id="sidebar-logout-btn"><i class='bx bx-log-out'></i>
+                            <span data-i18n="sidebar.logout">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Panel phải -->
+            <section class="profile-panel">
+                <h2 class="panel-title" data-i18n="address.title">
+                    <i class='bx bxs-map address-title-icon'></i>
+                    Address Management
+                </h2>
+
+                <div class="address-form">
+
+                    <!-- Street Address -->
+                    <div class="form-group form-group-full">
+                        <label class="form-label" data-i18n="address.street">Street Address</label>
+                        <div class="input-icon-wrap">
+                            <i class='bx bx-home-alt input-icon'></i>
+                            <input type="text" class="form-input" id="addr-street"
+                                placeholder="123 Artisanal Street" value="123 Artisanal Street">
+                        </div>
+                    </div>
+
+                    <!-- Apartment -->
+                    <div class="form-group form-group-full">
+                        <label class="form-label" data-i18n="address.apt">Apartment, Suite, etc. (Optional)</label>
+                        <div class="input-icon-wrap">
+                            <i class='bx bx-building input-icon'></i>
+                            <input type="text" class="form-input" id="addr-apt"
+                                placeholder="Apt 4B" value="Apt 4B">
+                        </div>
+                    </div>
+
+                    <!-- City -->
+                    <div class="form-group form-group-full">
+                        <label class="form-label" data-i18n="address.city">City</label>
+                        <div class="input-icon-wrap">
+                            <i class='bx bx-map-pin input-icon'></i>
+                            <input type="text" class="form-input" id="addr-city"
+                                placeholder="Hà Nội" value="Hà Nội">
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="form-actions">
+                        <button class="save-btn" id="save-address-btn" data-i18n="address.save">
+                            Save Address
+                        </button>
+                    </div>
+
+                    <!-- Success Message (hidden by default) -->
+                    <div class="success-toast" id="success-toast">
+                        <i class='bx bx-check-circle'></i>
+                        <span data-i18n="address.success">Address saved successfully!</span>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Column 1 - Logo & Description -->
+            <div class="footer-col">
+                <h3>
+                    <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
+                </h3>
+                <p data-i18n="footer.description">
+                    Drip Lab - Coffee for your <br> fresh start every day.
+                </p>
+            </div>
+
+            <!-- Column 2 - Navigation -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.connect">Tsaheylu</h4>
+                <ul>
+                    <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#" data-i18n="nav.news">News</a></li>
+                    <li><a href="#" data-i18n="nav.stores">Stores</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3 - Contact -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.contact">Contact Us</h4>
+                <p>Email: contact@driplab.com</p>
+                <p>Hotline: 036 363 6767</p>
+                <p data-i18n="footer.location">Place at: Việt Nam</p>
+            </div>
+
+            <!-- Column 4 - Social Media -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.follow">Follow Us On</h4>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom" data-i18n="footer.copyright">
+            © 2025 Drip Lab. Space for coffee heads.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/AddressUser.JS"></script>
+</body>
+
+</html>

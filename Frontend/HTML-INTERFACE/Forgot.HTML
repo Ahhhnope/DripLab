@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Liên kết CSS -->
+    <link rel="stylesheet" href="../CSS/Forgot.CSS">
+
+    <!-- Thư viện icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <title>Quên Mật Khẩu - Drip Lab</title>
+</head>
+
+<body>
+    <!-- ========== HEADER ========== -->
+    <header class="header-login">
+        <div class="header-container">
+            <!-- Logo thương hiệu -->
+            <div class="header-logo">
+                <a href="../HTML-INTERFACE/Homepage.html" class="logo-image-link">
+                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
+                </a>
+            </div>
+
+            <!-- Thanh điều hướng chính -->
+            <nav class="navbar">
+                <!-- Dropdown Menu khi hover -->
+                <div class="menu-dropdown-wrapper">
+                    <a href="../HTML-INTERFACE/Menu.html" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <div class="menu-dropdown" id="menu-dropdown">
+                        <!-- Lựa chọn mua ngay -->
+                        <a href="../HTML-INTERFACE/Menu.html" class="menu-option option-buy" data-i18n="menu.buyNow">
+                            <i class='bx bxs-cart'></i>
+                            <span>Mua ngay</span>
+                        </a>
+                        <!-- Lựa chọn tự pha chế -->
+                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom"
+                            data-i18n="menu.customize">
+                            <i class='bx bxs-coffee-togo'></i>
+                            <span>Tự pha chế</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about">VỀ CHÚNG TÔI</a>
+                <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">TIN TỨC</a>
+                <a href="../HTML-INTERFACE/Stores.html" data-i18n="nav.stores">CỬA HÀNG</a>
+            </nav>
+
+            <!-- Khu vực hành động người dùng (Profile + Giỏ hàng) -->
+            <div class="user-login">
+                <!-- Wrapper cho dropdown hồ sơ người dùng -->
+                <div class="user-profile-wrapper">
+                    <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
+                        <i class='bx bxs-user'></i>
+                    </button>
+
+                    <!-- Dropdown thông tin tài khoản -->
+                    <div class="user-dropdown" id="user-dropdown">
+                        <!-- Phần tiêu đề dropdown -->
+                        <div class="dropdown-header">
+                            <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
+                        </div>
+
+                        <div class="dropdown-body">
+                            <!-- Khu vực hiển thị thông tin người dùng -->
+                            <div class="user-info-section">
+                                <div class="user-avatar">
+                                    <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
+                                </div>
+                                <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
+                                <p class="user-email">abc@gmail.com</p>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Khu vực cài đặt (theme + ngôn ngữ) -->
+                            <div class="settings-section">
+                                <!-- Nút bật/tắt chế độ tối -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                        <span data-i18n="profile.theme">Chế độ tối</span>
+                                    </div>
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch"
+                                        aria-label="Toggle Theme">
+                                        <span class="toggle-slider"></span>
+                                    </button>
+                                </div>
+
+                                <!-- Nút chuyển đổi ngôn ngữ VI / EN -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">language</span>
+                                        <span data-i18n="profile.language">Ngôn ngữ</span>
+                                    </div>
+                                    <div class="language-toggle">
+                                        <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+                                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Nút hành động: Đăng nhập / Đăng xuất -->
+                            <div class="dropdown-actions">
+                                <button type="button" class="action-btn btn-login"
+                                    onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
+                                    <span class="material-symbols-outlined">login</span>
+                                    <span data-i18n="profile.login">Đăng nhập</span>
+                                </button>
+                                <button type="button" class="action-btn btn-signout">
+                                    <span class="material-symbols-outlined">logout</span>
+                                    <span data-i18n="profile.signout">Đăng xuất</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nút giỏ hàng -->
+                <button type="button" id="cart-btn" aria-label="Shopping Cart">
+                    <i class='bx bxs-shopping-bag'></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== CART LOGIN MODAL ========== -->
+    <div class="cart-modal-overlay" id="cart-modal-overlay">
+        <div class="cart-modal" id="cart-modal">
+            <button type="button" class="cart-modal-close" id="cart-modal-close" aria-label="Close">
+                <i class='bx bx-x'></i>
+            </button>
+
+            <!-- Title -->
+            <h2 class="cart-modal-title" data-i18n="cart.title">Drip Lab</h2>
+
+            <!-- Logo inside circle -->
+            <div class="cart-modal-icon">
+                <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo">
+            </div>
+
+            <!-- Description -->
+            <p class="cart-modal-desc" data-i18n="cart.desc">
+                Vui lòng đăng nhập tài khoản Drip Lab để xem<br>ưu đãi và thanh toán dễ dàng hơn.
+            </p>
+
+            <!-- Buttons -->
+            <div class="cart-modal-actions">
+                <a href="../HTML-INTERFACE/Register.HTML" class="cart-modal-btn cart-btn-register"
+                    data-i18n="cart.register">
+                    Đăng ký
+                </a>
+                <a href="../HTML-INTERFACE/Login.HTML" class="cart-modal-btn cart-btn-login" data-i18n="cart.login">
+                    Đăng nhập
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <main class="main-content">
+        <div class="forgot-wrapper">
+
+            <div class="forgot-card">
+
+                <!-- Phần đầu: Icon khóa + Tiêu đề + Mô tả -->
+                <div class="forgot-header">
+                    <!-- Vòng tròn chứa icon khóa -->
+                    <div class="forgot-icon-wrap">
+                        <i class='bx bxs-lock-alt'></i>
+                    </div>
+                    <!-- Tiêu đề chính của trang -->
+                    <h1 class="forgot-title" data-i18n="forgot.title">Quên Mật Khẩu?</h1>
+                    <!-- Mô tả hướng dẫn người dùng -->
+                    <p class="forgot-subtitle" data-i18n="forgot.subtitle">
+                        Nhập email của bạn và chúng tôi sẽ gửi một đường link để đặt lại mật khẩu.
+                    </p>
+                </div>
+
+                <!-- Form nhập email để nhận link reset -->
+                <form class="forgot-form" id="forgot-form" novalidate>
+
+                    <!-- Nhóm nhập liệu: Email -->
+                    <div class="input-group">
+                        <label class="input-label" for="email-input" data-i18n="forgot.emailLabel">
+                            Địa chỉ Email
+                        </label>
+                        <div class="input-wrapper">
+                            <!-- Icon email bên trái ô nhập -->
+                            <i class='bx bxs-envelope input-icon'></i>
+                            <!-- Ô nhập địa chỉ email -->
+                            <input type="email" id="email-input" class="forgot-input" placeholder="example@email.com"
+                                autocomplete="email" required>
+                        </div>
+                    </div>
+
+                    <!-- Nút gửi link reset mật khẩu -->
+                    <button type="submit" class="forgot-btn" id="submit-btn">
+                        <!-- Spinner hiện khi đang gửi (ẩn mặc định) -->
+                        <span class="btn-spinner"></span>
+                        <!-- Chữ hiển thị trên nút -->
+                        <span class="btn-text" data-i18n="forgot.sendBtn">Gửi Link Đặt Lại</span>
+                    </button>
+
+                </form>
+
+                <!-- Thông báo gửi thành công (ẩn cho đến khi form được submit) -->
+                <div class="success-message" id="success-message">
+                    <span class="success-icon">✉️</span>
+                    <p class="success-title" data-i18n="forgot.successTitle">Đã gửi thành công!</p>
+                    <p class="success-desc" data-i18n="forgot.successDesc">
+                        Vui lòng kiểm tra hộp thư của bạn và làm theo hướng dẫn trong email.
+                    </p>
+                </div>
+
+                <!-- Link quay lại trang đăng nhập -->
+                <div class="back-link">
+                    <a href="../HTML-INTERFACE/Login.HTML" data-i18n="forgot.backToLogin">
+                        <i class='bx bx-arrow-back'></i>
+                        Quay lại Đăng Nhập
+                    </a>
+                </div>
+
+            </div>
+            <!-- Ghi chú bản quyền nhỏ bên dưới thẻ -->
+            <p class="forgot-footer-note" data-i18n="footer.copyright">
+                © 2025 Drip Lab. Space for coffee heads.
+            </p>
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Cột 1 - Logo & Mô tả thương hiệu -->
+            <div class="footer-col">
+                <h3>
+                    <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
+                </h3>
+                <p data-i18n="footer.description">
+                    Drip Lab - Coffee for your <br> fresh start every day.
+                </p>
+            </div>
+
+            <!-- Cột 2 - Liên kết điều hướng -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.connect">Kết nối</h4>
+                <ul>
+                    <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#" data-i18n="nav.about">Về Chúng Tôi</a></li>
+                    <li><a href="#" data-i18n="nav.news">Tin Tức</a></li>
+                    <li><a href="#" data-i18n="nav.stores">Cửa Hàng</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3 - Thông tin liên hệ -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.contact">Liên Hệ</h4>
+                <p>Email: contact@driplab.com</p>
+                <p>Hotline: 036 363 6767</p>
+                <p data-i18n="footer.location">Địa điểm: Việt Nam</p>
+            </div>
+
+            <!-- Cột 4 - Mạng xã hội -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.follow">Theo Dõi Chúng Tôi</h4>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dòng chân trang -->
+        <div class="footer-bottom" data-i18n="footer.copyright">
+            © 2025 Drip Lab. Space for coffee heads.
+        </div>
+    </footer>
+
+    <!-- JavaScript xử lý logic trang -->
+    <script src="../JS/Forgot.JS"></script>
+</body>
+
+</html>
