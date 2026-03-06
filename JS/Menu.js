@@ -48,8 +48,8 @@ const translations = {
     "profile.register": "Register",
 
     // Content
-    "content.title": "Your page title",
-    "content.description": "Content goes here...",
+    // "content.title": "Your page title",
+    // "content.description": "Content goes here...",
 
     // Footer
     "footer.description": "Drip Lab - Coffee for your fresh start every day.",
