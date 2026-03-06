@@ -62,6 +62,7 @@ const translations = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
+  
   // Get elements
   const userProfileBtn = document.getElementById('user-profile-btn');
   const userDropdown = document.getElementById('user-dropdown');
@@ -244,5 +245,58 @@ document.addEventListener('DOMContentLoaded', function () {
       closeUserDropdown();
     }
   });
+  const buttons = document.querySelectorAll(".filter-btn");
+  const items = document.querySelectorAll(".menu-item");
+
+  let activeFilters = [];
+
+  buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+
+          const filter = btn.dataset.filter;
+
+          if (filter === "all") {
+              activeFilters = [];
+
+              buttons.forEach(b => b.classList.remove("active"));
+              btn.classList.add("active");
+
+          } else {
+
+              btn.classList.toggle("active");
+
+              if (activeFilters.includes(filter)) {
+                  activeFilters = activeFilters.filter(f => f !== filter);
+              } else {
+                  activeFilters.push(filter);
+              }
+
+              document.querySelector('[data-filter="all"]').classList.remove("active");
+          }
+
+          filterItems();
+      });
+  });
+
+  function filterItems() {
+
+      items.forEach(item => {
+
+          const types = item.dataset.type.split(" ");
+
+          if (activeFilters.length === 0) {
+              item.style.display = "block";
+              return;
+          }
+
+          const match = activeFilters.some(f => types.includes(f));
+
+          item.style.display = match ? "block" : "none";
+
+      });
+
+  }
+
 });
+
 
