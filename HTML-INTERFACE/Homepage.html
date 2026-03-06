@@ -135,12 +135,45 @@
                     </div>
                 </div>
 
-                <button type="button">
+                <button type="button" id="cart-btn" aria-label="Shopping Cart">
                     <i class='bx bxs-shopping-bag'></i>
                 </button>
             </div>
         </div>
     </header>
+
+    <!-- ========== CART LOGIN MODAL ========== -->
+    <div class="cart-modal-overlay" id="cart-modal-overlay">
+        <div class="cart-modal" id="cart-modal">
+            <button type="button" class="cart-modal-close" id="cart-modal-close" aria-label="Close">
+                <i class='bx bx-x'></i>
+            </button>
+
+            <!-- Title -->
+            <h2 class="cart-modal-title" data-i18n="cart.title">Drip Lab</h2>
+
+            <!-- Logo inside circle -->
+            <div class="cart-modal-icon">
+                <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo">
+            </div>
+
+            <!-- Description -->
+            <p class="cart-modal-desc" data-i18n="cart.desc">
+                Vui lòng đăng nhập tài khoản Drip Lab để xem<br>ưu đãi và thanh toán dễ dàng hơn.
+            </p>
+
+            <!-- Buttons -->
+            <div class="cart-modal-actions">
+                <a href="../HTML-INTERFACE/Register.HTML" class="cart-modal-btn cart-btn-register"
+                    data-i18n="cart.register">
+                    Đăng ký
+                </a>
+                <a href="../HTML-INTERFACE/Login.HTML" class="cart-modal-btn cart-btn-login" data-i18n="cart.login">
+                    Đăng nhập
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- ========== Phần Nội Dung  ========== -->
     <main class="flex-1 pt-[80px]">
@@ -208,11 +241,11 @@
         </section>
 
         <!-- STORE -->
-        <section class="w-full bg-[#f2eee9] section-gap">
+       <section class="w-full bg-[#b8a48a] section-gap">
             <div class="flex flex-col md:flex-row min-h-[500px]">
                 <img class="md:w-1/2 object-cover" src="../IMG/coffeeShop.jpg">
                 <div class="md:w-1/2 flex flex-col justify-center items-center text-center">
-                    <h3 class="text-5xl font-black">Discover nearby<br>Drip Lab</h3>
+                    <h3 class="text-5xl font-black text-[#2a1a0e]">Discover nearby<br>Drip Lab</h3>
                     <a href="../HTML-INTERFACE/Stores.html">
                         <button class="section-btn">
                             Explore Now
@@ -223,11 +256,11 @@
         </section>
 
         <!-- NEWS -->
-        <section class="w-full bg-[#f2eee9] section-gap">
+       <section class="w-full bg-[#b8a48a] section-gap">
             <div class="flex flex-col md:flex-row-reverse min-h-[500px]">
                 <img class="md:w-1/2 object-cover" src="../IMG/DELLBIETNOIGI.jpg">
                 <div class="md:w-1/2 flex flex-col justify-center items-center text-center">
-                    <h2 class="text-5xl font-black">News in Drip Lab</h2>
+                    <h2 class="text-5xl font-black text-[#2a1a0e]">News in Drip Lab</h2>
                     <a href="../HTML-INTERFACE/News.html">
                         <button class="section-btn">
                             Check Now

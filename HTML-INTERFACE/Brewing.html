@@ -161,12 +161,44 @@
           </div>
         </div>
 
-        <button type="button">
+        <button type="button" id="cart-btn" aria-label="Shopping Cart">
           <i class='bx bxs-shopping-bag'></i>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- ========== CART LOGIN MODAL ========== -->
+  <div class="cart-modal-overlay" id="cart-modal-overlay">
+    <div class="cart-modal" id="cart-modal">
+      <button type="button" class="cart-modal-close" id="cart-modal-close" aria-label="Close">
+        <i class='bx bx-x'></i>
+      </button>
+
+      <!-- Title -->
+      <h2 class="cart-modal-title" data-i18n="cart.title">Drip Lab</h2>
+
+      <!-- Logo inside circle -->
+      <div class="cart-modal-icon">
+        <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo">
+      </div>
+
+      <!-- Description -->
+      <p class="cart-modal-desc" data-i18n="cart.desc">
+        Vui lòng đăng nhập tài khoản Drip Lab để xem<br>ưu đãi và thanh toán dễ dàng hơn.
+      </p>
+
+      <!-- Buttons -->
+      <div class="cart-modal-actions">
+        <a href="../HTML-INTERFACE/Register.HTML" class="cart-modal-btn cart-btn-register" data-i18n="cart.register">
+          Đăng ký
+        </a>
+        <a href="../HTML-INTERFACE/Login.HTML" class="cart-modal-btn cart-btn-login" data-i18n="cart.login">
+          Đăng nhập
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ========== Phần Tự Viết Nội Dung  ========== -->
   <main class="flex flex-1 flex-col md:flex-row overflow-hidden">

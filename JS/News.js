@@ -279,6 +279,44 @@ document.addEventListener('DOMContentLoaded', function () {
   overlay.className = 'dropdown-overlay';
   document.body.appendChild(overlay);
 
+  // Cart modal elements
+const cartBtn = document.getElementById('cart-btn');
+const cartModalOverlay = document.getElementById('cart-modal-overlay');
+const cartModalClose = document.getElementById('cart-modal-close');
+
+function openCartModal() {
+  cartModalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCartModal() {
+  cartModalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+if (cartBtn) {
+  cartBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    openCartModal();
+  });
+}
+
+if (cartModalClose) {
+  cartModalClose.addEventListener('click', closeCartModal);
+}
+
+if (cartModalOverlay) {
+  cartModalOverlay.addEventListener('click', function (e) {
+    if (e.target === cartModalOverlay) closeCartModal();
+  });
+}
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && cartModalOverlay.classList.contains('active')) {
+    closeCartModal();
+  }
+});
+
   // user dropdown
   if (userProfileBtn && userDropdown) {
     userProfileBtn.addEventListener('click', function (e) {

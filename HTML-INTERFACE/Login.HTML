@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- CSS Links -->
     <link rel="stylesheet" href="../CSS/Login.CSS">
     <link rel="stylesheet" href="../CSS/Test.CSS">
-    
+
     <!-- Icon Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    
+
     <title>Login - Drip Lab</title>
 </head>
 
@@ -39,13 +39,14 @@
                             <i class='bx bxs-cart'></i>
                             <span>Mua ngay</span>
                         </a>
-                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom" data-i18n="menu.customize">
+                        <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom"
+                            data-i18n="menu.customize">
                             <i class='bx bxs-coffee-togo'></i>
                             <span>Tự pha chế</span>
                         </a>
                     </div>
                 </div>
-                
+
                 <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about">ABOUT US</a>
                 <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">NEWS</a>
                 <a href="../HTML-INTERFACE/Stores.html" data-i18n="nav.stores">STORES</a>
@@ -58,13 +59,13 @@
                     <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
                         <i class='bx bxs-user'></i>
                     </button>
-                    
+
                     <!-- Dropdown Menu -->
                     <div class="user-dropdown" id="user-dropdown">
                         <div class="dropdown-header">
                             <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
                         </div>
-                        
+
                         <div class="dropdown-body">
                             <!-- User Info Section -->
                             <div class="user-info-section">
@@ -74,9 +75,9 @@
                                 <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
                                 <p class="user-email">abc@gmail.com</p>
                             </div>
-                            
+
                             <div class="dropdown-divider"></div>
-                            
+
                             <!-- Settings Section -->
                             <div class="settings-section">
                                 <!-- Theme Toggle -->
@@ -85,11 +86,12 @@
                                         <span class="material-symbols-outlined">dark_mode</span>
                                         <span data-i18n="profile.theme">Chế độ tối</span>
                                     </div>
-                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch" aria-label="Toggle Theme">
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch"
+                                        aria-label="Toggle Theme">
                                         <span class="toggle-slider"></span>
                                     </button>
                                 </div>
-                                
+
                                 <!-- Language Toggle -->
                                 <div class="setting-item">
                                     <div class="setting-label">
@@ -102,16 +104,17 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="dropdown-divider"></div>
-                            
+
                             <!-- Action Buttons -->
                             <div class="dropdown-actions">
-                                <button type="button" class="action-btn btn-login" onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
+                                <button type="button" class="action-btn btn-login"
+                                    onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
                                     <span class="material-symbols-outlined">login</span>
                                     <span data-i18n="profile.login">Login</span>
                                 </button>
-                              
+
                                 <button type="button" class="action-btn btn-register">
                                     <span class="material-symbols-outlined">person_add</span>
                                     <span data-i18n="profile.register">Đăng ký</span>
@@ -120,18 +123,51 @@
                         </div>
                     </div>
                 </div>
-                
-                <button type="button">
+
+                <button type="button" id="cart-btn" aria-label="Shopping Cart">
                     <i class='bx bxs-shopping-bag'></i>
                 </button>
             </div>
         </div>
     </header>
 
+    <!-- ========== CART LOGIN MODAL ========== -->
+    <div class="cart-modal-overlay" id="cart-modal-overlay">
+        <div class="cart-modal" id="cart-modal">
+            <button type="button" class="cart-modal-close" id="cart-modal-close" aria-label="Close">
+                <i class='bx bx-x'></i>
+            </button>
+
+            <!-- Title -->
+            <h2 class="cart-modal-title" data-i18n="cart.title">Drip Lab</h2>
+
+            <!-- Logo inside circle -->
+            <div class="cart-modal-icon">
+                <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo">
+            </div>
+
+            <!-- Description -->
+            <p class="cart-modal-desc" data-i18n="cart.desc">
+                Vui lòng đăng nhập tài khoản Drip Lab để xem<br>ưu đãi và thanh toán dễ dàng hơn.
+            </p>
+
+            <!-- Buttons -->
+            <div class="cart-modal-actions">
+                <a href="../HTML-INTERFACE/Register.HTML" class="cart-modal-btn cart-btn-register"
+                    data-i18n="cart.register">
+                    Đăng ký
+                </a>
+                <a href="../HTML-INTERFACE/Login.HTML" class="cart-modal-btn cart-btn-login" data-i18n="cart.login">
+                    Đăng nhập
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- ========== MAIN LOGIN SECTION ========== -->
     <div class="login-between grid">
         <div class="login-container grid">
-            
+
             <!-- ===== IMAGE SLIDER (Desktop Only) ===== -->
             <div class="login-swiper">
                 <!-- Slider Text Overlay -->
@@ -190,7 +226,8 @@
                         <img src="../IMG/DripLab_Logo.png" alt="Drip Lab">
                     </div>
                     <h1 class="login-title" data-i18n="login.title">Đăng nhập Drip Lab</h1>
-                    <p class="login-description" data-i18n="login.description">Chào mừng trở lại với hành trình tìm kiếm tách cà phê hoàn hảo</p>
+                    <p class="login-description" data-i18n="login.description">Chào mừng trở lại với hành trình tìm kiếm
+                        tách cà phê hoàn hảo</p>
                 </div>
 
                 <!-- Login Form -->
@@ -198,23 +235,28 @@
                     <div class="login-content grid">
                         <!-- Email Input -->
                         <div class="login-box">
-                            <input type="email" name="email" data-i18n-placeholder="login.emailPlaceholder" placeholder="EMAIL HOẶC SỐ ĐIỆN THOẠI" class="login-input" required>
+                            <input type="email" name="email" data-i18n-placeholder="login.emailPlaceholder"
+                                placeholder="EMAIL HOẶC SỐ ĐIỆN THOẠI" class="login-input" required>
                             <i class="ri-mail-fill"></i>
                         </div>
 
                         <!-- Password Input with Forgot Link -->
                         <div class="login-password-wrapper">
                             <div class="login-box">
-                                <input type="password" name="password" data-i18n-placeholder="login.passwordPlaceholder" placeholder="MẬT KHẨU" class="login-input" required id="LoginPassword">
+                                <input type="password" name="password" data-i18n-placeholder="login.passwordPlaceholder"
+                                    placeholder="MẬT KHẨU" class="login-input" required id="LoginPassword">
                                 <i class="ri-eye-line login-eye" id="LoginEye"></i>
                             </div>
                             <!-- Remember me checkbox bên trái + Forgot bên phải -->
                             <div class="login-remember-row">
                                 <label class="login-remember-label">
-                                    <input type="checkbox" name="remember" id="RememberMe" class="login-remember-checkbox">
-                                    <span class="login-remember-text" data-i18n="login.remember">LƯU NHỚ TÀI KHOẢN</span>
+                                    <input type="checkbox" name="remember" id="RememberMe"
+                                        class="login-remember-checkbox">
+                                    <span class="login-remember-text" data-i18n="login.remember">LƯU NHỚ TÀI
+                                        KHOẢN</span>
                                 </label>
-                                <a href="../HTML-INTERFACE/Forgot.HTML" class="login-forgot-inline" data-i18n="login.forgot">QUÊN MẬT KHẨU?</a>
+                                <a href="../HTML-INTERFACE/Forgot.HTML" class="login-forgot-inline"
+                                    data-i18n="login.forgot">QUÊN MẬT KHẨU?</a>
                             </div>
                         </div>
                     </div>
@@ -238,7 +280,8 @@
 
                 <!-- Sign Up Link -->
                 <p class="login-switch">
-                    <span data-i18n="login.newHere">Chưa có tài khoản?</span> <a href="../HTML-INTERFACE/Register.HTML" class="login-sign" data-i18n="login.joinUs">Tham gia Drip Lab</a>
+                    <span data-i18n="login.newHere">Chưa có tài khoản?</span> <a href="../HTML-INTERFACE/Register.HTML"
+                        class="login-sign" data-i18n="login.joinUs">Tham gia Drip Lab</a>
                 </p>
             </div>
         </div>
@@ -281,24 +324,27 @@
                 <h4 data-i18n="footer.follow">Follow Us On</h4>
                 <ul class="social-list">
                     <li>
-                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok">
                             <i class="fa-brands fa-tiktok"></i>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        
+
         <!-- Footer Bottom -->
         <div class="footer-bottom" data-i18n="footer.copyright">
             © 2025 Drip Lab. Space for coffee heads.
