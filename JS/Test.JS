@@ -1,4 +1,3 @@
-
 const translations = {
   vi: {
     // Navigation
@@ -29,7 +28,13 @@ const translations = {
     "footer.contact": "Liên hệ",
     "footer.location": "Địa điểm: Việt Nam",
     "footer.follow": "Theo dõi chúng tôi",
-    "footer.copyright": "© 2025 Drip Lab. Space for coffee heads."
+    "footer.copyright": "© 2025 Drip Lab. Space for coffee heads.",
+
+    // Cart Modal
+    "cart.title": "Drip Lab",
+    "cart.desc": "Vui lòng đăng nhập tài khoản Drip Lab để xem ưu đãi và thanh toán dễ dàng hơn.",
+    "cart.register": "Đăng ký",
+    "cart.login": "Đăng nhập"
   },
   en: {
     // Navigation
@@ -60,7 +65,13 @@ const translations = {
     "footer.contact": "Contact Us",
     "footer.location": "Place at: Vietnam",
     "footer.follow": "Follow Us On",
-    "footer.copyright": "© 2025 Drip Lab. Space for coffee heads."
+    "footer.copyright": "© 2025 Drip Lab. Space for coffee heads.",
+
+    // Cart Modal
+    "cart.title": "Drip Lab",
+    "cart.desc": "Please log in to your Drip Lab account to view offers and check out more easily.",
+    "cart.register": "Register",
+    "cart.login": "Login"
   }
 };
 
@@ -75,6 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuDropdownWrapper = document.querySelector('.menu-dropdown-wrapper');
   const menuDropdown = document.getElementById('menu-dropdown');
   const menuOptions = document.querySelectorAll('.menu-option');
+
+  // Cart modal elements
+  const cartBtn = document.getElementById('cart-btn');
+  const cartModalOverlay = document.getElementById('cart-modal-overlay');
+  const cartModalClose = document.getElementById('cart-modal-close');
 
   // Create overlay element
   const overlay = document.createElement('div');
@@ -120,8 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /*========== Menu Dropdown Hover - AUTO SHOW/HIDE ==========*/
-  // Menu dropdown tự động hiện khi hover, không cần click
-  // CSS đã xử lý phần hover, JS chỉ cần handle click events
 
   /*========== Menu Options Click Handlers ==========*/
   menuOptions.forEach(option => {
@@ -227,28 +241,59 @@ document.addEventListener('DOMContentLoaded', function () {
   const loginBtn = document.querySelector('.btn-login');
   if (loginBtn) {
     loginBtn.addEventListener('click', function () {
-      console.log('Login clicked');
-      alert('Chức năng đăng nhập / Login function');
+      window.location.href = '../HTML-INTERFACE/Login.HTML';
       closeUserDropdown();
     });
   }
 
-  // Sign out button
+  // Register button
   const registerBtn = document.querySelector('.btn-register');
   if (registerBtn) {
     registerBtn.addEventListener('click', function () {
-      console.log('Register clicked');
       window.location.href = '../HTML-INTERFACE/Register.HTML';
-      alert('Chức năng đăng ký / Register function');
       closeUserDropdown();
     });
   }
-  
-  /*========== Escape key to close dropdown ==========*/
+
+  /*========== Cart Modal ==========*/
+  function openCartModal() {
+    cartModalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCartModal() {
+    cartModalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (cartBtn) {
+    cartBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openCartModal();
+    });
+  }
+
+  if (cartModalClose) {
+    cartModalClose.addEventListener('click', closeCartModal);
+  }
+
+  if (cartModalOverlay) {
+    cartModalOverlay.addEventListener('click', function (e) {
+      if (e.target === cartModalOverlay) {
+        closeCartModal();
+      }
+    });
+  }
+
+  /*========== Escape key to close dropdown & modal ==========*/
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && userDropdown.classList.contains('active')) {
-      closeUserDropdown();
+    if (e.key === 'Escape') {
+      if (userDropdown.classList.contains('active')) {
+        closeUserDropdown();
+      }
+      if (cartModalOverlay && cartModalOverlay.classList.contains('active')) {
+        closeCartModal();
+      }
     }
   });
 });
-

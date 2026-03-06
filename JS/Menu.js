@@ -62,7 +62,7 @@ const translations = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  
+
   // Get elements
   const userProfileBtn = document.getElementById('user-profile-btn');
   const userDropdown = document.getElementById('user-dropdown');
@@ -78,6 +78,44 @@ document.addEventListener('DOMContentLoaded', function () {
   const overlay = document.createElement('div');
   overlay.className = 'dropdown-overlay';
   document.body.appendChild(overlay);
+
+  // Cart modal elements
+  const cartBtn = document.getElementById('cart-btn');
+  const cartModalOverlay = document.getElementById('cart-modal-overlay');
+  const cartModalClose = document.getElementById('cart-modal-close');
+
+  function openCartModal() {
+    cartModalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCartModal() {
+    cartModalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (cartBtn) {
+    cartBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openCartModal();
+    });
+  }
+
+  if (cartModalClose) {
+    cartModalClose.addEventListener('click', closeCartModal);
+  }
+
+  if (cartModalOverlay) {
+    cartModalOverlay.addEventListener('click', function (e) {
+      if (e.target === cartModalOverlay) closeCartModal();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && cartModalOverlay.classList.contains('active')) {
+      closeCartModal();
+    }
+  });
 
   /*========== Toggle User Profile Dropdown ==========*/
   userProfileBtn.addEventListener('click', function (e) {
@@ -251,49 +289,49 @@ document.addEventListener('DOMContentLoaded', function () {
   let activeFilters = [];
 
   buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
+    btn.addEventListener("click", () => {
 
-          const filter = btn.dataset.filter;
+      const filter = btn.dataset.filter;
 
-          if (filter === "all") {
-              activeFilters = [];
+      if (filter === "all") {
+        activeFilters = [];
 
-              buttons.forEach(b => b.classList.remove("active"));
-              btn.classList.add("active");
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
 
-          } else {
+      } else {
 
-              btn.classList.toggle("active");
+        btn.classList.toggle("active");
 
-              if (activeFilters.includes(filter)) {
-                  activeFilters = activeFilters.filter(f => f !== filter);
-              } else {
-                  activeFilters.push(filter);
-              }
+        if (activeFilters.includes(filter)) {
+          activeFilters = activeFilters.filter(f => f !== filter);
+        } else {
+          activeFilters.push(filter);
+        }
 
-              document.querySelector('[data-filter="all"]').classList.remove("active");
-          }
+        document.querySelector('[data-filter="all"]').classList.remove("active");
+      }
 
-          filterItems();
-      });
+      filterItems();
+    });
   });
 
   function filterItems() {
 
-      items.forEach(item => {
+    items.forEach(item => {
 
-          const types = item.dataset.type.split(" ");
+      const types = item.dataset.type.split(" ");
 
-          if (activeFilters.length === 0) {
-              item.style.display = "block";
-              return;
-          }
+      if (activeFilters.length === 0) {
+        item.style.display = "block";
+        return;
+      }
 
-          const match = activeFilters.some(f => types.includes(f));
+      const match = activeFilters.some(f => types.includes(f));
 
-          item.style.display = match ? "block" : "none";
+      item.style.display = match ? "block" : "none";
 
-      });
+    });
 
   }
 
