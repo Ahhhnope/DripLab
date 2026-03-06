@@ -40,6 +40,16 @@ window.translations = {
     "post3.desc": "Món ưa thích theo mùa đã trở lại trong thực đơn. Mật thông thu hoạch thủ công hòa cùng sữa yến mạch và espresso đặc trưng của chúng tôi.",
     "post.readmore": "Đọc toàn bộ bài viết",
 
+    // New item
+    "post4.badge": "Văn hóa",
+    "post4.date": "28 Tháng 10, 2023",
+    "post4.title": "Nghệ thuật Cold Brew: Chắt lọc tinh hoa từ thời gian",
+    "post4.desc": "Không giống như cà phê pha máy thông thường, Cold Brew tại Drip Lab được ngâm ủ lạnh kiên nhẫn trong suốt 18 giờ. Quá trình chậm rãi này giúp giảm độ chua, tôn lên vị ngọt tự nhiên của hạt Arabica và tạo ra một thức uống mượt mà, sảng khoái tuyệt đối cho những ngày oi bức.",
+
+    "post5.badge": "Đồ uống mới",
+    "post5.date": "05 Tháng 11, 2023",
+    "post5.title": "Khởi đầu thanh tịnh cùng Trà Thảo Mộc",
+    "post5.desc": "Bên cạnh những ly cà phê đậm đà, Drip Lab mang đến cho bạn một nốt trầm tĩnh lặng với dòng trà thảo mộc trứ danh. Từng búp trà thượng hạng hòa quyện cùng chút mật ong nguyên chất, tỏa hương thơm ngát giúp xoa dịu tâm hồn và làm ấm cơ thể trong những ngày giao mùa.",
     // A11y
     "aria.pagination": "Phân trang",
     "aria.prevPage": "Trang trước",
@@ -95,6 +105,16 @@ window.translations = {
     "post3.desc": "A seasonal favorite is back on the menu. Hand-harvested honey blended with oat milk and our signature espresso.",
     "post.readmore": "Read full article",
 
+    //New item
+    "post4.badge": "Culture",
+    "post4.date": "October 28, 2023",
+    "post4.title": "The Art of Cold Brew: Extracting essence through time",
+    "post4.desc": "Unlike regular espresso-based coffee, Drip Lab's Cold Brew is patiently steeped in cold water for 18 hours. This slow process reduces acidity, enhances the natural sweetness of Arabica beans, and creates a perfectly smooth, refreshing drink for hot days.",
+
+    "post5.badge": "New drink",
+    "post5.date": "November 05, 2023",
+    "post5.title": "A peaceful start with our Herbal Tea",
+    "post5.desc": "Alongside our bold coffees, Drip Lab offers a tranquil escape with our signature herbal tea collection. Premium tea leaves blended with a touch of pure honey release a fragrant aroma that soothes the soul and warms the body during the changing seasons.",
     // A11y
     "aria.pagination": "Pagination",
     "aria.prevPage": "Previous page",
