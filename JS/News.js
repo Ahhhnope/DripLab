@@ -37,7 +37,7 @@ window.translations = {
     "post2.desc": "Mẹo chuyên nghiệp cho pour-over hoàn hảo. Tìm hiểu kích thước xay và nhiệt độ nước chuẩn để đạt chất lượng như quán.",
     "post3.badge": "Đồ uống mới",
     "post3.title": "Ra mắt: Latte mật ong sữa yến mạch",
-    "post3.desc": "Món ưa thích theo mùa đã trở lại trong thực đơn. Mật ong thu hoạch thủ công hòa cùng sữa yến mạch và espresso đặc trưng của chúng tôi.",
+    "post3.desc": "Món ưa thích theo mùa đã trở lại trong thực đơn. Mật thông thu hoạch thủ công hòa cùng sữa yến mạch và espresso đặc trưng của chúng tôi.",
     "post.readmore": "Đọc toàn bộ bài viết",
 
     // A11y
@@ -265,14 +265,13 @@ function initPagination() {
 }
 
 // -------------------------------
-// Header/Footer interactions (from Test.js)
+// Main Initializer
 // -------------------------------
 document.addEventListener('DOMContentLoaded', function () {
   const userProfileBtn = document.getElementById('user-profile-btn');
   const userDropdown = document.getElementById('user-dropdown');
   const themeToggle = document.getElementById('theme-toggle-dropdown');
   const langButtons = document.querySelectorAll('.lang-btn');
-
   const menuOptions = document.querySelectorAll('.menu-option');
 
   // overlay
@@ -371,35 +370,81 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // action buttons
-  const loginBtn = document.querySelector('.btn-login');
-  if (loginBtn) {
-    loginBtn.addEventListener('click', function () {
-      console.log('Login clicked');
-      alert('Chức năng đăng nhập / Login function');
-      closeUserDropdown();
-    });
-  }
-
-  // Sign out button
-  const registerBtn = document.querySelector('.btn-register');
-  if (registerBtn) {
-    registerBtn.addEventListener('click', function () {
-      console.log('Register clicked');
-      window.location.href = '../HTML-INTERFACE/Register.HTML';
-      alert('Chức năng đăng ký / Register function');
-      closeUserDropdown();
-    });
-  }
-  
-
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && userDropdown && userDropdown.classList.contains('active')) {
       closeUserDropdown();
     }
   });
 
-  // Init body features (LƯU Ý THỨ TỰ: Đọc dữ liệu ra trước -> Chạy phân trang sau)
+  // Init body features
   renderLocalPosts();
   initPagination();
+
+
+  // --- INSTAGRAM-STYLE MODAL LOGIC TỐI ƯU HÓA ---
+  const articleModal = document.getElementById('article-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+  const postsGridElement = document.getElementById('posts-grid');
+
+  const modalImage = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalDate = document.getElementById('modal-date');
+  const modalBadge = document.getElementById('modal-badge');
+
+  if (postsGridElement) {
+    postsGridElement.addEventListener('click', function(e) {
+      const article = e.target.closest('article');
+      if (!article) return;
+
+      e.preventDefault(); 
+
+      // 1. Tối ưu nhận diện ảnh (Lấy cả thẻ <img> lẫn thẻ div có background-image)
+      const imgTag = article.querySelector('img'); 
+      const bgDiv = article.querySelector('.bg-cover');
+
+      if (imgTag && imgTag.src) {
+          // Xử lý nếu ảnh là thẻ <img>
+          modalImage.style.backgroundImage = `url('${imgTag.src}')`;
+      } else if (bgDiv) {
+          // Xử lý nếu ảnh là thẻ <div style="background-image...">
+          const currentBgImage = window.getComputedStyle(bgDiv).backgroundImage;
+          modalImage.style.backgroundImage = currentBgImage !== 'none' ? currentBgImage : bgDiv.style.backgroundImage;
+      }
+
+      // 2. Lấy dữ liệu Text
+      const badgeEl = article.querySelector('.absolute.top-4.left-4 span');
+      const dateEl = article.querySelector('.text-accent-gold.tracking-\\[0\\.2em\\]');
+      const titleEl = article.querySelector('h3');
+      const descEl = article.querySelector('p.line-clamp-2');
+
+      if (badgeEl) modalBadge.textContent = badgeEl.textContent;
+      if (dateEl) modalDate.textContent = dateEl.textContent;
+      if (titleEl) modalTitle.textContent = titleEl.textContent;
+      if (descEl) modalDesc.textContent = descEl.textContent; 
+
+      // 3. Hiển thị Modal
+      articleModal.classList.remove('hidden');
+      articleModal.classList.add('flex');
+      document.body.style.overflow = 'hidden'; 
+    });
+  }
+
+  function closeArticleModal() {
+    articleModal.classList.add('hidden');
+    articleModal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeArticleModal);
+  }
+
+  if (articleModal) {
+    articleModal.addEventListener('click', function(e) {
+      if (e.target === articleModal) {
+        closeArticleModal();
+      }
+    });
+  }
 });
