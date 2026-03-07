@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Tailwind CDN (giữ nguyên như bản mẫu) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script>
     tailwind.config = {
@@ -30,295 +31,366 @@
     };
   </script>
 
-  <!-- Fonts + icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Noto+Serif:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <!-- Icon Libraries -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
   <title>Drip Lab | My Account</title>
 
   <!-- CSS tách riêng -->
-  <link rel="stylesheet" href="../CSS/Orders.css" />
+  <link rel="stylesheet" href="../CSS/Orders.CSS" />
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-[#181311]">
   <!-- Glassmorphism Sticky Header -->
-  <header class="glass-header sticky top-0 z-50 w-full">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+  <header class="header-login">
+    <div class="header-container">
       <!-- Logo -->
-      <div class="flex items-center gap-2">
-        <div class="text-primary">
-          <svg class="size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
-          </svg>
-        </div>
-        <h1 class="text-xl font-bold tracking-tight text-[#181311]">Drip Lab</h1>
+      <div class="header-logo">
+        <a href="#" class="logo-image-link">
+          <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img">
+        </a>
       </div>
 
-      <!-- Navigation -->
-      <nav class="hidden md:flex items-center gap-10">
-        <a class="text-sm font-semibold hover:text-primary transition-colors" href="../HTML-INTERFACE/Menu.html">Menu</a>
-        <a class="text-sm font-semibold hover:text-primary transition-colors" href="../HTML-INTERFACE/AboutUs.html">About Us</a>
-        <a class="text-sm font-semibold hover:text-primary transition-colors" href="../HTML-INTERFACE/News.html">News</a>
-        <a class="text-sm font-semibold hover:text-primary transition-colors" href="../HTML-INTERFACE/Stores.html">Stores</a>
+      <!-- Navigation Menu -->
+      <nav class="navbar">
+        <!-- Menu Dropdown -->
+        <div class="menu-dropdown-wrapper">
+          <a href="../HTML-INTERFACE/Homepage.html" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+          <div class="menu-dropdown" id="menu-dropdown">
+            <a href="../HTML-INTERFACE/Menu.html" class="menu-option option-buy" data-i18n="menu.buyNow">
+              <i class='bx bxs-cart'></i>
+              <span>Mua ngay</span>
+            </a>
+            <a href="../HTML-INTERFACE/Brewing.html" class="menu-option option-custom" data-i18n="menu.customize">
+              <i class='bx bxs-coffee-togo'></i>
+              <span>Tự pha chế</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="../HTML-INTERFACE/AboutUs.html" data-i18n="nav.about">ABOUT US</a>
+        <a href="../HTML-INTERFACE/News.html" data-i18n="nav.news">NEWS</a>
+        <a href="../HTML-INTERFACE/" data-i18n="nav.stores">STORES</a>
       </nav>
 
-      <!-- Icons -->
-      <div class="flex items-center gap-4">
-        <button class="p-2 rounded-full hover:bg-primary/10 text-[#181311] transition-colors" aria-label="Tài khoản">
-          <span class="material-symbols-outlined">account_circle</span>
-        </button>
-        <button class="p-2 rounded-full hover:bg-primary/10 text-[#181311] transition-colors" aria-label="Giỏ hàng">
-          <span class="material-symbols-outlined">shopping_cart</span>
+      <!-- User Actions (Login/Cart) -->
+      <div class="user-login">
+        <!-- User Profile Dropdown -->
+        <div class="user-profile-wrapper">
+          <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
+            <i class='bx bxs-user'></i>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div class="user-dropdown" id="user-dropdown">
+            <div class="dropdown-header">
+              <h3 class="dropdown-title" data-i18n="profile.title">Thông Tin Tài Khoản</h3>
+            </div>
+
+            <div class="dropdown-body">
+              <!-- User Info Section -->
+              <div class="user-info-section">
+                <div class="user-avatar">
+                  <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
+                </div>
+                <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
+                <p class="user-email">abc@gmail.com</p>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <!-- Settings Section -->
+              <div class="settings-section">
+                <!-- Theme Toggle -->
+                <div class="setting-item">
+                  <div class="setting-label">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                    <span data-i18n="profile.theme">Chế độ tối</span>
+                  </div>
+                  <button type="button" id="theme-toggle-dropdown" class="toggle-switch" aria-label="Toggle Theme">
+                    <span class="toggle-slider"></span>
+                  </button>
+                </div>
+
+                <!-- Language Toggle -->
+                <div class="setting-item">
+                  <div class="setting-label">
+                    <span class="material-symbols-outlined">language</span>
+                    <span data-i18n="profile.language">Ngôn ngữ</span>
+                  </div>
+                  <div class="language-toggle">
+                    <button type="button" class="lang-btn active" data-lang="vi">VI</button>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <div class="dropdown-actions">
+                <button type="button" class="action-btn btn-signout"
+                  onclick="window.location.href='../HTML-INTERFACE/Login.HTML'">
+                  <span class="material-symbols-outlined">logout</span>
+                  <span data-i18n="profile.signout">Sign out</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button">
+          <i class='bx bxs-shopping-bag'></i>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-12">
-    <div class="flex flex-col lg:flex-row gap-12">
-      <!-- Sidebar Navigation -->
-      <aside class="w-full lg:w-64 flex-shrink-0">
-        <div class="flex flex-col items-center lg:items-start text-center lg:text-left mb-10 px-4">
-          <div class="size-20 rounded-full border-2 border-primary p-1 mb-4">
-            <img alt="User Avatar" class="rounded-full w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD1ZW68pBEupULBdQQvsJBx4zsNuuZJGpwXDdh8NbcA8dhyRO-XnKk4_u0vHgK3JS7I3ixMTfi7hQ-h1HgjYX9ViGY18zJeb9jxRrYHmVIMidrVerQicquMEonvthNlHrO5gCKer1L0ST2AjCyTLchpQ7xI3z5hFZZzzYL8uaXzQagiKkZIHHE0xMSaCiBqrYjDMUA_heW5FBT4IcJh8XSknWPwp7RMYR54MokfC-HtDCrfQqX8b3kNsVeIstZdlgCgYiYlL2fE-NC" />
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="main-content">
+    <div class="profile-container">
+
+      <!-- Sidebar trái -->
+      <aside class="profile-sidebar">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar">
+            <img src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
           </div>
-          <h2 class="text-xl font-bold text-[#181311]">Tuân Nguyễn Đình</h2>
-          <p class="text-sm text-primary font-medium">Premium Member</p>
+          <div class="sidebar-name">Tuân Nguyễn Đình</div>
+          <div class="sidebar-badge">Premium Member</div>
         </div>
 
-        <nav class="space-y-1">
-          <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-white hover:text-primary transition-all group" href="#">
-            <span class="material-symbols-outlined text-[20px]">person</span>
-            <span class="text-sm font-bold">Account</span>
-          </a>
-          <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-white hover:text-primary transition-all" href="#">
-            <span class="material-symbols-outlined text-[20px]">lock</span>
-            <span class="text-sm font-bold">Change Password</span>
-          </a>
-          <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-white hover:text-primary transition-all" href="#">
-            <span class="material-symbols-outlined text-[20px]">location_on</span>
-            <span class="text-sm font-bold">Address</span>
-          </a>
-          <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-white shadow-lg shadow-primary/20 transition-all" href="#">
-            <span class="material-symbols-outlined text-[20px]">package</span>
-            <span class="text-sm font-bold">Orders</span>
-          </a>
-          <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-white hover:text-primary transition-all" href="#">
-            <span class="material-symbols-outlined text-[20px]">favorite</span>
-            <span class="text-sm font-bold">Favorites</span>
-          </a>
-          <div class="pt-6 mt-6 border-t border-gray-200">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-all" href="#">
-              <span class="material-symbols-outlined text-[20px]">logout</span>
-              <span class="text-sm font-bold">Logout</span>
+        <ul class="sidebar-nav">
+          <li>
+            <a href="../HTML-USER/Account.HTML">
+              <i class='bx bx-user'></i>
+              <span>Account</span>
             </a>
-          </div>
-        </nav>
+          </li>
+
+          <li>
+            <a href="../HTML-USER/ChangePassword.HTML">
+              <i class='bx bx-lock'></i>
+              <span>Change Password</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="../HTML-USER/AddRessUser.HTML">
+              <i class='bx bx-map'></i>
+              <span>Address</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="../HTML-USER/Orders.HTML">
+              <i class='bx bxs-receipt'></i>
+              <span>Orders</span>
+            </a>
+          </li>
+
+          <li class="nav-logout">
+            <a href="../HTML-INTERFACE/Homepage.html">
+              <i class='bx bx-log-out'></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
       </aside>
 
-      <!-- Main Content Area -->
-      <div class="flex-1 space-y-8">
-        <!-- Order Status Card -->
-        <section class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+      <!-- Panel phải -->
+      <section class="profile-panel">
+
+        <h2 class="panel-title">My Orders</h2>
+
+        <!-- Order Status -->
+        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100 mb-8">
           <h3 class="text-lg font-bold mb-8">Current Order Status</h3>
+
           <div class="relative">
-            <div class="absolute top-5 left-0 w-full h-0.5 bg-gray-100"></div>
+            <div class="absolute top-5 left-0 w-full h-0.5 bg-gray-200"></div>
             <div class="absolute top-5 left-0 w-[25%] h-0.5 bg-primary"></div>
 
             <div class="relative flex justify-between">
-              <div class="flex flex-col items-center gap-3 bg-white">
-                <div class="size-10 rounded-full bg-primary text-white flex items-center justify-center z-10">
+
+              <div class="flex flex-col items-center gap-2">
+                <div class="size-10 rounded-full bg-primary text-white flex items-center justify-center">
                   <span class="material-symbols-outlined text-sm">check</span>
                 </div>
                 <span class="text-xs font-bold text-primary">Pending</span>
               </div>
-              <div class="flex flex-col items-center gap-3 bg-white">
-                <div class="size-10 rounded-full border-2 border-primary bg-white text-primary flex items-center justify-center z-10 shadow-lg shadow-primary/10">
+
+              <div class="flex flex-col items-center gap-2">
+                <div class="size-10 rounded-full border-2 border-primary text-primary flex items-center justify-center">
                   <span class="material-symbols-outlined text-sm">inventory_2</span>
                 </div>
                 <span class="text-xs font-bold text-primary">Confirmed</span>
               </div>
-              <div class="flex flex-col items-center gap-3 bg-white">
-                <div class="size-10 rounded-full border-2 border-gray-100 bg-white text-gray-300 flex items-center justify-center z-10">
+
+              <div class="flex flex-col items-center gap-2">
+                <div class="size-10 rounded-full border text-gray-300 flex items-center justify-center">
                   <span class="material-symbols-outlined text-sm">settings</span>
                 </div>
                 <span class="text-xs font-bold text-gray-400">Processing</span>
               </div>
-              <div class="flex flex-col items-center gap-3 bg-white">
-                <div class="size-10 rounded-full border-2 border-gray-100 bg-white text-gray-300 flex items-center justify-center z-10">
+
+              <div class="flex flex-col items-center gap-2">
+                <div class="size-10 rounded-full border text-gray-300 flex items-center justify-center">
                   <span class="material-symbols-outlined text-sm">local_shipping</span>
                 </div>
                 <span class="text-xs font-bold text-gray-400">Shipping</span>
               </div>
-              <div class="flex flex-col items-center gap-3 bg-white">
-                <div class="size-10 rounded-full border-2 border-gray-100 bg-white text-gray-300 flex items-center justify-center z-10">
+
+              <div class="flex flex-col items-center gap-2">
+                <div class="size-10 rounded-full border text-gray-300 flex items-center justify-center">
                   <span class="material-symbols-outlined text-sm">home</span>
                 </div>
                 <span class="text-xs font-bold text-gray-400">Delivered</span>
               </div>
+
             </div>
           </div>
-        </section>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Shipping Address Card -->
-          <section class="bg-white rounded-xl p-8 shadow-sm border border-gray-100 flex flex-col justify-between">
-            <div>
-              <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
-                <span class="material-symbols-outlined text-primary">location_on</span>
-                Shipping Address
-              </h3>
-              <div class="space-y-2">
-                <p class="text-base font-bold text-[#181311]">Tuân Nguyễn Đình</p>
-                <p class="text-sm text-gray-600">+84 123 456 789</p>
-                <p class="text-sm text-gray-600 leading-relaxed">
-                  123 Artisanal Street, District 1<br />
-                  Ho Chi Minh City, 70000<br />
-                  Vietnam
-                </p>
-              </div>
-            </div>
-            <div class="mt-8 pt-6 border-t border-gray-50">
-              <button class="text-sm font-bold text-primary hover:underline">Change Address</button>
-            </div>
-          </section>
-
-          <!-- Order Details Card -->
-          <section class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <h3 class="text-lg font-bold mb-6">Active Order Items</h3>
-            <div class="flex gap-4 items-center">
-              <div class="size-24 bg-background-light rounded-lg overflow-hidden flex-shrink-0">
-                <img alt="Drip Lab Coffee Beans" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYF3ymhvLzgh6BuIPZVCkkrYZEk8qLLyQCrQg0gDcX4HzlNsmQvgVTFvcSS41XxWzzaXhdYh5Fmx9yWUUR63_HpQbx7TjamJ9i-9gmcYtn1lMLCZ216G4k68yraLLheA-AjyHl5gSPAstIMGf9zFxKnCYe278OWG86ti1M9r8bofaVfaVO1Lv2w-hWZCzeU2AU5aFFEpYZZEzvwXUkcAogawDETbmi34D4jGjJvLJZjuTzkaymn1VRcPESonSf3TywrX9n0NU746m7" />
-              </div>
-              <div class="flex-1">
-                <h4 class="text-sm font-bold text-[#181311] mb-1">Drip Lab Coffee Beans Name</h4>
-                <div class="flex justify-between items-end">
-                  <div>
-                    <p class="text-xs text-gray-500">Quantity: 2</p>
-                    <p class="text-base font-bold text-primary mt-1">$45.00</p>
-                  </div>
-                  <span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Freshly Roasted</span>
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
 
-        <!-- My Receipts Section -->
-        <section class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <div class="p-8 flex items-center justify-between border-b border-gray-50">
-            <h3 class="text-lg font-bold">My Receipts</h3>
-            <button class="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg text-sm font-bold hover:bg-gray-50 transition-colors">
-              <span class="material-symbols-outlined text-[18px]">filter_list</span>
-              Filter
-            </button>
+        <!-- Order Items -->
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-8">
+
+          <h3 class="text-lg font-bold mb-6">Active Order Items</h3>
+
+          <div class="flex gap-4 items-center">
+            <div class="size-24 bg-gray-100 rounded-lg overflow-hidden">
+              <img src="../IMG/coffee.png" alt="Coffee Image">
+            </div>
+
+            <div class="flex-1">
+              <h4 class="font-bold">V40</h4>
+              <p class="text-sm text-gray-500">Quantity: 2</p>
+              <p class="font-bold text-primary">70.000VND</p>
+            </div>
           </div>
 
-          <div class="overflow-x-auto">
-            <table class="w-full text-left">
-              <thead class="bg-background-light/50">
-                <tr>
-                  <th class="px-8 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Order Info</th>
-                  <th class="px-8 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Date</th>
-                  <th class="px-8 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider text-right">Total Price</th>
-                  <th class="px-8 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider text-right">Action</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-50">
-                <tr class="hover:bg-gray-50/50 transition-colors">
-                  <td class="px-8 py-5">
-                    <div class="flex items-center gap-3">
-                      <div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                        <span class="material-symbols-outlined text-sm">receipt_long</span>
-                      </div>
-                      <div>
-                        <p class="text-sm font-bold">#DL-9283-01</p>
-                        <p class="text-[11px] text-gray-400">Coffee Equipment</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-8 py-5 text-sm text-gray-600">Oct 12, 2023</td>
-                  <td class="px-8 py-5 text-sm font-bold text-right">$128.50</td>
-                  <td class="px-8 py-5 text-right">
-                    <button class="text-xs font-bold text-primary px-4 py-2 rounded-lg bg-primary/5 hover:bg-primary hover:text-white transition-all">View Details</button>
-                  </td>
-                </tr>
+        </div>
 
-                <tr class="hover:bg-gray-50/50 transition-colors">
-                  <td class="px-8 py-5">
-                    <div class="flex items-center gap-3">
-                      <div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                        <span class="material-symbols-outlined text-sm">receipt_long</span>
-                      </div>
-                      <div>
-                        <p class="text-sm font-bold">#DL-8122-42</p>
-                        <p class="text-[11px] text-gray-400">Artisan Beans</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-8 py-5 text-sm text-gray-600">Sep 28, 2023</td>
-                  <td class="px-8 py-5 text-sm font-bold text-right">$45.00</td>
-                  <td class="px-8 py-5 text-right">
-                    <button class="text-xs font-bold text-primary px-4 py-2 rounded-lg bg-primary/5 hover:bg-primary hover:text-white transition-all">View Details</button>
-                  </td>
-                </tr>
+        <!-- Receipts Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
 
-                <tr class="hover:bg-gray-50/50 transition-colors">
-                  <td class="px-8 py-5">
-                    <div class="flex items-center gap-3">
-                      <div class="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                        <span class="material-symbols-outlined text-sm">receipt_long</span>
-                      </div>
-                      <div>
-                        <p class="text-sm font-bold">#DL-7501-19</p>
-                        <p class="text-[11px] text-gray-400">Monthly Subscription</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-8 py-5 text-sm text-gray-600">Sep 01, 2023</td>
-                  <td class="px-8 py-5 text-sm font-bold text-right">$32.00</td>
-                  <td class="px-8 py-5 text-right">
-                    <button class="text-xs font-bold text-primary px-4 py-2 rounded-lg bg-primary/5 hover:bg-primary hover:text-white transition-all">View Details</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="p-6 border-b">
+            <h3 class="font-bold">My Receipts</h3>
           </div>
 
-          <div class="p-6 bg-gray-50 text-center">
-            <button class="text-xs font-bold text-gray-400 hover:text-primary transition-colors">Load More History</button>
-          </div>
-        </section>
-      </div>
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left">Order Info</th>
+                <th class="px-6 py-3 text-left">Date</th>
+                <th class="px-6 py-3 text-right">Price</th>
+                <th class="px-6 py-3 text-right">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr class="border-t">
+                <td class="px-6 py-4 font-bold">#DL-9283-01</td>
+                <td class="px-6 py-4">Oct 12, 2023</td>
+                <td class="px-6 py-4 text-right">$128.50</td>
+                <td class="px-6 py-4 text-right">
+                  <button class="view-details-btn text-primary font-bold">
+                    View Details
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+        <div class="p-6 bg-gray-50 text-center">
+          <a href="../HTML-USER/Receipts.html"
+            class="inline-block text-xs font-bold text-gray-400 hover:text-primary transition-colors">
+            Load More History
+          </a>
+        </div>
+      </section>
     </div>
   </main>
 
-  <footer class="mt-20 py-12 border-t border-gray-100 bg-white">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-      <div class="flex items-center gap-2 opacity-50">
-        <div class="text-[#181311]">
-          <svg class="size-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
-          </svg>
-        </div>
-        <span class="text-sm font-bold tracking-tight">Drip Lab</span>
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Column 1 - Logo & Description -->
+      <div class="footer-col">
+        <h3>
+          <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo">
+        </h3>
+        <p data-i18n="footer.description">
+          Drip Lab - Coffee for your <br> fresh start every day.
+        </p>
       </div>
-      <p class="text-xs text-gray-400">© 2024 Drip Lab Artisanal Coffee. All rights reserved.</p>
-      <div class="flex gap-6">
-        <a class="text-gray-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
-        <a class="text-gray-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+
+      <!-- Column 2 - Navigation -->
+      <div class="footer-col">
+        <h4 data-i18n="footer.connect">Tsaheylu</h4>
+        <ul>
+          <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="#" data-i18n="nav.about">About Us</a></li>
+          <li><a href="#" data-i18n="nav.news">News</a></li>
+          <li><a href="#" data-i18n="nav.stores">Stores</a></li>
+        </ul>
       </div>
+
+      <!-- Column 3 - Contact -->
+      <div class="footer-col">
+        <h4 data-i18n="footer.contact">Contact Us</h4>
+        <p>Email: contact@driplab.com</p>
+        <p>Hotline: 036 363 6767</p>
+        <p data-i18n="footer.location">Place at: Việt Nam</p>
+      </div>
+
+      <!-- Column 4 - Social Media -->
+      <div class="footer-col">
+        <h4 data-i18n="footer.follow">Follow Us On</h4>
+        <ul class="social-list">
+          <li>
+            <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer"
+              aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank" rel="noopener noreferrer"
+              aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer"
+              aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom" data-i18n="footer.copyright">
+      © 2025 Drip Lab. Space for coffee heads.
     </div>
   </footer>
 
   <!-- Order Details Modal -->
-  <div id="orderDetailsModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-    <div data-modal-content class="bg-[#FDF8F3] w-full max-w-lg rounded-[12px] shadow-2xl overflow-hidden transform transition-transform duration-300 scale-95">
+  <div id="orderDetailsModal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <div data-modal-content
+      class="bg-[#FDF8F3] w-full max-w-lg rounded-[12px] shadow-2xl overflow-hidden transform transition-transform duration-300 scale-95">
       <!-- Modal Header -->
       <div class="px-8 py-6 border-b border-[#3C2F2F]/10 flex justify-between items-start">
         <div>
-          <h2 class="text-2xl font-bold text-[#3C2F2F] mb-1" style="font-family: 'Noto Serif', serif;">Order Details</h2>
+          <h2 class="text-2xl font-bold text-[#3C2F2F] mb-1" style="font-family: 'Noto Serif', serif;">Order Details
+          </h2>
           <p class="text-sm font-bold text-[#8A3D2A]" id="modalOrderID">#DL-9283-01</p>
           <p class="text-xs text-[#3C2F2F]/60 mt-1" id="modalOrderDate">Oct 12, 2023</p>
         </div>
@@ -331,7 +403,8 @@
       <div class="px-8 py-6 max-h-[400px] overflow-y-auto space-y-4">
         <div class="flex items-center gap-4">
           <div class="size-16 rounded-lg bg-[#3C2F2F]/5 overflow-hidden flex-shrink-0">
-            <img alt="Product" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYF3ymhvLzgh6BuIPZVCkkrYZEk8qLLyQCrQg0gDcX4HzlNsmQvgVTFvcSS41XxWzzaXhdYh5Fmx9yWUUR63_HpQbx7TjamJ9i-9gmcYtn1lMLCZ216G4k68yraLLheA-AjyHl5gSPAstIMGf9zFxKnCYe278OWG86ti1M9r8bofaVfaVO1Lv2w-hWZCzeU2AU5aFFEpYZZEzvwXUkcAogawDETbmi34D4jGjJvLJZjuTzkaymn1VRcPESonSf3TywrX9n0NU746m7" />
+            <img alt="Product" class="w-full h-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYF3ymhvLzgh6BuIPZVCkkrYZEk8qLLyQCrQg0gDcX4HzlNsmQvgVTFvcSS41XxWzzaXhdYh5Fmx9yWUUR63_HpQbx7TjamJ9i-9gmcYtn1lMLCZ216G4k68yraLLheA-AjyHl5gSPAstIMGf9zFxKnCYe278OWG86ti1M9r8bofaVfaVO1Lv2w-hWZCzeU2AU5aFFEpYZZEzvwXUkcAogawDETbmi34D4jGjJvLJZjuTzkaymn1VRcPESonSf3TywrX9n0NU746m7" />
           </div>
           <div class="flex-1">
             <h4 class="text-sm font-bold text-[#3C2F2F]">Ethiopian Yirgacheffe</h4>
@@ -342,7 +415,8 @@
 
         <div class="flex items-center gap-4">
           <div class="size-16 rounded-lg bg-[#3C2F2F]/5 overflow-hidden flex-shrink-0">
-            <img alt="Product" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYF3ymhvLzgh6BuIPZVCkkrYZEk8qLLyQCrQg0gDcX4HzlNsmQvgVTFvcSS41XxWzzaXhdYh5Fmx9yWUUR63_HpQbx7TjamJ9i-9gmcYtn1lMLCZ216G4k68yraLLheA-AjyHl5gSPAstIMGf9zFxKnCYe278OWG86ti1M9r8bofaVfaVO1Lv2w-hWZCzeU2AU5aFFEpYZZEzvwXUkcAogawDETbmi34D4jGjJvLJZjuTzkaymn1VRcPESonSf3TywrX9n0NU746m7" />
+            <img alt="Product" class="w-full h-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYF3ymhvLzgh6BuIPZVCkkrYZEk8qLLyQCrQg0gDcX4HzlNsmQvgVTFvcSS41XxWzzaXhdYh5Fmx9yWUUR63_HpQbx7TjamJ9i-9gmcYtn1lMLCZ216G4k68yraLLheA-AjyHl5gSPAstIMGf9zFxKnCYe278OWG86ti1M9r8bofaVfaVO1Lv2w-hWZCzeU2AU5aFFEpYZZEzvwXUkcAogawDETbmi34D4jGjJvLJZjuTzkaymn1VRcPESonSf3TywrX9n0NU746m7" />
           </div>
           <div class="flex-1">
             <h4 class="text-sm font-bold text-[#3C2F2F]">V60 Glass Dripper</h4>
@@ -368,7 +442,9 @@
             <span class="text-xl font-bold text-[#8A3D2A]" id="modalTotalPrice">$62.47</span>
           </div>
         </div>
-        <button class="w-full py-3 bg-[#8A3D2A] text-white font-bold rounded-lg hover:bg-[#6D3021] transition-colors shadow-lg shadow-[#8A3D2A]/20" id="closeModalBtn">
+        <button
+          class="w-full py-3 bg-[#8A3D2A] text-white font-bold rounded-lg hover:bg-[#6D3021] transition-colors shadow-lg shadow-[#8A3D2A]/20"
+          id="closeModalBtn">
           Close Details
         </button>
       </div>
@@ -378,4 +454,5 @@
   <!-- JS tách riêng -->
   <script src="../JS/Orders.js"></script>
 </body>
+
 </html>
