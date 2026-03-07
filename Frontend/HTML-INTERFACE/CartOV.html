@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="vi" class="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../CSS/Test.CSS" />
+    <link rel="stylesheet" href="../CSS/CartOV.css">
+
+    <!-- Icon Libraries -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <title>Drip Lab - Your Cart</title>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-main dark:text-[#e8e6e3] font-sans antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
+    <input class="hidden" id="modal-toggle" type="checkbox" />
+    <!-- ========== HEADER ========== -->
+    <header class="header-login">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="header-logo">
+                <a href="#" class="logo-image-link">
+                    <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo" class="header-logo-img" />
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="navbar">
+                <!-- Menu Dropdown -->
+                <div class="menu-dropdown-wrapper">
+                    <a href="#" class="menu-trigger" data-i18n="nav.menu">MENU</a>
+                    <div class="menu-dropdown" id="menu-dropdown">
+                        <a href="#" class="menu-option option-buy" data-i18n="menu.buyNow">
+                            <i class="bx bxs-cart"></i>
+                            <span>Mua ngay</span>
+                        </a>
+                        <a href="#" class="menu-option option-custom" data-i18n="menu.customize">
+                            <i class="bx bxs-coffee-togo"></i>
+                            <span>Tự pha chế</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" data-i18n="nav.about">ABOUT US</a>
+                <a href="#" data-i18n="nav.news">NEWS</a>
+                <a href="#" data-i18n="nav.stores">STORES</a>
+            </nav>
+
+            <!-- User Actions (Login/Cart) -->
+            <div class="user-login">
+                <!-- User Profile Dropdown -->
+                <div class="user-profile-wrapper">
+                    <button type="button" id="user-profile-btn" class="user-profile-trigger" aria-label="User Profile">
+                        <i class="bx bxs-user"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-header">
+                            <h3 class="dropdown-title" data-i18n="profile.title">
+                                Thông Tin Tài Khoản
+                            </h3>
+                        </div>
+
+                        <div class="dropdown-body">
+                            <!-- User Info Section -->
+                            <div class="user-info-section">
+                                <div class="user-avatar">
+                                    <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar" />
+                                </div>
+                                <h4 class="user-name" data-i18n="profile.userName">
+                                    Nguyễn Văn A
+                                </h4>
+                                <p class="user-email">abc@gmail.com</p>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Settings Section -->
+                            <div class="settings-section">
+                                <!-- Theme Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                        <span data-i18n="profile.theme">Chế độ tối</span>
+                                    </div>
+                                    <button type="button" id="theme-toggle-dropdown" class="toggle-switch"
+                                        aria-label="Toggle Theme">
+                                        <span class="toggle-slider"></span>
+                                    </button>
+                                </div>
+
+                                <!-- Language Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="material-symbols-outlined">language</span>
+                                        <span data-i18n="profile.language">Ngôn ngữ</span>
+                                    </div>
+                                    <div class="language-toggle">
+                                        <button type="button" class="lang-btn active" data-lang="vi">
+                                            VI
+                                        </button>
+                                        <button type="button" class="lang-btn" data-lang="en">
+                                            EN
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <!-- Action Buttons -->
+                            <div class="dropdown-actions">
+                                <button type="button" class="action-btn btn-login">
+                                    <span class="material-symbols-outlined">login</span>
+                                    <span data-i18n="profile.login">Login</span>
+                                </button>
+                                <button type="button" class="action-btn btn-signout">
+                                    <span class="material-symbols-outlined">logout</span>
+                                    <span data-i18n="profile.signout">Sign out</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="cart-btn" aria-label="Shopping Cart">
+                    <i class='bx bxs-shopping-bag'></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== CART LOGIN MODAL ========== -->
+    <div class="cart-modal-overlay" id="cart-modal-overlay">
+        <div class="cart-modal" id="cart-modal">
+            <button type="button" class="cart-modal-close" id="cart-modal-close" aria-label="Close">
+                <i class='bx bx-x'></i>
+            </button>
+
+            <!-- Title -->
+            <h2 class="cart-modal-title" data-i18n="cart.title">Drip Lab</h2>
+
+            <!-- Logo inside circle -->
+            <div class="cart-modal-icon">
+                <img src="../IMG/DripLab_Logo.png" alt="Drip Lab Logo">
+            </div>
+
+            <!-- Description -->
+            <p class="cart-modal-desc" data-i18n="cart.desc">
+                Vui lòng đăng nhập tài khoản Drip Lab để xem<br>ưu đãi và thanh toán dễ dàng hơn.
+            </p>
+
+            <!-- Buttons -->
+            <div class="cart-modal-actions">
+                <a href="../HTML-INTERFACE/Register.HTML" class="cart-modal-btn cart-btn-register"
+                    data-i18n="cart.register">
+                    Đăng ký
+                </a>
+                <a href="../HTML-INTERFACE/Login.HTML" class="cart-modal-btn cart-btn-login" data-i18n="cart.login">
+                    Đăng nhập
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-8 py-10 lg:py-16">
+        <div class="flex justify-center mb-16">
+            <div class="flex items-center gap-4 text-sm font-medium tracking-wide">
+                <div class="flex items-center gap-2 text-primary">
+                    <span
+                        class="flex items-center justify-center size-6 rounded-full bg-primary text-white text-xs font-bold">1</span>
+                    <span class="font-display">Cart</span>
+                </div>
+                <span class="w-12 h-px bg-gray-200 dark:bg-gray-700"></span>
+                <div class="flex items-center gap-2 text-gray-400 dark:text-gray-600">
+                    <span
+                        class="flex items-center justify-center size-6 rounded-full border border-gray-300 dark:border-gray-600 text-xs">2</span>
+                    <span class="font-display">Review</span>
+                </div>
+                <span class="w-12 h-px bg-gray-200 dark:bg-gray-700"></span>
+                <div class="flex items-center gap-2 text-gray-400 dark:text-gray-600">
+                    <span
+                        class="flex items-center justify-center size-6 rounded-full border border-gray-300 dark:border-gray-600 text-xs">3</span>
+                    <span class="font-display">Confirmation</span>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            <div class="lg:col-span-7 flex flex-col gap-8">
+                <div class="flex items-end justify-between border-b border-gray-100 dark:border-gray-800 pb-4">
+                    <h1
+                        class="font-display text-4xl lg:text-5xl text-text-main dark:text-white font-black tracking-tight">
+                        Your Selection</h1>
+                    <span class="text-text-secondary dark:text-gray-400 font-medium">2 Items</span>
+                </div>
+                <div
+                    class="group relative flex flex-col sm:flex-row gap-6 p-6 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800">
+                    <div class="shrink-0 relative overflow-hidden rounded-lg aspect-square size-32 bg-gray-100">
+                        <img alt="Ethiopian Yirgacheffe coffee beans" class="object-cover w-full h-full"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMc3A2qzyc7UsbLkJKKETtgBcbmUXrrRPs9cdOVzRGjdAyCyE1D3TvCfQ59R2vW2fTHN-ityDZQy3EmrJe-Wu-NT3fYflSxx7tPyD9usD_Uplmejz8B4pzxNuBcQzxK0lSDEpOEDESOwm9jIa7EXl3hTGjnyga_ZVPzb3zm39us8d7iqZGTOwzRiBBMuLbsoCH7i5CQIjZgiCksFmQgtvlPz5NmYStXxUhmZ0YzP1YeSj_d49ZgbOcH_8O9eao2Ny54SUv7TB6laV5" />
+                    </div>
+                    <div class="flex flex-col flex-1 justify-between py-1">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-display text-xl text-text-main dark:text-white font-bold">Ethiopian
+                                    Yirgacheffe</h3>
+                                <p class="font-display text-lg font-bold text-text-main dark:text-white">$18.00</p>
+                            </div>
+                            <p class="text-text-secondary dark:text-gray-400 text-sm mt-1">Light Roast, Whole Bean</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button
+                                class="size-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-all">
+                                <span class="material-symbols-outlined text-[20px]">delete</span>
+                            </button>
+                            <div
+                                class="flex items-center bg-background-light dark:bg-black/20 rounded-lg p-1 border border-gray-200 dark:border-gray-700">
+                                <button
+                                    class="size-8 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-white/10 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">remove</span>
+                                </button>
+                                <span class="w-10 text-center text-sm font-bold">1</span>
+                                <button
+                                    class="size-8 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-white/10 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative flex flex-col sm:flex-row gap-6 p-6 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800">
+                    <div class="shrink-0 relative overflow-hidden rounded-lg aspect-square size-32 bg-gray-100">
+                        <img alt="Espresso shot" class="object-cover w-full h-full"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQOx_IWL_fkyKacApvFq-vgQjeBgehylZAMWGZxYWXNPuft0QAeFhaNDzAyFTQKLWzCDPH-UDbUAsjvvqNT5zIAGOyn9ZE3kTPsGFdLFR-_M_BHARCjm7vg85rDk8yLQsYCINWgPZVP-cMQfYqUREC_dTBHmKWzIs23JNe-fhtoALRuBpGGRcCMjaZ8wkTPMq8jRUBsThr-062C83ByiSmqZIfcJnAPtNdVzcscu_3Gc1Z2Hhc1kIc5grCPc1ofJSysFYZL5R17ibS" />
+                    </div>
+                    <div class="flex flex-col flex-1 justify-between py-1">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-display text-xl text-text-main dark:text-white font-bold">House Espresso
+                                    Blend</h3>
+                                <p class="font-display text-lg font-bold text-text-main dark:text-white">$32.00</p>
+                            </div>
+                            <p class="text-text-secondary dark:text-gray-400 text-sm mt-1">Medium Roast, Ground</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <button
+                                class="size-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-all">
+                                <span class="material-symbols-outlined text-[20px]">delete</span>
+                            </button>
+                            <div
+                                class="flex items-center bg-background-light dark:bg-black/20 rounded-lg p-1 border border-gray-200 dark:border-gray-700">
+                                <button
+                                    class="size-8 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-white/10 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">remove</span>
+                                </button>
+                                <span class="w-10 text-center text-sm font-bold">2</span>
+                                <button
+                                    class="size-8 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-white/10 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+                <div
+                    class="sticky top-28 bg-surface-light dark:bg-surface-dark rounded-xl p-8 shadow-sm border border-gray-100 dark:border-gray-800">
+                    <h2 class="font-display text-2xl font-bold text-text-main dark:text-white mb-6">Order Summary</h2>
+                    <div class="space-y-6">
+                        <div class="flex justify-between text-text-secondary dark:text-gray-300">
+                            <span>Subtotal</span>
+                            <span class="font-medium font-display">$50.00</span>
+                        </div>
+                        <div class="flex justify-between text-text-secondary dark:text-gray-300">
+                            <span>Delivery</span>
+                            <span class="font-medium font-display">Free</span>
+                        </div>
+                        <div class="border-t border-gray-100 dark:border-gray-700 pt-6 mt-2">
+                            <div class="flex justify-between items-end mb-8">
+                                <span class="text-lg font-medium text-text-main dark:text-white">Total</span>
+                                <span
+                                    class="text-3xl font-display font-black text-text-main dark:text-white">$50.00</span>
+                            </div>
+                        </div>
+                        <label
+                            class="cursor-pointer w-full bg-coffee-dark hover:bg-black text-white font-bold text-base py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group"
+                            for="modal-toggle">
+                            Proceed to Checkout
+                            <span
+                                class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="hidden fixed inset-0 z-[100] items-center justify-center px-4" id="order-review-modal">
+        <label class="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-default" for="modal-toggle"></label>
+        <div
+            class="relative bg-background-light dark:bg-surface-dark w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div
+                class="p-8 border-b border-[#e5e0d8] dark:border-[#3a3528] flex justify-between items-center bg-white dark:bg-surface-dark">
+                <h2 class="font-display text-2xl font-black text-coffee-dark dark:text-white tracking-tight uppercase">
+                    Order Review</h2>
+                <label
+                    class="cursor-pointer size-10 rounded-full flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                    for="modal-toggle">
+                    <span class="material-symbols-outlined text-gray-400">close</span>
+                </label>
+            </div>
+            <div class="p-8 space-y-10 overflow-y-auto flex-grow">
+                <section>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-6 flex items-center gap-2">
+                        <span class="w-2 h-px bg-primary"></span>
+                        Your Selection
+                    </h3>
+                    <div class="space-y-4">
+                        <div
+                            class="flex justify-between items-start pb-4 border-b border-gray-100 dark:border-gray-800">
+                            <div class="flex flex-col">
+                                <span class="font-display font-bold text-coffee-dark dark:text-white text-lg">Ethiopian
+                                    Yirgacheffe</span>
+                                <span class="text-sm text-text-secondary dark:text-gray-400">Whole Bean • 1 Unit</span>
+                            </div>
+                            <span class="font-display font-bold text-coffee-dark dark:text-white">$18.00</span>
+                        </div>
+                        <div class="flex justify-between items-start pb-4">
+                            <div class="flex flex-col">
+                                <span class="font-display font-bold text-coffee-dark dark:text-white text-lg">House
+                                    Espresso Blend</span>
+                                <span class="text-sm text-text-secondary dark:text-gray-400">Ground • 2 Units</span>
+                            </div>
+                            <span class="font-display font-bold text-coffee-dark dark:text-white">$32.00</span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-6 flex items-center gap-2">
+                        <span class="w-2 h-px bg-primary"></span>
+                        Payment Method
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="cursor-pointer group">
+                            <input checked="" class="hidden peer" name="payment" type="radio" />
+                            <div
+                                class="p-6 border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-white/5 rounded-xl peer-checked:border-primary peer-checked:bg-primary/5 transition-all flex flex-col items-center text-center gap-3">
+                                <span
+                                    class="material-symbols-outlined text-3xl text-coffee-dark dark:text-primary">local_shipping</span>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-bold text-coffee-dark dark:text-white">COD</span>
+                                    <span class="text-[10px] text-gray-400 uppercase tracking-tighter">Cash on
+                                        Delivery</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input class="hidden peer" name="payment" type="radio" />
+                            <div
+                                class="p-6 border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-white/5 rounded-xl peer-checked:border-primary peer-checked:bg-primary/5 transition-all flex flex-col items-center text-center gap-3">
+                                <span
+                                    class="material-symbols-outlined text-3xl text-coffee-dark dark:text-primary">qr_code_2</span>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-bold text-coffee-dark dark:text-white">QR CODE</span>
+                                    <span class="text-[10px] text-gray-400 uppercase tracking-tighter">Instant
+                                        Transfer</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+            </div>
+            <div class="p-8 bg-white dark:bg-surface-dark border-t border-[#e5e0d8] dark:border-[#3a3528]">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-sm font-bold uppercase tracking-widest text-text-secondary">Grand Total</span>
+                    <span class="text-3xl font-display font-black text-coffee-dark dark:text-white">$50.00</span>
+                </div>
+                <button
+                    class="w-full bg-coffee-dark hover:bg-black text-white font-black text-lg py-5 px-6 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-[0.2em]">
+                    Accept Order
+                </button>
+                <p class="text-center text-[10px] text-gray-400 mt-4 uppercase tracking-widest">By clicking "Accept
+                    Order", you agree to our terms.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Column 1 - Logo & Description -->
+            <div class="footer-col">
+                <h3>
+                    <img src="../IMG/dripLab_Logo_Footer.png" class="footer-logo" alt="Drip Lab Footer Logo" />
+                </h3>
+                <p data-i18n="footer.description">
+                    Drip Lab - Coffee for your <br />
+                    fresh start every day.
+                </p>
+            </div>
+
+            <!-- Column 2 - Navigation -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.connect">Tsaheylu</h4>
+                <ul>
+                    <li><a href="#" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#" data-i18n="nav.news">News</a></li>
+                    <li><a href="#" data-i18n="nav.stores">Stores</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3 - Contact -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.contact">Contact Us</h4>
+                <p>Email: contact@driplab.com</p>
+                <p>Hotline: 036 363 6767</p>
+                <p data-i18n="footer.location">Place at: Việt Nam</p>
+            </div>
+
+            <!-- Column 4 - Social Media -->
+            <div class="footer-col">
+                <h4 data-i18n="footer.follow">Follow Us On</h4>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.instagram.com/drip_lab_space/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100053801825707" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@drip_lab_space" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom" data-i18n="footer.copyright">
+            © 2025 Drip Lab. Space for coffee heads.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/TranslationAndHeaderFooter.js"></script>
+    <script src="../JS/CartOV.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e0c076",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#1f1c13",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2c281e",
+                        "text-main": "#2E333A",
+                        "text-secondary": "#4F433B",
+                        "coffee-dark": "#3c322b",
+                        "success": "#22c55e",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</body>
+
+</html>
