@@ -1,5 +1,6 @@
 package com.example.cafe.Controller;
 
+import com.example.cafe.DTO.LoginRequest;
 import com.example.cafe.DTO.UserRequest;
 import com.example.cafe.DTO.UserResponse;
 import com.example.cafe.Entity.User;
@@ -17,7 +18,8 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/")
+@RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CafeController {
 
     private final UserService userService;
@@ -26,12 +28,18 @@ public class CafeController {
     public ResponseEntity<List<UserResponse>> getDrinks() {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<UserResponse> findById(@PathVariable Integer id) {
         return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
     }
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<UserResponse> add(@Valid @RequestBody UserRequest er) {
         return new ResponseEntity<>(userService.add(er), HttpStatus.CREATED);
+    }
+    @PostMapping("/login")
+    public ResponseEntity<UserResponse> login(@RequestBody LoginRequest req) {
+        return ResponseEntity.ok(userService.login(req));
+
+        
     }
 }

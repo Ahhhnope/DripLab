@@ -1,5 +1,6 @@
 package com.example.cafe.Service.impl;
 
+import com.example.cafe.DTO.LoginRequest;
 import com.example.cafe.DTO.UserRequest;
 import com.example.cafe.DTO.UserResponse;
 import com.example.cafe.Entity.User;
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse findById(Integer id) {
         return userRepository.findById(id).map(e -> modelMapper.map(e, UserResponse.class)).orElseThrow(() -> new CustomResourceNotFound("Not found id: " +id));
     }
-    
+
 
     @Override
     public UserResponse add(UserRequest userRequest) {
@@ -46,6 +47,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse delete(Integer id) {
         return null;
+    }
+
+    @Override
+    public UserResponse login(LoginRequest req) {
+
+            User user = userRepository.findByEmail(req.getEmail());
+
+            if(user == null){
+                throw new RuntimeException("User not found");
+            }
+
+            if(!user.getPassword().equals(req.getPassword())){
+                throw new RuntimeException("Wrong password");
+            }
+
+            return new UserResponse(user);
     }
 
 }

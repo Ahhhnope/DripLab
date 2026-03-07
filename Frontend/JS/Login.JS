@@ -554,3 +554,40 @@ document.addEventListener('visibilitychange', () => {
     }
   }
 });
+const form = document.getElementById("loginForm")
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault()
+
+    const email = document.querySelector("input[name='email']").value
+    const password = document.querySelector("input[name='password']").value
+
+    try {
+        const res = await fetch("http://localhost:8080/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+
+        const data = await res.json()
+
+        if (!res.ok) {
+            alert(data.message || "Login failed")
+            return
+        }
+
+        alert("Login success!")
+
+        // chuyển trang
+        window.location.href = "../HTML-INTERFACE/Homepage.html"
+
+    } catch (err) {
+        console.error(err)
+        alert("Server error")
+    }
+})

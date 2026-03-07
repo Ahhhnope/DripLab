@@ -7,7 +7,7 @@
 
     <!-- CSS Links -->
     <link rel="stylesheet" href="../CSS/Register.CSS">
-
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- Icon Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
@@ -230,11 +230,11 @@
                     </div>
 
                     <!-- Register Form -->
-                    <form action="" class="login-form">
+                    <form id="registerForm" class="login-form">
                         <div class="login-content grid">
                             <!-- Full Name Input -->
                             <div class="login-box">
-                                <input type="text" name="fullname" placeholder="FULL NAME" class="login-input" required>
+                                <input type="text" name="full_name" placeholder="FULL NAME" class="login-input" required>
                                 <i class="ri-user-fill"></i>
                             </div>
 

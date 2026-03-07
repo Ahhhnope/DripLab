@@ -490,3 +490,44 @@ document.addEventListener('visibilitychange', () => {
     }
   }
 });
+
+const form = document.getElementById("registerForm")
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault()
+
+    const fullName = document.querySelector("input[name='full_name']").value
+    const email = document.querySelector("input[name='email']").value
+    const phone = document.querySelector("input[name='phone']").value
+    const password = document.querySelector("input[name='password']").value
+
+    try {
+
+        const res = await fetch("http://localhost:8080/api/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fullName: fullName,
+                email: email,
+                phone: phone,
+                password: password
+            })
+        })
+
+        if (!res.ok) {
+            const errorText = await res.text()
+            console.log(errorText)
+            alert("Register failed")
+            return
+        }
+
+        alert("Register success!")
+        form.reset()
+
+    } catch (err) {
+        console.error(err)
+        alert("Something went wrong")
+    }
+})

@@ -15,7 +15,7 @@ public class UserRequest {
     private String fullName;
     @Size(min = 3, max = 50, message = "email between 3 - 50 character pls")
     private String email;
-    @Pattern(regexp = "^\\+?[1-9]\\d{1,14}$", message = "Invalid phone number format")
+    @Pattern(regexp = "^0\\d{9}$", message = "Invalid phone number format")
     private String phone;
     @NotNull(message = "Error")
     private String password;

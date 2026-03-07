@@ -1,5 +1,6 @@
 package com.example.cafe.DTO;
 
+import com.example.cafe.Entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,4 +15,10 @@ public class UserResponse {
     private String email;
     private String password;
     private String phone;
+
+    public UserResponse(User user){
+        this.fullName = user.getFullName();
+        this.email = user.getEmail();
+        this.phone = user.getPhone();
+    }
 }
