@@ -1,13 +1,16 @@
 package com.example.cafe.Controller;
 
+import com.example.cafe.DTO.UserRequest;
+import com.example.cafe.DTO.UserResponse;
 import com.example.cafe.Entity.User;
 import com.example.cafe.Repository.UserRepository;
+import com.example.cafe.Service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,10 +20,18 @@ import java.util.List;
 @RequestMapping("/")
 public class CafeController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> getDrinks() {
-        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<UserResponse>> getDrinks() {
+        return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
+    }
+    @GetMapping("{id}")
+    public ResponseEntity<UserResponse> findById(@PathVariable Integer id) {
+        return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
+    }
+    @PostMapping
+    public ResponseEntity<UserResponse> add(@Valid @RequestBody UserRequest er) {
+        return new ResponseEntity<>(userService.add(er), HttpStatus.CREATED);
     }
 }
