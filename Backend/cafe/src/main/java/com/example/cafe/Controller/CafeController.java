@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -37,9 +37,10 @@ public class CafeController {
         return new ResponseEntity<>(userService.add(er), HttpStatus.CREATED);
     }
     @PostMapping("/login")
-    public ResponseEntity<UserResponse> login(@RequestBody LoginRequest req) {
+    public ResponseEntity<UserResponse> login(@RequestBody LoginRequest req, HttpSession session) {
+        UserResponse user = userService.login(req);
+        session.setAttribute("user", user);
         return ResponseEntity.ok(userService.login(req));
 
-        
     }
 }
