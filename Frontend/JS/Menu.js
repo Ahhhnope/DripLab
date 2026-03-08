@@ -47,12 +47,7 @@ const translations = {
     "profile.login": "Login",
     "profile.register": "Register",
 
-<<<<<<< HEAD:JS/Menu.js
-=======
-    // Content
-    // "content.title": "Your page title",
-    // "content.description": "Content goes here...",
->>>>>>> 50ca9e784aa1b3d418830ab63d21f42bac53495f:Frontend/JS/Menu.js
+
 
     // Footer
     "footer.description": "Drip Lab - Coffee for your fresh start every day.",

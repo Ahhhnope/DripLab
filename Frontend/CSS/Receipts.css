@@ -9,6 +9,15 @@
   --radius:14px;
 }
 
+.back{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.page{
+    margin-top: 100px;
+}
+
 *{box-sizing:border-box}
 html,body{height:100%}
 body{

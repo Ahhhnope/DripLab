@@ -175,12 +175,10 @@
                   rgba(26, 21, 14, 0.6) 0%,
                   rgba(26, 21, 14, 0) 50%
                 ),
-                url('../IMG/green.png');
+                url('../IMG/AboutUsBia.jpg');
             ">
             <div class="p-12 md:p-20 w-full">
-              <h1 class="text-white text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-4">
-                Our Story
-              </h1>
+              
               <div class="h-1 w-24 bg-primary"></div>
             </div>
           </div>
@@ -189,80 +187,65 @@
       <!-- Philosophy Section -->
       <section class="py-16 px-6">
         <div class="max-w-[800px] mx-auto text-center">
-          <h2 class="text-3xl md:text-5xl font-bold mb-8 text-primary">
+          <h2 class="text-3xl md:text-5xl font-bold mb-8 text-primary" data-i18n="graph.title">
             The Drip Lab Philosophy
           </h2>
-          <p
-            class="text-lg md:text-xl leading-relaxed text-deep-brown/80 dark:text-background-light/80 font-display italic">
-            "Our commitment to artisanal brewing and sustainable sourcing is at
-            the heart of everything we do. We believe in the beauty of the drip,
-            the science of the roast, and the ethics of the bean."
+          <p class="text-lg md:text-xl leading-relaxed text-deep-brown/80 dark:text-background-light/80 font-display italic" data-i18n="graph.description">
+            "Drip Lab is where coffee meets creativity and attitude.
+            We’re the only platform where you can build your own drink, mix flavors your way, and create something
+            that’s 100% your vibe.
+            No basic menus. Just your drip, your rules. ☕🔥"
           </p>
           <div class="mt-10 flex justify-center">
             <span class="material-symbols-outlined text-primary text-4xl">coffee_maker</span>
           </div>
         </div>
       </section>
-      <!-- Heritage Section -->
+      <!-- About us Section -->
       <section class="py-16 px-6">
         <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
           <div class="order-2 md:order-1">
-            <div class="aspect-[4/5] rounded-xl overflow-hidden grayscale contrast-125 sepia-[0.3]"
-              data-alt="Vintage sepia photograph of the original Drip Lab shop front" style="
-                background-image: url('../IMG/shop.png');
-                background-size: cover;
-                background-position: center;
-              "></div>
-          </div>
-          <div class="order-1 md:order-2 space-y-6">
-            <h2 class="text-4xl font-bold">Our Heritage</h2>
-            <p class="text-lg leading-relaxed text-deep-brown/70 dark:text-background-light/70">
-              Founded in 1994 in a small brick-and-mortar corner of the city,
-              Drip Lab began as a singular pursuit of the perfect pour-over.
-              What started with a vintage copper kettle and a passion for
-              Ethiopian Yirgacheffe has grown into a community of coffee
-              enthusiasts dedicated to the craft.
-            </p>
-            <p class="text-lg leading-relaxed text-deep-brown/70 dark:text-background-light/70">
-              We spent years traveling to remote highlands, building direct
-              relationships with farmers who share our respect for the soil.
-              Today, every cup we serve carries the history of those journeys
-              and the legacy of our first small shop.
-            </p>
-            <div class="pt-4">
-              <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">
-                Explore our timeline
-                <span class="material-symbols-outlined">trending_flat</span>
-              </a>
+            <div class="aspect-[4/5] rounded-xl overflow-hidden" style="
+          background-image: url('../IMG/DripCoffee.jpg');
+          background-size: cover;
+          background-position: center;
+        ">
             </div>
           </div>
-        </div>
-      </section>
-      <!-- Meet the Roasters Section -->
-      <section class="py-16 px-6 mb-16">
-        <div class="max-w-[1200px] mx-auto">
-          <div class="mb-12">
-            <h2 class="text-4xl font-bold mb-4">Meet the Roasters</h2>
-            <p class="text-lg text-deep-brown/60 dark:text-background-light/60 max-w-2xl">
-              The hands behind the heat. Our roasting team meticulously monitors
-              every batch to ensure the unique profile of each origin shines
-              through.
+
+          <div class="order-1 md:order-2 space-y-6 group">
+            <h2 class="text-4xl font-bold" data-i18n="content.title">About us</h2>
+
+            <p class="text-lg leading-relaxed text-deep-brown/70 dark:text-background-light/70" data-i18n="graph.aboutusgraph">
+              Drip Lab is a modern coffee platform created for young people who love creativity, style, and unique
+              experiences. More than just a place to order drinks online, Drip Lab offers a space where every cup of
+              coffee becomes a reflection of personal taste and individuality. From rich coffee flavors to a variety of
+              exciting toppings and ingredients, everything is designed to match the dynamic lifestyle and modern
+              preferences of the younger generation. ☕✨ <br>
+
+              <span id="moreText" class="hidden">
+                <br>
+                What truly sets Drip Lab apart is its exclusive custom drink feature. Drip Lab is the only website that
+                allows users to create and customize their own drinks directly on the platform. Instead of choosing from
+                a
+                fixed menu, users can select ingredients, adjust proportions, and experiment with different combinations
+                to craft a drink that perfectly matches their personal taste.
+                <br><br>
+                With Drip Lab, enjoying coffee goes beyond simply ordering a beverage. Every user can become their own
+                barista, exploring flavors, mixing ingredients, and creating a drink that carries their unique
+                signature.
+                This freedom of creativity makes Drip Lab a truly distinctive destination for coffee lovers who want
+                more
+                than just an ordinary café experience. 🌿☕
+
+              </span>
             </p>
-          </div>
-          <div class="relative h-[500px] rounded-xl overflow-hidden group"
-            data-alt="Close up of coffee roasters inspecting beans in a roasting facility" style="
-              background-image: url('../IMG/shop2.png');
-              background-size: cover;
-              background-position: center;
-            ">
-            <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors"></div>
-            <div class="absolute bottom-0 left-0 p-10">
-              <button
-                class="bg-white text-deep-brown px-8 py-4 rounded-full font-bold shadow-xl hover:bg-primary hover:text-white transition-all flex items-center gap-2">
-                Our Process
-                <span class="material-symbols-outlined">play_circle</span>
-              </button>
-            </div>
+
+            <button id="readMoreBtn"
+              class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-orange-600 font-semibold hover:underline" datai18n="graph.button">
+              Read more
+            </button>
           </div>
         </div>
       </section>
@@ -335,7 +318,7 @@
   </footer>
 
   <!-- JavaScript -->
-   <script src="../JS/TranslationAndHeaderFooter.js"></script>
+  <script src="../JS/TranslationAndHeaderFooter.js"></script>
   <script src="../JS/AboutUs.js"></script>
 </body>
 
