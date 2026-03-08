@@ -1,24 +1,17 @@
 const translations = {
   vi: {
-    // Navigation
     "nav.menu": "MENU",
     "nav.about": "VỀ CHÚNG TÔI",
     "nav.news": "TIN TỨC",
     "nav.stores": "CỬA HÀNG",
-
-    // Menu Dropdown
     "menu.buyNow": "Mua ngay",
     "menu.customize": "Tự pha chế",
-
-    // Profile Dropdown
     "profile.title": "Thông Tin Tài Khoản",
     "profile.userName": "Nguyễn Văn A",
     "profile.theme": "Chế độ tối",
     "profile.language": "Ngôn ngữ",
     "profile.login": "Đăng nhập",
     "profile.register": "Đăng ký",
-
-    // ===== LOGIN FORM CONTENT =====
     "login.title": "Đăng nhập Drip Lab",
     "login.description": "Chào mừng trở lại với hành trình tìm kiếm tách cà phê hoàn hảo",
     "login.emailPlaceholder": "EMAIL HOẶC SỐ ĐIỆN THOẠI",
@@ -29,15 +22,7 @@ const translations = {
     "login.orWith": "HOẶC ĐĂNG NHẬP VỚI",
     "login.newHere": "Chưa có tài khoản?",
     "login.joinUs": "Tham gia Drip Lab",
-
-    // Swiper
     "login.followUs": "Theo dõi chúng tôi",
-
-    // Content
-    "content.title": "Tiêu đề trang của bạn",
-    "content.description": "Nội dung ở đây...",
-
-    // Footer
     "footer.description": "Drip Lab - Coffee for your fresh start every day.",
     "footer.connect": "Kết nối",
     "footer.contact": "Liên hệ",
@@ -46,25 +31,18 @@ const translations = {
     "footer.copyright": "© 2025 Drip Lab. Space for coffee heads."
   },
   en: {
-    // Navigation
     "nav.menu": "MENU",
     "nav.about": "ABOUT US",
     "nav.news": "NEWS",
     "nav.stores": "STORES",
-
-    // Menu Dropdown
     "menu.buyNow": "Buy Now",
     "menu.customize": "Customize",
-
-    // Profile Dropdown
     "profile.title": "Account Information",
     "profile.userName": "Nguyen Van A",
     "profile.theme": "Dark mode",
     "profile.language": "Language",
     "profile.login": "Login",
     "profile.register": "Register",
-
-    // ===== LOGIN FORM CONTENT =====
     "login.title": "Sign in with Drip Lab",
     "login.description": "Welcome back to the pursuit of the perfect brew",
     "login.emailPlaceholder": "EMAIL OR PHONE NUMBER",
@@ -75,15 +53,7 @@ const translations = {
     "login.orWith": "OR SIGN IN WITH",
     "login.newHere": "New to the lab?",
     "login.joinUs": "Join Drip Lab",
-
-    // Swiper
     "login.followUs": "Follow Us",
-
-    // Content
-    "content.title": "Your page title",
-    "content.description": "Content goes here...",
-
-    // Footer
     "footer.description": "Drip Lab - Coffee for your fresh start every day.",
     "footer.connect": "Connect",
     "footer.contact": "Contact Us",
@@ -93,501 +63,312 @@ const translations = {
   }
 };
 
+/* ============================================================
+   VALIDATION HELPERS
+   ============================================================ */
+function showError(inputEl, message) {
+  clearError(inputEl);
+  inputEl.classList.add('input-error');
+  const errorEl = document.createElement('p');
+  errorEl.className = 'field-error-msg';
+  errorEl.textContent = message;
+  const box = inputEl.closest('.login-box');
+  if (box) box.insertAdjacentElement('afterend', errorEl);
+  else inputEl.parentElement.insertAdjacentElement('afterend', errorEl);
+}
+
+function clearError(inputEl) {
+  inputEl.classList.remove('input-error');
+  const box = inputEl.closest('.login-box');
+  const sib = box ? box.nextElementSibling : inputEl.parentElement.nextElementSibling;
+  if (sib && sib.classList.contains('field-error-msg')) sib.remove();
+}
+
+function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function isValidPhone(v) { return /^[0-9]{9,11}$/.test(v); }
+
+/* ============================================================
+   VALIDATE LOGIN FORM
+   ============================================================ */
+function validateLoginForm(emailVal, passwordVal) {
+  const emailInput    = document.querySelector("input[name='email']");
+  const passwordInput = document.getElementById('LoginPassword');
+  let valid = true;
+
+  if (!emailVal.trim()) {
+    showError(emailInput, 'Vui lòng nhập email hoặc số điện thoại.');
+    valid = false;
+  } else if (!isValidEmail(emailVal) && !isValidPhone(emailVal)) {
+    showError(emailInput, 'Email hoặc số điện thoại không hợp lệ.');
+    valid = false;
+  } else {
+    clearError(emailInput);
+  }
+
+  if (!passwordVal.trim()) {
+    showError(passwordInput, 'Vui lòng nhập mật khẩu.');
+    valid = false;
+  } else {
+    clearError(passwordInput);
+  }
+
+  return valid;
+}
+
+/* ============================================================
+   REAL-TIME BLUR VALIDATION
+   ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
-  // Get elements
-  const userProfileBtn = document.getElementById('user-profile-btn');
-  const userDropdown = document.getElementById('user-dropdown');
-  const themeToggle = document.getElementById('theme-toggle-dropdown');
-  const langButtons = document.querySelectorAll('.lang-btn');
+  const emailInput    = document.querySelector("input[name='email']");
+  const passwordInput = document.getElementById('LoginPassword');
 
-  // Menu dropdown elements
-  const menuDropdownWrapper = document.querySelector('.menu-dropdown-wrapper');
-  const menuDropdown = document.getElementById('menu-dropdown');
-  const menuOptions = document.querySelectorAll('.menu-option');
+  if (emailInput) {
+    emailInput.addEventListener('blur', () => {
+      const v = emailInput.value.trim();
+      if (!v) showError(emailInput, 'Vui lòng nhập email hoặc số điện thoại.');
+      else if (!isValidEmail(v) && !isValidPhone(v)) showError(emailInput, 'Email hoặc số điện thoại không hợp lệ.');
+      else clearError(emailInput);
+    });
+    emailInput.addEventListener('input', () => {
+      if (emailInput.classList.contains('input-error')) clearError(emailInput);
+    });
+  }
 
-  // Cart modal elements
-  const cartBtn = document.getElementById('cart-btn');
-  const cartModalOverlay = document.getElementById('cart-modal-overlay');
-  const cartModalClose = document.getElementById('cart-modal-close');
+  // ===== FIX: ô mật khẩu cũng validate khi blur =====
+  if (passwordInput) {
+    passwordInput.addEventListener('blur', () => {
+      if (!passwordInput.value.trim()) showError(passwordInput, 'Vui lòng nhập mật khẩu.');
+      else clearError(passwordInput);
+    });
+    passwordInput.addEventListener('input', () => {
+      if (passwordInput.classList.contains('input-error')) clearError(passwordInput);
+    });
+  }
+});
 
-  // Create overlay element
+/* ============================================================
+   MAIN DOMContentLoaded
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+  const userProfileBtn   = document.getElementById('user-profile-btn');
+  const userDropdown     = document.getElementById('user-dropdown');
+  const themeToggle      = document.getElementById('theme-toggle-dropdown');
+  const langButtons      = document.querySelectorAll('.lang-btn');
+  const menuOptions      = document.querySelectorAll('.menu-option');
+
   const overlay = document.createElement('div');
   overlay.className = 'dropdown-overlay';
   document.body.appendChild(overlay);
 
-  function openCartModal() {
-    cartModalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
+  const cartBtn          = document.getElementById('cart-btn');
+  const cartModalOverlay = document.getElementById('cart-modal-overlay');
+  const cartModalClose   = document.getElementById('cart-modal-close');
 
-  function closeCartModal() {
-    cartModalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
+  function openCartModal()  { cartModalOverlay.classList.add('active');    document.body.style.overflow = 'hidden'; }
+  function closeCartModal() { cartModalOverlay.classList.remove('active'); document.body.style.overflow = '';       }
 
-  if (cartBtn) {
-    cartBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      openCartModal();
-    });
-  }
-
-  if (cartModalClose) {
-    cartModalClose.addEventListener('click', closeCartModal);
-  }
-
-  if (cartModalOverlay) {
-    cartModalOverlay.addEventListener('click', function (e) {
-      if (e.target === cartModalOverlay) closeCartModal();
-    });
-  }
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && cartModalOverlay.classList.contains('active')) {
-      closeCartModal();
-    }
+  if (cartBtn)          cartBtn.addEventListener('click', e => { e.stopPropagation(); openCartModal(); });
+  if (cartModalClose)   cartModalClose.addEventListener('click', closeCartModal);
+  if (cartModalOverlay) cartModalOverlay.addEventListener('click', e => { if (e.target === cartModalOverlay) closeCartModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && cartModalOverlay?.classList.contains('active')) closeCartModal();
   });
 
-  /*========== Toggle User Profile Dropdown ==========*/
   if (userProfileBtn) {
-    userProfileBtn.addEventListener('click', function (e) {
+    userProfileBtn.addEventListener('click', e => {
       e.stopPropagation();
-      const isActive = userDropdown.classList.contains('active');
-
-      if (isActive) {
-        closeUserDropdown();
-      } else {
-        openUserDropdown();
-      }
+      userDropdown.classList.contains('active') ? closeUserDropdown() : openUserDropdown();
     });
   }
 
-  function openUserDropdown() {
-    if (userDropdown) {
-      userDropdown.classList.add('active');
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  }
+  function openUserDropdown()  { if (userDropdown) { userDropdown.classList.add('active');    overlay.classList.add('active');    document.body.style.overflow = 'hidden'; } }
+  function closeUserDropdown() { if (userDropdown) { userDropdown.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = '';       } }
 
-  function closeUserDropdown() {
-    if (userDropdown) {
-      userDropdown.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  }
-
-  /*========== Close dropdown when clicking outside ==========*/
   overlay.addEventListener('click', closeUserDropdown);
-
-  document.addEventListener('click', function (e) {
-    if (userDropdown && !userDropdown.contains(e.target) && userProfileBtn && !userProfileBtn.contains(e.target)) {
-      closeUserDropdown();
-    }
+  document.addEventListener('click', e => {
+    if (userDropdown && !userDropdown.contains(e.target) && userProfileBtn && !userProfileBtn.contains(e.target)) closeUserDropdown();
   });
+  if (userDropdown) userDropdown.addEventListener('click', e => e.stopPropagation());
 
-  // Prevent dropdown from closing when clicking inside
-  if (userDropdown) {
-    userDropdown.addEventListener('click', function (e) {
-      e.stopPropagation();
-    });
-  }
+  menuOptions.forEach(opt => opt.addEventListener('click', function () {
+    const h = this.getAttribute('href'); if (h) window.location.href = h;
+  }));
 
-  /*========== Menu Dropdown Hover - AUTO SHOW/HIDE ==========*/
-
-  /*========== Menu Options Click Handlers ==========*/
-  menuOptions.forEach(option => {
-    option.addEventListener('click', function () {
-      const href = this.getAttribute('href');
-      if (href) {
-        window.location.href = href;
-      }
-    });
-  });
-
-  /*========== Theme Toggle Functionality ==========*/
   const html = document.documentElement;
-
-  // Check for saved theme preference or default to 'light'
   const currentTheme = localStorage.getItem('theme') || 'light';
   html.classList.add(currentTheme);
-
-  // Update toggle switch state based on current theme
   if (themeToggle) {
-    if (currentTheme === 'dark') {
-      themeToggle.classList.add('active');
-    }
-
-    // Theme toggle click handler
-    themeToggle.addEventListener('click', function () {
+    if (currentTheme === 'dark') themeToggle.classList.add('active');
+    themeToggle.addEventListener('click', () => {
       const isDark = html.classList.contains('dark');
-
-      if (isDark) {
-        html.classList.remove('dark');
-        html.classList.add('light');
-        themeToggle.classList.remove('active');
-        localStorage.setItem('theme', 'light');
-      } else {
-        html.classList.remove('light');
-        html.classList.add('dark');
-        themeToggle.classList.add('active');
-        localStorage.setItem('theme', 'dark');
-      }
+      html.classList.toggle('dark', !isDark);
+      html.classList.toggle('light', isDark);
+      themeToggle.classList.toggle('active', !isDark);
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
     });
   }
 
-  /*========== Language Toggle Functionality ==========*/
-
-  // Get current language from localStorage or default to 'vi'
   let currentLang = localStorage.getItem('language') || 'vi';
-
-  // Set initial language
   setLanguage(currentLang);
-
-  // Language button click handlers
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', function () {
-      const lang = this.getAttribute('data-lang');
-      setLanguage(lang);
-    });
-  });
+  langButtons.forEach(btn => btn.addEventListener('click', function () { setLanguage(this.getAttribute('data-lang')); }));
 
   function setLanguage(lang) {
     currentLang = lang;
-
-    // Update active state on buttons
-    langButtons.forEach(btn => {
-      if (btn.getAttribute('data-lang') === lang) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-
-    // Update HTML lang attribute
+    langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
     document.documentElement.setAttribute('lang', lang);
-
-    // Apply translations
     applyTranslations(lang);
-
-    // Save to localStorage
     localStorage.setItem('language', lang);
   }
 
   function applyTranslations(lang) {
-    // Dịch các element có data-i18n
-    const elements = document.querySelectorAll('[data-i18n]');
-    elements.forEach(element => {
-      const key = element.getAttribute('data-i18n');
-      if (translations[lang] && translations[lang][key]) {
-        // Kiểm tra nếu element có chứa icon (menu options)
-        const span = element.querySelector('span');
-        if (span) {
-          // Chỉ thay đổi text trong span, giữ nguyên icon
-          span.textContent = translations[lang][key];
-        } else {
-          // Các element thông thường không có icon
-          element.textContent = translations[lang][key];
-        }
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang]?.[key]) {
+        const span = el.querySelector('span');
+        if (span) span.textContent = translations[lang][key];
+        else el.textContent = translations[lang][key];
       }
     });
-
-    // Dịch placeholder của các input có data-i18n-placeholder
-    const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
-    placeholderElements.forEach(element => {
-      const key = element.getAttribute('data-i18n-placeholder');
-      if (translations[lang] && translations[lang][key]) {
-        element.setAttribute('placeholder', translations[lang][key]);
-      }
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (translations[lang]?.[key]) el.setAttribute('placeholder', translations[lang][key]);
     });
   }
 
-  /*========== Action Buttons ==========*/
-
-  // Login button
-  const loginBtn = document.querySelector('.btn-login');
-  if (loginBtn) {
-    loginBtn.addEventListener('click', function () {
-      console.log('Login clicked');
-      alert('Chức năng đăng nhập / Login function');
-      closeUserDropdown();
-    });
-  }
-
-  // Register button 
+  const loginBtn    = document.querySelector('.btn-login');
   const registerBtn = document.querySelector('.btn-register');
-  if (registerBtn) {
-    registerBtn.addEventListener('click', function () {
-      console.log('Register clicked');
-      window.location.href = '../HTML-INTERFACE/Register.HTML';
-      closeUserDropdown();
-    });
-  }
+  if (loginBtn)    loginBtn.addEventListener('click',    () => { window.location.href = '../HTML-INTERFACE/Login.HTML';    closeUserDropdown(); });
+  if (registerBtn) registerBtn.addEventListener('click', () => { window.location.href = '../HTML-INTERFACE/Register.HTML'; closeUserDropdown(); });
 
-  /*========== Remember Me - Load saved state ==========*/
   const rememberCheckbox = document.getElementById('RememberMe');
-  const emailInput = document.querySelector('input[name="email"]');
-
-  if (rememberCheckbox && emailInput) {
-    // Load saved remember state
-    const savedRemember = localStorage.getItem('rememberMe');
-    const savedEmail = localStorage.getItem('savedEmail');
-
-    if (savedRemember === 'true' && savedEmail) {
+  const emailInputEl     = document.querySelector('input[name="email"]');
+  if (rememberCheckbox && emailInputEl) {
+    if (localStorage.getItem('rememberMe') === 'true' && localStorage.getItem('savedEmail')) {
       rememberCheckbox.checked = true;
-      emailInput.value = savedEmail;
-    }
-
-    // Save on form submit
-    const loginForm = document.querySelector('.login-form');
-    if (loginForm) {
-      loginForm.addEventListener('submit', function () {
-        if (rememberCheckbox.checked) {
-          localStorage.setItem('rememberMe', 'true');
-          localStorage.setItem('savedEmail', emailInput.value);
-        } else {
-          localStorage.removeItem('rememberMe');
-          localStorage.removeItem('savedEmail');
-        }
-      });
+      emailInputEl.value = localStorage.getItem('savedEmail');
     }
   }
 
-  /*========== Escape key to close dropdown ==========*/
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && userDropdown && userDropdown.classList.contains('active')) {
-      closeUserDropdown();
-    }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && userDropdown?.classList.contains('active')) closeUserDropdown();
   });
 });
 
-/*=============== HIDE & SHOW PASSWORD ===============*/
-const showHiddenPass = (password, eye) => {
-  const input = document.getElementById(password),
-    iconEye = document.getElementById(eye)
-
+/* ============================================================
+   SHOW / HIDE PASSWORD
+   ============================================================ */
+const showHiddenPass = (passwordId, eyeId) => {
+  const input   = document.getElementById(passwordId);
+  const iconEye = document.getElementById(eyeId);
   if (iconEye) {
     iconEye.addEventListener('click', () => {
-      input.type === 'password' ? input.type = 'text'
-        : input.type = 'password'
-
-      iconEye.classList.toggle('ri-eye-off-line')
-      iconEye.classList.toggle('ri-eye-line')
-    })
+      input.type = input.type === 'password' ? 'text' : 'password';
+      iconEye.classList.toggle('ri-eye-off-line');
+      iconEye.classList.toggle('ri-eye-line');
+    });
   }
-}
+};
+showHiddenPass('LoginPassword', 'LoginEye');
 
-showHiddenPass('LoginPassword', 'LoginEye')
-
-/*=============== IMAGE SWIPER ===============*/
+/* ============================================================
+   IMAGE SWIPER
+   ============================================================ */
 class ImageSwiper {
   constructor() {
     this.slides = document.querySelectorAll('.login-swiper-slide');
-    this.currentSlide = 0;
-    this.autoPlayInterval = null;
-    this.touchStartX = 0;
-    this.touchEndX = 0;
-
+    this.currentSlide = 0; this.autoPlayInterval = null;
+    this.touchStartX = 0;  this.touchEndX = 0;
     this.init();
   }
-
   init() {
-    if (this.slides.length === 0) return;
-
-    this.createPagination();
-
-    this.addNavigationListeners();
-
-    this.addSwipeListeners();
-
-    this.startAutoPlay();
+    if (!this.slides.length) return;
+    this.createPagination(); this.addNavigationListeners(); this.addSwipeListeners(); this.startAutoPlay();
   }
-
   createPagination() {
-    const paginationContainer = document.querySelector('.swiper-pagination');
-    if (!paginationContainer) return;
-
-    this.slides.forEach((_, index) => {
-      const bullet = document.createElement('div');
-      bullet.classList.add('swiper-pagination-bullet');
-      if (index === 0) bullet.classList.add('active');
-      bullet.addEventListener('click', () => {
-        this.goToSlide(index);
-        this.resetAutoPlay();
-      });
-      paginationContainer.appendChild(bullet);
+    const c = document.querySelector('.swiper-pagination'); if (!c) return;
+    this.slides.forEach((_, i) => {
+      const b = document.createElement('div');
+      b.classList.add('swiper-pagination-bullet');
+      if (i === 0) b.classList.add('active');
+      b.addEventListener('click', () => { this.goToSlide(i); this.resetAutoPlay(); });
+      c.appendChild(b);
     });
   }
-
   addNavigationListeners() {
-    const prevBtn = document.querySelector('.swiper-button-prev');
-    const nextBtn = document.querySelector('.swiper-button-next');
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        this.previousSlide();
-        this.resetAutoPlay();
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        this.nextSlide();
-        this.resetAutoPlay();
-      });
-    }
+    document.querySelector('.swiper-button-prev')?.addEventListener('click', () => { this.previousSlide(); this.resetAutoPlay(); });
+    document.querySelector('.swiper-button-next')?.addEventListener('click', () => { this.nextSlide();     this.resetAutoPlay(); });
   }
-
   addSwipeListeners() {
-    const swiperWrapper = document.querySelector('.login-swiper-wrapper');
-    if (!swiperWrapper) return;
-
-    swiperWrapper.addEventListener('touchstart', (e) => {
-      this.touchStartX = e.changedTouches[0].screenX;
-    });
-
-    swiperWrapper.addEventListener('touchend', (e) => {
-      this.touchEndX = e.changedTouches[0].screenX;
-      this.handleSwipe();
-    });
-
-    let isMouseDown = false;
-
-    swiperWrapper.addEventListener('mousedown', (e) => {
-      isMouseDown = true;
-      this.touchStartX = e.screenX;
-      swiperWrapper.style.cursor = 'grabbing';
-    });
-
-    swiperWrapper.addEventListener('mouseup', (e) => {
-      if (isMouseDown) {
-        this.touchEndX = e.screenX;
-        this.handleSwipe();
-        isMouseDown = false;
-        swiperWrapper.style.cursor = 'grab';
-      }
-    });
-
-    swiperWrapper.addEventListener('mouseleave', () => {
-      isMouseDown = false;
-      swiperWrapper.style.cursor = 'grab';
-    });
-
-    swiperWrapper.style.cursor = 'grab';
+    const w = document.querySelector('.login-swiper-wrapper'); if (!w) return;
+    let md = false;
+    w.addEventListener('touchstart', e => { this.touchStartX = e.changedTouches[0].screenX; });
+    w.addEventListener('touchend',   e => { this.touchEndX   = e.changedTouches[0].screenX; this.handleSwipe(); });
+    w.addEventListener('mousedown',  e => { md = true;  this.touchStartX = e.screenX; w.style.cursor = 'grabbing'; });
+    w.addEventListener('mouseup',    e => { if (md) { this.touchEndX = e.screenX; this.handleSwipe(); md = false; w.style.cursor = 'grab'; } });
+    w.addEventListener('mouseleave', () => { md = false; w.style.cursor = 'grab'; });
+    w.style.cursor = 'grab';
   }
-
   handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = this.touchStartX - this.touchEndX;
-
-    if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0) {
-        this.nextSlide();
-      } else {
-        this.previousSlide();
-      }
-      this.resetAutoPlay();
-    }
+    const d = this.touchStartX - this.touchEndX;
+    if (Math.abs(d) > 50) { d > 0 ? this.nextSlide() : this.previousSlide(); this.resetAutoPlay(); }
   }
-
-  goToSlide(index) {
+  goToSlide(i) {
     this.slides[this.currentSlide].classList.remove('active');
-
-    const bullets = document.querySelectorAll('.swiper-pagination-bullet');
-    if (bullets.length > 0) {
-      bullets[this.currentSlide].classList.remove('active');
-    }
-
-    this.currentSlide = index;
-
-    this.slides[this.currentSlide].classList.add('active');
-
-    if (bullets.length > 0) {
-      bullets[this.currentSlide].classList.add('active');
-    }
+    document.querySelectorAll('.swiper-pagination-bullet')[this.currentSlide]?.classList.remove('active');
+    this.currentSlide = i;
+    this.slides[i].classList.add('active');
+    document.querySelectorAll('.swiper-pagination-bullet')[i]?.classList.add('active');
   }
-
-  nextSlide() {
-    const nextIndex = (this.currentSlide + 1) % this.slides.length;
-    this.goToSlide(nextIndex);
-  }
-
-  previousSlide() {
-    const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-    this.goToSlide(prevIndex);
-  }
-
-  startAutoPlay() {
-    this.autoPlayInterval = setInterval(() => {
-      this.nextSlide();
-    }, 5000); // Auto change every 5 seconds
-  }
-
-  stopAutoPlay() {
-    if (this.autoPlayInterval) {
-      clearInterval(this.autoPlayInterval);
-      this.autoPlayInterval = null;
-    }
-  }
-
-  resetAutoPlay() {
-    this.stopAutoPlay();
-    this.startAutoPlay();
-  }
+  nextSlide()     { this.goToSlide((this.currentSlide + 1) % this.slides.length); }
+  previousSlide() { this.goToSlide((this.currentSlide - 1 + this.slides.length) % this.slides.length); }
+  startAutoPlay() { this.autoPlayInterval = setInterval(() => this.nextSlide(), 5000); }
+  stopAutoPlay()  { clearInterval(this.autoPlayInterval); this.autoPlayInterval = null; }
+  resetAutoPlay() { this.stopAutoPlay(); this.startAutoPlay(); }
 }
 
 let swiperInstance = null;
-
-// Khởi tạo swiper sau khi DOM đã load
-document.addEventListener('DOMContentLoaded', () => {
-  swiperInstance = new ImageSwiper();
-});
-
-// Dừng autoplay khi tab không active
+document.addEventListener('DOMContentLoaded', () => { swiperInstance = new ImageSwiper(); });
 document.addEventListener('visibilitychange', () => {
-  if (swiperInstance) {
-    if (document.hidden) {
-      swiperInstance.stopAutoPlay();
-    } else {
-      swiperInstance.startAutoPlay();
-    }
-  }
+  if (swiperInstance) document.hidden ? swiperInstance.stopAutoPlay() : swiperInstance.startAutoPlay();
 });
-const form = document.getElementById("loginForm")
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault()
+/* ============================================================
+   SUBMIT LOGIN FORM
+   ============================================================ */
+const loginForm = document.getElementById("loginForm");
 
-    const email = document.querySelector("input[name='email']").value
-    const password = document.querySelector("input[name='password']").value
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const emailVal    = document.querySelector("input[name='email']").value.trim();
+    const passwordVal = document.getElementById('LoginPassword').value;
+
+    if (!validateLoginForm(emailVal, passwordVal)) return;
+
+    const rememberCheckbox = document.getElementById('RememberMe');
+    if (rememberCheckbox?.checked) {
+      localStorage.setItem('rememberMe', 'true');
+      localStorage.setItem('savedEmail', emailVal);
+    } else {
+      localStorage.removeItem('rememberMe');
+      localStorage.removeItem('savedEmail');
+    }
 
     try {
-        const res = await fetch("http://localhost:8080/api/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        })
-
-        const data = await res.json()
-
-        if (!res.ok) {
-            alert(data.message || "Login failed")
-            return
-        }
-
-        alert("Login success!")
-
-        // chuyển trang
-        window.location.href = "../HTML-INTERFACE/Homepage.html"
-
+      const res  = await fetch("http://localhost:8080/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailVal, password: passwordVal })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        showError(document.querySelector("input[name='email']"), data.message || 'Email hoặc mật khẩu không đúng.');
+        return;
+      }
+      window.location.href = "../HTML-INTERFACE/Homepage.html";
     } catch (err) {
-        console.error(err)
-        alert("Server error")
+      console.error(err);
+      showError(document.querySelector("input[name='email']"), 'Không thể kết nối đến máy chủ. Vui lòng thử lại sau.');
     }
-})
+  });
+}
