@@ -1,3 +1,0 @@
--- insert into drinks values ('drink #1', 'desc of drink #1')
--- insert into drinks values ('drink #2', 'desc of drink #2')
--- insert into drinks values ('drink #3', 'desc of drink #3')
