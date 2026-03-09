@@ -354,17 +354,25 @@ if (loginForm) {
       localStorage.removeItem('savedEmail');
     }
 
+
+    // contact api -----
     try {
-      const res  = await fetch("http://localhost:8080/api/login", {
+      const res  = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: emailVal, password: passwordVal })
+        credentials: "include",
+        body: JSON.stringify({
+           email: emailVal, password: passwordVal 
+          })
       });
+
       const data = await res.json();
+
       if (!res.ok) {
         showError(document.querySelector("input[name='email']"), data.message || 'Email hoặc mật khẩu không đúng.');
         return;
       }
+
       window.location.href = "../HTML-INTERFACE/Homepage.html";
     } catch (err) {
       console.error(err);

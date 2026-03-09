@@ -19,7 +19,6 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
 public class CafeController {
 
     private final UserService userService;
@@ -36,11 +35,25 @@ public class CafeController {
     public ResponseEntity<UserResponse> add(@Valid @RequestBody UserRequest er) {
         return new ResponseEntity<>(userService.add(er), HttpStatus.CREATED);
     }
-    @PostMapping("/login")
+
+
+
+    //login and auth
+    @PostMapping("/auth/login")
     public ResponseEntity<UserResponse> login(@RequestBody LoginRequest req, HttpSession session) {
         UserResponse user = userService.login(req);
         session.setAttribute("user", user);
-        return ResponseEntity.ok(userService.login(req));
+        return ResponseEntity.ok(user);
+    }
 
+    @GetMapping("/auth/me")
+    public ResponseEntity<UserResponse> user(HttpSession session) {
+
+        UserResponse user = (UserResponse) session.getAttribute("user");
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return ResponseEntity.ok(user);
     }
 }

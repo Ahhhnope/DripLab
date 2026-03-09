@@ -1,7 +1,6 @@
 // const volume = document.getElementById('cart-number');
 // const btn_add = document.getElementById('cart-increment');
 // const btn_remove = document.getElementById('cart-deincrement');
-
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[maxlength]').forEach(input => {
         input.addEventListener('input', e => {
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 const cart_items = document.querySelectorAll('[id^="cart-item"]');
-// console.log(cart_items);
+console.log(cart_items);
 
 cart_items.forEach(item => {
     let btn_add = item.querySelector('#cart-increment');

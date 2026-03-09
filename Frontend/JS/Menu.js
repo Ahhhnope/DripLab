@@ -336,3 +336,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ============ load products =============
+// fetch()
