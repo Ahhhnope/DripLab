@@ -230,24 +230,31 @@
                         tách cà phê hoàn hảo</p>
                 </div>
 
-                <!-- Login Form -->
-                <form id="loginForm" class="login-form">
+                <!-- Login Form — novalidate tắt popup trình duyệt -->
+                <form id="loginForm" class="login-form" novalidate>
                     <div class="login-content grid">
                         <!-- Email Input -->
-                        <div class="login-box">
-                            <input type="email" name="email" data-i18n-placeholder="login.emailPlaceholder"
-                                placeholder="EMAIL HOẶC SỐ ĐIỆN THOẠI" class="login-input" required>
-                            <i class="ri-mail-fill"></i>
+                        <div class="login-field-wrap">
+                            <div class="login-box">
+                                <input type="email" name="email" data-i18n-placeholder="login.emailPlaceholder"
+                                    placeholder="EMAIL HOẶC SỐ ĐIỆN THOẠI" class="login-input" autocomplete="email">
+                                <i class="ri-mail-fill"></i>
+                            </div>
+                            <!-- error msg sẽ được JS inject vào đây -->
+                            <div class="field-error-wrap"></div>
                         </div>
 
                         <!-- Password Input with Forgot Link -->
                         <div class="login-password-wrapper">
-                            <div class="login-box">
-                                <input type="password" name="password" data-i18n-placeholder="login.passwordPlaceholder"
-                                    placeholder="MẬT KHẨU" class="login-input" required id="LoginPassword">
-                                <i class="ri-eye-line login-eye" id="LoginEye"></i>
+                            <div class="login-field-wrap">
+                                <div class="login-box">
+                                    <input type="password" name="password" data-i18n-placeholder="login.passwordPlaceholder"
+                                        placeholder="MẬT KHẨU" class="login-input" id="LoginPassword" autocomplete="current-password">
+                                    <i class="ri-eye-line login-eye" id="LoginEye"></i>
+                                </div>
+                                <div class="field-error-wrap"></div>
                             </div>
-                            <!-- Remember me checkbox bên trái + Forgot bên phải -->
+                            <!-- Remember me + Forgot -->
                             <div class="login-remember-row">
                                 <label class="login-remember-label">
                                     <input type="checkbox" name="remember" id="RememberMe"
@@ -287,7 +294,7 @@
         </div>
     </div>
 
-    <!-- ========== FOOTER (Copy từ Test.HTML) ========== -->
+    <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="footer-container">
             <!-- Column 1 - Logo & Description -->

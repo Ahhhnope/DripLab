@@ -1,6 +1,3 @@
-// ============================================================
-// BẢNG DỊCH NGÔN NGỮ - Hỗ trợ Tiếng Việt và Tiếng Anh
-// ============================================================
 const translations = {
   vi: {
     // Điều hướng header
@@ -391,4 +388,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-}); // Kết thúc DOMContentLoaded
+}); 
