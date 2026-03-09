@@ -7,6 +7,7 @@
 
     <!-- CSS Links -->
     <link rel="stylesheet" href="../CSS/Register.CSS">
+    <link rel="stylesheet" href="../CSS/Test.CSS">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- Icon Libraries -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -72,7 +73,8 @@
                                     <img id="user-avatar-img" src="../IMG/DELLBIETNOIGI.jpg" alt="User Avatar">
                                 </div>
                                 <h4 class="user-name" data-i18n="profile.userName">Nguyễn Văn A</h4>
-                                <p class="user-email">abc@gmail.com</p>
+                                <p class="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                        data-cfemail="6c0d0e0f2c0b010d0500420f0301">[email&#160;protected]</a></p>
                             </div>
 
                             <div class="dropdown-divider"></div>
@@ -162,9 +164,8 @@
         </div>
     </div>
 
-    <!-- ========== Phần Tự Viết Nội Dung  ========== -->
+    <!-- ========== MAIN REGISTER SECTION ========== -->
     <main class="main-content">
-        <!-- ========== MAIN REGISTER SECTION ========== -->
         <div class="login-between grid">
             <div class="login-container grid">
 
@@ -229,34 +230,48 @@
                         <p class="login-description">Enter your details to start your artisanal journey</p>
                     </div>
 
-                    <!-- Register Form -->
-                    <form id="registerForm" class="login-form">
+                    <!-- Register Form — novalidate tắt popup trình duyệt -->
+                    <form id="registerForm" class="login-form" novalidate>
                         <div class="login-content grid">
-                            <!-- Full Name Input -->
-                            <div class="login-box">
-                                <input type="text" name="full_name" placeholder="FULL NAME" class="login-input" required>
-                                <i class="ri-user-fill"></i>
-                            </div>
-
-                            <!-- Email Input -->
-                            <div class="login-box">
-                                <input type="email" name="email" placeholder="EMAIL" class="login-input" required>
-                                <i class="ri-mail-fill"></i>
-                            </div>
-
-                            <!-- Phone Number Input -->
-                            <div class="login-box">
-                                <input type="tel" name="phone" placeholder="PHONE NUMBER" class="login-input" required
-                                    pattern="[0-9]*" inputmode="numeric">
-                                <i class="ri-phone-fill"></i>
-                            </div>
-
-                            <!-- Password Input with Hint -->
-                            <div class="login-password-wrapper">
+                            <!-- Full Name -->
+                            <div class="login-field-wrap">
                                 <div class="login-box">
-                                    <input type="password" name="password" placeholder="PASSWORD" class="login-input"
-                                        required id="LoginPassword">
-                                    <i class="ri-eye-line login-eye" id="LoginEye"></i>
+                                    <input type="text" name="full_name" placeholder="FULL NAME" class="login-input"
+                                        autocomplete="name">
+                                    <i class="ri-user-fill"></i>
+                                </div>
+                                <div class="field-error-wrap"></div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="login-field-wrap">
+                                <div class="login-box">
+                                    <input type="email" name="email" placeholder="EMAIL" class="login-input"
+                                        autocomplete="email">
+                                    <i class="ri-mail-fill"></i>
+                                </div>
+                                <div class="field-error-wrap"></div>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="login-field-wrap">
+                                <div class="login-box">
+                                    <input type="tel" name="phone" placeholder="PHONE NUMBER" class="login-input"
+                                        pattern="[0-9]*" inputmode="numeric" autocomplete="tel">
+                                    <i class="ri-phone-fill"></i>
+                                </div>
+                                <div class="field-error-wrap"></div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="login-password-wrapper">
+                                <div class="login-field-wrap">
+                                    <div class="login-box">
+                                        <input type="password" name="password" placeholder="PASSWORD"
+                                            class="login-input" id="LoginPassword" autocomplete="new-password">
+                                        <i class="ri-eye-line login-eye" id="LoginEye"></i>
+                                    </div>
+                                    <div class="field-error-wrap"></div>
                                 </div>
                                 <p class="password-hint">Must be at least 8 characters</p>
                             </div>
@@ -288,7 +303,7 @@
         </div>
     </main>
 
-    <!-- ========== FOOTER (Copy từ Test.HTML) ========== -->
+    <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="footer-container">
             <!-- Column 1 - Logo & Description -->
@@ -354,7 +369,7 @@
 
     <!-- JavaScript -->
     <script src="../JS/Register.JS"></script>
-
+    <script src="../JS/Test.JS"></script>
 </body>
 
 </html>

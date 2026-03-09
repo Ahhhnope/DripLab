@@ -670,6 +670,13 @@ img {
   gap: 0.5rem;
 }
 
+/* Wrapper bọc ngoài login-box + error */
+.login-field-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .login-box {
   position: relative;
   display: flex;
@@ -685,7 +692,7 @@ img {
   border-radius: 0.5rem;
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
-  transition: border 0.4s;
+  transition: border 0.4s, box-shadow 0.3s;
   font-size: 0.75rem;
   letter-spacing: 0.5px;
 }
@@ -914,7 +921,8 @@ html.dark .login-social-btn i {
     grid-template-columns: 592px 400px;
     column-gap: 5rem;
     width: 1110px;
-    height: 700px;
+    min-height: 700px;
+    height: auto;
     background-color: var(--white-color);
     box-shadow: 0 0 40px hsla(0, 0%, 0%, 0.1);
     padding: 0.75rem;
@@ -1309,53 +1317,109 @@ html.dark .login-social-btn i {
 }
 
 /* =====================================================
-   VALIDATION ERROR STYLES
+   VALIDATION — THIẾT KẾ MỚI NỔI BẬT
+   =====================================================
+   Khi ô có lỗi: border đổi màu cam-đỏ + glow nhẹ
+   Thông báo lỗi: pill ngang đẹp với icon, gradient, shadow
    ===================================================== */
 
-/* Viền đỏ khi ô bị lỗi */
+/* Trạng thái input lỗi — viền nổi bật, KHÔNG dùng đỏ thô */
 .login-input.input-error {
-  border-color: #e53e3e !important;
-  box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.15) !important;
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12) !important;
+  background-color: #fff8f7 !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
-/* Tag lỗi nhỏ gọn, bám sát dưới ô */
+html.dark .login-input.input-error {
+  background-color: #2a1f1e !important;
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.18) !important;
+}
+
+/* Container chứa thông báo lỗi — đặt sát dưới .login-box */
+.field-error-wrap {
+  min-height: 0;
+  overflow: visible;
+}
+
+/* Thông báo lỗi — pill nổi bật, có icon, gradient, shadow */
 .field-error-msg {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 4px;
-  background: #e53e3e;
+  gap: 7px;
+  margin-top: 6px;
+  padding: 7px 14px 7px 10px;
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
   color: #fff;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  padding: 2px 8px 2px 6px;
-  border-radius: 0 0 5px 5px;
-  margin-top: -3px;          /* dính sát đáy ô input */
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(192, 57, 43, 0.28), 0 1px 3px rgba(0,0,0,0.12);
   width: fit-content;
-  animation: errSlideDown 0.18s ease;
+  max-width: 100%;
+  line-height: 1.3;
+  position: relative;
+
+  /* Animation xuất hiện mượt */
+  animation: errPop 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transform-origin: top left;
 }
 
+/* Mũi tên nhỏ chỉ lên ô input */
 .field-error-msg::before {
-  content: "!";
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 14px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #c0392b;
+}
+
+/* Icon cảnh báo tròn bên trái */
+.field-error-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 13px;
-  height: 13px;
-  background: rgba(255,255,255,0.25);
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  background: rgba(255, 255, 255, 0.28);
   border-radius: 50%;
-  font-size: 0.6rem;
-  font-weight: 800;
+  font-size: 0.65rem;
+  font-weight: 900;
+  font-style: normal;
   flex-shrink: 0;
 }
 
-@keyframes errSlideDown {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Animation pop-in */
+@keyframes errPop {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
-/* Dark mode – giữ nguyên màu đỏ cho nổi bật */
-html.dark .login-input.input-error {
-  border-color: #fc8181 !important;
-  box-shadow: 0 0 0 2px rgba(252,129,129,0.2) !important;
+/* Animation fade-out khi xóa lỗi */
+@keyframes errFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9) translateY(-3px);
+  }
+}
+
+.field-error-msg.removing {
+  animation: errFadeOut 0.18s ease forwards;
 }

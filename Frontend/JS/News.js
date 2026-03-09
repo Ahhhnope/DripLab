@@ -1,8 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
-    // =========================================================
-    // 1. RENDER BÀI VIẾT LƯU TRONG LOCALSTORAGE (NẾU CÓ)
-    // =========================================================
     function renderLocalPosts() {
         const postsGrid = document.getElementById('posts-grid');
         if (!postsGrid) return;

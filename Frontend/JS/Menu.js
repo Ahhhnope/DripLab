@@ -2,7 +2,7 @@
 const translations = {
   vi: {
     // Navigation
-    "nav.menu": "MENU",
+    "nav.menu": "Thực Đơn",
     "nav.about": "VỀ CHÚNG TÔI",
     "nav.news": "TIN TỨC",
     "nav.stores": "CỬA HÀNG",

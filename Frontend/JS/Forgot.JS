@@ -1,10 +1,7 @@
-// ============================================================
-// BẢNG DỊCH NGÔN NGỮ - Hỗ trợ Tiếng Việt và Tiếng Anh
-// ============================================================
 const translations = {
   vi: {
     // Điều hướng header
-    "nav.menu": "MENU",
+    "nav.menu": "Thực Đơn",
     "nav.about": "VỀ CHÚNG TÔI",
     "nav.news": "TIN TỨC",
     "nav.stores": "CỬA HÀNG",
@@ -391,4 +388,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-}); // Kết thúc DOMContentLoaded
+}); 

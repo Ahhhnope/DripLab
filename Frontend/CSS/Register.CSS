@@ -191,7 +191,7 @@ img {
 }
 
 /*===============================================*/
-/*========== MENU DROPDOWN - MỚI THÊM ==========*/
+/*========== MENU DROPDOWN ==========*/
 /*===============================================*/
 
 .menu-dropdown-wrapper {
@@ -202,7 +202,6 @@ img {
   cursor: pointer;
 }
 
-/* Menu Dropdown Container */
 .menu-dropdown {
   position: absolute;
   top: calc(100% + 20px);
@@ -230,7 +229,6 @@ img {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Dropdown Arrow */
 .menu-dropdown::before {
   content: '';
   position: absolute;
@@ -244,7 +242,6 @@ img {
   border-left: 1px solid rgba(199, 154, 94, 0.2);
 }
 
-/* Menu Options - GIỐNG LOGIN/SIGNOUT */
 .menu-option {
   display: flex;
   align-items: center;
@@ -271,7 +268,6 @@ img {
   transition: transform 0.3s ease;
 }
 
-/* Hover Effect - MÀU XANH LÁ */
 .menu-option:hover {
   background: var(--primary);
   color: white !important;
@@ -284,7 +280,6 @@ img {
   transform: scale(1.1);
 }
 
-/* Specific Styling for Each Option */
 .option-buy {
   background: rgba(26, 23, 20, 0.6);
   border: 2px solid rgba(199, 154, 94, 0.3);
@@ -295,7 +290,7 @@ img {
   border: 2px solid rgba(199, 154, 94, 0.3);
 }
 
-/* --- User Actions (Login/Cart Buttons) --- */
+/* --- User Actions --- */
 .user-login {
   display: flex;
   align-items: center;
@@ -330,7 +325,6 @@ img {
 
 /*===============================================*/
 /*========== USER PROFILE DROPDOWN ==========*/
-/*========== DROPDOWN CỐ ĐỊNH MÀU TỐI ==========*/
 /*===============================================*/
 
 .user-profile-wrapper {
@@ -342,7 +336,6 @@ img {
   z-index: 1001;
 }
 
-/* Dropdown Container - CỐ ĐỊNH MÀU TỐI */
 .user-dropdown {
   position: absolute;
   top: calc(100% + 15px);
@@ -368,7 +361,6 @@ img {
   transform: translateY(0);
 }
 
-/* Dropdown Arrow - CĂN CHỈNH THEO USER ICON */
 .user-dropdown::before {
   content: '';
   position: absolute;
@@ -382,7 +374,6 @@ img {
   border-left: 1px solid rgba(199, 154, 94, 0.2);
 }
 
-/* Dropdown Header */
 .dropdown-header {
   padding: 20px 24px 16px;
   border-bottom: 1px solid rgba(199, 154, 94, 0.2);
@@ -397,13 +388,11 @@ img {
   letter-spacing: 0.02em;
 }
 
-/* Dropdown Body */
 .dropdown-body {
   padding: 24px;
   background: #2a2520;
 }
 
-/* User Info Section */
 .user-info-section {
   text-align: center;
   margin-bottom: 20px;
@@ -438,14 +427,12 @@ img {
   margin: 0;
 }
 
-/* Divider */
 .dropdown-divider {
   height: 1px;
   background: rgba(199, 154, 94, 0.2);
   margin: 20px 0;
 }
 
-/* Settings Section */
 .settings-section {
   display: flex;
   flex-direction: column;
@@ -482,7 +469,6 @@ img {
   color: var(--accent-gold);
 }
 
-/* Toggle Switch for Theme */
 .toggle-switch {
   position: relative;
   width: 50px;
@@ -513,7 +499,6 @@ img {
   transform: translateX(24px);
 }
 
-/* Language Toggle Buttons */
 .language-toggle {
   display: flex;
   gap: 6px;
@@ -548,7 +533,6 @@ img {
   box-shadow: 0 2px 8px rgba(59, 94, 74, 0.3);
 }
 
-/* Action Buttons */
 .dropdown-actions {
   display: flex;
   gap: 12px;
@@ -605,7 +589,6 @@ img {
   font-size: 18px;
 }
 
-/* Click outside to close - Overlay */
 .dropdown-overlay {
   position: fixed;
   top: 0;
@@ -625,7 +608,7 @@ img {
 }
 
 /*=============== REGISTER SECTION ===============*/
-/* --- Main Container --- */
+
 .login-between {
   margin-top: 70px;
   min-height: calc(100vh - 70px);
@@ -640,18 +623,15 @@ img {
   margin: 0 auto;
 }
 
-/* --- Image Slider (Hidden on Mobile) --- */
 .login-swiper {
   display: none;
 }
 
-/* --- Register Form Area --- */
 .login-area {
   max-width: 480px;
   margin: 0 auto;
 }
 
-/* --- Register Header --- */
 .login-data {
   text-align: center;
   color: var(--title-color);
@@ -683,7 +663,6 @@ img {
   color: var(--text-color);
 }
 
-/* --- Register Form --- */
 .login-form {
   width: 100%;
 }
@@ -699,7 +678,13 @@ img {
   gap: 0.5rem;
 }
 
-/* Input Boxes */
+/* Wrapper bọc login-box + error */
+.login-field-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .login-box {
   position: relative;
   display: flex;
@@ -715,7 +700,7 @@ img {
   border-radius: 0.5rem;
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
-  transition: border 0.4s;
+  transition: border 0.4s, box-shadow 0.3s;
   font-size: 0.75rem;
   letter-spacing: 0.5px;
 }
@@ -730,12 +715,10 @@ img {
   border-color: var(--first-color);
 }
 
-/* Dark mode - input placeholder */
 html.dark .login-input::placeholder {
   color: #999;
 }
 
-/* Input Icons */
 .login-box i {
   position: absolute;
   right: 1.25rem;
@@ -749,12 +732,10 @@ html.dark .login-input::placeholder {
   color: #999;
 }
 
-/* Dark mode - icon color */
 html.dark .login-eye {
   color: #c0c0c0;
 }
 
-/* Password Hint Text */
 .password-hint {
   align-self: flex-start;
   font-size: 0.7rem;
@@ -764,7 +745,6 @@ html.dark .login-eye {
   transition: color 0.3s ease;
 }
 
-/* --- Submit Button --- */
 .login-button {
   width: 100%;
   padding: 1rem;
@@ -782,7 +762,6 @@ html.dark .login-eye {
   box-shadow: 0 8px 24px hsla(30, 30%, 50%, 0.3);
 }
 
-/* --- Divider Line --- */
 .login-line {
   position: relative;
   display: block;
@@ -805,15 +784,9 @@ html.dark .login-eye {
   background-color: var(--border-color);
 }
 
-.login-line::before {
-  left: 0;
-}
+.login-line::before { left: 0; }
+.login-line::after  { right: 0; }
 
-.login-line::after {
-  right: 0;
-}
-
-/* --- Social Login Buttons --- */
 .login-social-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -837,7 +810,6 @@ html.dark .login-eye {
   font-size: 0.875rem;
 }
 
-/* Universal Hover Effect - Màu xanh lá nổi bật cho cả 2 mode */
 .login-social-btn:hover {
   background: var(--primary) !important;
   border-color: var(--primary) !important;
@@ -856,7 +828,6 @@ html.dark .login-eye {
   color: white !important;
 }
 
-/* Dark Mode - Social Buttons Background */
 html.dark .login-social-btn {
   background: rgba(42, 37, 32, 0.8);
   border-color: rgba(199, 154, 94, 0.3);
@@ -867,7 +838,6 @@ html.dark .login-social-btn i {
   color: #f5f5f0;
 }
 
-/* --- Sign In Link --- */
 .login-switch {
   display: flex;
   justify-content: center;
@@ -890,19 +860,18 @@ html.dark .login-social-btn i {
 /*=============== RESPONSIVE - DESKTOP (1150px+) ===============*/
 @media screen and (min-width: 1150px) {
 
-  /* --- Register Container Layout --- */
   .login-container {
     grid-template-columns: 592px 480px;
     column-gap: 5rem;
     width: 1190px;
-    height: 860px;
+    min-height: 860px;
+    height: auto;
     background-color: var(--white-color);
     box-shadow: 0 0 40px hsla(0, 0%, 0%, 0.1);
     padding: 0.75rem;
     border-radius: 3rem;
   }
 
-  /* --- Image Slider Section --- */
   .login-swiper {
     display: block;
     overflow: hidden;
@@ -912,14 +881,12 @@ html.dark .login-social-btn i {
     clip-path: path("M0 37.8182C0 16.9318 17.9784 0 40.156 0H551.843C574.902 0 593.224 18.2478 591.936 39.9306L556.273 798.294C555.083 822.328 537.487 844 516.18 844H40.156C17.9784 844 0 823.068 0 798.182V37.8182Z");
   }
 
-  /* Slider Wrapper */
   .login-swiper-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
   }
 
-  /* Individual Slides */
   .login-swiper-slide {
     position: absolute;
     width: 100%;
@@ -932,7 +899,6 @@ html.dark .login-social-btn i {
     opacity: 1;
   }
 
-  /* Slide Images */
   .login-swiper-img {
     width: 592px;
     height: 100%;
@@ -941,7 +907,6 @@ html.dark .login-social-btn i {
     clip-path: path("M0 37.8182C0 16.9318 17.9784 0 40.156 0H551.843C574.902 0 593.224 18.2478 591.936 39.9306L556.273 798.294C555.083 822.328 537.487 844 516.18 844H40.156C17.9784 844 0 823.068 0 798.182V37.8182Z");
   }
 
-  /* --- Slider Text Overlay --- */
   .login-swiper-data,
   .login-swiper-social {
     position: absolute;
@@ -967,7 +932,6 @@ html.dark .login-social-btn i {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   }
 
-  /* --- Social Links Overlay --- */
   .login-swiper-social {
     left: 3rem;
     bottom: 4rem;
@@ -989,7 +953,6 @@ html.dark .login-social-btn i {
     transform: translateY(-0.25rem);
   }
 
-  /* --- Pagination Dots --- */
   .swiper-pagination {
     position: absolute;
     bottom: 2rem;
@@ -1014,7 +977,6 @@ html.dark .login-social-btn i {
     border-radius: 5px;
   }
 
-  /* --- Navigation Buttons --- */
   .swiper-button-prev,
   .swiper-button-next {
     position: absolute;
@@ -1039,15 +1001,9 @@ html.dark .login-social-btn i {
     background-color: rgba(255, 255, 255, 0.5);
   }
 
-  .swiper-button-prev {
-    left: 1rem;
-  }
+  .swiper-button-prev { left: 1rem; }
+  .swiper-button-next { right: 1rem; }
 
-  .swiper-button-next {
-    right: 1rem;
-  }
-
-  /* --- Register Form Area on Desktop --- */
   .login-area {
     display: flex;
     flex-direction: column;
@@ -1057,7 +1013,7 @@ html.dark .login-social-btn i {
 }
 
 /*===============================================*/
-/*========== FOOTER - ĐỔI MÀU THEO THEME ==========*/
+/*========== FOOTER ==========*/
 /*===============================================*/
 
 .footer {
@@ -1077,9 +1033,7 @@ html.dark .login-social-btn i {
   margin-bottom: 2rem;
 }
 
-.footer-col h3 {
-  margin-bottom: 1rem;
-}
+.footer-col h3 { margin-bottom: 1rem; }
 
 .footer-logo {
   width: 80px;
@@ -1107,9 +1061,7 @@ html.dark .login-social-btn i {
   margin: 0;
 }
 
-.footer-col ul li {
-  margin-bottom: 0.75rem;
-}
+.footer-col ul li { margin-bottom: 0.75rem; }
 
 .footer-col ul li a {
   color: var(--footer-text);
@@ -1118,14 +1070,9 @@ html.dark .login-social-btn i {
   transition: color 0.3s ease;
 }
 
-.footer-col ul li a:hover {
-  color: #c79a5e;
-}
+.footer-col ul li a:hover { color: #c79a5e; }
 
-.social-list {
-  display: flex;
-  gap: 1rem;
-}
+.social-list { display: flex; gap: 1rem; }
 
 .social-list li a {
   display: flex;
@@ -1161,76 +1108,30 @@ html.dark .login-social-btn i {
 /*========== RESPONSIVE ==========*/
 /*===============================================*/
 
-/* Mobile - Header */
 @media screen and (max-width: 768px) {
   .header-container {
     grid-template-columns: auto 1fr auto;
     gap: 1rem;
   }
-
-  .navbar {
-    display: none;
-  }
-
-  .header-logo-img {
-    height: 30px;
-  }
-
-  .user-login {
-    gap: 1rem;
-  }
-
-  /* Mobile - User Dropdown */
-  .user-dropdown {
-    width: 300px;
-    right: -10px;
-  }
-
-  .user-dropdown::before {
-    right: 25px;
-  }
-
-  /* Mobile - Menu Dropdown */
-  .menu-dropdown {
-    min-width: 240px;
-  }
-
-  /* Mobile - Footer */
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .social-list {
-    justify-content: center;
-  }
+  .navbar { display: none; }
+  .header-logo-img { height: 30px; }
+  .user-login { gap: 1rem; }
+  .user-dropdown { width: 300px; right: -10px; }
+  .user-dropdown::before { right: 25px; }
+  .menu-dropdown { min-width: 240px; }
+  .footer-container { grid-template-columns: 1fr; text-align: center; }
+  .social-list { justify-content: center; }
 }
 
-/* Very small screens */
 @media screen and (max-width: 400px) {
-  .user-dropdown {
-    width: calc(100vw - 40px);
-    right: -80px;
-  }
-
-  .dropdown-body {
-    padding: 20px 16px;
-  }
-
-  .dropdown-actions {
-    flex-direction: column;
-  }
-
-  .menu-dropdown {
-    min-width: 200px;
-  }
+  .user-dropdown { width: calc(100vw - 40px); right: -80px; }
+  .dropdown-body { padding: 20px 16px; }
+  .dropdown-actions { flex-direction: column; }
+  .menu-dropdown { min-width: 200px; }
 }
 
-/* Medium screens */
 @media screen and (min-width: 540px) {
-  .login-area {
-    max-width: 480px;
-  }
+  .login-area { max-width: 480px; }
 }
 
 /*===============================================*/
@@ -1252,10 +1153,7 @@ html.dark .login-social-btn i {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.cart-modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
+.cart-modal-overlay.active { opacity: 1; visibility: visible; }
 
 .cart-modal {
   position: relative;
@@ -1270,9 +1168,7 @@ html.dark .login-social-btn i {
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.cart-modal-overlay.active .cart-modal {
-  transform: translateY(0) scale(1);
-}
+.cart-modal-overlay.active .cart-modal { transform: translateY(0) scale(1); }
 
 .cart-modal-close {
   position: absolute;
@@ -1289,13 +1185,8 @@ html.dark .login-social-btn i {
   transition: color 0.2s ease;
 }
 
-.cart-modal-close:hover {
-  color: #333;
-}
-
-.cart-modal-close i {
-  font-size: 22px;
-}
+.cart-modal-close:hover { color: #333; }
+.cart-modal-close i { font-size: 22px; }
 
 .cart-modal-title {
   font-size: 1.6rem;
@@ -1332,10 +1223,7 @@ html.dark .login-social-btn i {
   margin-bottom: 28px;
 }
 
-.cart-modal-actions {
-  display: flex;
-  gap: 12px;
-}
+.cart-modal-actions { display: flex; gap: 12px; }
 
 .cart-modal-btn {
   flex: 1;
@@ -1354,10 +1242,7 @@ html.dark .login-social-btn i {
   border: 2px solid var(--primary);
 }
 
-.cart-btn-register {
-  background: transparent;
-  color: var(--primary);
-}
+.cart-btn-register { background: transparent; color: var(--primary); }
 
 .cart-btn-register:hover {
   background: var(--primary);
@@ -1366,10 +1251,7 @@ html.dark .login-social-btn i {
   box-shadow: 0 4px 12px rgba(59, 94, 74, 0.3);
 }
 
-.cart-btn-login {
-  background: var(--primary);
-  color: #ffffff;
-}
+.cart-btn-login { background: var(--primary); color: #ffffff; }
 
 .cart-btn-login:hover {
   opacity: 0.88;
@@ -1378,52 +1260,114 @@ html.dark .login-social-btn i {
 }
 
 @media screen and (max-width: 400px) {
-  .cart-modal {
-    padding: 32px 20px 28px;
-  }
-
-  .cart-modal-actions {
-    flex-direction: column;
-  }
+  .cart-modal { padding: 32px 20px 28px; }
+  .cart-modal-actions { flex-direction: column; }
 }
 
-/* Tag lỗi nhỏ gọn bám sát dưới ô */
-.field-error-msg {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: #e53e3e;
-  color: #fff;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  padding: 2px 8px 2px 6px;
-  border-radius: 0 0 5px 5px;
-  margin-top: -3px;
-  width: fit-content;
-  animation: errSlideDown 0.18s ease;
-}
+/* =====================================================
+   VALIDATION — THIẾT KẾ MỚI NỔI BẬT
+   =====================================================
+   Khi ô có lỗi: border đổi màu cam-đỏ + glow nhẹ
+   Thông báo lỗi: pill ngang đẹp với icon, gradient, shadow
+   ===================================================== */
 
-.field-error-msg::before {
-  content: "!";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 13px;
-  height: 13px;
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
-  font-size: 0.6rem;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-@keyframes errSlideDown {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Trạng thái input lỗi */
+.login-input.input-error {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12) !important;
+  background-color: #fff8f7 !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
 html.dark .login-input.input-error {
-  border-color: #fc8181 !important;
-  box-shadow: 0 0 0 2px rgba(252, 129, 129, 0.2) !important;
+  background-color: #2a1f1e !important;
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.18) !important;
+}
+
+.field-error-wrap {
+  min-height: 0;
+  overflow: visible;
+}
+
+/* Thông báo lỗi — pill nổi bật */
+.field-error-msg {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  padding: 7px 14px 7px 10px;
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(192, 57, 43, 0.28), 0 1px 3px rgba(0,0,0,0.12);
+  width: fit-content;
+  max-width: 100%;
+  line-height: 1.3;
+  position: relative;
+
+  /* Animation xuất hiện mượt */
+  animation: errPop 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transform-origin: top left;
+}
+
+/* Ẩn arrow — error hiện thẳng dưới input */
+/* Mũi tên nhỏ chỉ lên ô input */
+.field-error-msg::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 14px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #c0392b;
+}
+
+/* Icon cảnh báo tròn */
+.field-error-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 900;
+  font-style: normal;
+  flex-shrink: 0;
+}
+
+/* Animation pop-in */
+@keyframes errPop {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animation fade-out */
+@keyframes errFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9) translateY(-3px);
+  }
+}
+
+.field-error-msg.removing {
+  animation: errFadeOut 0.18s ease forwards;
 }

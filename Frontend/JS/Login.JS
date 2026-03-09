@@ -1,17 +1,20 @@
 const translations = {
   vi: {
-    "nav.menu": "MENU",
+    /* NAV */
+    "nav.menu": "Thực Đơn",
     "nav.about": "VỀ CHÚNG TÔI",
     "nav.news": "TIN TỨC",
     "nav.stores": "CỬA HÀNG",
     "menu.buyNow": "Mua ngay",
     "menu.customize": "Tự pha chế",
+    /* PROFILE DROPDOWN */
     "profile.title": "Thông Tin Tài Khoản",
     "profile.userName": "Nguyễn Văn A",
     "profile.theme": "Chế độ tối",
     "profile.language": "Ngôn ngữ",
     "profile.login": "Đăng nhập",
     "profile.register": "Đăng ký",
+    /* LOGIN FORM */
     "login.title": "Đăng nhập Drip Lab",
     "login.description": "Chào mừng trở lại với hành trình tìm kiếm tách cà phê hoàn hảo",
     "login.emailPlaceholder": "EMAIL HOẶC SỐ ĐIỆN THOẠI",
@@ -23,26 +26,36 @@ const translations = {
     "login.newHere": "Chưa có tài khoản?",
     "login.joinUs": "Tham gia Drip Lab",
     "login.followUs": "Theo dõi chúng tôi",
+    /* FOOTER */
     "footer.description": "Drip Lab - Coffee for your fresh start every day.",
     "footer.connect": "Kết nối",
     "footer.contact": "Liên hệ",
     "footer.location": "Địa điểm: Việt Nam",
     "footer.follow": "Theo dõi chúng tôi",
-    "footer.copyright": "© 2025 Drip Lab. Space for coffee heads."
+    "footer.copyright": "© 2025 Drip Lab. Space for coffee heads.",
+    /* ===== THÔNG BÁO LỖI VALIDATE ===== */
+    "err.email.required":    "Vui lòng nhập email hoặc số điện thoại.",
+    "err.email.invalid":     "Email hoặc số điện thoại không hợp lệ.",
+    "err.password.required": "Vui lòng nhập mật khẩu.",
+    "err.credentials":       "Email hoặc mật khẩu không đúng.",
+    "err.server":            "Không thể kết nối đến máy chủ. Vui lòng thử lại sau."
   },
   en: {
+    /* NAV */
     "nav.menu": "MENU",
     "nav.about": "ABOUT US",
     "nav.news": "NEWS",
     "nav.stores": "STORES",
     "menu.buyNow": "Buy Now",
     "menu.customize": "Customize",
+    /* PROFILE DROPDOWN */
     "profile.title": "Account Information",
     "profile.userName": "Nguyen Van A",
     "profile.theme": "Dark mode",
     "profile.language": "Language",
     "profile.login": "Login",
     "profile.register": "Register",
+    /* LOGIN FORM */
     "login.title": "Sign in with Drip Lab",
     "login.description": "Welcome back to the pursuit of the perfect brew",
     "login.emailPlaceholder": "EMAIL OR PHONE NUMBER",
@@ -54,41 +67,101 @@ const translations = {
     "login.newHere": "New to the lab?",
     "login.joinUs": "Join Drip Lab",
     "login.followUs": "Follow Us",
+    /* FOOTER */
     "footer.description": "Drip Lab - Coffee for your fresh start every day.",
     "footer.connect": "Connect",
     "footer.contact": "Contact Us",
     "footer.location": "Place at: Vietnam",
     "footer.follow": "Follow Us On",
-    "footer.copyright": "© 2025 Drip Lab. Space for coffee heads."
+    "footer.copyright": "© 2025 Drip Lab. Space for coffee heads.",
+    /* ===== VALIDATION ERROR MESSAGES ===== */
+    "err.email.required":    "Please enter your email or phone number.",
+    "err.email.invalid":     "Invalid email or phone number.",
+    "err.password.required": "Please enter your password.",
+    "err.credentials":       "Incorrect email or password.",
+    "err.server":            "Cannot connect to server. Please try again later."
   }
 };
+
+/* Ngôn ngữ hiện tại — đồng bộ với localStorage */
+let currentLang = localStorage.getItem('language') || 'vi';
+
+/** Lấy chuỗi đã dịch theo key */
+function t(key) {
+  return translations[currentLang]?.[key] || translations['vi']?.[key] || key;
+}
 
 /* ============================================================
    VALIDATION HELPERS
    ============================================================ */
-function showError(inputEl, message) {
-  clearError(inputEl);
-  inputEl.classList.add('input-error');
-  const errorEl = document.createElement('p');
-  errorEl.className = 'field-error-msg';
-  errorEl.textContent = message;
-  const box = inputEl.closest('.login-box');
-  if (box) box.insertAdjacentElement('afterend', errorEl);
-  else inputEl.parentElement.insertAdjacentElement('afterend', errorEl);
-}
-
-function clearError(inputEl) {
-  inputEl.classList.remove('input-error');
-  const box = inputEl.closest('.login-box');
-  const sib = box ? box.nextElementSibling : inputEl.parentElement.nextElementSibling;
-  if (sib && sib.classList.contains('field-error-msg')) sib.remove();
-}
-
 function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 function isValidPhone(v) { return /^[0-9]{9,11}$/.test(v); }
 
+/**
+ * Hiện thông báo lỗi pill bên dưới ô input.
+ * @param {HTMLElement} inputEl
+ * @param {string}      message  – nội dung hiển thị ngay
+ * @param {string}      [errKey] – key translation để tự cập nhật khi đổi ngôn ngữ
+ */
+function showError(inputEl, message, errKey = '') {
+  clearError(inputEl, true);
+  inputEl.classList.add('input-error');
+
+  const wrap = _getErrorWrap(inputEl);
+  if (!wrap) return;
+
+  const msg = document.createElement('div');
+  msg.className = 'field-error-msg';
+  if (errKey) msg.setAttribute('data-error-key', errKey);
+  msg.innerHTML = `<i class="field-error-icon">!</i><span>${message}</span>`;
+  wrap.appendChild(msg);
+}
+
+/** Xóa thông báo lỗi */
+function clearError(inputEl, immediate = false) {
+  inputEl.classList.remove('input-error');
+  inputEl.style.removeProperty('border-color');
+  inputEl.style.removeProperty('box-shadow');
+  inputEl.style.removeProperty('background-color');
+
+  const wrap = _getErrorWrap(inputEl);
+  if (!wrap) return;
+
+  const existing = wrap.querySelector('.field-error-msg');
+  if (!existing) return;
+
+  if (immediate) {
+    existing.remove();
+  } else {
+    existing.classList.add('removing');
+    existing.addEventListener('animationend', () => existing.remove(), { once: true });
+  }
+}
+
+/** Tìm .field-error-wrap từ input */
+function _getErrorWrap(inputEl) {
+  const box = inputEl.closest('.login-box');
+  const fieldWrap = box ? box.closest('.login-field-wrap') : null;
+  return fieldWrap ? fieldWrap.querySelector('.field-error-wrap') : null;
+}
+
+/**
+ * Cập nhật nội dung TẤT CẢ thông báo lỗi đang hiển thị theo ngôn ngữ mới.
+ * Được gọi mỗi khi người dùng chuyển ngôn ngữ.
+ */
+function refreshErrorMessages() {
+  document.querySelectorAll('.field-error-msg[data-error-key]').forEach(msg => {
+    const key = msg.getAttribute('data-error-key');
+    const translated = t(key);
+    if (translated) {
+      const span = msg.querySelector('span');
+      if (span) span.textContent = translated;
+    }
+  });
+}
+
 /* ============================================================
-   VALIDATE LOGIN FORM
+   VALIDATE LOGIN FORM — validate TẤT CẢ ô cùng lúc
    ============================================================ */
 function validateLoginForm(emailVal, passwordVal) {
   const emailInput    = document.querySelector("input[name='email']");
@@ -96,17 +169,17 @@ function validateLoginForm(emailVal, passwordVal) {
   let valid = true;
 
   if (!emailVal.trim()) {
-    showError(emailInput, 'Vui lòng nhập email hoặc số điện thoại.');
+    showError(emailInput, t('err.email.required'), 'err.email.required');
     valid = false;
   } else if (!isValidEmail(emailVal) && !isValidPhone(emailVal)) {
-    showError(emailInput, 'Email hoặc số điện thoại không hợp lệ.');
+    showError(emailInput, t('err.email.invalid'), 'err.email.invalid');
     valid = false;
   } else {
     clearError(emailInput);
   }
 
   if (!passwordVal.trim()) {
-    showError(passwordInput, 'Vui lòng nhập mật khẩu.');
+    showError(passwordInput, t('err.password.required'), 'err.password.required');
     valid = false;
   } else {
     clearError(passwordInput);
@@ -125,19 +198,18 @@ document.addEventListener('DOMContentLoaded', function () {
   if (emailInput) {
     emailInput.addEventListener('blur', () => {
       const v = emailInput.value.trim();
-      if (!v) showError(emailInput, 'Vui lòng nhập email hoặc số điện thoại.');
-      else if (!isValidEmail(v) && !isValidPhone(v)) showError(emailInput, 'Email hoặc số điện thoại không hợp lệ.');
-      else clearError(emailInput);
+      if (!v)                                    showError(emailInput, t('err.email.required'), 'err.email.required');
+      else if (!isValidEmail(v) && !isValidPhone(v)) showError(emailInput, t('err.email.invalid'), 'err.email.invalid');
+      else                                       clearError(emailInput);
     });
     emailInput.addEventListener('input', () => {
       if (emailInput.classList.contains('input-error')) clearError(emailInput);
     });
   }
 
-  // ===== FIX: ô mật khẩu cũng validate khi blur =====
   if (passwordInput) {
     passwordInput.addEventListener('blur', () => {
-      if (!passwordInput.value.trim()) showError(passwordInput, 'Vui lòng nhập mật khẩu.');
+      if (!passwordInput.value.trim()) showError(passwordInput, t('err.password.required'), 'err.password.required');
       else clearError(passwordInput);
     });
     passwordInput.addEventListener('input', () => {
@@ -160,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function () {
   overlay.className = 'dropdown-overlay';
   document.body.appendChild(overlay);
 
+  /* --- Cart Modal --- */
   const cartBtn          = document.getElementById('cart-btn');
   const cartModalOverlay = document.getElementById('cart-modal-overlay');
   const cartModalClose   = document.getElementById('cart-modal-close');
@@ -174,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape' && cartModalOverlay?.classList.contains('active')) closeCartModal();
   });
 
+  /* --- User Dropdown --- */
   if (userProfileBtn) {
     userProfileBtn.addEventListener('click', e => {
       e.stopPropagation();
@@ -194,11 +268,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const h = this.getAttribute('href'); if (h) window.location.href = h;
   }));
 
+  /* --- Theme --- */
   const html = document.documentElement;
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  html.classList.add(currentTheme);
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  html.classList.add(savedTheme);
   if (themeToggle) {
-    if (currentTheme === 'dark') themeToggle.classList.add('active');
+    if (savedTheme === 'dark') themeToggle.classList.add('active');
     themeToggle.addEventListener('click', () => {
       const isDark = html.classList.contains('dark');
       html.classList.toggle('dark', !isDark);
@@ -208,15 +283,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  let currentLang = localStorage.getItem('language') || 'vi';
+  /* --- Language --- */
   setLanguage(currentLang);
-  langButtons.forEach(btn => btn.addEventListener('click', function () { setLanguage(this.getAttribute('data-lang')); }));
+
+  langButtons.forEach(btn => btn.addEventListener('click', function () {
+    setLanguage(this.getAttribute('data-lang'));
+  }));
 
   function setLanguage(lang) {
-    currentLang = lang;
+    currentLang = lang;                    // cập nhật biến module-level
     langButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
     document.documentElement.setAttribute('lang', lang);
     applyTranslations(lang);
+    refreshErrorMessages();                // ← dịch lại các thông báo lỗi đang hiện
     localStorage.setItem('language', lang);
   }
 
@@ -235,11 +314,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* --- Dropdown action buttons --- */
   const loginBtn    = document.querySelector('.btn-login');
   const registerBtn = document.querySelector('.btn-register');
   if (loginBtn)    loginBtn.addEventListener('click',    () => { window.location.href = '../HTML-INTERFACE/Login.HTML';    closeUserDropdown(); });
   if (registerBtn) registerBtn.addEventListener('click', () => { window.location.href = '../HTML-INTERFACE/Register.HTML'; closeUserDropdown(); });
 
+  /* --- Remember Me --- */
   const rememberCheckbox = document.getElementById('RememberMe');
   const emailInputEl     = document.querySelector('input[name="email"]');
   if (rememberCheckbox && emailInputEl) {
@@ -333,13 +414,14 @@ document.addEventListener('visibilitychange', () => {
 });
 
 /* ============================================================
-   SUBMIT LOGIN FORM
+   SUBMIT LOGIN FORM — hiện TẤT CẢ lỗi cùng lúc khi submit
    ============================================================ */
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const emailVal    = document.querySelector("input[name='email']").value.trim();
     const passwordVal = document.getElementById('LoginPassword').value;
 
@@ -369,14 +451,15 @@ if (loginForm) {
       const data = await res.json();
 
       if (!res.ok) {
-        showError(document.querySelector("input[name='email']"), data.message || 'Email hoặc mật khẩu không đúng.');
+        const msg = data.message || t('err.credentials');
+        showError(document.querySelector("input[name='email']"), msg, 'err.credentials');
         return;
       }
 
       window.location.href = "../HTML-INTERFACE/Homepage.html";
     } catch (err) {
       console.error(err);
-      showError(document.querySelector("input[name='email']"), 'Không thể kết nối đến máy chủ. Vui lòng thử lại sau.');
+      showError(document.querySelector("input[name='email']"), t('err.server'), 'err.server');
     }
   });
 }
