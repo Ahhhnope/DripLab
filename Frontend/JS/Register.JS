@@ -1,10 +1,7 @@
-/* ============================================================
-   TRANSLATIONS — bao gồm cả thông báo lỗi validate
-   ============================================================ */
 const translations = {
   vi: {
     /* NAV */
-    "nav.menu": "MENU",
+    "nav.menu": "Thực Đơn",
     "nav.about": "VỀ CHÚNG TÔI",
     "nav.news": "TIN TỨC",
     "nav.stores": "CỬA HÀNG",

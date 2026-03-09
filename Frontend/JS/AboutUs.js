@@ -1,7 +1,7 @@
 const translations = {
   vi: {
     // Navigation
-    "nav.menu": "MENU",
+    "nav.menu": "Thực Đơn",
     "nav.about": "VỀ CHÚNG TÔI",
     "nav.news": "TIN TỨC",
     "nav.stores": "CỬA HÀNG",
@@ -19,7 +19,7 @@ const translations = {
     "profile.register": "Đăng ký",
 
     // Content
-    "content.title": "Về Chúng Tôi",
+    "content.title": "Thông Tin Về Chúng Tôi",
 
     // Footer
     "footer.description": "Drip Lab - Coffee for your fresh start every day.",
@@ -61,7 +61,7 @@ const translations = {
     "profile.register": "Register",
 
     // Content
-    "content.title": "About us",
+    "content.title": "Information about us",
 
     // Footer
     "footer.description": "Drip Lab - Coffee for your fresh start every day.",
