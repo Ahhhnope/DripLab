@@ -6,11 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "drinks")
+@Table(name = "promo_codes")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Drink {
+@NoArgsConstructor
+public class PromoCode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,16 +18,9 @@ public class Drink {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "quantity")
-    private Integer quantity;
-
-    @Column(name = "base_price")
-    private Float basePrice;
+    @Column(name = "code")
+    private String code;
 
     @Column(name = "description")
     private String description;
-
-    @Column(name = "image_url")
-    private String imageUrl;
-
 }
