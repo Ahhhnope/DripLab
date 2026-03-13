@@ -1,5 +1,7 @@
 package com.example.cafe.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +21,7 @@ public class CartItem {
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
+    @JsonBackReference
     private Cart cart;
 
     @ManyToOne
@@ -29,5 +32,7 @@ public class CartItem {
     private Integer quantity;
 
     @OneToMany(mappedBy = "cartItem", cascade = CascadeType.ALL)
-    private List<CartItemToppings> cartItemToppings;
+    @JsonManagedReference
+    private List<CartItemTopping> cartItemToppings;
+
 }

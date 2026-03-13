@@ -1,8 +1,10 @@
 package com.example.cafe.Repository;
 
+import com.example.cafe.Entity.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Cart extends JpaRepository<Cart, Integer> {
+public interface CartRepository extends JpaRepository<Cart, Integer> {
+    public Cart findByUserId(int userId);
 }

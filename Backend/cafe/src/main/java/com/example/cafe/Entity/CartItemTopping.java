@@ -1,6 +1,7 @@
 package com.example.cafe.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,13 +12,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartItemToppings {
+public class CartItemTopping {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "cart_item_id", referencedColumnName = "id")
+    @JsonBackReference
     private CartItem cartItem;
 
     @ManyToOne

@@ -1,5 +1,6 @@
 package com.example.cafe.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class User {
     private String phone;
 
     @OneToOne(mappedBy = "user")
+    @JsonManagedReference
     private Cart cart;
 }

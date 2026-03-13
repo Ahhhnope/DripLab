@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
 public class CafeController {
